@@ -2,7 +2,6 @@
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <!-- PERBAIKAN: Tambahan viewport-fit=cover & user-scalable=no untuk Android/iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Konsultasi Karier Jepang - LPKS Arima Persada</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -75,8 +74,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
-        
-        /* Mencegah input tertutup keyboard di beberapa device */
         .input-area { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
     </style>
 </head>
@@ -89,7 +86,7 @@
         <div class="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-gold-400 rounded-full mix-blend-screen filter blur-[150px] opacity-10 animate-blob" style="animation-delay: 4s;"></div>
     </div>
 
-    <!-- MAIN CONTAINER (MENGGUNAKAN 100dvh AGAR PAS DI LAYAR HP) -->
+    <!-- MAIN CONTAINER -->
     <div class="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col lg:flex-row h-full p-0 lg:p-6 gap-6">
 
         <!-- KIRI: BRANDING & VISUAL -->
@@ -126,14 +123,13 @@
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
                     <p class="text-white font-bold text-lg">100% Legal</p>
-                    <p class="text-xs text-slate-400 mt-1">Terdaftar resmi Kemnaker RI & Mitra SO.</p>
+                    <p class="text-xs text-slate-400 mt-1">Terdaftar resmi Kemnaker RI dan Mitra SO.</p>
                 </div>
             </div>
         </div>
 
         <!-- KANAN: AREA CHAT INTERAKTIF -->
         <div class="w-full lg:w-1/2 h-full flex items-center justify-center p-0 sm:p-4 lg:p-0">
-            <!-- PERBAIKAN: Menggunakan h-full pada mobile, dan h-[90vh] pada desktop -->
             <div class="w-full max-w-lg h-full lg:h-[90vh] glass-panel sm:rounded-[2.5rem] overflow-hidden flex flex-col relative">
                 
                 <!-- HEADER CHAT -->
@@ -166,7 +162,6 @@
                 <div id="chatArea" class="flex-1 p-4 sm:p-6 overflow-y-auto flex flex-col gap-4 sm:gap-6 relative"></div>
 
                 <!-- AREA INPUT -->
-                <!-- PERBAIKAN: Tambahan class input-area untuk safe area di HP -->
                 <div id="inputArea" class="input-area p-3 sm:p-4 bg-white/5 border-t border-white/10 shrink-0 hidden backdrop-blur-md">
                     <div class="flex items-center gap-3 relative">
                         <input type="text" id="userInput" placeholder="Ketik jawaban Anda..." class="w-full bg-ink-900/50 border border-white/10 rounded-full pl-5 pr-12 py-3.5 sm:py-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all">
@@ -188,9 +183,7 @@
         const progressBar = document.getElementById('progressBar');
         const progressText = document.getElementById('progressText');
         
-        // State untuk mengecek apakah user sedang mengetik "Lainnya"
         let isTypingLainnya = false;
-
         let userData = { nama: '', whatsapp: '', pendidikan: '', bahasa: '', sektor: '', motivasi: '', program: '' };
 
         function updateProgress(percent) {
@@ -249,7 +242,7 @@
 
                 if (isInput) {
                     inputArea.classList.remove('hidden');
-                    setTimeout(() => userInput.focus(), 100); // Timeout agar keyboard muncul sempurna
+                    setTimeout(() => userInput.focus(), 100);
                 } else {
                     inputArea.classList.add('hidden');
                 }
@@ -288,7 +281,6 @@
                 userData.sektor = label;
                 askMotivasi();
             } else if (value === 'lainnya') {
-                // FITUR BARU: Jika pilih Lainnya, aktifkan input teks
                 isTypingLainnya = true;
                 botReply("Baik, silakan ketik bidang pekerjaan yang Anda minati di kolom bawah:", null, 1000, true);
             } else if (value === 'pengalaman' || value === 'gaji' || value === 'karier') {
@@ -306,13 +298,12 @@
             userReply(text);
             userInput.value = '';
 
-            // LOGIKA BARU: Menangkap inputan "Lainnya"
             if (isTypingLainnya) {
                 userData.sektor = text;
                 isTypingLainnya = false;
                 updateProgress(55);
                 askMotivasi();
-                return; // Berhenti di sini agar tidak lanjut ke logika bawah
+                return;
             }
 
             if (!userData.nama) {
@@ -372,7 +363,7 @@
                     { label: "Caregiver (Kaigo)", value: "kaigo" },
                     { label: "Food Service / Restoran", value: "food" },
                     { label: "Pertanian / Konstruksi", value: "tani" },
-                    { label: "Lainnya (Ketik Sendiri)", value: "lainnya" } // TOMBOL BARU
+                    { label: "Lainnya (Ketik Sendiri)", value: "lainnya" }
                 ]
             );
         }
@@ -421,9 +412,32 @@
                 1500
             );
 
-            const waText = `Halo Admin LPKS Arima Persada,\n\nSaya *${userData.nama}* baru saja mengisi form konsultasi di website.\n\n*Data Diri & Minat:*\n- Pendidikan: ${userData.pendidikan}\n- Bahasa Jepang: ${userData.bahasa}\n- Sektor Minat: ${userData.sektor}\n- Motivasi: ${userData.motivasi}\n- Rekomendasi Sistem: ${userData.program}\n\nSaya ingin konsultasi lebih lanjut mengenai program ini. Terima kasih!`;
+            // ==========================================
+            // PERBAIKAN TOTAL FORMAT WHATSAPP
+            // ==========================================
+            // 1. Ganti & dengan "dan"
+            // 2. Ganti - dengan bullet point •
+            // 3. Gunakan %0A langsung agar tidak double-encode
+            // 4. Hanya encode variabel isinya saja
+            
+            const textNama = encodeURIComponent(userData.nama);
+            const textPend = encodeURIComponent(userData.pendidikan);
+            const textBhs = encodeURIComponent(userData.bahasa);
+            const textSektor = encodeURIComponent(userData.sektor);
+            const textMotivasi = encodeURIComponent(userData.motivasi);
+            const textProg = encodeURIComponent(userData.program);
 
-            const waLink = `https://wa.me/6282375128230?text=${encodeURIComponent(waText)}`;
+            const waText = "Halo Admin LPKS Arima Persada,%0A%0A" +
+                           "Saya *" + textNama + "* baru saja mengisi form konsultasi di website.%0A%0A" +
+                           "*Data Diri dan Minat:*%0A" +
+                           "• Pendidikan: " + textPend + "%0A" +
+                           "• Bahasa Jepang: " + textBhs + "%0A" +
+                           "• Sektor Minat: " + textSektor + "%0A" +
+                           "• Motivasi: " + textMotivasi + "%0A" +
+                           "• Rekomendasi Sistem: " + textProg + "%0A%0A" +
+                           "Saya ingin konsultasi lebih lanjut mengenai program ini. Terima kasih!";
+
+            const waLink = `https://wa.me/6282375128230?text=${waText}`;
 
             setTimeout(() => {
                 const waButtonHTML = `
