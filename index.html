@@ -2,7 +2,8 @@
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- PERBAIKAN: Tambahan viewport-fit=cover & user-scalable=no untuk Android/iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Konsultasi Karier Jepang - LPKS Arima Persada</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -74,9 +75,12 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
+        
+        /* Mencegah input tertutup keyboard di beberapa device */
+        .input-area { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
     </style>
 </head>
-<body class="text-slate-200 antialiased overflow-hidden min-h-screen flex">
+<body class="text-slate-200 antialiased overflow-hidden h-[100dvh] flex">
 
     <!-- BACKGROUND ANIMASI (ORBS) -->
     <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
@@ -85,8 +89,8 @@
         <div class="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-gold-400 rounded-full mix-blend-screen filter blur-[150px] opacity-10 animate-blob" style="animation-delay: 4s;"></div>
     </div>
 
-    <!-- MAIN CONTAINER (SPLIT SCREEN) -->
-    <div class="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col lg:flex-row h-screen p-0 lg:p-6 gap-6">
+    <!-- MAIN CONTAINER (MENGGUNAKAN 100dvh AGAR PAS DI LAYAR HP) -->
+    <div class="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col lg:flex-row h-full p-0 lg:p-6 gap-6">
 
         <!-- KIRI: BRANDING & VISUAL -->
         <div class="hidden lg:flex flex-col justify-between w-1/2 p-10 rounded-[2.5rem] bg-ink-950/40 border border-white/5 relative overflow-hidden">
@@ -128,23 +132,23 @@
         </div>
 
         <!-- KANAN: AREA CHAT INTERAKTIF -->
-        <div class="w-full lg:w-1/2 h-full flex items-center justify-center p-4 lg:p-0">
-            <div class="w-full max-w-lg h-full lg:h-[90vh] glass-panel rounded-[2.5rem] overflow-hidden flex flex-col relative">
+        <div class="w-full lg:w-1/2 h-full flex items-center justify-center p-0 sm:p-4 lg:p-0">
+            <!-- PERBAIKAN: Menggunakan h-full pada mobile, dan h-[90vh] pada desktop -->
+            <div class="w-full max-w-lg h-full lg:h-[90vh] glass-panel sm:rounded-[2.5rem] overflow-hidden flex flex-col relative">
                 
                 <!-- HEADER CHAT -->
-                <div class="bg-white/5 p-6 flex items-center justify-between shrink-0 border-b border-white/10 z-10">
-                    <div class="flex items-center gap-4">
+                <div class="bg-white/5 p-4 sm:p-6 flex items-center justify-between shrink-0 border-b border-white/10 z-10">
+                    <div class="flex items-center gap-3 sm:gap-4">
                         <div class="relative">
-                            <!-- LOGO DI HEADER CHAT -->
-                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-gold-400 shadow-lg shrink-0 relative">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-gold-400 shadow-lg shrink-0 relative">
                                 <img src="Logo polos.jpeg" alt="Logo" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
-                                <span class="text-ink-950 font-extrabold text-lg relative z-0">A</span>
+                                <span class="text-ink-950 font-extrabold text-sm sm:text-lg relative z-0">A</span>
                             </div>
-                            <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-ink-900 rounded-full animate-pulse"></div>
+                            <div class="absolute bottom-0 right-0 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-emerald-500 border-2 border-ink-900 rounded-full animate-pulse"></div>
                         </div>
                         <div>
-                            <h3 class="font-bold text-white text-lg">Arima AI Assistant</h3>
-                            <p class="text-xs text-emerald-400 font-medium">Online - Siap membantu</p>
+                            <h3 class="font-bold text-white text-base sm:text-lg">Arima AI Assistant</h3>
+                            <p class="text-[10px] sm:text-xs text-emerald-400 font-medium">Online - Siap membantu</p>
                         </div>
                     </div>
                     <div class="text-right hidden sm:block">
@@ -159,14 +163,15 @@
                 </div>
 
                 <!-- AREA CHAT -->
-                <div id="chatArea" class="flex-1 p-6 overflow-y-auto flex flex-col gap-6 relative"></div>
+                <div id="chatArea" class="flex-1 p-4 sm:p-6 overflow-y-auto flex flex-col gap-4 sm:gap-6 relative"></div>
 
                 <!-- AREA INPUT -->
-                <div id="inputArea" class="p-4 bg-white/5 border-t border-white/10 shrink-0 hidden backdrop-blur-md">
+                <!-- PERBAIKAN: Tambahan class input-area untuk safe area di HP -->
+                <div id="inputArea" class="input-area p-3 sm:p-4 bg-white/5 border-t border-white/10 shrink-0 hidden backdrop-blur-md">
                     <div class="flex items-center gap-3 relative">
-                        <input type="text" id="userInput" placeholder="Ketik jawaban Anda di sini..." class="w-full bg-ink-900/50 border border-white/10 rounded-full pl-6 pr-14 py-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all">
-                        <button onclick="handleSendMessage()" class="absolute right-2 w-10 h-10 bg-gradient-to-r from-vermilion-500 to-red-600 text-white rounded-full flex items-center justify-center hover:scale-105 transition shadow-lg shadow-vermilion-500/30">
-                            <i class="fa-solid fa-paper-plane text-sm"></i>
+                        <input type="text" id="userInput" placeholder="Ketik jawaban Anda..." class="w-full bg-ink-900/50 border border-white/10 rounded-full pl-5 pr-12 py-3.5 sm:py-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all">
+                        <button onclick="handleSendMessage()" class="absolute right-1.5 w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-r from-vermilion-500 to-red-600 text-white rounded-full flex items-center justify-center hover:scale-105 transition shadow-lg shadow-vermilion-500/30">
+                            <i class="fa-solid fa-paper-plane text-xs sm:text-sm"></i>
                         </button>
                     </div>
                 </div>
@@ -183,7 +188,9 @@
         const progressBar = document.getElementById('progressBar');
         const progressText = document.getElementById('progressText');
         
-        // Data pengguna
+        // State untuk mengecek apakah user sedang mengetik "Lainnya"
+        let isTypingLainnya = false;
+
         let userData = { nama: '', whatsapp: '', pendidikan: '', bahasa: '', sektor: '', motivasi: '', program: '' };
 
         function updateProgress(percent) {
@@ -195,7 +202,6 @@
             chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
         }
 
-        // Bot Reply Function (Menggunakan Logo Arima)
         function botReply(message, options = null, delay = 1200, isInput = false) {
             const typingId = 'typing-' + Date.now();
             const typingHTML = `
@@ -231,7 +237,7 @@
                             <span class="text-ink-950 font-bold text-xs relative z-0">A</span>
                         </div>
                         <div class="max-w-[85%]">
-                            <div class="bg-white/10 border border-white/10 p-4 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-200 leading-relaxed backdrop-blur-md">
+                            <div class="bg-white/10 border border-white/10 p-3 sm:p-4 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-200 leading-relaxed backdrop-blur-md">
                                 ${message}
                             </div>
                             ${optionsHTML}
@@ -243,18 +249,17 @@
 
                 if (isInput) {
                     inputArea.classList.remove('hidden');
-                    userInput.focus();
+                    setTimeout(() => userInput.focus(), 100); // Timeout agar keyboard muncul sempurna
                 } else {
                     inputArea.classList.add('hidden');
                 }
             }, delay);
         }
 
-        // User Reply Function
         function userReply(message) {
             const messageHTML = `
                 <div class="flex items-start justify-end gap-3 chat-bubble">
-                    <div class="bg-gradient-to-r from-vermilion-500 to-red-600 text-white p-4 rounded-2xl rounded-tr-none shadow-lg shadow-vermilion-500/20 text-sm max-w-[85%] leading-relaxed">
+                    <div class="bg-gradient-to-r from-vermilion-500 to-red-600 text-white p-3 sm:p-4 rounded-2xl rounded-tr-none shadow-lg shadow-vermilion-500/20 text-sm max-w-[85%] leading-relaxed">
                         ${message}
                     </div>
                 </div>
@@ -264,18 +269,15 @@
             inputArea.classList.add('hidden');
         }
 
-        // Handler Option Buttons
         function handleOption(value, label) {
             userReply(label);
             
-            // Update Progress berdasarkan langkah
             if (value === 'mulai') updateProgress(10);
             else if (value === 'sma' || value === 'd3s1') updateProgress(25);
             else if (value === 'pemula' || value === 'n5n4' || value === 'n3n2') updateProgress(40);
             else if (value === 'manufaktur' || value === 'kaigo' || value === 'food' || value === 'tani') updateProgress(55);
             else if (value === 'pengalaman' || value === 'gaji' || value === 'karier') updateProgress(70);
 
-            // Alur Logika
             if (value === 'sma' || value === 'd3s1') {
                 userData.pendidikan = label;
                 askBahasa();
@@ -285,6 +287,10 @@
             } else if (value === 'manufaktur' || value === 'kaigo' || value === 'food' || value === 'tani') {
                 userData.sektor = label;
                 askMotivasi();
+            } else if (value === 'lainnya') {
+                // FITUR BARU: Jika pilih Lainnya, aktifkan input teks
+                isTypingLainnya = true;
+                botReply("Baik, silakan ketik bidang pekerjaan yang Anda minati di kolom bawah:", null, 1000, true);
             } else if (value === 'pengalaman' || value === 'gaji' || value === 'karier') {
                 userData.motivasi = label;
                 askNama();
@@ -293,13 +299,21 @@
             }
         }
 
-        // Handler Text Input
         function handleSendMessage() {
             const text = userInput.value.trim();
             if (!text) return;
 
             userReply(text);
             userInput.value = '';
+
+            // LOGIKA BARU: Menangkap inputan "Lainnya"
+            if (isTypingLainnya) {
+                userData.sektor = text;
+                isTypingLainnya = false;
+                updateProgress(55);
+                askMotivasi();
+                return; // Berhenti di sini agar tidak lanjut ke logika bawah
+            }
 
             if (!userData.nama) {
                 userData.nama = text;
@@ -350,7 +364,6 @@
             );
         }
 
-        // PERTANYAAN BARU 1: SEKTOR
         function askSektor() {
             botReply(
                 "Menarik! Terakhir, di <b>bidang pekerjaan</b> apa Anda paling tertarik untuk bekerja di Jepang nanti?",
@@ -358,12 +371,12 @@
                     { label: "Manufaktur / Pabrik", value: "manufaktur" },
                     { label: "Caregiver (Kaigo)", value: "kaigo" },
                     { label: "Food Service / Restoran", value: "food" },
-                    { label: "Pertanian / Konstruksi", value: "tani" }
+                    { label: "Pertanian / Konstruksi", value: "tani" },
+                    { label: "Lainnya (Ketik Sendiri)", value: "lainnya" } // TOMBOL BARU
                 ]
             );
         }
 
-        // PERTANYAAN BARU 2: MOTIVASI
         function askMotivasi() {
             botReply(
                 "Pilihan yang tepat! Satu lagi nih, apa <b>tujuan utama</b> Anda bekerja di Jepang?",
@@ -394,7 +407,6 @@
         }
 
         function showResult() {
-            // LOGIKA REKOMENDASI YANG LEBIH CERDAS
             if (userData.pendidikan === 'D3 / S1' || userData.bahasa.includes('N3/N2') || userData.motivasi.includes('karier')) {
                 userData.program = "Gijinkoku (Engineer)";
             } else if (userData.bahasa.includes('N5/N4') || userData.motivasi.includes('gaji') || userData.sektor.includes('Kaigo')) {
@@ -409,7 +421,6 @@
                 1500
             );
 
-            // FORMAT WHATSAPP DENGAN DATA BARU
             const waText = `Halo Admin LPKS Arima Persada,\n\nSaya *${userData.nama}* baru saja mengisi form konsultasi di website.\n\n*Data Diri & Minat:*\n- Pendidikan: ${userData.pendidikan}\n- Bahasa Jepang: ${userData.bahasa}\n- Sektor Minat: ${userData.sektor}\n- Motivasi: ${userData.motivasi}\n- Rekomendasi Sistem: ${userData.program}\n\nSaya ingin konsultasi lebih lanjut mengenai program ini. Terima kasih!`;
 
             const waLink = `https://wa.me/6282375128230?text=${encodeURIComponent(waText)}`;
@@ -419,8 +430,8 @@
                     <div class="flex items-start gap-3 chat-bubble mt-2">
                         <div class="w-8 h-8 bg-transparent shrink-0"></div>
                         <div class="max-w-[85%]">
-                            <a href="${waLink}" target="_blank" class="inline-flex items-center justify-center w-full gap-3 bg-[#25D366] hover:bg-green-500 text-white font-bold px-8 py-4 rounded-xl shadow-[0_0_20px_rgba(37,211,102,0.3)] transition-transform hover:-translate-y-1">
-                                <i class="fa-brands fa-whatsapp text-2xl"></i> Lanjut ke WhatsApp Admin
+                            <a href="${waLink}" target="_blank" class="inline-flex items-center justify-center w-full gap-3 bg-[#25D366] hover:bg-green-500 text-white font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-[0_0_20px_rgba(37,211,102,0.3)] transition-transform hover:-translate-y-1 text-sm sm:text-base">
+                                <i class="fa-brands fa-whatsapp text-xl sm:text-2xl"></i> Lanjut ke WhatsApp Admin
                             </a>
                         </div>
                     </div>
