@@ -3,544 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LPKS Arima Persada - Menjembatani Kompetensi, Membuka Gerbang Karier ke Jepang</title>
-    <meta name="description" content="Lembaga Pelatihan Kerja Swasta profesional persiapan Magang Jepang (Ikusei Shuro), Tokutei Ginou (SSW), dan Gijinkoku ke Jepang.">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Tailwind CSS -->
+    <title>Temukan Program Jepangmu - LPKS Arima Persada</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        ink: { 950: '#080B14', 900: '#0F1420', 800: '#1A2130', 700: '#2A3348', 500: '#5B6478' },
-                        cream: { 50: '#FDFCF9', 100: '#F8F4EC', 200: '#EFE8DA' },
-                        vermilion: { 400: '#E5383E', 500: '#D90429', 600: '#B80322' },
-                        gold: { 400: '#D4B678', 500: '#C9A961' },
-                    },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Fraunces"', 'serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-12px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Custom Scroll Reveal */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        /* Lightbox */
-        .lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
-        .lightbox.active { display: flex; }
-        .lightbox img { max-width: 90%; max-height: 90vh; border-radius: 8px; }
-        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 40px; color: white; cursor: pointer; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FDFCF9; }
+        .font-serif { font-family: 'Fraunces', serif; }
+        .quiz-step { display: none; }
+        .quiz-step.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="bg-cream-50 text-ink-900 font-sans antialiased overflow-x-hidden">
+<body class="text-slate-800 antialiased">
 
     <!-- NAVBAR -->
-    <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-cream-50/90 border-b border-ink-900/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-[#FDFCF9]/90 border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3">
-                <!-- GANTI DENGAN LOGO ASLI ANDA -->
-                <img src="Logo polos.jpeg" alt="Logo Arima Persada" class="h-12 w-auto object-contain">
+                <div class="w-10 h-10 bg-[#0A3155] rounded-xl flex items-center justify-center overflow-hidden shadow-lg shrink-0 relative">
+                    <img src="Logo polos.jpeg" alt="Logo" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
+                    <span class="text-white font-extrabold text-lg font-serif relative z-0">A</span>
+                </div>
                 <div class="hidden md:block">
-                    <p class="font-serif text-lg font-bold text-ink-900 leading-tight">LPKS ARIMA PERSADA</p>
-                    <p class="text-xs text-ink-500 font-medium">PT. Arima Bangkit Persada</p>
+                    <p class="font-serif text-lg font-bold text-[#0A3155] leading-tight">LPKS ARIMA PERSADA</p>
+                    <p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">PT. Arima Bangkit Persada</p>
                 </div>
             </a>
-            
-            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-ink-700">
-                <a href="#tentang" class="hover:text-vermilion-500 transition">Tentang</a>
-                <a href="#program" class="hover:text-vermilion-500 transition">Program</a>
-                <a href="#fasilitas" class="hover:text-vermilion-500 transition">Fasilitas</a>
-                <a href="#alur" class="hover:text-vermilion-500 transition">Alur</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="#kuis" class="text-[#D90429]">Mulai Kuis</a>
+                <a href="https://wa.me/6282375128230" class="bg-[#0A3155] text-white px-6 py-2.5 rounded-full hover:bg-blue-900 transition shadow-lg">Hubungi Kami</a>
             </div>
-
-            <a href="#daftar" class="bg-ink-900 hover:bg-ink-800 text-cream-50 text-sm font-medium px-6 py-3 rounded-full transition flex items-center gap-2 shadow-lg">
-                Daftar Sekarang
-                <i class="fa-solid fa-arrow-right text-xs"></i>
-            </a>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="relative bg-ink-950 text-cream-50 pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden">
-        <div class="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-vermilion-500/20 blur-[120px]"></div>
-        <div class="absolute top-1/3 -right-40 w-[600px] h-[600px] rounded-full bg-gold-500/10 blur-[140px]"></div>
-        
-        <div class="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-center">
-            <div class="lg:col-span-7 reveal">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cream-50/15 bg-cream-50/5 backdrop-blur text-xs font-medium mb-8">
-                    <span class="w-1.5 h-1.5 rounded-full bg-vermilion-400 animate-pulse"></span>
-                    Lembaga Resmi & Terpercaya Kemnaker RI
-                </div>
-                <h1 class="font-serif text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] tracking-tight mb-8">
-                    Menjembatani Kompetensi,
-                    <br>
-                    <span class="italic text-gold-400">Membuka Gerbang</span> Karier.
-                </h1>
-                <p class="text-lg md:text-xl text-cream-100/70 leading-relaxed max-w-xl mb-10">
-                    Persiapan intensif Bahasa Jepang, pembentukan karakter disiplin, dan penyaluran kerja legal melalui kemitraan Sending Organization (SO) terlisensi.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 mb-14">
-                    <a href="#daftar" class="group inline-flex items-center justify-center gap-2 bg-vermilion-500 hover:bg-vermilion-400 text-cream-50 font-medium px-8 py-4 rounded-full transition shadow-lg shadow-vermilion-500/20">
-                        Mulai Konsultasi
-                        <i class="fa-solid fa-arrow-up-right-from-square group-hover:rotate-45 transition"></i>
-                    </a>
-                    <a href="#program" class="inline-flex items-center justify-center gap-2 border border-cream-50/20 hover:border-cream-50/40 hover:bg-cream-50/5 text-cream-50 font-medium px-8 py-4 rounded-full transition">
-                        Lihat Program
-                    </a>
-                </div>
-                
-                <div class="flex flex-wrap items-center gap-x-8 gap-y-4 text-sm text-cream-100/60">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-gold-400"></i> 100% Penyaluran Legal</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-building text-gold-400"></i> Kemitraan SO Resmi</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-house text-gold-400"></i> Fasilitas Asrama</div>
-                </div>
-            </div>
-
-            <div class="lg:col-span-5 relative reveal" style="transition-delay: 150ms;">
-                <div class="relative aspect-[4/5] rounded-3xl overflow-hidden border border-cream-50/10 shadow-2xl">
-                    <!-- GANTI FOTO HERO DENGAN FOTO INI -->
-                    <img src="foto bersama siswa hitam 2.jpeg" alt="Siswa LPKS Arima Persada" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-transparent"></div>
-                </div>
-                
-                <div class="absolute -bottom-6 -left-6 bg-cream-50 text-ink-900 rounded-2xl p-5 shadow-2xl max-w-[240px] animate-float">
-                    <div class="flex items-center gap-2 mb-2">
-                        <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
-                        <span class="text-[10px] uppercase tracking-widest text-ink-500 font-bold">Sertifikasi Resmi</span>
-                    </div>
-                    <p class="font-serif text-xl leading-tight font-bold">JLPT & JFT-Basic</p>
-                    <p class="text-xs text-ink-500 mt-1">Standar Kelulusan Kerja di Jepang</p>
-                </div>
-            </div>
+    <header class="pt-32 pb-20 px-6 text-center">
+        <div class="max-w-3xl mx-auto">
+            <span class="bg-blue-50 text-[#0A3155] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6 inline-block">Kuis Interaktif</span>
+            <h1 class="font-serif text-4xl md:text-6xl font-bold leading-tight text-[#0A3155] mb-6">Temukan Jalur Karier<br>Impianmu ke Jepang!</h1>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">Jawab 3 pertanyaan singkat ini, dan sistem kami akan merekomendasikan program pelatihan yang paling cocok untukmu.</p>
+            <a href="#kuis" class="inline-block bg-[#D90429] hover:bg-red-700 text-white font-bold px-8 py-4 rounded-full text-lg transition shadow-xl hover:-translate-y-1">Mulai Kuis Sekarang <i class="fa-solid fa-arrow-down ml-2"></i></a>
         </div>
-    </section>
+    </header>
 
-    <!-- TRUST BAR -->
-    <section class="bg-cream-100 border-y border-ink-900/5 py-8">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center reveal">
-                <div>
-                    <p class="font-serif text-xl md:text-2xl text-ink-900 font-bold">Kemnaker RI</p>
-                    <p class="text-xs uppercase tracking-widest text-ink-500 mt-1">Izin Resmi</p>
-                </div>
-                <div>
-                    <p class="font-serif text-xl md:text-2xl text-ink-900 font-bold">OTIT / MOJ</p>
-                    <p class="text-xs uppercase tracking-widest text-ink-500 mt-1">Jalur Legal</p>
-                </div>
-                <div>
-                    <p class="font-serif text-xl md:text-2xl text-ink-900 font-bold">SO Partner</p>
-                    <p class="text-xs uppercase tracking-widest text-ink-500 mt-1">Penyaluran Aman</p>
-                </div>
-                <div>
-                    <p class="font-serif text-xl md:text-2xl text-ink-900 font-bold">5S & FMD</p>
-                    <p class="text-xs uppercase tracking-widest text-ink-500 mt-1">Etos Kerja Jepang</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TENTANG / SAMBUTAN -->
-    <section id="tentang" class="py-24 bg-cream-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-ink-900/5 flex flex-col md:flex-row gap-10 items-center reveal">
-                <div class="md:w-1/3">
-                    <div class="w-20 h-20 bg-vermilion-500/10 rounded-full flex items-center justify-center mb-6">
-                        <i class="fa-solid fa-quote-left text-3xl text-vermilion-500"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold text-ink-900 mb-2">Sambutan Direktur</h3>
-                    <p class="font-semibold text-ink-900">Suwardi, S.T</p>
-                    <p class="text-sm text-ink-500">Direktur LPKS Arima Persada</p>
-                </div>
-                <div class="md:w-2/3 border-l-0 md:border-l-2 border-ink-900/10 md:pl-10">
-                    <p class="text-lg text-ink-700 italic leading-relaxed">
-                        "Persaingan dunia kerja global menuntut kesiapan mental, keterampilan teknis, dan penguasaan bahasa yang matang. LPKS Arima Persada hadir sebagai mitra terpercaya untuk mendidik, melatih, dan membentuk karakter calon tenaga kerja yang mandiri, kompeten, dan siap beradaptasi dengan budaya kerja Jepang."
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROGRAM SECTION -->
-    <section id="program" class="py-24 bg-cream-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <span class="text-xs font-bold text-vermilion-500 tracking-widest uppercase mb-2 block">Pilihan Karir</span>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-ink-900 mb-4">Program Pelatihan Utama</h2>
-                <p class="text-ink-500">Pilih jalur yang paling sesuai dengan latar belakang pendidikan dan tujuan karier Anda di Jepang.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Program 1 -->
-                <div class="bg-white rounded-3xl p-8 border border-ink-900/5 hover:border-vermilion-500/30 hover:shadow-xl transition-all duration-300 group reveal">
-                    <div class="w-14 h-14 bg-ink-900 text-cream-50 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-vermilion-500 transition">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold text-ink-900 mb-2">Magang Jepang<br><span class="text-lg text-ink-500 font-sans font-normal">(Ikusei Shuro)</span></h3>
-                    <p class="text-sm text-ink-500 mb-6 min-h-[60px]">Program penyerapan keterampilan kerja untuk lulusan SMA/SMK dengan kualifikasi bahasa N5 - N4.</p>
-                    <ul class="space-y-3 mb-8 text-sm text-ink-700">
-                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Durasi 3 Bulan Intensif</li>
-                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Target N5 - N4</li>
-                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Manufaktur, Konstruksi, Pertanian, dll.</li>
-                    </ul>
-                </div>
-
-                <!-- Program 2 -->
-                <div class="bg-ink-950 text-cream-50 rounded-3xl p-8 border border-ink-900/5 hover:shadow-xl transition-all duration-300 relative overflow-hidden group reveal" style="transition-delay: 100ms;">
-                    <div class="absolute top-0 right-0 bg-vermilion-500 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl">Paling Populer</div>
-                    <div class="w-14 h-14 bg-cream-50/10 text-gold-400 rounded-2xl flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-award"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold mb-2">Tokutei Ginou<br><span class="text-lg text-cream-100/60 font-sans font-normal">(SSW)</span></h3>
-                    <p class="text-sm text-cream-100/70 mb-6 min-h-[60px]">Program pekerja berkeahlian spesifik dengan hak gaji setara pekerja lokal Jepang.</p>
-                    <ul class="space-y-3 mb-8 text-sm text-cream-100/90">
-                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-gold-400 mt-1"></i> Durasi 3 Bulan + Skill Test</li>
-                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-gold-400 mt-1"></i> Syarat: JFT-Basic / N4</li>
-                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-gold-400 mt-1"></i> Kaigo, Food Service, Perhotelan, dll.</li>
-                    </ul>
-                </div>
-
-                <!-- Program 3 -->
-                <div class="bg-white rounded-3xl p-8 border border-ink-900/5 hover:border-vermilion-500/30 hover:shadow-xl transition-all duration-300 group reveal" style="transition-delay: 200ms;">
-                    <div class="w-14 h-14 bg-ink-900 text-cream-50 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-vermilion-500 transition">
-                        <i class="fa-solid fa-user-tie"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold text-ink-900 mb-2">Gijinkoku<br><span class="text-lg text-ink-500 font-sans font-normal">(Engineer)</span></h3>
-                    <p class="text-sm text-ink-500 mb-6 min-h-[60px]">Jalur profesional bagi lulusan D3/S1 untuk bekerja di posisi teknis dan manajemen.</p>
-                    <ul class="space-y-3 mb-8 text-sm text-ink-700">
-                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Pendidikan Min. D3 / S1</li>
-                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Target JLPT N3 / N2</li>
-                        <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Durasi 6 - 8 Bulan</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FASILITAS (BENTO GRID) -->
-    <section id="fasilitas" class="py-24 bg-cream-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <span class="text-xs font-bold text-vermilion-500 tracking-widest uppercase mb-2 block">Fasilitas Terintegrasi</span>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-ink-900 mb-4">Lingkungan Belajar Kondusif</h2>
-                <p class="text-ink-500">Kami menyediakan fasilitas lengkap untuk mendukung proses belajar, pembentukan karakter, dan fisik peserta.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-4">
-                <!-- Kelas -->
-                <div class="md:col-span-2 relative rounded-3xl overflow-hidden h-[300px] md:h-[400px] group reveal">
-                    <img src="Kegiatan-belajar.jpeg" alt="Ruang Kelas" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-transparent flex items-end p-8">
-                        <div>
-                            <h3 class="font-serif text-2xl text-cream-50 font-bold mb-2">Ruang Belajar Modern</h3>
-                            <p class="text-cream-100/80 text-sm">Pembelajaran bahasa Jepang interaktif dengan pengajar berpengalaman.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Asrama 1 -->
-                <div class="relative rounded-3xl overflow-hidden h-[300px] md:h-[400px] group reveal" style="transition-delay: 100ms;">
-                    <img src="foto-asrama.jpeg" alt="Asrama" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-transparent flex items-end p-6">
-                        <div>
-                            <h3 class="font-serif text-xl text-cream-50 font-bold mb-1">Asrama Nyaman</h3>
-                            <p class="text-cream-100/80 text-xs">Lingkungan Japanese Zone.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Dapur -->
-                <div class="relative rounded-3xl overflow-hidden h-[300px] group reveal" style="transition-delay: 200ms;">
-                    <img src="foto-dapur-asrama-2.jpeg" alt="Dapur Asrama" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-transparent flex items-end p-6">
-                        <div>
-                            <h3 class="font-serif text-xl text-cream-50 font-bold mb-1">Dapur Sehat</h3>
-                            <p class="text-cream-100/80 text-xs">Fasilitas konsumsi bersama.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Latihan Fisik -->
-                <div class="md:col-span-2 relative rounded-3xl overflow-hidden h-[300px] group reveal" style="transition-delay: 300ms;">
-                    <img src="Foto-latihan-fisik.jpeg" alt="Latihan Fisik" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-transparent flex items-end p-8">
-                        <div>
-                            <h3 class="font-serif text-2xl text-cream-50 font-bold mb-2">Pelatihan Fisik & Mental (FMD)</h3>
-                            <p class="text-cream-100/80 text-sm">Membentuk ketahanan fisik dan kedisiplinan standar Jepang.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- KUIS SECTION -->
+    <section id="kuis" class="py-16 px-6 bg-[#F0F2F5] min-h-screen">
+        <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 p-8 md:p-12">
             
-            <!-- Galeri Kecil -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-                 <div class="relative rounded-2xl overflow-hidden h-[150px] reveal cursor-pointer gallery-img">
-                    <img src="Testimoni-keberangkatan-siswa.jpeg" alt="Keberangkatan" class="w-full h-full object-cover hover:scale-110 transition duration-500">
-                </div>
-                <div class="relative rounded-2xl overflow-hidden h-[150px] reveal cursor-pointer gallery-img" style="transition-delay: 100ms;">
-                    <img src="keberangkatan-siswa.jpeg" alt="Keberangkatan" class="w-full h-full object-cover hover:scale-110 transition duration-500">
-                </div>
-                <div class="relative rounded-2xl overflow-hidden h-[150px] reveal cursor-pointer gallery-img" style="transition-delay: 200ms;">
-                    <img src="Foto-keberangkatan-siswa-2.jpeg" alt="Keberangkatan" class="w-full h-full object-cover hover:scale-110 transition duration-500">
-                </div>
-                <div class="relative rounded-2xl overflow-hidden h-[150px] reveal cursor-pointer gallery-img" style="transition-delay: 300ms;">
-                    <img src="Kegiatan-belajar-4.jpeg" alt="Belajar" class="w-full h-full object-cover hover:scale-110 transition duration-500">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ALUR PENDAFTARAN -->
-    <section id="alur" class="py-24 bg-ink-950 text-cream-50 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-vermilion-500/10 blur-[120px]"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 relative">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <span class="text-xs font-bold text-gold-400 tracking-widest uppercase mb-2 block">Langkah Sukses</span>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">Alur Pelatihan Hingga Keberangkatan</h2>
-                <p class="text-cream-100/60">Proses transparan dan terarah dari awal pendaftaran sampai Anda tiba di Jepang.</p>
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-100 h-2 rounded-full mb-8 overflow-hidden">
+                <div id="progressBar" class="bg-[#D90429] h-2 rounded-full transition-all duration-500 ease-out" style="width: 0%;"></div>
             </div>
 
-            <div class="relative">
-                <!-- Garis Timeline (Desktop) -->
-                <div class="hidden md:block absolute top-8 left-0 right-0 h-px bg-cream-50/10"></div>
+            <!-- Step 1: Pendidikan -->
+            <div id="step1" class="quiz-step active">
+                <span class="text-xs font-bold text-[#D90429] uppercase tracking-wider mb-2 block">Pertanyaan 1 dari 3</span>
+                <h2 class="text-2xl font-bold mb-6 text-[#0A3155]">Apa pendidikan terakhir Anda?</h2>
+                <div class="space-y-3">
+                    <button onclick="nextStep(1, 'sma')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">SMA / SMK Sederajat</button>
+                    <button onclick="nextStep(1, 'd3s1')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Diploma (D3) / Sarjana (S1)</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Kemampuan Bahasa -->
+            <div id="step2" class="quiz-step">
+                <span class="text-xs font-bold text-[#D90429] uppercase tracking-wider mb-2 block">Pertanyaan 2 dari 3</span>
+                <h2 class="text-2xl font-bold mb-6 text-[#0A3155]">Bagaimana kemampuan bahasa Jepang Anda saat ini?</h2>
+                <div class="space-y-3">
+                    <button onclick="nextStep(2, 'pemula')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Belum bisa sama sekali / Pemula</button>
+                    <button onclick="nextStep(2, 'n5n4')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Sudah dasar (JLPT N5 / N4 atau setara)</button>
+                    <button onclick="nextStep(2, 'n3n2')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Lancar (JLPT N3 / N2 atau lebih)</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Tujuan -->
+            <div id="step3" class="quiz-step">
+                <span class="text-xs font-bold text-[#D90429] uppercase tracking-wider mb-2 block">Pertanyaan 3 dari 3</span>
+                <h2 class="text-2xl font-bold mb-6 text-[#0A3155]">Apa tujuan utama Anda bekerja di Jepang?</h2>
+                <div class="space-y-3">
+                    <button onclick="nextStep(3, 'pengalaman')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Mencari pengalaman kerja & belajar budaya</button>
+                    <button onclick="nextStep(3, 'gaji')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Mendapatkan gaji tinggi & kontrak panjang</button>
+                    <button onclick="nextStep(3, 'karier')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Membangun karier profesional jangka panjang</button>
+                </div>
+            </div>
+
+            <!-- HASIL REKOMENDASI -->
+            <div id="result" class="quiz-step text-center">
+                <div class="text-6xl mb-4">🎉</div>
+                <h2 class="text-xl font-bold text-slate-500 mb-2">Program yang Cocok Untuk Anda:</h2>
+                <h3 id="resultTitle" class="font-serif text-4xl font-bold text-[#0A3155] mb-4">-</h3>
+                <p id="resultDesc" class="text-slate-600 mb-8 leading-relaxed max-w-lg mx-auto">-</p>
                 
-                <div class="grid md:grid-cols-6 gap-8 md:gap-4">
-                    <!-- Step 1 -->
-                    <div class="relative reveal">
-                        <div class="w-16 h-16 rounded-full bg-ink-900 border border-cream-50/20 flex items-center justify-center mb-6 relative z-10">
-                            <span class="font-serif text-xl text-gold-400 font-bold">01</span>
-                        </div>
-                        <h4 class="font-serif text-lg font-bold mb-2">Pendaftaran & MCU</h4>
-                        <p class="text-xs text-cream-100/60 leading-relaxed">Tes seleksi masuk, Medical Check Up, dan orientasi awal.</p>
-                    </div>
-                    <!-- Step 2 -->
-                    <div class="relative reveal" style="transition-delay: 100ms;">
-                        <div class="w-16 h-16 rounded-full bg-ink-900 border border-cream-50/20 flex items-center justify-center mb-6 relative z-10">
-                            <span class="font-serif text-xl text-gold-400 font-bold">02</span>
-                        </div>
-                        <h4 class="font-serif text-lg font-bold mb-2">Pelatihan Intensif</h4>
-                        <p class="text-xs text-cream-100/60 leading-relaxed">Bahasa Jepang, Bintalsik, Etika Kerja (5S) di asrama.</p>
-                    </div>
-                    <!-- Step 3 -->
-                    <div class="relative reveal" style="transition-delay: 200ms;">
-                        <div class="w-16 h-16 rounded-full bg-ink-900 border border-cream-50/20 flex items-center justify-center mb-6 relative z-10">
-                            <span class="font-serif text-xl text-gold-400 font-bold">03</span>
-                        </div>
-                        <h4 class="font-serif text-lg font-bold mb-2">Ujian Sertifikasi</h4>
-                        <p class="text-xs text-cream-100/60 leading-relaxed">Ujian bahasa JFT-Basic/JLPT & Skill Test (SSW).</p>
-                    </div>
-                    <!-- Step 4 -->
-                    <div class="relative reveal" style="transition-delay: 300ms;">
-                        <div class="w-16 h-16 rounded-full bg-ink-900 border border-cream-50/20 flex items-center justify-center mb-6 relative z-10">
-                            <span class="font-serif text-xl text-gold-400 font-bold">04</span>
-                        </div>
-                        <h4 class="font-serif text-lg font-bold mb-2">Wawancara (Matching)</h4>
-                        <p class="text-xs text-cream-100/60 leading-relaxed">Wawancara langsung dengan perusahaan Jepang via SO.</p>
-                    </div>
-                    <!-- Step 5 -->
-                    <div class="relative reveal" style="transition-delay: 400ms;">
-                        <div class="w-16 h-16 rounded-full bg-ink-900 border border-cream-50/20 flex items-center justify-center mb-6 relative z-10">
-                            <span class="font-serif text-xl text-gold-400 font-bold">05</span>
-                        </div>
-                        <h4 class="font-serif text-lg font-bold mb-2">Visa & COE</h4>
-                        <p class="text-xs text-cream-100/60 leading-relaxed">Pemprosesan Certificate of Eligibility dan Visa Kerja.</p>
-                    </div>
-                    <!-- Step 6 -->
-                    <div class="relative reveal" style="transition-delay: 500ms;">
-                        <div class="w-16 h-16 rounded-full bg-ink-900 border border-vermilion-500 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_20px_rgba(217,4,41,0.4)]">
-                            <span class="font-serif text-xl text-vermilion-400 font-bold">06</span>
-                        </div>
-                        <h4 class="font-serif text-lg font-bold mb-2 text-vermilion-400">Keberangkatan</h4>
-                        <p class="text-xs text-cream-100/60 leading-relaxed">Pembekalan akhir dan terbang menuju Jepang.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FORM DAFTAR (WHATSAPP) -->
-    <section id="daftar" class="py-24 bg-cream-100">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-ink-900/5 grid md:grid-cols-5 reveal">
-                
-                <!-- Info Kiri -->
-                <div class="md:col-span-2 bg-ink-900 p-10 text-cream-50 flex flex-col justify-between">
-                    <div>
-                        <h2 class="font-serif text-3xl font-bold mb-4">Mulai Langkah Karier Mu ke Jepang!</h2>
-                        <p class="text-cream-100/70 text-sm mb-8 leading-relaxed">Isi formulir singkat ini. Tim konsultan LPKS Arima Persada akan segera menghubungi Anda via WhatsApp untuk orientasi gratis.</p>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start gap-4">
-                                <i class="fa-solid fa-location-dot text-gold-400 text-xl mt-1"></i>
-                                <div>
-                                    <h4 class="font-bold text-sm">Alamat Kantor</h4>
-                                    <p class="text-xs text-cream-100/60 mt-1">Jl. Negararatu, Desa Negara Ratu, Kec. Natar, Kab. Lampung Selatan 35362</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <i class="fa-solid fa-phone text-gold-400 text-xl mt-1"></i>
-                                <div>
-                                    <h4 class="font-bold text-sm">Telepon / WA</h4>
-                                    <p class="text-xs text-cream-100/60 mt-1">+62 823-7512-8230</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-10 pt-6 border-t border-cream-50/10 flex items-center gap-4">
-                        <i class="fa-solid fa-shield-halved text-2xl text-cream-100/30"></i>
-                        <p class="text-xs text-cream-100/50">Data Anda aman dan hanya digunakan untuk keperluan konsultasi pendaftaran.</p>
-                    </div>
+                <div id="programDetails" class="bg-slate-50 p-6 rounded-2xl text-left text-sm space-y-3 mb-8 hidden">
+                    <div class="flex justify-between border-b border-slate-200 pb-2"><span class="text-slate-500">Durasi</span><span id="detailDurasi" class="font-bold text-slate-800">-</span></div>
+                    <div class="flex justify-between border-b border-slate-200 pb-2"><span class="text-slate-500">Syarat Bahasa</span><span id="detailBahasa" class="font-bold text-[#D90429]">-</span></div>
+                    <div class="flex justify-between"><span class="text-slate-500">Gaji</span><span id="detailGaji" class="font-bold text-slate-800">-</span></div>
                 </div>
 
-                <!-- Form Kanan -->
-                <div class="md:col-span-3 p-10">
-                    <form id="waForm" class="space-y-5">
-                        <div>
-                            <label class="block text-sm font-semibold text-ink-900 mb-2">Nama Lengkap</label>
-                            <input type="text" id="nama" required placeholder="Sesuai KTP" class="w-full bg-cream-50 border border-ink-900/10 rounded-xl px-4 py-3 text-ink-900 focus:outline-none focus:border-vermilion-500 focus:ring-2 focus:ring-vermilion-500/20 transition">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-ink-900 mb-2">Nomor WhatsApp</label>
-                            <input type="tel" id="phone" required placeholder="Contoh: 08123456789" class="w-full bg-cream-50 border border-ink-900/10 rounded-xl px-4 py-3 text-ink-900 focus:outline-none focus:border-vermilion-500 focus:ring-2 focus:ring-vermilion-500/20 transition">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-ink-900 mb-2">Pendidikan Terakhir</label>
-                            <select id="pendidikan" required class="w-full bg-cream-50 border border-ink-900/10 rounded-xl px-4 py-3 text-ink-900 focus:outline-none focus:border-vermilion-500 focus:ring-2 focus:ring-vermilion-500/20 transition">
-                                <option value="" disabled selected>Pilih Pendidikan</option>
-                                <option value="SMA/SMK">SMA / SMK Sederajat</option>
-                                <option value="Diploma (D3)">Diploma (D3)</option>
-                                <option value="Sarjana (S1)">Sarjana (S1)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-ink-900 mb-2">Program Pilihan</label>
-                            <select id="program" required class="w-full bg-cream-50 border border-ink-900/10 rounded-xl px-4 py-3 text-ink-900 focus:outline-none focus:border-vermilion-500 focus:ring-2 focus:ring-vermilion-500/20 transition">
-                                <option value="" disabled selected>Pilih Program</option>
-                                <option value="Magang Jepang (Ikusei Shuro)">Magang Jepang (Ikusei Shuro)</option>
-                                <option value="Tokutei Ginou (SSW)">Tokutei Ginou (SSW)</option>
-                                <option value="Gijinkoku (Engineer)">Gijinkoku (Engineer)</option>
-                            </select>
-                        </div>
-                        
-                        <button type="submit" class="w-full bg-vermilion-500 hover:bg-vermilion-400 text-white font-bold py-4 rounded-xl transition shadow-lg shadow-vermilion-500/30 flex items-center justify-center gap-2 mt-4">
-                            <i class="fa-brands fa-whatsapp text-xl"></i> Kirim & Chat via WhatsApp
-                        </button>
-                    </form>
-                </div>
+                <a id="waLink" href="#" target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-green-600 text-white font-bold px-8 py-4 rounded-xl transition shadow-lg w-full justify-center">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i> Konsultasi Program Ini
+                </a>
+                <button onclick="resetQuiz()" class="block mx-auto mt-4 text-sm font-semibold text-slate-500 hover:text-[#D90429] underline">Ulangi Kuis</button>
             </div>
+
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-ink-950 text-cream-100/60 py-12 border-t border-cream-50/5">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer class="bg-[#0A3155] text-white/70 py-12 border-t border-white/10 text-center">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
             <div class="flex items-center gap-3">
-                <img src="Logo polos.jpeg" alt="Logo" class="h-10 w-auto bg-white rounded p-1">
-                <div>
-                    <p class="font-serif text-cream-50 font-bold text-lg leading-tight">LPKS ARIMA PERSADA</p>
-                    <p class="text-xs">PT. Arima Bangkit Persada</p>
-                </div>
+                <div class="w-8 h-8 bg-[#D90429] text-white flex items-center justify-center rounded font-serif font-bold">A</div>
+                <span class="text-white font-bold font-serif tracking-wide">LPKS ARIMA PERSADA</span>
             </div>
-            <p class="text-xs text-center md:text-left">&copy; 2026 LPKS Arima Persada. All Rights Reserved.</p>
-            <div class="flex gap-4 text-xl">
-                <a href="#" class="hover:text-cream-50 transition"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="hover:text-cream-50 transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-cream-50 transition"><i class="fa-brands fa-tiktok"></i></a>
-            </div>
+            <p>&copy; 2026 PT. Arima Bangkit Persada. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- FLOATING WHATSAPP BUTTON -->
-    <a href="https://wa.me/6282375128230?text=Halo%20LPKS%20Arima%20Persada%2C%20saya%20ingin%20bertanya%20mengenai%20program%20ke%20Jepang." target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#1ebe5b] text-white p-4 rounded-full shadow-2xl shadow-[#25D366]/40 transition transform hover:scale-110 flex items-center justify-center">
+    <!-- FLOATING WA -->
+    <a href="https://wa.me/6282375128230" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-2xl z-50 hover:scale-110 transition-transform">
         <i class="fa-brands fa-whatsapp text-3xl"></i>
     </a>
 
-    <!-- LIGHTBOX MODAL -->
-    <div class="lightbox" id="lightbox">
-        <span class="lightbox-close" id="lightboxClose">&times;</span>
-        <img id="lightboxImg" src="" alt="Preview">
-    </div>
-
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT KUIS -->
     <script>
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-        
-        revealElements.forEach(el => revealObserver.observe(el));
+        let answers = { pend: '', bahasa: '', tujuan: '' };
+        const totalSteps = 3;
+        const targetWA = "6282375128230"; // Nomor WhatsApp LPKS Arima Persada
 
-        // Form WhatsApp Handler
-        const waForm = document.getElementById('waForm');
-        waForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        function updateProgress(step) {
+            const pct = (step / totalSteps) * 100;
+            document.getElementById('progressBar').style.width = pct + '%';
+        }
+
+        function nextStep(currentStep, value) {
+            if(currentStep === 1) answers.pend = value;
+            if(currentStep === 2) answers.bahasa = value;
+            if(currentStep === 3) answers.tujuan = value;
+
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+
+            if (currentStep < 3) {
+                document.getElementById(`step${currentStep + 1}`).classList.add('active');
+                updateProgress(currentStep);
+            } else {
+                updateProgress(3);
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('result').classList.add('active');
             
-            const nama = document.getElementById('nama').value;
-            const phone = document.getElementById('phone').value;
-            const pendidikan = document.getElementById('pendidikan').value;
-            const program = document.getElementById('program').value;
+            let program = "";
+            let desc = "";
+            let waText = "";
+            let detail = { durasi: "", bahasa: "", gaji: "" };
 
-            const targetWA = "6282375128230"; // Nomor WA Arima Persada
-            
-            const message = `Halo Sensei LPKS Arima Persada, saya ingin mendaftar pelatihan ke Jepang.%0A%0A` +
-                `*Detail Pendaftar:*%0A` +
-                `• *Nama Lengkap:* ${encodeURIComponent(nama)}%0A` +
-                `• *Nomor WA:* ${encodeURIComponent(phone)}%0A` +
-                `• *Pendidikan:* ${encodeURIComponent(pendidikan)}%0A` +
-                `• *Program Pilihan:* ${encodeURIComponent(program)}%0A%0A` +
-                `Mohon informasi mengenai pendaftaran dan jadwal seleksi selanjutnya. Terima kasih!`;
+            // LOGIKA PENENTUAN PROGRAM (Berdasarkan Data 2026)
+            if (answers.pend === 'd3s1' || answers.bahasa === 'n3n2' || answers.tujuan === 'karier') {
+                program = "Gijinkoku (Engineer)";
+                desc = "Karena latar belakang pendidikan atau kemampuan bahasa Anda, Anda sangat cocok untuk bekerja di Jepang sebagai tenaga profesional (Engineer/Specialist). Jalur ini menawarkan karier jangka panjang dengan gaji setara pekerja lokal Jepang.";
+                waText = `Halo, saya baru saja mengisi kuis di website dan direkomendasikan program Gijinkoku (Engineer). Saya ingin konsultasi lebih lanjut.`;
+                detail = { durasi: "6 - 8 Bulan", bahasa: "JLPT N3 / N2", gaji: "Setara pekerja lokal Jepang" };
+            } else if (answers.bahasa === 'n5n4' || answers.tujuan === 'gaji') {
+                program = "Tokutei Ginou (SSW)";
+                desc = "Dengan kemampuan bahasa dasar yang sudah dimiliki, Anda cocok untuk program pekerja berkeahlian spesifik (Tokutei Ginou). Program ini menawarkan gaji lebih tinggi dan kontrak jangka panjang.";
+                waText = `Halo, saya baru saja mengisi kuis di website dan direkomendasikan program Tokutei Ginou (SSW). Saya ingin konsultasi lebih lanjut.`;
+                detail = { durasi: "3 Bulan + Skill Test", bahasa: "Wajib JLPT N4 / JFT-Basic A2", gaji: "¥180.000 - ¥250.000/bulan" };
+            } else {
+                program = "Magang Jepang (Ikusei Shuro)";
+                desc = "Program yang tepat untuk Anda yang ingin memulai dari awal. Anda akan mendapatkan pelatihan bahasa Jepang intensif, pembentukan karakter, dan pengalaman kerja berharga di Jepang.";
+                waText = `Halo, saya baru saja mengisi kuis di website dan direkomendasikan program Magang Jepang (Ikusei Shuro). Saya ingin konsultasi lebih lanjut.`;
+                detail = { durasi: "3 - 5 Tahun", bahasa: "Wajib JLPT N5 / JFT-Basic A1", gaji: "¥150.000 - ¥200.000/bulan" };
+            }
 
-            const waUrl = `https://wa.me/${targetWA}?text=${message}`;
-            window.open(waUrl, '_blank');
-        });
+            document.getElementById('resultTitle').innerText = program;
+            document.getElementById('resultDesc').innerText = desc;
+            document.getElementById('detailDurasi').innerText = detail.durasi;
+            document.getElementById('detailBahasa').innerText = detail.bahasa;
+            document.getElementById('detailGaji').innerText = detail.gaji;
+            document.getElementById('programDetails').classList.remove('hidden');
+            document.getElementById('waLink').href = `https://wa.me/${targetWA}?text=${encodeURIComponent(waText)}`;
+        }
 
-        // Lightbox Galeri
-        const galleryImages = document.querySelectorAll('.gallery-img img');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxClose = document.getElementById('lightboxClose');
-
-        galleryImages.forEach(img => {
-            img.addEventListener('click', function() {
-                lightboxImg.src = this.src;
-                lightbox.classList.add('active');
-            });
-        });
-
-        lightboxClose.addEventListener('click', () => lightbox.classList.remove('active'));
-        lightbox.addEventListener('click', (e) => {
-            if(e.target === lightbox) lightbox.classList.remove('active');
-        });
+        function resetQuiz() {
+            answers = { pend: '', bahasa: '', tujuan: '' };
+            document.getElementById('result').classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('programDetails').classList.add('hidden');
+            updateProgress(0);
+        }
     </script>
 </body>
 </html>
