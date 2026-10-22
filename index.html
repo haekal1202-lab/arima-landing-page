@@ -44,20 +44,17 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #080B14; }
         .font-serif { font-family: 'Fraunces', serif; }
         
-        /* Custom Scrollbar untuk Chat */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
 
-        /* Animasi Chat Bubble */
         @keyframes popIn {
             0% { opacity: 0; transform: scale(0.95) translateY(10px); }
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
         .chat-bubble { animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
         
-        /* Typing Indicator */
         .typing-dots { display: inline-flex; gap: 5px; padding: 14px 18px; }
         .typing-dots span {
             width: 6px; height: 6px; background-color: #D4B678; border-radius: 50%;
@@ -70,7 +67,6 @@
             40% { transform: scale(1); }
         }
 
-        /* Glassmorphism Chat Container */
         .glass-panel {
             background: rgba(15, 20, 32, 0.7);
             backdrop-filter: blur(24px);
@@ -92,14 +88,10 @@
     <!-- MAIN CONTAINER (SPLIT SCREEN) -->
     <div class="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col lg:flex-row h-screen p-0 lg:p-6 gap-6">
 
-        <!-- KIRI: BRANDING & VISUAL (Sembunyi di Mobile) -->
+        <!-- KIRI: BRANDING & VISUAL -->
         <div class="hidden lg:flex flex-col justify-between w-1/2 p-10 rounded-[2.5rem] bg-ink-950/40 border border-white/5 relative overflow-hidden">
-            <!-- Watermark Kanji -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[400px] font-serif text-white/[0.02] leading-none select-none pointer-events-none">
-                夢
-            </div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[400px] font-serif text-white/[0.02] leading-none select-none pointer-events-none">夢</div>
 
-            <!-- Logo & Header -->
             <div class="relative z-10">
                 <div class="flex items-center gap-4 mb-12">
                     <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center overflow-hidden shadow-lg shadow-vermilion-500/20 relative">
@@ -112,7 +104,6 @@
                     </div>
                 </div>
 
-                <!-- Headline -->
                 <h2 class="font-serif text-5xl xl:text-6xl font-bold text-white leading-[1.1] mb-6">
                     Wujudkan Mimpi <br>
                     <span class="italic text-gold-400">Kerja di Jepang.</span>
@@ -122,13 +113,10 @@
                 </p>
             </div>
 
-            <!-- Floating Images / Stats -->
             <div class="relative z-10 flex gap-4 mt-auto">
-                <!-- Image 1 -->
                 <div class="w-1/2 rounded-2xl overflow-hidden border border-white/10 animate-float" style="animation-delay: 0s;">
                     <img src="foto bersama siswa hitam 2.jpeg" alt="Siswa" class="w-full h-48 object-cover opacity-80 hover:opacity-100 transition duration-500">
                 </div>
-                <!-- Stats Card -->
                 <div class="w-1/2 bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center backdrop-blur-md animate-float" style="animation-delay: 1.5s;">
                     <div class="w-10 h-10 bg-vermilion-500/20 text-vermilion-500 rounded-full flex items-center justify-center mb-4">
                         <i class="fa-solid fa-shield-halved"></i>
@@ -147,8 +135,10 @@
                 <div class="bg-white/5 p-6 flex items-center justify-between shrink-0 border-b border-white/10 z-10">
                     <div class="flex items-center gap-4">
                         <div class="relative">
-                            <div class="w-12 h-12 bg-gradient-to-br from-gold-400 to-yellow-600 rounded-full flex items-center justify-center text-ink-950 shadow-lg">
-                                <i class="fa-solid fa-robot text-xl"></i>
+                            <!-- LOGO DI HEADER CHAT -->
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-gold-400 shadow-lg shrink-0 relative">
+                                <img src="Logo polos.jpeg" alt="Logo" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
+                                <span class="text-ink-950 font-extrabold text-lg relative z-0">A</span>
                             </div>
                             <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-ink-900 rounded-full animate-pulse"></div>
                         </div>
@@ -168,10 +158,8 @@
                     <div id="progressBar" class="bg-gradient-to-r from-vermilion-500 to-gold-400 h-1 transition-all duration-700 ease-out" style="width: 0%;"></div>
                 </div>
 
-                <!-- AREA CHAT (SCROLLABLE) -->
-                <div id="chatArea" class="flex-1 p-6 overflow-y-auto flex flex-col gap-6 relative">
-                    <!-- Chat akan diisi oleh Javascript -->
-                </div>
+                <!-- AREA CHAT -->
+                <div id="chatArea" class="flex-1 p-6 overflow-y-auto flex flex-col gap-6 relative"></div>
 
                 <!-- AREA INPUT -->
                 <div id="inputArea" class="p-4 bg-white/5 border-t border-white/10 shrink-0 hidden backdrop-blur-md">
@@ -195,7 +183,8 @@
         const progressBar = document.getElementById('progressBar');
         const progressText = document.getElementById('progressText');
         
-        let userData = { nama: '', whatsapp: '', pendidikan: '', bahasa: '', program: '' };
+        // Data pengguna
+        let userData = { nama: '', whatsapp: '', pendidikan: '', bahasa: '', sektor: '', motivasi: '', program: '' };
 
         function updateProgress(percent) {
             progressBar.style.width = percent + '%';
@@ -206,12 +195,15 @@
             chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
         }
 
-        // Bot Reply Function
+        // Bot Reply Function (Menggunakan Logo Arima)
         function botReply(message, options = null, delay = 1200, isInput = false) {
             const typingId = 'typing-' + Date.now();
             const typingHTML = `
                 <div id="${typingId}" class="flex items-start gap-3 chat-bubble">
-                    <div class="w-8 h-8 bg-gradient-to-br from-gold-400 to-yellow-600 rounded-full flex items-center justify-center shrink-0 text-ink-950 text-xs shadow-md"><i class="fa-solid fa-robot"></i></div>
+                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 overflow-hidden border border-gold-400 shadow-md relative">
+                        <img src="Logo polos.jpeg" alt="Logo" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
+                        <span class="text-ink-950 font-bold text-xs relative z-0">A</span>
+                    </div>
                     <div class="bg-white/10 rounded-2xl rounded-tl-none border border-white/5 typing-dots">
                         <span></span><span></span><span></span>
                     </div>
@@ -234,7 +226,10 @@
 
                 const messageHTML = `
                     <div class="flex items-start gap-3 chat-bubble">
-                        <div class="w-8 h-8 bg-gradient-to-br from-gold-400 to-yellow-600 rounded-full flex items-center justify-center shrink-0 text-ink-950 text-xs shadow-md"><i class="fa-solid fa-robot"></i></div>
+                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 overflow-hidden border border-gold-400 shadow-md relative">
+                            <img src="Logo polos.jpeg" alt="Logo" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
+                            <span class="text-ink-950 font-bold text-xs relative z-0">A</span>
+                        </div>
                         <div class="max-w-[85%]">
                             <div class="bg-white/10 border border-white/10 p-4 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-200 leading-relaxed backdrop-blur-md">
                                 ${message}
@@ -272,13 +267,26 @@
         // Handler Option Buttons
         function handleOption(value, label) {
             userReply(label);
-            updateProgress(value === 'mulai' ? 20 : (value === 'sma' || value === 'd3s1' ? 40 : (value === 'pemula' || value === 'n5n4' || value === 'n3n2' ? 60 : 80)));
             
+            // Update Progress berdasarkan langkah
+            if (value === 'mulai') updateProgress(10);
+            else if (value === 'sma' || value === 'd3s1') updateProgress(25);
+            else if (value === 'pemula' || value === 'n5n4' || value === 'n3n2') updateProgress(40);
+            else if (value === 'manufaktur' || value === 'kaigo' || value === 'food' || value === 'tani') updateProgress(55);
+            else if (value === 'pengalaman' || value === 'gaji' || value === 'karier') updateProgress(70);
+
+            // Alur Logika
             if (value === 'sma' || value === 'd3s1') {
                 userData.pendidikan = label;
                 askBahasa();
             } else if (value === 'pemula' || value === 'n5n4' || value === 'n3n2') {
                 userData.bahasa = label;
+                askSektor();
+            } else if (value === 'manufaktur' || value === 'kaigo' || value === 'food' || value === 'tani') {
+                userData.sektor = label;
+                askMotivasi();
+            } else if (value === 'pengalaman' || value === 'gaji' || value === 'karier') {
+                userData.motivasi = label;
                 askNama();
             } else if (value === 'mulai') {
                 askPendidikan();
@@ -295,7 +303,7 @@
 
             if (!userData.nama) {
                 userData.nama = text;
-                updateProgress(80);
+                updateProgress(85);
                 askWhatsApp();
             } else if (!userData.whatsapp) {
                 userData.whatsapp = text;
@@ -309,7 +317,7 @@
         });
 
         /* ==========================================
-           ALUR PERCAKAPAN
+           ALUR PERCAKAPAN (FLOW)
            ========================================== */
 
         window.onload = () => {
@@ -342,11 +350,36 @@
             );
         }
 
+        // PERTANYAAN BARU 1: SEKTOR
+        function askSektor() {
+            botReply(
+                "Menarik! Terakhir, di <b>bidang pekerjaan</b> apa Anda paling tertarik untuk bekerja di Jepang nanti?",
+                [
+                    { label: "Manufaktur / Pabrik", value: "manufaktur" },
+                    { label: "Caregiver (Kaigo)", value: "kaigo" },
+                    { label: "Food Service / Restoran", value: "food" },
+                    { label: "Pertanian / Konstruksi", value: "tani" }
+                ]
+            );
+        }
+
+        // PERTANYAAN BARU 2: MOTIVASI
+        function askMotivasi() {
+            botReply(
+                "Pilihan yang tepat! Satu lagi nih, apa <b>tujuan utama</b> Anda bekerja di Jepang?",
+                [
+                    { label: "Cari pengalaman & budaya", value: "pengalaman" },
+                    { label: "Gaji tinggi & tabungan", value: "gaji" },
+                    { label: "Karier profesional jangka panjang", value: "karier" }
+                ]
+            );
+        }
+
         function askNama() {
             botReply(
-                "Wah, bagus sekali! Berdasarkan kriteria Anda, peluangnya sangat terbuka lebar. 🎌<br><br>Boleh tahu <b>nama lengkap</b> Anda? (Ketik di kolom bawah)",
+                "Luar biasa! Profil Anda sangat cocok dengan kebutuhan industri di Jepang. 🎌<br><br>Boleh tahu <b>nama lengkap</b> Anda? (Ketik di kolom bawah)",
                 null,
-                1000,
+                1200,
                 true
             );
         }
@@ -361,22 +394,23 @@
         }
 
         function showResult() {
-            if (userData.pendidikan === 'D3 / S1' || userData.bahasa.includes('N3/N2')) {
+            // LOGIKA REKOMENDASI YANG LEBIH CERDAS
+            if (userData.pendidikan === 'D3 / S1' || userData.bahasa.includes('N3/N2') || userData.motivasi.includes('karier')) {
                 userData.program = "Gijinkoku (Engineer)";
-            } else if (userData.bahasa.includes('N5/N4')) {
+            } else if (userData.bahasa.includes('N5/N4') || userData.motivasi.includes('gaji') || userData.sektor.includes('Kaigo')) {
                 userData.program = "Tokutei Ginou (SSW)";
             } else {
                 userData.program = "Magang Jepang (Ikusei Shuro)";
             }
 
             botReply(
-                `Luar biasa, <b>${userData.nama}</b>! Data Anda sudah kami rekam. ✅<br><br>Berdasarkan analisis kami, program <b>${userData.program}</b> adalah jalur terbaik untuk Anda.<br><br>Klik tombol di bawah untuk terhubung langsung dengan Admin kami via WhatsApp:`,
+                `Luar biasa, <b>${userData.nama}</b>! Data dan minat Anda sudah kami rekam. ✅<br><br>Berdasarkan analisis profil Anda, program <b>${userData.program}</b> adalah jalur terbaik untuk mencapai tujuan Anda.<br><br>Klik tombol di bawah untuk terhubung langsung dengan Admin kami via WhatsApp:`,
                 null,
                 1500
             );
 
-            // PERBAIKAN ENCODING WA
-            const waText = `Halo Admin LPKS Arima Persada,\n\nSaya *${userData.nama}* baru saja mengisi form di website.\n\n*Data Saya:*\n- Pendidikan: ${userData.pendidikan}\n- Bahasa Jepang: ${userData.bahasa}\n- Rekomendasi: ${userData.program}\n\nSaya ingin konsultasi lebih lanjut mengenai program ini. Terima kasih!`;
+            // FORMAT WHATSAPP DENGAN DATA BARU
+            const waText = `Halo Admin LPKS Arima Persada,\n\nSaya *${userData.nama}* baru saja mengisi form konsultasi di website.\n\n*Data Diri & Minat:*\n- Pendidikan: ${userData.pendidikan}\n- Bahasa Jepang: ${userData.bahasa}\n- Sektor Minat: ${userData.sektor}\n- Motivasi: ${userData.motivasi}\n- Rekomendasi Sistem: ${userData.program}\n\nSaya ingin konsultasi lebih lanjut mengenai program ini. Terima kasih!`;
 
             const waLink = `https://wa.me/6282375128230?text=${encodeURIComponent(waText)}`;
 
