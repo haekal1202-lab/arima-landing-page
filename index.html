@@ -1,199 +1,296 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temukan Program Jepangmu - LPKS Arima Persada</title>
+    <title>Konsultasi Karier Jepang - LPKS Arima Persada</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FDFCF9; }
-        .font-serif { font-family: 'Fraunces', serif; }
-        .quiz-step { display: none; }
-        .quiz-step.active { display: block; animation: fadeIn 0.4s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #E5E7EB; }
+        /* Custom Scrollbar untuk Chat */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+        
+        /* Animasi Chat Bubble */
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .chat-bubble { animation: popIn 0.3s ease-out forwards; }
+        
+        /* Typing Indicator */
+        .typing-dots {
+            display: inline-flex; gap: 4px; padding: 12px 18px;
+        }
+        .typing-dots span {
+            width: 6px; height: 6px; background-color: #94A3B8; border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
     </style>
 </head>
-<body class="text-slate-800 antialiased">
+<body class="flex items-center justify-center h-screen m-0 p-0 md:p-4">
 
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-[#FDFCF9]/90 border-b border-slate-200">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-[#0A3155] rounded-xl flex items-center justify-center overflow-hidden shadow-lg shrink-0 relative">
+    <!-- CONTAINER CHAT -->
+    <div class="w-full max-w-md h-full md:h-[85vh] bg-gray-50 md:rounded-3xl shadow-2xl overflow-hidden flex flex-col border border-gray-200 relative">
+        
+        <!-- HEADER CHAT -->
+        <div class="bg-[#0A3155] text-white p-4 flex items-center gap-4 shrink-0 shadow-md z-10">
+            <div class="relative">
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-white/20">
+                    <!-- Fallback Logo -->
                     <img src="Logo polos.jpeg" alt="Logo" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
-                    <span class="text-white font-extrabold text-lg font-serif relative z-0">A</span>
+                    <span class="text-[#0A3155] font-bold text-xl relative z-0">A</span>
                 </div>
-                <div class="hidden md:block">
-                    <p class="font-serif text-lg font-bold text-[#0A3155] leading-tight">LPKS ARIMA PERSADA</p>
-                    <p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">PT. Arima Bangkit Persada</p>
-                </div>
-            </a>
-            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
-                <a href="#kuis" class="text-[#D90429]">Mulai Kuis</a>
-                <a href="https://wa.me/6282375128230" class="bg-[#0A3155] text-white px-6 py-2.5 rounded-full hover:bg-blue-900 transition shadow-lg">Hubungi Kami</a>
+                <div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-[#0A3155] rounded-full"></div>
+            </div>
+            <div>
+                <h1 class="font-bold text-lg leading-tight">Admin LPKS Arima</h1>
+                <p class="text-xs text-blue-200">Online - Membalas cepat</p>
             </div>
         </div>
-    </nav>
 
-    <!-- HERO SECTION -->
-    <header class="pt-32 pb-20 px-6 text-center">
-        <div class="max-w-3xl mx-auto">
-            <span class="bg-blue-50 text-[#0A3155] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6 inline-block">Kuis Interaktif</span>
-            <h1 class="font-serif text-4xl md:text-6xl font-bold leading-tight text-[#0A3155] mb-6">Temukan Jalur Karier<br>Impianmu ke Jepang!</h1>
-            <p class="text-lg text-slate-600 mb-8 leading-relaxed">Jawab 3 pertanyaan singkat ini, dan sistem kami akan merekomendasikan program pelatihan yang paling cocok untukmu.</p>
-            <a href="#kuis" class="inline-block bg-[#D90429] hover:bg-red-700 text-white font-bold px-8 py-4 rounded-full text-lg transition shadow-xl hover:-translate-y-1">Mulai Kuis Sekarang <i class="fa-solid fa-arrow-down ml-2"></i></a>
-        </div>
-    </header>
-
-    <!-- KUIS SECTION -->
-    <section id="kuis" class="py-16 px-6 bg-[#F0F2F5] min-h-screen">
-        <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 p-8 md:p-12">
+        <!-- AREA CHAT (SCROLLABLE) -->
+        <div id="chatArea" class="flex-1 p-4 overflow-y-auto flex flex-col gap-4 bg-[#EFEAE2] relative">
+            <!-- Background Pattern (Opsional) -->
+            <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
             
-            <!-- Progress Bar -->
-            <div class="w-full bg-slate-100 h-2 rounded-full mb-8 overflow-hidden">
-                <div id="progressBar" class="bg-[#D90429] h-2 rounded-full transition-all duration-500 ease-out" style="width: 0%;"></div>
-            </div>
-
-            <!-- Step 1: Pendidikan -->
-            <div id="step1" class="quiz-step active">
-                <span class="text-xs font-bold text-[#D90429] uppercase tracking-wider mb-2 block">Pertanyaan 1 dari 3</span>
-                <h2 class="text-2xl font-bold mb-6 text-[#0A3155]">Apa pendidikan terakhir Anda?</h2>
-                <div class="space-y-3">
-                    <button onclick="nextStep(1, 'sma')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">SMA / SMK Sederajat</button>
-                    <button onclick="nextStep(1, 'd3s1')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Diploma (D3) / Sarjana (S1)</button>
-                </div>
-            </div>
-
-            <!-- Step 2: Kemampuan Bahasa -->
-            <div id="step2" class="quiz-step">
-                <span class="text-xs font-bold text-[#D90429] uppercase tracking-wider mb-2 block">Pertanyaan 2 dari 3</span>
-                <h2 class="text-2xl font-bold mb-6 text-[#0A3155]">Bagaimana kemampuan bahasa Jepang Anda saat ini?</h2>
-                <div class="space-y-3">
-                    <button onclick="nextStep(2, 'pemula')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Belum bisa sama sekali / Pemula</button>
-                    <button onclick="nextStep(2, 'n5n4')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Sudah dasar (JLPT N5 / N4 atau setara)</button>
-                    <button onclick="nextStep(2, 'n3n2')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Lancar (JLPT N3 / N2 atau lebih)</button>
-                </div>
-            </div>
-
-            <!-- Step 3: Tujuan -->
-            <div id="step3" class="quiz-step">
-                <span class="text-xs font-bold text-[#D90429] uppercase tracking-wider mb-2 block">Pertanyaan 3 dari 3</span>
-                <h2 class="text-2xl font-bold mb-6 text-[#0A3155]">Apa tujuan utama Anda bekerja di Jepang?</h2>
-                <div class="space-y-3">
-                    <button onclick="nextStep(3, 'pengalaman')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Mencari pengalaman kerja & belajar budaya</button>
-                    <button onclick="nextStep(3, 'gaji')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Mendapatkan gaji tinggi & kontrak panjang</button>
-                    <button onclick="nextStep(3, 'karier')" class="w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-[#D90429] hover:bg-red-50 transition font-medium text-slate-700">Membangun karier profesional jangka panjang</button>
-                </div>
-            </div>
-
-            <!-- HASIL REKOMENDASI -->
-            <div id="result" class="quiz-step text-center">
-                <div class="text-6xl mb-4">🎉</div>
-                <h2 class="text-xl font-bold text-slate-500 mb-2">Program yang Cocok Untuk Anda:</h2>
-                <h3 id="resultTitle" class="font-serif text-4xl font-bold text-[#0A3155] mb-4">-</h3>
-                <p id="resultDesc" class="text-slate-600 mb-8 leading-relaxed max-w-lg mx-auto">-</p>
-                
-                <div id="programDetails" class="bg-slate-50 p-6 rounded-2xl text-left text-sm space-y-3 mb-8 hidden">
-                    <div class="flex justify-between border-b border-slate-200 pb-2"><span class="text-slate-500">Durasi</span><span id="detailDurasi" class="font-bold text-slate-800">-</span></div>
-                    <div class="flex justify-between border-b border-slate-200 pb-2"><span class="text-slate-500">Syarat Bahasa</span><span id="detailBahasa" class="font-bold text-[#D90429]">-</span></div>
-                    <div class="flex justify-between"><span class="text-slate-500">Gaji</span><span id="detailGaji" class="font-bold text-slate-800">-</span></div>
-                </div>
-
-                <a id="waLink" href="#" target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-green-600 text-white font-bold px-8 py-4 rounded-xl transition shadow-lg w-full justify-center">
-                    <i class="fa-brands fa-whatsapp text-2xl"></i> Konsultasi Program Ini
-                </a>
-                <button onclick="resetQuiz()" class="block mx-auto mt-4 text-sm font-semibold text-slate-500 hover:text-[#D90429] underline">Ulangi Kuis</button>
-            </div>
-
+            <!-- Chat akan diisi oleh Javascript -->
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-[#0A3155] text-white/70 py-12 border-t border-white/10 text-center">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-[#D90429] text-white flex items-center justify-center rounded font-serif font-bold">A</div>
-                <span class="text-white font-bold font-serif tracking-wide">LPKS ARIMA PERSADA</span>
+        <!-- AREA INPUT (OPSIONAL, KITA GUNAKAN TOMBOL PILIHAN) -->
+        <div id="inputArea" class="p-3 bg-gray-100 border-t border-gray-200 shrink-0 hidden">
+            <div class="flex items-center gap-2">
+                <input type="text" id="userInput" placeholder="Ketik pesan..." class="flex-1 bg-white border border-gray-300 rounded-full px-4 py-3 text-sm focus:outline-none focus:border-[#0A3155] focus:ring-1 focus:ring-[#0A3155]">
+                <button onclick="handleSendMessage()" class="w-12 h-12 bg-[#0A3155] text-white rounded-full flex items-center justify-center hover:bg-blue-900 transition shadow-md">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
             </div>
-            <p>&copy; 2026 PT. Arima Bangkit Persada. All Rights Reserved.</p>
         </div>
-    </footer>
 
-    <!-- FLOATING WA -->
-    <a href="https://wa.me/6282375128230" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-2xl z-50 hover:scale-110 transition-transform">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-    </a>
+    </div>
 
-    <!-- JAVASCRIPT KUIS -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        let answers = { pend: '', bahasa: '', tujuan: '' };
-        const totalSteps = 3;
-        const targetWA = "6282375128230"; // Nomor WhatsApp LPKS Arima Persada
+        const chatArea = document.getElementById('chatArea');
+        const inputArea = document.getElementById('inputArea');
+        const userInput = document.getElementById('userInput');
+        
+        // Data pengguna
+        let userData = {
+            nama: '',
+            whatsapp: '',
+            pendidikan: '',
+            bahasa: '',
+            program: ''
+        };
 
-        function updateProgress(step) {
-            const pct = (step / totalSteps) * 100;
-            document.getElementById('progressBar').style.width = pct + '%';
+        // Fungsi untuk scroll ke bawah
+        function scrollToBottom() {
+            chatArea.scrollTop = chatArea.scrollHeight;
         }
 
-        function nextStep(currentStep, value) {
-            if(currentStep === 1) answers.pend = value;
-            if(currentStep === 2) answers.bahasa = value;
-            if(currentStep === 3) answers.tujuan = value;
+        // Fungsi menampilkan pesan Bot
+        function botReply(message, options = null, delay = 1000, isInput = false) {
+            // Tampilkan indikator mengetik
+            const typingId = 'typing-' + Date.now();
+            const typingHTML = `
+                <div id="${typingId}" class="flex items-start gap-2 chat-bubble">
+                    <div class="w-8 h-8 bg-[#0A3155] rounded-full flex items-center justify-center shrink-0 text-white text-xs"><i class="fa-solid fa-robot"></i></div>
+                    <div class="bg-white rounded-2xl rounded-tl-none shadow-sm typing-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            `;
+            chatArea.insertAdjacentHTML('beforeend', typingHTML);
+            scrollToBottom();
 
-            document.getElementById(`step${currentStep}`).classList.remove('active');
+            setTimeout(() => {
+                // Hapus indikator mengetik
+                document.getElementById(typingId).remove();
 
-            if (currentStep < 3) {
-                document.getElementById(`step${currentStep + 1}`).classList.add('active');
-                updateProgress(currentStep);
-            } else {
-                updateProgress(3);
+                // Tampilkan pesan bot
+                let optionsHTML = '';
+                if (options) {
+                    optionsHTML = `<div class="flex flex-wrap gap-2 mt-3">`;
+                    options.forEach(opt => {
+                        optionsHTML += `<button onclick="handleOption('${opt.value}', '${opt.label}')" class="bg-white border-2 border-[#0A3155] text-[#0A3155] font-semibold text-sm px-4 py-2 rounded-full hover:bg-[#0A3155] hover:text-white transition-all shadow-sm">${opt.label}</button>`;
+                    });
+                    optionsHTML += `</div>`;
+                }
+
+                const messageHTML = `
+                    <div class="flex items-start gap-2 chat-bubble">
+                        <div class="w-8 h-8 bg-[#0A3155] rounded-full flex items-center justify-center shrink-0 text-white text-xs"><i class="fa-solid fa-robot"></i></div>
+                        <div class="max-w-[80%]">
+                            <div class="bg-white p-3.5 rounded-2xl rounded-tl-none shadow-sm text-sm text-gray-800 leading-relaxed">
+                                ${message}
+                            </div>
+                            ${optionsHTML}
+                        </div>
+                    </div>
+                `;
+                chatArea.insertAdjacentHTML('beforeend', messageHTML);
+                scrollToBottom();
+
+                // Jika butuh input teks
+                if (isInput) {
+                    inputArea.classList.remove('hidden');
+                    userInput.focus();
+                } else {
+                    inputArea.classList.add('hidden');
+                }
+
+            }, delay);
+        }
+
+        // Fungsi menampilkan pesan User
+        function userReply(message) {
+            const messageHTML = `
+                <div class="flex items-start justify-end gap-2 chat-bubble">
+                    <div class="bg-[#D90429] text-white p-3.5 rounded-2xl rounded-tr-none shadow-sm text-sm max-w-[80%] leading-relaxed">
+                        ${message}
+                    </div>
+                </div>
+            `;
+            chatArea.insertAdjacentHTML('beforeend', messageHTML);
+            scrollToBottom();
+            inputArea.classList.add('hidden'); // Sembunyikan input saat memilih opsi
+        }
+
+        // Handler saat tombol opsi diklik
+        function handleOption(value, label) {
+            userReply(label);
+            
+            if (value === 'sma' || value === 'd3s1') {
+                userData.pendidikan = label;
+                askBahasa();
+            } else if (value === 'pemula' || value === 'n5n4' || value === 'n3n2') {
+                userData.bahasa = label;
+                askNama();
+            } else if (value === 'mulai') {
+                askPendidikan();
+            }
+        }
+
+        // Handler saat user mengetik dan mengirim pesan
+        function handleSendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            userReply(text);
+            userInput.value = '';
+
+            if (!userData.nama) {
+                userData.nama = text;
+                askWhatsApp();
+            } else if (!userData.whatsapp) {
+                userData.whatsapp = text;
                 showResult();
             }
         }
 
-        function showResult() {
-            document.getElementById('result').classList.add('active');
-            
-            let program = "";
-            let desc = "";
-            let waText = "";
-            let detail = { durasi: "", bahasa: "", gaji: "" };
+        // Deteksi tombol Enter
+        userInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') handleSendMessage();
+        });
 
-            // LOGIKA PENENTUAN PROGRAM (Berdasarkan Data 2026)
-            if (answers.pend === 'd3s1' || answers.bahasa === 'n3n2' || answers.tujuan === 'karier') {
-                program = "Gijinkoku (Engineer)";
-                desc = "Karena latar belakang pendidikan atau kemampuan bahasa Anda, Anda sangat cocok untuk bekerja di Jepang sebagai tenaga profesional (Engineer/Specialist). Jalur ini menawarkan karier jangka panjang dengan gaji setara pekerja lokal Jepang.";
-                waText = `Halo, saya baru saja mengisi kuis di website dan direkomendasikan program Gijinkoku (Engineer). Saya ingin konsultasi lebih lanjut.`;
-                detail = { durasi: "6 - 8 Bulan", bahasa: "JLPT N3 / N2", gaji: "Setara pekerja lokal Jepang" };
-            } else if (answers.bahasa === 'n5n4' || answers.tujuan === 'gaji') {
-                program = "Tokutei Ginou (SSW)";
-                desc = "Dengan kemampuan bahasa dasar yang sudah dimiliki, Anda cocok untuk program pekerja berkeahlian spesifik (Tokutei Ginou). Program ini menawarkan gaji lebih tinggi dan kontrak jangka panjang.";
-                waText = `Halo, saya baru saja mengisi kuis di website dan direkomendasikan program Tokutei Ginou (SSW). Saya ingin konsultasi lebih lanjut.`;
-                detail = { durasi: "3 Bulan + Skill Test", bahasa: "Wajib JLPT N4 / JFT-Basic A2", gaji: "¥180.000 - ¥250.000/bulan" };
-            } else {
-                program = "Magang Jepang (Ikusei Shuro)";
-                desc = "Program yang tepat untuk Anda yang ingin memulai dari awal. Anda akan mendapatkan pelatihan bahasa Jepang intensif, pembentukan karakter, dan pengalaman kerja berharga di Jepang.";
-                waText = `Halo, saya baru saja mengisi kuis di website dan direkomendasikan program Magang Jepang (Ikusei Shuro). Saya ingin konsultasi lebih lanjut.`;
-                detail = { durasi: "3 - 5 Tahun", bahasa: "Wajib JLPT N5 / JFT-Basic A1", gaji: "¥150.000 - ¥200.000/bulan" };
-            }
+        /* ==========================================
+           ALUR PERCAKAPAN (FLOW)
+           ========================================== */
 
-            document.getElementById('resultTitle').innerText = program;
-            document.getElementById('resultDesc').innerText = desc;
-            document.getElementById('detailDurasi').innerText = detail.durasi;
-            document.getElementById('detailBahasa').innerText = detail.bahasa;
-            document.getElementById('detailGaji').innerText = detail.gaji;
-            document.getElementById('programDetails').classList.remove('hidden');
-            document.getElementById('waLink').href = `https://wa.me/${targetWA}?text=${encodeURIComponent(waText)}`;
+        // Mulai Chat
+        window.onload = () => {
+            setTimeout(() => {
+                botReply(
+                    "Halo! 👋 Selamat datang di <b>LPKS Arima Persada</b>.<br><br>Saya Admin Bot. Sedang cari info program kerja ke Jepang ya?",
+                    [{ label: "Ya, saya mau tanya-tanya", value: "mulai" }]
+                );
+            }, 500);
+        };
+
+        function askPendidikan() {
+            botReply(
+                "Baik, senang bisa membantu! 😊<br><br>Sebelumnya, boleh tahu <b>pendidikan terakhir</b> Anda?",
+                [
+                    { label: "SMA / SMK", value: "sma" },
+                    { label: "D3 / S1", value: "d3s1" }
+                ]
+            );
         }
 
-        function resetQuiz() {
-            answers = { pend: '', bahasa: '', tujuan: '' };
-            document.getElementById('result').classList.remove('active');
-            document.getElementById('step1').classList.add('active');
-            document.getElementById('programDetails').classList.add('hidden');
-            updateProgress(0);
+        function askBahasa() {
+            botReply(
+                "Oke, sip! Kalau untuk <b>kemampuan Bahasa Jepang</b>, saat ini sudah sampai level mana nih?",
+                [
+                    { label: "Belum bisa sama sekali", value: "pemula" },
+                    { label: "Sudah dasar (N5/N4)", value: "n5n4" },
+                    { label: "Lancar (N3/N2)", value: "n3n2" }
+                ]
+            );
+        }
+
+        function askNama() {
+            botReply(
+                "Wah, bagus sekali! Berdasarkan kriteria Anda, peluangnya sangat terbuka lebar. 🎌<br><br>Boleh tahu <b>nama lengkap</b> Anda?",
+                null,
+                1000,
+                true // Aktifkan input teks
+            );
+        }
+
+        function askWhatsApp() {
+            botReply(
+                `Halo <b>${userData.nama}</b>! Senang berkenalan dengan Anda. 🙏<br><br>Terakhir, boleh minta <b>nomor WhatsApp</b> yang aktif? Agar tim konsultan kami bisa langsung menghubungi Anda.`,
+                null,
+                1000,
+                true
+            );
+        }
+
+        function showResult() {
+            // Tentukan rekomendasi berdasarkan logika sederhana
+            if (userData.pendidikan === 'D3 / S1' || userData.bahasa.includes('N3/N2')) {
+                userData.program = "Gijinkoku (Engineer)";
+            } else if (userData.bahasa.includes('N5/N4')) {
+                userData.program = "Tokutei Ginou (SSW)";
+            } else {
+                userData.program = "Magang Jepang (Ikusei Shuro)";
+            }
+
+            botReply(
+                `Terima kasih banyak, <b>${userData.nama}</b>! Data Anda sudah kami terima. ✅<br><br>Berdasarkan jawaban Anda, program <b>${userData.program}</b> sepertinya paling cocok. Tim kami akan segera menghubungi nomor <b>${userData.whatsapp}</b>.<br><br>Atau Anda bisa langsung klik tombol di bawah ini untuk terhubung ke WhatsApp Admin kami:`,
+                null,
+                1500
+            );
+
+            // Buat pesan otomatis untuk WA
+            const waText = `Halo Admin LPKS Arima Persada,%0A%0ASaya *${userData.nama}* baru saja mengisi form di website.%0A%0A*Data Saya:*%0A- Pendidikan: ${userData.pendidikan}%0A- Bahasa Jepang: ${userData.bahasa}%0A- Rekomendasi: ${userData.program}%0A%0ASaya ingin konsultasi lebih lanjut mengenai program ini. Terima kasih!`;
+            const waLink = `https://wa.me/6282375128230?text=${waText}`;
+
+            // Tambahkan tombol WA setelah pesan bot
+            setTimeout(() => {
+                const waButtonHTML = `
+                    <div class="flex items-start gap-2 chat-bubble mt-2">
+                        <div class="w-8 h-8 bg-transparent shrink-0"></div>
+                        <div class="max-w-[80%]">
+                            <a href="${waLink}" target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5">
+                                <i class="fa-brands fa-whatsapp text-xl"></i> Lanjut ke WhatsApp Admin
+                            </a>
+                        </div>
+                    </div>
+                `;
+                chatArea.insertAdjacentHTML('beforeend', waButtonHTML);
+                scrollToBottom();
+            }, 2000);
         }
     </script>
 </body>
