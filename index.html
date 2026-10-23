@@ -46,13 +46,111 @@
     
     .hero{background:var(--navy);color:white;position:relative;overflow:hidden;isolation:isolate}.hero:before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 78% 30%,#18395870,transparent 45%),linear-gradient(90deg,#061326 0%,#061326 45%,#061326c9 75%,#0613268a 100%),linear-gradient(0deg,#061326 0%,transparent 45%)}.hero:after{content:"日本";position:absolute;right:-10px;bottom:-110px;font-family:serif;font-size:clamp(15rem,35vw,33rem);line-height:1;color:#ffffff08;pointer-events:none}.hero-grid{min-height:650px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px;padding:76px 0 92px;position:relative}.hero-copy{max-width:680px;position:relative;z-index:2}.hero .eyebrow{color:#f4c96b}.hero h1{font-size:clamp(3.2rem,7vw,6.4rem);line-height:.99;margin:22px 0 24px;font-weight:800}.hero h1 span{color:#ff6670}.hero-copy>p{max-width:570px;color:#c5d0df;font-size:1.08rem;line-height:1.8;margin-bottom:30px}.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}.hero-note{display:flex;align-items:center;gap:12px;margin-top:34px;color:#b8c5d5;font-size:.82rem}.note-dot{width:9px;height:9px;background:#75d6a1;border-radius:50%;box-shadow:0 0 0 5px #75d6a11a}
     
-    .hero-visual{position:relative;min-height:410px;align-self:stretch;display:flex;align-items:center;justify-content:center}
-    .hero-photo{position:relative;width:100%;height:100%;max-height:550px;border-radius:34px 180px 30px 30px;overflow:hidden;border:1px solid #ffffff40;box-shadow:0 30px 80px #0005;background:var(--navy2);display:flex;align-items:center;justify-content:center;}
-    .hero-photo img{width:100%;height:100%;object-fit:contain;filter:saturate(.93) contrast(1.02);transition: transform 0.1s linear; will-change: transform;}
-    .hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#07142640,transparent 40%);pointer-events:none;}
+    /* PERBAIKAN HERO IMAGE */
+    .hero-visual {
+      position: relative;
+      min-height: 450px;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px; /* Padding agar floating card tidak terpotong */
+    }
+    .hero-photo {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-height: 500px;
+      border-radius: 34px 120px 30px 30px;
+      overflow: hidden;
+      border: 1px solid #ffffff40;
+      box-shadow: 0 30px 80px #0005;
+      background: #0b1d35;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Gambar utuh tanpa terpotong */
+      filter: saturate(.93) contrast(1.02);
+    }
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(7,20,38,0.9) 0%, rgba(7,20,38,0) 50%);
+      pointer-events: none;
+    }
+    .photo-label {
+      position: absolute;
+      bottom: 25px;
+      left: 25px;
+      z-index: 2;
+      color: white;
+      max-width: 60%; /* Cegah teks menabrak elemen kanan */
+    }
+    .photo-label small {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: .65rem;
+      color: #e4eaf1;
+      margin-bottom: 4px;
+    }
+    .photo-label strong {
+      font-family: Manrope;
+      font-size: 1.3rem;
+      line-height: 1.2;
+      display: block;
+    }
     
-    .photo-label{position:absolute;bottom:43px;left:42px;z-index:2;color:white}.photo-label small{display:block;text-transform:uppercase;letter-spacing:.15em;font-size:.65rem;color:#e4eaf1}.photo-label strong{font-family:Manrope;font-size:1.4rem}.floating-card{position:absolute;z-index:3;background:#fff;color:var(--navy);padding:17px 19px;border-radius:17px;box-shadow:var(--shadow)}.floating-card.top{top:54px;left:-10px}.floating-card.bottom{bottom:38px;right:-14px;display:flex;align-items:center;gap:12px}.mini-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#fff0f1;color:var(--red);font-size:1.3rem}.floating-card small{display:block;color:#6b7280;font-size:.72rem}.floating-card strong{font-family:Manrope;font-size:.95rem}
-    
+    /* PERBAIKAN FLOATING CARDS */
+    .floating-card {
+      position: absolute;
+      z-index: 3;
+      background: #fff;
+      color: var(--navy);
+      padding: 15px 18px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+    .floating-card.top {
+      top: 5px;
+      left: -10px;
+    }
+    .floating-card.bottom {
+      bottom: 20px;
+      right: -10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mini-icon {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #fff0f1;
+      color: var(--red);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .floating-card small {
+      display: block;
+      color: #6b7280;
+      font-size: .7rem;
+      margin-bottom: 2px;
+    }
+    .floating-card strong {
+      font-family: Manrope;
+      font-size: .9rem;
+      display: block;
+      white-space: nowrap; /* Mencegah teks turun baris */
+    }
+
     .hero-stats{background:#fff;border-bottom:1px solid var(--line)}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:25px 0}.stat{padding:8px 25px;border-right:1px solid var(--line);text-align:center;}.stat:first-child{padding-left:0}.stat:last-child{border:0}.stat strong{display:block;font-family:Manrope;font-size:2rem;color:var(--navy);line-height:1.1;margin-bottom:5px;}.stat span{font-size:.8rem;color:var(--muted)}
     
     .trust-strip{padding:20px 0;background:#f8f9fa;border-bottom:1px solid var(--line);text-align:center;font-size:.8rem;color:var(--muted);font-weight:600;display:flex;justify-content:center;gap:30px;flex-wrap:wrap;align-items:center}.trust-strip i{color:var(--navy);margin-right:5px;}
@@ -275,10 +373,29 @@
       margin-top: 10px;
     }
     
-    @media(max-width:900px){.nav-links{gap:16px}.nav-links a{font-size:.82rem}.brand{min-width:auto}.hero-grid{grid-template-columns:1fr .75fr;gap:20px}.hero-visual{min-height:350px}.floating-card.top{left:-20px}.floating-card.bottom{right:-5px}.about-grid{gap:40px}.contact-grid{gap:35px}.testi-grid{grid-template-columns:1fr;gap:15px;}.life-body{padding:18px}.life-cta{padding:22px}.quote-card{grid-template-columns:1fr}.quote-image{aspect-ratio: 16/9;}}
+    @media(max-width:900px){.nav-links{gap:16px}.nav-links a{font-size:.82rem}.brand{min-width:auto}.hero-grid{grid-template-columns:1fr .75fr;gap:20px}.hero-visual{min-height:350px}.about-grid{gap:40px}.contact-grid{gap:35px}.testi-grid{grid-template-columns:1fr;gap:15px;}.life-body{padding:18px}.life-cta{padding:22px}.quote-card{grid-template-columns:1fr}.quote-image{aspect-ratio: 16/9;}}
     
-    @media(max-width:720px){.container{width:min(100% - 32px,560px)}.section{padding:72px 0}.topbar .container{justify-content:center;text-align:center}.topbar .top-extra{display:none}.nav{height:68px}.brand-logo{width:39px;height:39px;border-radius:11px}.brand-copy strong{font-size:.82rem}.brand-copy small{font-size:.59rem}.nav-actions>.btn{display:none}.menu-toggle{display:block}.nav-links{display:none;position:fixed;inset:68px 0 auto;background:#071426;padding:20px 24px 28px;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid #ffffff22}.nav-links.open{display:flex}.nav-links a{padding:15px 4px;border-bottom:1px solid #ffffff12;font-size:1rem}.nav-links a:last-child{border:0}
-      .hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:22px;padding:70px 0 45px;min-height:0}.hero h1{font-size:clamp(3.15rem,14vw,5rem)}.hero-copy>p{font-size:.98rem}.hero-visual{min-height:300px;margin:0 8px 15px}.hero-photo{border-radius:20px;max-height:400px;}.floating-card.top{top:22px;left:-8px;padding:12px 14px}.floating-card.bottom{bottom:15px;right:-5px;padding:12px 14px}.floating-card strong{font-size:.82rem}.floating-card small{font-size:.65rem}.photo-label{left:27px;bottom:25px}
+    @media(max-width:720px){
+      .container{width:min(100% - 32px,560px)}
+      .section{padding:72px 0}
+      .topbar .container{justify-content:center;text-align:center}.topbar .top-extra{display:none}
+      .nav{height:68px}.brand-logo{width:39px;height:39px;border-radius:11px}.brand-copy strong{font-size:.82rem}.brand-copy small{font-size:.59rem}.nav-actions>.btn{display:none}.menu-toggle{display:block}
+      .nav-links{display:none;position:fixed;inset:68px 0 auto;background:#071426;padding:20px 24px 28px;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid #ffffff22}.nav-links.open{display:flex}.nav-links a{padding:15px 4px;border-bottom:1px solid #ffffff12;font-size:1rem}.nav-links a:last-child{border:0}
+      
+      /* Mobile Hero Adjustments */
+      .hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:22px;padding:70px 0 45px;min-height:0}
+      .hero h1{font-size:clamp(3.15rem,14vw,5rem)}.hero-copy>p{font-size:.98rem}
+      .hero-visual{min-height:320px;margin:0;padding:15px 10px}
+      .hero-photo{border-radius:20px 80px 20px 20px; max-height:400px;}
+      .photo-label{left:15px;bottom:15px;max-width:55%}
+      .photo-label strong{font-size:1rem}
+      .photo-label small{font-size:0.55rem}
+      .floating-card.top{top: -5px;left: -5px;padding:10px 12px}
+      .floating-card.bottom{bottom: 15px;right: -5px;padding:10px 12px}
+      .floating-card small{font-size:0.65rem}
+      .floating-card strong{font-size:0.8rem}
+      .mini-icon{width:32px;height:32px;font-size:1rem}
+
       .hero-stats .stats-grid{grid-template-columns:repeat(2,1fr);padding:12px 0}.stat{padding:15px 12px;border-bottom:1px solid var(--line)}.stat:nth-child(2){border-right:0}.stat:nth-child(3),.stat:nth-child(4){border-bottom:0}.stat:first-child{padding-left:12px}.stat strong{font-size:1.5rem}.stat span{font-size:.75rem}
       .about-grid,.contact-grid{grid-template-columns:1fr;gap:35px}.about-visual{min-height:390px;order:2}.about-copy{order:1}.about-img-main{right:48px;bottom:45px}.about-img-small{height:auto}
       .program-grid{grid-template-columns:1fr;gap:16px}.program-body p{min-height:0}
@@ -502,7 +619,7 @@
             <p>Jika ingin mengetahui program, persiapan bahasa, atau langkah pendaftaran, hubungi tim kami untuk mendapatkan informasi lebih lanjut.</p>
             
             <div class="map-wrapper reveal" style="margin-top:30px;">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15884.246915818143!2d105.1909788!3d-5.2987172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40d9c2b3f8e6c5%3A0xe5c0a5b5f5e5c5e5!2sNatar%2C%20South%20Lampung%20Regency%2C%20Lampung!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Peta Lokasi Arima Persada"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.784824145257!2d105.18363747451929!3d-5.296239294682045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40cfd203687241%3A0xaab3c8c90c587559!2sLPKS%20Arima%20Persada!5e0!3m2!1sen!2sid!4v1792737278917!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Peta Lokasi LPKS Arima Persada"></iframe>
               <a href="https://maps.app.goo.gl/DWKjEDgnuamPa41e8" target="_blank" rel="noopener" class="map-btn-overlay">
                 Buka di Google Maps ↗
               </a>
@@ -595,14 +712,6 @@
       toast.classList.add('show');
       setTimeout(() => { toast.classList.remove('show'); }, 2500);
     }
-
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const heroImg = document.getElementById('heroImg');
-      if (heroImg && scrolled < window.innerHeight) {
-        heroImg.style.transform = `translateY(${scrolled * 0.1}px)`;
-      }
-    });
 
     function animateValue(obj, start, end, duration, suffix) {
       let startTimestamp = null;
