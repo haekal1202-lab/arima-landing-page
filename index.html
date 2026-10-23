@@ -6,54 +6,445 @@
   <meta name="theme-color" content="#071426">
   <meta name="description" content="LPKS Arima Persada — pelatihan bahasa Jepang dan informasi jalur karier ke Jepang. Temukan jalur yang sesuai melalui kuis karier gratis.">
   <title>LPKS Arima Persada — Dari Lampung Menuju Jepang</title>
+  
+  <!-- SEO & Social Media -->
+  <meta property="og:title" content="LPKS Arima Persada — Dari Lampung Menuju Jepang">
+  <meta property="og:description" content="Pelatihan bahasa Jepang & penyaluran karier. Temukan jalur yang tepat melalui kuis interaktif gratis.">
+  <meta property="og:image" content="https://arima-lp.vercel.app/assets/siswa-arima-bersama.webp">
+  <meta property="og:url" content="https://arima-lp.vercel.app">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://arima-lp.vercel.app">
+  
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "LPKS Arima Persada",
+    "url": "https://arima-lp.vercel.app",
+    "logo": "https://arima-lp.vercel.app/assets/arima-logo.webp",
+    "description": "Lembaga pelatihan kerja bahasa Jepang dan penyaluran tenaga kerja.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Sidoharjo 1, Desa Negararatu, Kec. Natar",
+      "addressLocality": "Lampung Selatan",
+      "addressRegion": "Lampung",
+      "addressCountry": "ID"
+    },
+    "telephone": "+6282375128230"
+  }
+  </script>
+
+  <link rel="icon" type="image/webp" href="assets/arima-logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    :root{--navy:#071426;--navy2:#0b1d35;--red:#e63946;--cream:#f7f5f0;--ink:#111827;--muted:#657184;--line:#e5e8ed;--white:#fff;--gold:#f4c96b;--radius:22px;--shadow:0 24px 70px rgba(7,20,38,.12)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;font-family:'DM Sans',sans-serif;color:var(--ink);background:#fff;line-height:1.6}body.menu-open{overflow:hidden}h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-.04em}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}img{display:block;max-width:100%}.container{width:min(1160px,calc(100% - 40px));margin:auto}.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.eyebrow:before{content:"";width:26px;height:2px;background:var(--red)}.section{padding:100px 0}.section-head{max-width:680px;margin-bottom:42px}.section-head h2{font-size:clamp(2.1rem,4vw,3.5rem);line-height:1.08;margin:15px 0}.section-head p{color:var(--muted);font-size:1.05rem;max-width:590px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:999px;font-weight:800;font-size:.92rem;border:1px solid transparent;transition:transform .2s,background .2s,color .2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--red);color:#fff;box-shadow:0 10px 28px #e6394635}.btn-primary:hover{background:#c92836}.btn-light{background:#fff;color:var(--navy)}.btn-outline{border-color:#ffffff60;color:#fff;background:#ffffff08}.arrow{font-size:1.1em}.topbar{background:#030b16;color:#c9d3df;font-size:.76rem;padding:8px 0}.topbar .container{display:flex;justify-content:space-between;gap:15px;align-items:center}.topbar strong{color:#fff}.nav-wrap{position:sticky;top:0;z-index:50;background:#071426f2;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px;color:white}.brand{display:flex;align-items:center;gap:12px;min-width:220px}.brand-mark{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--red);color:white;font-family:Manrope;font-weight:900;font-size:1.1rem;box-shadow:inset 0 0 0 1px #ffffff40}.brand-copy{line-height:1.2}.brand-copy strong{display:block;font-family:Manrope;font-size:.91rem;letter-spacing:-.02em}.brand-copy small{font-size:.65rem;color:#aebdce;letter-spacing:.12em;text-transform:uppercase}.nav-links{display:flex;align-items:center;gap:28px;font-size:.88rem;color:#d4dce7}.nav-links a:hover{color:#fff}.nav-actions{display:flex;align-items:center;gap:12px}.nav .btn{padding:11px 17px;font-size:.82rem}.menu-toggle{display:none;background:none;border:1px solid #ffffff40;color:white;border-radius:12px;padding:9px 12px}
-    .hero{background:var(--navy);color:white;position:relative;overflow:hidden;isolation:isolate}.hero:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#061326 0%,#061326f5 34%,#061326a8 60%,#06132630 100%),linear-gradient(0deg,#061326 0%,transparent 40%),url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=2000&q=90') center 48%/cover no-repeat}.hero:after{content:"日本";position:absolute;right:-10px;bottom:-110px;font-family:serif;font-size:clamp(15rem,35vw,33rem);line-height:1;color:#ffffff08;pointer-events:none}.hero-grid{min-height:650px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px;padding:76px 0 92px;position:relative}.hero-copy{max-width:680px;position:relative;z-index:2}.hero .eyebrow{color:#f4c96b}.hero h1{font-size:clamp(3.2rem,7vw,6.4rem);line-height:.99;margin:22px 0 24px;font-weight:800}.hero h1 span{color:#ff6670}.hero-copy>p{max-width:570px;color:#c5d0df;font-size:1.08rem;line-height:1.8;margin-bottom:30px}.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}.hero-note{display:flex;align-items:center;gap:12px;margin-top:34px;color:#b8c5d5;font-size:.82rem}.note-dot{width:9px;height:9px;background:#75d6a1;border-radius:50%;box-shadow:0 0 0 5px #75d6a11a}.hero-visual{position:relative;min-height:410px;align-self:stretch;display:flex;align-items:center;justify-content:center}.hero-photo{position:absolute;inset:35px 0 20px 20px;border-radius:180px 180px 26px 26px;overflow:hidden;border:1px solid #ffffff40;box-shadow:0 30px 80px #0005}.hero-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.8)}.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#07142680,transparent 60%)}.photo-label{position:absolute;bottom:43px;left:42px;z-index:2;color:white}.photo-label small{display:block;text-transform:uppercase;letter-spacing:.15em;font-size:.65rem;color:#e4eaf1}.photo-label strong{font-family:Manrope;font-size:1.4rem}.floating-card{position:absolute;z-index:3;background:#fff;color:var(--navy);padding:17px 19px;border-radius:17px;box-shadow:var(--shadow)}.floating-card.top{top:54px;left:-10px}.floating-card.bottom{bottom:38px;right:-14px;display:flex;align-items:center;gap:12px}.mini-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#fff0f1;color:var(--red);font-size:1.3rem}.floating-card small{display:block;color:#6b7280;font-size:.72rem}.floating-card strong{font-family:Manrope;font-size:.95rem}.hero-stats{background:#fff;border-bottom:1px solid var(--line)}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:25px 0}.stat{padding:8px 25px;border-right:1px solid var(--line)}.stat:first-child{padding-left:0}.stat:last-child{border:0}.stat strong{display:block;font-family:Manrope;font-size:1.1rem;color:var(--navy)}.stat span{font-size:.8rem;color:var(--muted)}
+    :root{--navy:#071426;--navy2:#0b1d35;--red:#d71920;--cream:#f7f5f0;--ink:#111827;--muted:#657184;--line:#e5e8ed;--white:#fff;--gold:#f4c96b;--radius:22px;--shadow:0 24px 70px rgba(7,20,38,.12)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;font-family:'DM Sans',sans-serif;color:var(--ink);background:#fff;line-height:1.6}body.menu-open{overflow:hidden}h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-.04em}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}img{display:block;max-width:100%}.container{width:min(1160px,calc(100% - 40px));margin:auto}.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.eyebrow:before{content:"";width:26px;height:2px;background:var(--red)}.section{padding:100px 0}.section-head{max-width:680px;margin-bottom:42px}.section-head h2{font-size:clamp(2.1rem,4vw,3.5rem);line-height:1.08;margin:15px 0}.section-head p{color:var(--muted);font-size:1.05rem;max-width:590px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:999px;font-weight:800;font-size:.92rem;border:1px solid transparent;transition:transform .2s,background .2s,color .2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--red);color:#fff;box-shadow:0 10px 28px #e6394635}.btn-primary:hover{background:#c92836}.btn-light{background:#fff;color:var(--navy)}.btn-outline{border-color:#ffffff60;color:#fff;background:#ffffff08}.arrow{font-size:1.1em}.topbar{background:#030b16;color:#c9d3df;font-size:.76rem;padding:8px 0}.topbar .container{display:flex;justify-content:space-between;gap:15px;align-items:center}.topbar strong{color:#fff}.nav-wrap{position:sticky;top:0;z-index:50;background:#071426f2;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px;color:white}.brand{display:flex;align-items:center;gap:12px;min-width:220px}.brand-copy{line-height:1.2}.brand-copy strong{display:block;font-family:Manrope;font-size:.91rem;letter-spacing:-.02em}.brand-copy small{font-size:.65rem;color:#aebdce;letter-spacing:.12em;text-transform:uppercase}.nav-links{display:flex;align-items:center;gap:28px;font-size:.88rem;color:#d4dce7}.nav-links a:hover{color:#fff}.nav-actions{display:flex;align-items:center;gap:12px}.nav .btn{padding:11px 17px;font-size:.82rem}.menu-toggle{display:none;background:none;border:1px solid #ffffff40;color:white;border-radius:12px;padding:9px 12px}
+    
+    .hero{background:var(--navy);color:white;position:relative;overflow:hidden;isolation:isolate}.hero:before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 78% 30%,#18395870,transparent 45%),linear-gradient(90deg,#061326 0%,#061326 45%,#061326c9 75%,#0613268a 100%),linear-gradient(0deg,#061326 0%,transparent 45%)}.hero:after{content:"日本";position:absolute;right:-10px;bottom:-110px;font-family:serif;font-size:clamp(15rem,35vw,33rem);line-height:1;color:#ffffff08;pointer-events:none}.hero-grid{min-height:650px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px;padding:76px 0 92px;position:relative}.hero-copy{max-width:680px;position:relative;z-index:2}.hero .eyebrow{color:#f4c96b}.hero h1{font-size:clamp(3.2rem,7vw,6.4rem);line-height:.99;margin:22px 0 24px;font-weight:800}.hero h1 span{color:#ff6670}.hero-copy>p{max-width:570px;color:#c5d0df;font-size:1.08rem;line-height:1.8;margin-bottom:30px}.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}.hero-note{display:flex;align-items:center;gap:12px;margin-top:34px;color:#b8c5d5;font-size:.82rem}.note-dot{width:9px;height:9px;background:#75d6a1;border-radius:50%;box-shadow:0 0 0 5px #75d6a11a}.hero-visual{position:relative;min-height:410px;align-self:stretch;display:flex;align-items:center;justify-content:center}.hero-photo{position:absolute;inset:35px 0 20px 20px;border-radius:34px 180px 30px 30px;overflow:hidden;border:1px solid #ffffff40;box-shadow:0 30px 80px #0005}.hero-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.93) contrast(1.02);transition: transform 0.1s linear; will-change: transform;}.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#07142680,transparent 60%)}.photo-label{position:absolute;bottom:43px;left:42px;z-index:2;color:white}.photo-label small{display:block;text-transform:uppercase;letter-spacing:.15em;font-size:.65rem;color:#e4eaf1}.photo-label strong{font-family:Manrope;font-size:1.4rem}.floating-card{position:absolute;z-index:3;background:#fff;color:var(--navy);padding:17px 19px;border-radius:17px;box-shadow:var(--shadow)}.floating-card.top{top:54px;left:-10px}.floating-card.bottom{bottom:38px;right:-14px;display:flex;align-items:center;gap:12px}.mini-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#fff0f1;color:var(--red);font-size:1.3rem}.floating-card small{display:block;color:#6b7280;font-size:.72rem}.floating-card strong{font-family:Manrope;font-size:.95rem}
+    
+    .hero-stats{background:#fff;border-bottom:1px solid var(--line)}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:25px 0}.stat{padding:8px 25px;border-right:1px solid var(--line);text-align:center;}.stat:first-child{padding-left:0}.stat:last-child{border:0}.stat strong{display:block;font-family:Manrope;font-size:2rem;color:var(--navy);line-height:1.1;margin-bottom:5px;}.stat span{font-size:.8rem;color:var(--muted)}
+    
+    .trust-strip{padding:20px 0;background:#f8f9fa;border-bottom:1px solid var(--line);text-align:center;font-size:.8rem;color:var(--muted);font-weight:600;display:flex;justify-content:center;gap:30px;flex-wrap:wrap;align-items:center}.trust-strip i{color:var(--navy);margin-right:5px;}
+    
     .about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:75px;align-items:center}.about-visual{position:relative;min-height:490px}.about-img-main{position:absolute;inset:0 65px 55px 0;border-radius:26px;overflow:hidden}.about-img-main img{width:100%;height:100%;object-fit:cover}.about-img-small{position:absolute;width:48%;height:220px;right:0;bottom:0;border:8px solid white;border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}.about-img-small img{width:100%;height:100%;object-fit:cover}.vertical-note{position:absolute;top:24px;right:0;writing-mode:vertical-rl;background:var(--red);color:white;padding:15px 10px;border-radius:99px;font-size:.7rem;letter-spacing:.15em;font-weight:800}.about-copy h2{font-size:clamp(2.3rem,4vw,3.6rem);line-height:1.08;margin:16px 0 20px}.about-copy p{color:var(--muted);font-size:1.02rem}.check-list{display:grid;gap:14px;margin:26px 0 30px;padding:0;list-style:none}.check-list li{display:flex;gap:12px;align-items:flex-start;font-weight:600;font-size:.93rem}.check{width:23px;height:23px;flex:none;border-radius:50%;display:grid;place-items:center;background:#e7f8ee;color:#18824b;font-size:.8rem;margin-top:2px}
+    
     .programs{background:var(--cream)}.program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.program-card{background:#fff;border:1px solid #e9e7e1;border-radius:24px;overflow:hidden;transition:transform .25s,box-shadow .25s}.program-card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}.program-image{height:225px;position:relative;overflow:hidden;background:#dfe4e8}.program-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s}.program-card:hover .program-image img{transform:scale(1.06)}.program-no{position:absolute;top:15px;left:15px;background:#071426d9;color:white;border:1px solid #ffffff30;padding:7px 11px;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.08em}.program-body{padding:24px}.program-tag{font-size:.7rem;color:var(--red);font-weight:800;letter-spacing:.12em;text-transform:uppercase}.program-body h3{font-size:1.45rem;margin:8px 0}.program-body p{font-size:.9rem;color:var(--muted);min-height:72px}.program-foot{padding-top:17px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}.program-foot span{font-size:.75rem;color:var(--muted)}.text-link{color:var(--red);font-weight:800;font-size:.85rem}.text-link:hover{text-decoration:underline}
+    
     .journey{background:var(--navy);color:white;position:relative;overflow:hidden}.journey:after{content:"";position:absolute;width:450px;height:450px;border-radius:50%;right:-150px;top:-180px;border:1px solid #ffffff12;box-shadow:0 0 0 45px #ffffff05,0 0 0 90px #ffffff03}.journey .section-head p{color:#aebdce}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}.steps:before{content:"";position:absolute;top:26px;left:7%;right:7%;height:1px;background:#ffffff30}.step{position:relative;padding:0 22px 0 0}.step-number{position:relative;z-index:1;width:53px;height:53px;border-radius:50%;display:grid;place-items:center;background:var(--red);border:7px solid var(--navy);box-shadow:0 0 0 1px #ffffff40;font-family:Manrope;font-weight:800}.step h3{font-size:1.1rem;margin:22px 0 8px}.step p{color:#aebdce;font-size:.88rem;max-width:230px}.journey-cta{margin-top:44px;padding:25px 28px;background:#ffffff0b;border:1px solid #ffffff1a;border-radius:20px;display:flex;align-items:center;justify-content:space-between;gap:20px}.journey-cta strong{font-family:Manrope;font-size:1.15rem}.journey-cta p{margin:4px 0 0;color:#aebdce;font-size:.87rem}
-    .quiz-section{background:#f5f7fa}.quiz-layout{display:grid;grid-template-columns:.78fr 1.22fr;gap:50px;align-items:start}.quiz-intro{position:sticky;top:115px}.quiz-intro h2{font-size:clamp(2.4rem,4.5vw,4rem);line-height:1.04;margin:17px 0}.quiz-intro p{color:var(--muted);font-size:1rem}.quiz-benefits{display:grid;gap:12px;margin-top:25px}.quiz-benefits div{display:flex;align-items:center;gap:11px;font-weight:700;font-size:.88rem}.quiz-benefits span{display:grid;place-items:center;width:30px;height:30px;background:#fff;border:1px solid var(--line);border-radius:10px}.quiz-card{background:#fff;border:1px solid #e4e8ef;border-radius:28px;padding:clamp(22px,4vw,42px);box-shadow:0 25px 80px #0714260b}.quiz-top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:14px}.quiz-kicker{font-size:.73rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--red)}.quiz-count{font-size:.8rem;color:var(--muted);font-weight:700}.progress{height:5px;background:#edf0f4;border-radius:99px;overflow:hidden;margin-bottom:30px}.progress-bar{height:100%;width:0;background:var(--red);border-radius:99px;transition:width .3s}.quiz-card h3{font-size:clamp(1.45rem,3vw,2rem);line-height:1.2;margin-bottom:9px}.quiz-help{font-size:.9rem;color:var(--muted);margin-bottom:24px}.answer-list{display:grid;gap:11px}.answer-option{width:100%;display:flex;align-items:center;gap:13px;text-align:left;padding:16px;border:1px solid #e2e7ee;border-radius:15px;background:#fff;transition:border .2s,background .2s;min-height:64px}.answer-option:hover{border-color:#e639467a;background:#fffafb}.answer-option.selected{border-color:var(--red);background:#fff2f3;box-shadow:0 0 0 2px #e6394612}.option-letter{width:32px;height:32px;flex:none;border-radius:10px;background:#f0f3f7;display:grid;place-items:center;font-size:.78rem;font-weight:800;color:#5b6573}.selected .option-letter{background:var(--red);color:#fff}.option-label{font-size:.92rem;font-weight:700}.quiz-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:28px}.btn-quiet{border:0;background:transparent;color:var(--muted);font-weight:800;padding:12px}.btn-quiet:disabled{opacity:.25;cursor:not-allowed}.quiz-controls .btn{min-width:130px}.quiz-error{font-size:.83rem;color:#c92836;margin-top:12px;display:none}.result-panel{display:none}.result-badge{display:inline-flex;align-items:center;gap:7px;background:#e7f8ee;color:#177245;border-radius:99px;padding:7px 12px;font-size:.75rem;font-weight:800}.result-panel h3{font-size:2rem;margin:18px 0 10px}.result-panel p{color:var(--muted)}.result-reason{padding:18px;background:#f5f7fa;border-radius:16px;margin:20px 0;color:#384152;font-size:.9rem}.result-actions{display:flex;gap:10px;flex-wrap:wrap}.result-actions .btn{flex:1}.quiz-restart{margin-top:14px}
-    .quote-section{padding:0 0 100px;background:#f5f7fa}.quote-card{display:grid;grid-template-columns:1fr 1fr;background:#fff;border-radius:26px;overflow:hidden;border:1px solid var(--line)}.quote-image{min-height:310px;position:relative}.quote-image img{position:absolute;width:100%;height:100%;object-fit:cover}.quote-copy{padding:clamp(28px,5vw,58px);display:flex;flex-direction:column;justify-content:center}.quote-copy .eyebrow{color:var(--red)}.quote-copy h2{font-size:clamp(1.9rem,3vw,2.8rem);line-height:1.1;margin:17px 0}.quote-copy p{color:var(--muted)}
-    .contact{background:#fff}.contact-grid{display:grid;grid-template-columns:1fr .9fr;gap:70px;align-items:center}.contact-copy h2{font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.02;margin:17px 0}.contact-copy p{max-width:500px;color:var(--muted)}.contact-card{background:var(--navy);color:white;border-radius:25px;padding:30px}.contact-row{display:flex;gap:15px;padding:18px 0;border-bottom:1px solid #ffffff1c}.contact-row:last-of-type{border:0}.contact-icon{width:43px;height:43px;display:grid;place-items:center;background:#ffffff12;border-radius:13px;font-size:1.1rem;flex:none}.contact-row small{display:block;color:#9eafc3;font-size:.75rem}.contact-row strong{font-size:.95rem;overflow-wrap:anywhere}.contact-card .btn{width:100%;margin-top:18px}.footer{background:#030b16;color:#aebdce;padding:35px 0}.footer-main{display:flex;align-items:center;justify-content:space-between;gap:25px;padding-bottom:26px;border-bottom:1px solid #ffffff16}.footer .brand{color:#fff}.footer p{font-size:.82rem;margin:0;max-width:350px}.footer-bottom{padding-top:20px;display:flex;justify-content:space-between;gap:20px;font-size:.75rem}.footer-links{display:flex;gap:20px;flex-wrap:wrap}.wa-float{position:fixed;right:22px;bottom:22px;z-index:45;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#20c878;color:white;box-shadow:0 10px 30px #07142640;border:3px solid #fff;font-size:1.5rem;transition:transform .2s}.wa-float:hover{transform:translateY(-4px) scale(1.04)}.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:none}
-    @media(max-width:900px){.nav-links{gap:16px}.nav-links a{font-size:.82rem}.brand{min-width:auto}.hero-grid{grid-template-columns:1fr .75fr;gap:20px}.hero-visual{min-height:350px}.floating-card.top{left:-20px}.floating-card.bottom{right:-5px}.about-grid{gap:40px}.quiz-layout{gap:28px}.contact-grid{gap:35px}}
-    @media(max-width:720px){.container{width:min(100% - 32px,560px)}.section{padding:72px 0}.topbar .container{justify-content:center;text-align:center}.topbar .top-extra{display:none}.nav{height:68px}.brand-mark{width:38px;height:38px}.brand-copy strong{font-size:.82rem}.brand-copy small{font-size:.59rem}.nav-actions>.btn{display:none}.menu-toggle{display:block}.nav-links{display:none;position:fixed;inset:68px 0 auto;background:#071426;padding:20px 24px 28px;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid #ffffff22}.nav-links.open{display:flex}.nav-links a{padding:15px 4px;border-bottom:1px solid #ffffff12;font-size:1rem}.nav-links a:last-child{border:0}.hero:before{background:linear-gradient(90deg,#061326eF,#061326b8),linear-gradient(0deg,#061326 0%,transparent 70%),url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=85') center/cover no-repeat}.hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:22px;padding:70px 0 45px;min-height:0}.hero h1{font-size:clamp(3.15rem,14vw,5rem)}.hero-copy>p{font-size:.98rem}.hero-visual{min-height:300px;margin:0 8px 15px}.hero-photo{inset:0 25px 0 25px;border-radius:140px 140px 22px 22px}.floating-card.top{top:22px;left:-8px;padding:12px 14px}.floating-card.bottom{bottom:15px;right:-5px;padding:12px 14px}.floating-card strong{font-size:.82rem}.floating-card small{font-size:.65rem}.photo-label{left:27px;bottom:25px}.hero-stats .stats-grid{grid-template-columns:repeat(2,1fr);padding:12px 0}.stat{padding:15px 12px;border-bottom:1px solid var(--line)}.stat:nth-child(2){border-right:0}.stat:nth-child(3),.stat:nth-child(4){border-bottom:0}.stat:first-child{padding-left:12px}.stat strong{font-size:1rem}.stat span{font-size:.75rem}.about-grid,.contact-grid{grid-template-columns:1fr;gap:35px}.about-visual{min-height:390px;order:2}.about-copy{order:1}.about-img-main{right:48px;bottom:45px}.about-img-small{height:175px}.program-grid{grid-template-columns:1fr;gap:16px}.program-image{height:230px}.program-body p{min-height:0}.steps{grid-template-columns:1fr 1fr;gap:28px 20px}.steps:before{display:none}.step{padding:0}.step h3{margin-top:15px}.journey-cta{align-items:flex-start;flex-direction:column}.quiz-layout{grid-template-columns:1fr;gap:28px}.quiz-intro{position:static}.quiz-intro h2{font-size:2.7rem;max-width:500px}.quiz-benefits{grid-template-columns:1fr 1fr}.quiz-card{padding:23px 18px;border-radius:22px}.answer-option{padding:13px;min-height:60px}.option-label{font-size:.86rem}.quote-section{padding-bottom:72px}.quote-card{grid-template-columns:1fr}.quote-image{min-height:230px}.quote-copy{padding:28px}.contact-card{padding:24px}.footer-main,.footer-bottom{align-items:flex-start;flex-direction:column}.footer-main{gap:15px}.footer-bottom{gap:13px}.wa-float{width:54px;height:54px;right:15px;bottom:15px}}
+    
+    .life-section{background:#fff}.life-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.life-card{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#fff;transition:transform .25s,box-shadow .25s}.life-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.life-photo{height:230px;position:relative;overflow:hidden;background:#e6e9ee}.life-photo:after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(0deg,#0714269c,transparent)}.life-photo img{width:100%;height:100%;object-fit:cover;transition:transform .55s}.life-card:hover .life-photo img{transform:scale(1.04)}.life-index{position:absolute;z-index:1;bottom:16px;left:17px;color:#fff;font-size:.7rem;letter-spacing:.13em;font-weight:800}.life-body{padding:22px 22px 24px}.life-body h3{font-size:1.15rem;line-height:1.25;margin:0 0 9px;letter-spacing:-.025em}.life-body p{color:var(--muted);font-size:.87rem;margin:0}.life-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 26px;margin-top:24px;border-radius:20px;background:#f6f4ef;border:1px solid #ece9e0}.life-cta strong,.life-cta small{display:block}.life-cta strong{font-family:Manrope;font-size:1.05rem;color:var(--navy)}.life-cta small{font-size:.85rem;color:var(--muted);margin-top:3px}
+    
+    /* TESTIMONIALS */
+    .testi-section{background:var(--navy2);color:white;padding:100px 0;position:relative;overflow:hidden;}
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .testi-card{background:#ffffff0b;border:1px solid #ffffff1a;padding:30px;border-radius:20px;position:relative;}
+    .testi-quote{font-size:2.5rem;font-family:serif;color:var(--red);opacity:0.5;line-height:1;position:absolute;top:20px;right:20px;}
+    .testi-text{font-size:.95rem;color:#c5d0df;font-style:italic;margin-bottom:20px;line-height:1.7;}
+    .testi-user{display:flex;align-items:center;gap:12px;}
+    .testi-avatar{width:45px;height:45px;border-radius:50%;background:var(--cream);color:var(--navy);display:grid;place-items:center;font-weight:800;font-size:1.2rem;}
+    .testi-info strong{display:block;font-family:Manrope;font-size:.95rem;}
+    .testi-info span{font-size:.75rem;color:#9eafc3;}
+
+    /* QUIZ */
+    .quiz-section{background:#f5f7fa}.quiz-layout{display:grid;grid-template-columns:.78fr 1.22fr;gap:50px;align-items:start}.quiz-intro{position:sticky;top:115px}.quiz-intro h2{font-size:clamp(2.4rem,4.5vw,4rem);line-height:1.04;margin:17px 0}.quiz-intro p{color:var(--muted);font-size:1rem}.quiz-benefits{display:grid;gap:12px;margin-top:25px}.quiz-benefits div{display:flex;align-items:center;gap:11px;font-weight:700;font-size:.88rem}.quiz-benefits span{display:grid;place-items:center;width:30px;height:30px;background:#fff;border:1px solid var(--line);border-radius:10px}.quiz-card{background:#fff;border:1px solid #e4e8ef;border-radius:28px;padding:clamp(22px,4vw,42px);box-shadow:0 25px 80px #0714260b;position:relative;overflow:hidden;}
+    .quiz-top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:14px}.quiz-kicker{font-size:.73rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--red)}.quiz-count{font-size:.8rem;color:var(--muted);font-weight:700}.progress{height:5px;background:#edf0f4;border-radius:99px;overflow:hidden;margin-bottom:30px}.progress-bar{height:100%;width:0;background:var(--red);border-radius:99px;transition:width .3s}.quiz-card h3{font-size:clamp(1.45rem,3vw,2rem);line-height:1.2;margin-bottom:9px}.quiz-help{font-size:.9rem;color:var(--muted);margin-bottom:24px}
+    .answer-list{display:grid;gap:11px}.answer-option{width:100%;display:flex;align-items:center;gap:13px;text-align:left;padding:16px;border:1px solid #e2e7ee;border-radius:15px;background:#fff;transition:border .2s,background .2s;min-height:64px;cursor:pointer;}
+    .answer-option:hover{border-color:#e639467a;background:#fffafb}.answer-option.selected{border-color:var(--red);background:#fff2f3;box-shadow:0 0 0 2px #e6394612}.option-letter{width:32px;height:32px;flex:none;border-radius:10px;background:#f0f3f7;display:grid;place-items:center;font-size:.78rem;font-weight:800;color:#5b6573}.selected .option-letter{background:var(--red);color:#fff}.option-label{font-size:.92rem;font-weight:700}
+    .quiz-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:28px}.btn-quiet{border:0;background:transparent;color:var(--muted);font-weight:800;padding:12px}.btn-quiet:disabled{opacity:.25;cursor:not-allowed}.quiz-controls .btn{min-width:130px}
+    .result-panel{display:none}.result-badge{display:inline-flex;align-items:center;gap:7px;background:#e7f8ee;color:#177245;border-radius:99px;padding:7px 12px;font-size:.75rem;font-weight:800}.result-panel h3{font-size:2rem;margin:18px 0 10px}.result-panel p{color:var(--muted)}.result-reason{padding:18px;background:#f5f7fa;border-radius:16px;margin:20px 0;color:#384152;font-size:.9rem}.result-actions{display:flex;gap:10px;flex-wrap:wrap}.result-actions .btn{flex:1}
+    
+    /* QUIZ LOADING STATE */
+    .quiz-loading{position:absolute;inset:0;background:#fffffff2;backdrop-filter:blur(4px);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:10;border-radius:28px;}
+    .spinner{width:40px;height:40px;border:4px solid #edf0f4;border-top:4px solid var(--red);border-radius:50%;animation:spin 1s linear infinite;margin-bottom:15px;}
+    @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    .quiz-loading p{font-weight:800;color:var(--navy);font-size:1.1rem;margin:0;}
+
+    /* FAQ */
+    .faq-section{background:#fff;padding:100px 0;}
+    .faq-grid{max-width:800px;margin:auto;display:grid;gap:15px;}
+    .faq-item{border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden;}
+    .faq-item summary{padding:20px 24px;font-family:Manrope;font-weight:800;font-size:1.05rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;transition:background 0.2s;}
+    .faq-item summary::-webkit-details-marker{display:none;}
+    .faq-item summary:hover{background:#f8f9fa;}
+    .faq-item summary::after{content:"+";font-size:1.5rem;font-weight:400;color:var(--red);transition:transform 0.3s;}
+    .faq-item[open] summary::after{transform:rotate(45deg);}
+    .faq-content{padding:0 24px 24px;color:var(--muted);font-size:.95rem;line-height:1.7;}
+
+    /* CONTACT & MAP */
+    .contact{background:#f5f7fa}.contact-grid{display:grid;grid-template-columns:1fr .9fr;gap:70px;align-items:start}.contact-copy h2{font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.02;margin:17px 0}.contact-copy p{max-width:500px;color:var(--muted)}
+    .contact-card{background:var(--navy);color:white;border-radius:25px;padding:30px;margin-bottom:24px;}
+    .contact-row{display:flex;gap:15px;padding:18px 0;border-bottom:1px solid #ffffff1c;align-items:flex-start;}
+    .contact-row:last-of-type{border:0}.contact-icon{width:43px;height:43px;display:grid;place-items:center;background:#ffffff12;border-radius:13px;font-size:1.1rem;flex:none}.contact-row small{display:block;color:#9eafc3;font-size:.75rem}.contact-row strong{font-size:.95rem;overflow-wrap:anywhere;line-height:1.5;display:block;margin-top:3px;}
+    .contact-card .btn{width:100%;margin-top:18px}
+    .copy-btn{background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:0.7rem;padding:4px 8px;border-radius:6px;cursor:pointer;margin-top:5px;transition:0.2s;}
+    .copy-btn:hover{background:var(--red);}
+    .map-wrapper{border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);height:300px;}
+    .map-wrapper iframe{width:100%;height:100%;border:0;}
+
+    /* FOOTER & MISC */
+    .footer{background:#030b16;color:#aebdce;padding:35px 0}.footer-main{display:flex;align-items:center;justify-content:space-between;gap:25px;padding-bottom:26px;border-bottom:1px solid #ffffff16}.footer .brand{color:#fff}.footer p{font-size:.82rem;margin:0;max-width:350px}.footer-bottom{padding-top:20px;display:flex;justify-content:space-between;gap:20px;font-size:.75rem}.footer-links{display:flex;gap:20px;flex-wrap:wrap}.wa-float{position:fixed;right:22px;bottom:22px;z-index:45;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#20c878;color:white;box-shadow:0 10px 30px #07142640;border:3px solid #fff;font-size:1.5rem;transition:transform .2s}.wa-float:hover{transform:translateY(-4px) scale(1.04)}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:none}
+    
+    .brand-logo{width:46px;height:46px;flex:none;display:grid;place-items:center;overflow:hidden;border-radius:13px;background:#fff;padding:3px;box-shadow:0 5px 18px #0002,inset 0 0 0 1px #ffffffaa}
+    .brand-logo img{display:block;width:100%;height:100%;object-fit:contain}
+    
+    /* TOAST */
+    #toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--navy);color:#fff;padding:12px 24px;border-radius:30px;font-weight:600;font-size:0.85rem;box-shadow:0 10px 30px rgba(0,0,0,0.2);opacity:0;transition:0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);z-index:100;}
+    #toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+    
+    .mobile-cta{display:none}
+    
+    @media(max-width:900px){.nav-links{gap:16px}.nav-links a{font-size:.82rem}.brand{min-width:auto}.hero-grid{grid-template-columns:1fr .75fr;gap:20px}.hero-visual{min-height:350px}.floating-card.top{left:-20px}.floating-card.bottom{right:-5px}.about-grid{gap:40px}.quiz-layout{gap:28px}.contact-grid{gap:35px}.testi-grid{grid-template-columns:1fr;gap:15px;}.life-photo{height:190px}.life-body{padding:18px}.life-cta{padding:22px}}
+    @media(max-width:720px){.container{width:min(100% - 32px,560px)}.section{padding:72px 0}.topbar .container{justify-content:center;text-align:center}.topbar .top-extra{display:none}.nav{height:68px}.brand-logo{width:39px;height:39px;border-radius:11px}.brand-copy strong{font-size:.82rem}.brand-copy small{font-size:.59rem}.nav-actions>.btn{display:none}.menu-toggle{display:block}.nav-links{display:none;position:fixed;inset:68px 0 auto;background:#071426;padding:20px 24px 28px;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid #ffffff22}.nav-links.open{display:flex}.nav-links a{padding:15px 4px;border-bottom:1px solid #ffffff12;font-size:1rem}.nav-links a:last-child{border:0}
+      .hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:22px;padding:70px 0 45px;min-height:0}.hero h1{font-size:clamp(3.15rem,14vw,5rem)}.hero-copy>p{font-size:.98rem}.hero-visual{min-height:300px;margin:0 8px 15px}.hero-photo{inset:0 25px 0 25px;border-radius:27px 140px 22px 22px}.floating-card.top{top:22px;left:-8px;padding:12px 14px}.floating-card.bottom{bottom:15px;right:-5px;padding:12px 14px}.floating-card strong{font-size:.82rem}.floating-card small{font-size:.65rem}.photo-label{left:27px;bottom:25px}
+      .hero-stats .stats-grid{grid-template-columns:repeat(2,1fr);padding:12px 0}.stat{padding:15px 12px;border-bottom:1px solid var(--line)}.stat:nth-child(2){border-right:0}.stat:nth-child(3),.stat:nth-child(4){border-bottom:0}.stat:first-child{padding-left:12px}.stat strong{font-size:1.5rem}.stat span{font-size:.75rem}
+      .about-grid,.contact-grid{grid-template-columns:1fr;gap:35px}.about-visual{min-height:390px;order:2}.about-copy{order:1}.about-img-main{right:48px;bottom:45px}.about-img-small{height:175px}
+      .program-grid{grid-template-columns:1fr;gap:16px}.program-image{height:230px}.program-body p{min-height:0}
+      .steps{grid-template-columns:1fr 1fr;gap:28px 20px}.steps:before{display:none}.step{padding:0}.step h3{margin-top:15px}.journey-cta{align-items:flex-start;flex-direction:column}
+      .quiz-layout{grid-template-columns:1fr;gap:28px}.quiz-intro{position:static}.quiz-intro h2{font-size:2.7rem;max-width:500px}.quiz-benefits{grid-template-columns:1fr 1fr}.quiz-card{padding:23px 18px;border-radius:22px}.answer-option{padding:13px;min-height:60px}.option-label{font-size:.86rem}
+      .life-grid{grid-template-columns:1fr;gap:15px}.life-card{display:grid;grid-template-columns:42% 58%;min-height:158px}.life-photo{height:100%;min-height:158px}.life-body{padding:19px 16px;align-self:center}.life-body h3{font-size:1.02rem}.life-body p{font-size:.8rem;line-height:1.5}.life-cta{align-items:stretch;flex-direction:column;gap:16px;padding:20px}.life-cta .btn{width:100%;min-height:52px}
+      .mobile-cta{display:block;position:fixed;z-index:60;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#ffffffed;backdrop-filter:blur(16px);border-top:1px solid #dfe3ea;box-shadow:0 -8px 28px #07142612}.mobile-cta .btn{width:100%;min-height:50px;border-radius:14px;font-size:.88rem;letter-spacing:.055em;box-shadow:0 9px 25px #d7192045}.wa-float{bottom:87px;right:16px}body{padding-bottom:76px}
+    }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
 <body>
   <div class="topbar"><div class="container"><span><strong>LPKS ARIMA PERSADA</strong> <span class="top-extra">· Japan Language Center · Lampung</span></span><span class="top-extra">Mulai rencanakan perjalanan kariermu ke Jepang ↗</span></div></div>
+  
   <header class="nav-wrap"><nav class="nav container" aria-label="Navigasi utama">
-    <a class="brand" href="#beranda" aria-label="LPKS Arima Persada beranda"><span class="brand-mark">A.</span><span class="brand-copy"><strong>LPKS ARIMA PERSADA</strong><small>Japan Language Center</small></span></a>
-    <div class="nav-links" id="navLinks"><a href="#tentang">Tentang</a><a href="#program">Program</a><a href="#alur">Alur Persiapan</a><a href="#kuis">Kuis Karier</a><a href="#kontak">Kontak</a></div>
-    <div class="nav-actions"><a class="btn btn-primary" href="#kuis">Temukan Jalur <span class="arrow">↗</span></a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Buka menu">☰</button></div>
+    <a class="brand" href="#beranda" aria-label="LPKS Arima Persada beranda"><span class="brand-logo"><img src="assets/arima-logo.webp" alt="Logo resmi LPKS Arima Persada"></span><span class="brand-copy"><strong>LPKS ARIMA PERSADA</strong><small>Japan Language Center</small></span></a>
+    <div class="nav-links" id="navLinks"><a href="#tentang">Tentang</a><a href="#program">Program</a><a href="#kegiatan">Kegiatan</a><a href="#alur">Alur Persiapan</a><a href="#kuis">Kuis Karier</a><a href="#faq">FAQ</a><a href="#kontak">Kontak</a></div>
+    <div class="nav-actions"><a class="btn btn-primary" href="#kuis" onclick="trackEvent('Nav_CTA')">TEMUKAN JALURMU <span class="arrow">↗</span></a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Buka menu">☰</button></div>
   </nav></header>
+
   <main>
+    <!-- HERO -->
     <section class="hero" id="beranda"><div class="container hero-grid">
-      <div class="hero-copy"><span class="eyebrow">Pelatihan & informasi karier Jepang · Lampung</span><h1>Dari Lampung,<br>menuju <span>Jepang.</span></h1><p>Bangun bekal bahasa, keterampilan, dan mental kerja untuk membuka peluang masa depan di Jepang. Mulai dari mengenali pilihan program yang paling sesuai dengan dirimu.</p><div class="hero-buttons"><a class="btn btn-primary" href="#kuis">Cari Jalur Karierku <span class="arrow">↗</span></a><a class="btn btn-outline" href="#program">Kenali Program <span class="arrow">↓</span></a></div><div class="hero-note"><span class="note-dot"></span><span>Kuis awal gratis · sekitar 5 menit · tanpa komitmen</span></div></div>
-      <div class="hero-visual" aria-label="Suasana kota tradisional Jepang"><div class="hero-photo"><img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1000&q=85" alt="Jalan dan bangunan tradisional di Kyoto, Jepang" fetchpriority="high"><div class="photo-label"><small>Next chapter</small><strong>Masa depanmu menanti.</strong></div></div><div class="floating-card top"><small>Mulai dari</small><strong>Langkah pertamamu</strong></div><div class="floating-card bottom"><span class="mini-icon">✦</span><span><small>Fokus persiapan</small><strong>Bahasa · Skill · Mental</strong></span></div></div>
+      <div class="hero-copy"><span class="eyebrow">Pelatihan & informasi karier Jepang · Lampung</span><h1>Dari Lampung,<br>menuju <span>Jepang.</span></h1><p>Bangun bekal bahasa, keterampilan, dan mental kerja untuk membuka peluang masa depan di Jepang. Mulai dari mengenali pilihan program yang paling sesuai dengan dirimu.</p><div class="hero-buttons"><a class="btn btn-primary" href="#kuis" onclick="trackEvent('Hero_CTA')">TEMUKAN JALURMU <span class="arrow">↗</span></a><a class="btn btn-outline" href="#program">Kenali Program <span class="arrow">↓</span></a></div><div class="hero-note"><span class="note-dot"></span><span>KUIS GRATIS · 6 PERTANYAAN · REKOMENDASI AWAL</span></div></div>
+      <div class="hero-visual" aria-label="Dokumentasi siswa LPKS Arima Persada"><div class="hero-photo"><img src="assets/siswa-arima-bersama.webp" id="heroImg" alt="Siswa LPKS Arima Persada berfoto bersama di depan lembaga" fetchpriority="high" loading="eager"><div class="photo-label"><small>LANGKAH BERIKUTNYA</small><strong>Masa depanmu menanti.</strong></div></div><div class="floating-card top"><small>Mulai dari</small><strong>Langkah pertamamu</strong></div><div class="floating-card bottom"><span class="mini-icon">✦</span><span><small>Fokus persiapan</small><strong>Bahasa · Skill · Mental</strong></span></div></div>
     </div></section>
-    <section class="hero-stats" aria-label="Fokus pelatihan"><div class="container stats-grid"><div class="stat"><strong>Bahasa Jepang</strong><span>Bangun kemampuan komunikasi</span></div><div class="stat"><strong>Kesiapan Kerja</strong><span>Kenali budaya dan etos kerja</span></div><div class="stat"><strong>Pilihan Program</strong><span>Sesuaikan dengan profilmu</span></div><div class="stat"><strong>Konsultasi</strong><span>Diskusikan langkah berikutnya</span></div></div></section>
-    <section class="section" id="tentang"><div class="container about-grid"><div class="about-visual reveal"><div class="about-img-main"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=85" alt="Pelajar berdiskusi dan belajar bersama" loading="lazy"></div><div class="about-img-small"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80" alt="Proses belajar menggunakan perangkat digital" loading="lazy"></div><div class="vertical-note">LEARN · PREPARE · GROW</div></div><div class="about-copy reveal"><span class="eyebrow">Tentang Arima</span><h2>Persiapan yang terarah. Langkah yang lebih percaya diri.</h2><p>LPKS Arima Persada hadir untuk membantu calon tenaga kerja mengenal jalur karier ke Jepang dan mempersiapkan diri melalui pembelajaran bahasa serta pemahaman keterampilan dan budaya kerja.</p><p>Setiap perjalanan dimulai dari informasi yang tepat. Kenali pilihan program, pahami persiapannya, lalu konsultasikan kebutuhanmu dengan tim Arima.</p><ul class="check-list"><li><span class="check">✓</span><span>Informasi jalur program yang lebih mudah dipahami.</span></li><li><span class="check">✓</span><span>Persiapan bahasa dan pengenalan budaya kerja Jepang.</span></li><li><span class="check">✓</span><span>Panduan awal untuk menentukan langkah selanjutnya.</span></li></ul><a class="btn btn-primary" href="#kuis">Mulai dari Kuis Karier <span class="arrow">↗</span></a></div></div></section>
+
+    <!-- STATS COUNT UP -->
+    <section class="hero-stats" aria-label="Pencapaian LPKS Arima Persada"><div class="container stats-grid">
+      <div class="stat"><strong class="counter" data-target="100" data-suffix="+">0</strong><span>Alumni Tersalurkan</span></div>
+      <div class="stat"><strong class="counter" data-target="3" data-suffix="">0</strong><span>Jalur Program</span></div>
+      <div class="stat"><strong class="counter" data-target="100" data-suffix="%">0</strong><span>Legal & Terdaftar</span></div>
+      <div class="stat"><strong class="counter" data-target="24" data-suffix="/7">0</strong><span>Dukungan Admin</span></div>
+    </div></section>
+
+    <!-- TRUST STRIP -->
+    <div class="trust-strip container reveal">
+      <span><i>✔</i> Terdaftar Kemnaker RI</span>
+      <span><i>✔</i> Mitra Resmi Sending Organization (SO)</span>
+      <span><i>✔</i> Kurikulum Standar JLPT & JFT</span>
+      <span><i>✔</i> Asrama & Fasilitas Terpadu</span>
+    </div>
+
+    <!-- TENTANG -->
+    <section class="section" id="tentang"><div class="container about-grid"><div class="about-visual reveal"><div class="about-img-main"><img src="assets/kelas-arima.webp" alt="Suasana kelas siswa LPKS Arima Persada" loading="lazy"></div><div class="about-img-small"><img src="assets/latihan-fisik.webp" alt="Kegiatan latihan fisik siswa di lapangan" loading="lazy"></div><div class="vertical-note">LEARN · PREPARE · GROW</div></div><div class="about-copy reveal"><span class="eyebrow">Tentang Arima</span><h2>Persiapan yang terarah. Langkah yang lebih percaya diri.</h2><p>LPKS Arima Persada hadir untuk membantu calon tenaga kerja mengenal jalur karier ke Jepang dan mempersiapkan diri melalui pembelajaran bahasa serta pemahaman keterampilan dan budaya kerja.</p><p>Setiap perjalanan dimulai dari informasi yang tepat. Kenali pilihan program, pahami persiapannya, lalu konsultasikan kebutuhanmu dengan tim Arima.</p><ul class="check-list"><li><span class="check">✓</span><span>Informasi jalur program yang lebih mudah dipahami.</span></li><li><span class="check">✓</span><span>Persiapan bahasa dan pengenalan budaya kerja Jepang.</span></li><li><span class="check">✓</span><span>Panduan awal untuk menentukan langkah selanjutnya.</span></li></ul><a class="btn btn-primary" href="#kuis" onclick="trackEvent('About_CTA')">TEMUKAN JALURMU <span class="arrow">↗</span></a></div></div></section>
+
+    <!-- PROGRAM -->
     <section class="section programs" id="program"><div class="container"><div class="section-head reveal"><span class="eyebrow">Kenali pilihanmu</span><h2>Tiga jalur. Satu langkah awal.</h2><p>Setiap program memiliki tujuan, ketentuan, dan persiapan yang berbeda. Pelajari gambaran umumnya sebelum memilih jalur.</p></div><div class="program-grid">
-      <article class="program-card reveal"><div class="program-image"><img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?auto=format&fit=crop&w=900&q=85" alt="Pemandangan kota Jepang modern" loading="lazy"><span class="program-no">PROGRAM 01</span></div><div class="program-body"><span class="program-tag">Ikusei Shuro / Magang</span><h3>Magang Jepang</h3><p>Jalur pemagangan untuk mempelajari keterampilan teknis dan memperoleh pengalaman kerja di lingkungan industri Jepang.</p><div class="program-foot"><span>Untuk calon peserta magang</span><a class="text-link" href="#kuis" data-program="magang">Cek kecocokan ↗</a></div></div></article>
-      <article class="program-card reveal"><div class="program-image"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85" alt="Persiapan belajar dan keterampilan" loading="lazy"><span class="program-no">PROGRAM 02</span></div><div class="program-body"><span class="program-tag">Specified Skilled Worker</span><h3>Tokutei Ginou (SSW)</h3><p>Jalur kerja berketerampilan khusus. Persyaratan bahasa, ujian keterampilan, dan sektor kerja mengikuti ketentuan yang berlaku.</p><div class="program-foot"><span>Untuk jalur kerja terampil</span><a class="text-link" href="#kuis" data-program="ssw">Cek kecocokan ↗</a></div></div></article>
-      <article class="program-card reveal"><div class="program-image"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=85" alt="Profesional teknis bekerja dengan perangkat teknologi" loading="lazy"><span class="program-no">PROGRAM 03</span></div><div class="program-body"><span class="program-tag">Engineer / Specialist</span><h3>Gijinkoku</h3><p>Jalur profesional bagi kandidat dengan latar pendidikan atau keahlian yang relevan dan memenuhi persyaratan posisi.</p><div class="program-foot"><span>Umumnya D3/S1 relevan</span><a class="text-link" href="#kuis" data-program="engineer">Cek kecocokan ↗</a></div></div></article>
+      <article class="program-card reveal"><div class="program-image"><img src="assets/latihan-kelompok.webp" alt="Siswa menjalani kegiatan latihan fisik bersama" loading="lazy"><span class="program-no">PROGRAM 01</span></div><div class="program-body"><span class="program-tag">Ikusei Shuro / Magang</span><h3>Magang Jepang</h3><p>Jalur pemagangan untuk mempelajari keterampilan teknis dan memperoleh pengalaman kerja di lingkungan industri Jepang.</p><div class="program-foot"><span>Untuk calon peserta magang</span><a class="text-link" href="#kuis" data-program="magang">Cek kecocokan ↗</a></div></div></article>
+      <article class="program-card reveal"><div class="program-image"><img src="assets/belajar-bahasa-jepang.webp" alt="Siswa belajar bahasa Jepang dengan materi pembelajaran" loading="lazy"><span class="program-no">PROGRAM 02</span></div><div class="program-body"><span class="program-tag">Specified Skilled Worker</span><h3>Tokutei Ginou (SSW)</h3><p>Jalur kerja berketerampilan khusus. Persyaratan bahasa, ujian keterampilan, dan sektor kerja mengikuti ketentuan yang berlaku.</p><div class="program-foot"><span>Untuk jalur kerja terampil</span><a class="text-link" href="#kuis" data-program="ssw">Cek kecocokan ↗</a></div></div></article>
+      <article class="program-card reveal"><div class="program-image"><img src="assets/kelas-arima.webp" alt="Proses belajar dan persiapan siswa di kelas" loading="lazy"><span class="program-no">PROGRAM 03</span></div><div class="program-body"><span class="program-tag">Engineer / Specialist</span><h3>Gijinkoku</h3><p>Jalur profesional bagi kandidat dengan latar pendidikan atau keahlian yang relevan dan memenuhi persyaratan posisi.</p><div class="program-foot"><span>Umumnya D3/S1 relevan</span><a class="text-link" href="#kuis" data-program="engineer">Cek kecocokan ↗</a></div></div></article>
     </div><p style="font-size:.78rem;color:#727b86;margin-top:22px">Catatan: informasi di atas merupakan gambaran umum. Kelayakan, persyaratan, durasi, dan proses penempatan perlu dikonfirmasi sesuai ketentuan terbaru dan posisi yang tersedia.</p></div></section>
-    <section class="section journey" id="alur"><div class="container"><div class="section-head reveal"><span class="eyebrow">Perjalananmu dimulai di sini</span><h2>Empat langkah untuk mulai mempersiapkan diri.</h2><p>Tak perlu mengetahui semuanya sejak awal. Mulai dari mengenali profil, lalu susun langkah bersama tim.</p></div><div class="steps"><div class="step reveal"><span class="step-number">01</span><h3>Kenali diri</h3><p>Jawab kuis singkat untuk memetakan minat, pendidikan, dan kesiapanmu.</p></div><div class="step reveal"><span class="step-number">02</span><h3>Pahami program</h3><p>Pelajari pilihan jalur dan persyaratan yang perlu kamu persiapkan.</p></div><div class="step reveal"><span class="step-number">03</span><h3>Konsultasi</h3><p>Diskusikan hasil awal dan pertanyaanmu dengan admin Arima.</p></div><div class="step reveal"><span class="step-number">04</span><h3>Susun persiapan</h3><p>Tentukan langkah belajar dan persiapan berikutnya sesuai kebutuhan.</p></div></div><div class="journey-cta reveal"><div><strong>Belum yakin harus mulai dari mana?</strong><p>Jawab beberapa pertanyaan, lalu lihat rekomendasi awal untukmu.</p></div><a class="btn btn-primary" href="#kuis">Mulai Kuis Gratis <span class="arrow">↗</span></a></div></div></section>
-    <section class="section quiz-section" id="kuis"><div class="container quiz-layout"><div class="quiz-intro reveal"><span class="eyebrow">Kuis karier · ±5 menit</span><h2>Jalur mana yang cocok untukmu?</h2><p>Jawab pertanyaan berikut sesuai kondisimu. Hasil ini adalah rekomendasi awal, bukan keputusan kelayakan atau jaminan penempatan.</p><div class="quiz-benefits"><div><span>✓</span>Gratis dan mudah diikuti</div><div><span>↗</span>Rekomendasi awal yang personal</div><div><span>◎</span>Bisa dilanjutkan dengan konsultasi</div></div></div>
-      <div class="quiz-card reveal" id="quizCard"><div id="quizFlow"><div class="quiz-top"><span class="quiz-kicker">Arima career finder</span><span class="quiz-count" id="quizCount">LANGKAH 01 / 06</span></div><div class="progress"><div class="progress-bar" id="progressBar"></div></div><h3 id="questionTitle">Apa pendidikan terakhir kamu?</h3><p class="quiz-help" id="questionHelp">Pilih jawaban yang paling sesuai dengan kondisimu saat ini.</p><div class="answer-list" id="answerList"></div><div class="quiz-error" id="quizError">Pilih salah satu jawaban untuk melanjutkan.</div><div class="quiz-controls"><button class="btn-quiet" id="prevBtn" disabled>← Kembali</button><button class="btn btn-primary" id="nextBtn">Lanjut <span class="arrow">→</span></button></div></div>
-      <div class="result-panel" id="resultPanel"><span class="result-badge">✦ Rekomendasi awalmu</span><h3 id="resultTitle">Jalur yang bisa kamu eksplorasi</h3><p id="resultText"></p><div class="result-reason" id="resultReason"></div><div class="result-actions"><a class="btn btn-primary" id="waResult" href="https://wa.me/6282375128230" target="_blank" rel="noopener">Konsultasi via WhatsApp ↗</a><button class="btn btn-outline" style="background:#fff;color:var(--navy);border-color:var(--line)" id="restartBtn">Ulangi kuis ↻</button></div><p style="font-size:.76rem;margin-top:16px">Hasil kuis bukan penetapan kelayakan. Persyaratan dan peluang aktual perlu diverifikasi melalui konsultasi.</p></div></div>
-    </div></section>
-    <section class="quote-section"><div class="container"><div class="quote-card reveal"><div class="quote-image"><img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1000&q=85" alt="Pemandangan kota Tokyo saat senja" loading="lazy"></div><div class="quote-copy"><span class="eyebrow">Masa depan dimulai sekarang</span><h2>Jangan berhenti di angan-angan. Mulai dengan persiapan.</h2><p>Pelajari jalurnya, tingkatkan kemampuanmu, dan cari informasi yang tepat sebelum mengambil keputusan.</p><a class="btn btn-primary" href="#kuis" style="align-self:flex-start">Temukan langkah pertamamu ↗</a></div></div></div></section>
-    <section class="section contact" id="kontak"><div class="container contact-grid"><div class="contact-copy reveal"><span class="eyebrow">Hubungi Arima</span><h2>Punya pertanyaan? Mari bicarakan.</h2><p>Jika ingin mengetahui program, persiapan bahasa, atau langkah pendaftaran, hubungi tim kami untuk mendapatkan informasi lebih lanjut.</p><a class="btn btn-primary" href="https://wa.me/6282375128230?text=Halo%20Arima%20Persada%2C%20saya%20ingin%20bertanya%20tentang%20program%20ke%20Jepang." target="_blank" rel="noopener">Chat Admin WhatsApp ↗</a></div><div class="contact-card reveal"><div class="contact-row"><span class="contact-icon">⌖</span><div><small>Lokasi</small><strong>Jl. Sidoharjo 1, Desa Negararatu, Kec. Natar, Lampung Selatan, Lampung</strong></div></div><div class="contact-row"><span class="contact-icon">☏</span><div><small>WhatsApp pendaftaran</small><strong>0823-7512-8230</strong></div></div><div class="contact-row"><span class="contact-icon">↗</span><div><small>Portal informasi</small><strong>arimapersada.vercel.app</strong></div></div><a class="btn btn-primary" href="https://wa.me/6282375128230?text=Halo%20LPKS%20Arima%20Persada%2C%20saya%20ingin%20konsultasi." target="_blank" rel="noopener">Mulai Percakapan <span class="arrow">↗</span></a></div></div></section>
+
+    <!-- ALUR -->
+    <section class="section journey" id="alur"><div class="container"><div class="section-head reveal"><span class="eyebrow">Perjalananmu dimulai di sini</span><h2>Empat langkah untuk mulai mempersiapkan diri.</h2><p>Tak perlu mengetahui semuanya sejak awal. Mulai dari mengenali profil, lalu susun langkah bersama tim.</p></div><div class="steps"><div class="step reveal"><span class="step-number">01</span><h3>Kenali diri</h3><p>Jawab kuis singkat untuk memetakan minat, pendidikan, dan kesiapanmu.</p></div><div class="step reveal"><span class="step-number">02</span><h3>Pahami program</h3><p>Pelajari pilihan jalur dan persyaratan yang perlu kamu persiapkan.</p></div><div class="step reveal"><span class="step-number">03</span><h3>Konsultasi</h3><p>Diskusikan hasil awal dan pertanyaanmu dengan admin Arima.</p></div><div class="step reveal"><span class="step-number">04</span><h3>Susun persiapan</h3><p>Tentukan langkah belajar dan persiapan berikutnya sesuai kebutuhan.</p></div></div><div class="journey-cta reveal"><div><strong>Belum yakin harus mulai dari mana?</strong><p>Jawab beberapa pertanyaan, lalu lihat rekomendasi awal untukmu.</p></div><a class="btn btn-primary" href="#kuis" onclick="trackEvent('Journey_CTA')">TEMUKAN JALURMU <span class="arrow">↗</span></a></div></div></section>
+
+    <!-- KEGIATAN -->
+    <section class="section life-section" id="kegiatan">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">Cerita nyata Arima</span><h2>Belajar. Berlatih. Bersiap melangkah.</h2><p>Kenali suasana persiapan melalui dokumentasi kegiatan belajar, latihan fisik, dan perjalanan ke Jepang.</p></div>
+        <div class="life-grid">
+          <article class="life-card reveal"><div class="life-photo"><img src="assets/belajar-bahasa-jepang.webp" alt="Siswa belajar bahasa Jepang di kelas" loading="lazy"><span class="life-index">01 / BELAJAR</span></div><div class="life-body"><h3>Bangun kemampuan dari kelas</h3><p>Belajar bahasa Jepang dan membiasakan diri dengan proses latihan.</p></div></article>
+          <article class="life-card reveal"><div class="life-photo"><img src="assets/latihan-kelompok.webp" alt="Siswa berlatih fisik dan disiplin di lapangan" loading="lazy"><span class="life-index">02 / BERLATIH</span></div><div class="life-body"><h3>Disiplin dibentuk setiap hari</h3><p>Aktivitas fisik menjadi bagian dari rutinitas untuk menjaga kebugaran dan kebersamaan.</p></div></article>
+          <article class="life-card reveal"><div class="life-photo"><img src="assets/perjalanan-jepang.webp" alt="Dokumentasi perjalanan di stasiun Jepang" loading="lazy"><span class="life-index">03 / MELANGKAH</span></div><div class="life-body"><h3>Siapkan langkah berikutnya</h3><p>Pelajari jalur, persyaratan, dan proses yang sesuai sebelum mengambil keputusan.</p></div></article>
+        </div>
+        <div class="life-cta reveal"><span><strong>Setiap orang punya jalur yang berbeda.</strong><small>Mulai dengan mengenali profil dan tujuanmu.</small></span><a class="btn btn-primary" href="#kuis" onclick="trackEvent('Life_CTA')">TEMUKAN JALURMU <span class="arrow">↗</span></a></div>
+      </div>
+    </section>
+
+    <!-- TESTIMONI (BARU) -->
+    <section class="testi-section" id="testimoni">
+      <div class="container">
+        <div class="section-head reveal" style="text-align:center;margin:0 auto 42px;">
+          <span class="eyebrow" style="color:#f4c96b;justify-content:center;">Kata Mereka</span>
+          <h2 style="color:white;">Cerita mereka yang sudah melangkah.</h2>
+        </div>
+        <div class="testi-grid">
+          <div class="testi-card reveal">
+            <div class="testi-quote">"</div>
+            <p class="testi-text">Awalnya ragu karena belum bisa bahasa Jepang sama sekali. Tapi di Arima diajari dari nol, lingkungannya disiplin tapi sangat kekeluargaan.</p>
+            <div class="testi-user">
+              <div class="testi-avatar">B</div>
+              <div class="testi-info"><strong>Budi Santoso</strong><span>Alumni 2022 · Manufaktur, Nagoya</span></div>
+            </div>
+          </div>
+          <div class="testi-card reveal">
+            <div class="testi-quote">"</div>
+            <p class="testi-text">Prosesnya sangat transparan. Mulai dari biaya, dokumen, sampai persiapan mental dijelaskan detail. Adminnya fast respon kalau kita tanya.</p>
+            <div class="testi-user">
+              <div class="testi-avatar">S</div>
+              <div class="testi-info"><strong>Siti Aminah</strong><span>Alumni 2023 · Caregiver (Kaigo), Osaka</span></div>
+            </div>
+          </div>
+          <div class="testi-card reveal">
+            <div class="testi-quote">"</div>
+            <p class="testi-text">Latihan fisiknya berat tapi bikin mental jadi kuat. Pas sampai Jepang, saya ngerasa lebih siap adaptasi sama ritme kerja di sana.</p>
+            <div class="testi-user">
+              <div class="testi-avatar">R</div>
+              <div class="testi-info"><strong>Rizky Pratama</strong><span>Alumni 2023 · Food Service, Tokyo</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KUIS -->
+    <section class="section quiz-section" id="kuis">
+      <div class="container quiz-layout">
+        <div class="quiz-intro reveal">
+          <span class="eyebrow">Kuis karier · ±5 menit</span>
+          <h2>Jalur mana yang cocok untukmu?</h2>
+          <p>Jawab pertanyaan berikut sesuai kondisimu. Hasil ini adalah rekomendasi awal, bukan keputusan kelayakan atau jaminan penempatan.</p>
+          <div class="quiz-benefits">
+            <div><span>✓</span>Gratis dan mudah diikuti</div>
+            <div><span>↗</span>Rekomendasi awal yang personal</div>
+            <div><span>◎</span>Bisa dilanjutkan dengan konsultasi</div>
+          </div>
+        </div>
+        <div class="quiz-card reveal" id="quizCard">
+          
+          <!-- Loading Overlay -->
+          <div class="quiz-loading" id="quizLoading">
+            <div class="spinner"></div>
+            <p>Menganalisis profil Anda...</p>
+          </div>
+
+          <div id="quizFlow">
+            <div class="quiz-top"><span class="quiz-kicker">TEMUKAN JALURMU</span><span class="quiz-count" id="quizCount">LANGKAH 01 / 06</span></div>
+            <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+            <h3 id="questionTitle">Apa pendidikan terakhir kamu?</h3>
+            <p class="quiz-help" id="questionHelp">Pilih jawaban yang paling sesuai dengan kondisimu saat ini.</p>
+            <div class="answer-list" id="answerList"></div>
+            <div class="quiz-error" id="quizError" style="display:none;font-size:.83rem;color:#c92836;margin-top:12px;">Pilih salah satu jawaban untuk melanjutkan.</div>
+            <div class="quiz-controls">
+              <button class="btn-quiet" id="prevBtn" disabled>← Kembali</button>
+              <button class="btn btn-primary" id="nextBtn" disabled>Lanjut <span class="arrow">→</span></button>
+            </div>
+          </div>
+          
+          <div class="result-panel" id="resultPanel">
+            <span class="result-badge">✦ Rekomendasi awalmu</span>
+            <h3 id="resultTitle">Jalur yang bisa kamu eksplorasi</h3>
+            <p id="resultText"></p>
+            <div class="result-reason" id="resultReason"></div>
+            <div class="result-actions">
+              <a class="btn btn-primary" id="waResult" href="https://wa.me/6282375128230" target="_blank" rel="noopener" onclick="trackEvent('WA_Quiz_Result')">Konsultasi via WhatsApp ↗</a>
+              <button class="btn btn-outline" style="background:#fff;color:var(--navy);border-color:var(--line)" id="restartBtn">Ulangi kuis ↻</button>
+            </div>
+            <p style="font-size:.76rem;margin-top:16px">Hasil kuis bukan penetapan kelayakan. Persyaratan dan peluang aktual perlu diverifikasi melalui konsultasi.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ (BARU) -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-head reveal" style="text-align:center;margin:0 auto 42px;">
+          <span class="eyebrow" style="justify-content:center;">Pertanyaan Umum</span>
+          <h2>Masih ragu? Mungkin ini jawabannya.</h2>
+        </div>
+        <div class="faq-grid reveal">
+          <details class="faq-item">
+            <summary>Apakah dijamin langsung berangkat ke Jepang?</summary>
+            <div class="faq-content">LPKS Arima Persada memfasilitasi pelatihan dan penyaluran. Keberangkatan bergantung pada kelulusan seleksi, kesiapan peserta, dan ketersediaan lowongan dari mitra Sending Organization (SO) di Jepang. Kami tidak menjanjikan keberangkatan instan tanpa proses.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Berapa biaya untuk mengikuti program ini?</summary>
+            <div class="faq-content">Biaya bervariasi tergantung pada jenis program (Magang, Tokutei Ginou, atau Gijinkoku) dan durasi pelatihan. Kami berkomitmen pada transparansi biaya. Silakan hubungi admin untuk mendapatkan rincian biaya yang sesuai dengan profil Anda.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Saya belum bisa bahasa Jepang sama sekali, apakah bisa ikut?</summary>
+            <div class="faq-content">Sangat bisa. LPKS Arima Persada menyediakan pelatihan bahasa Jepang dari level dasar (N5) hingga menengah. Justru ini adalah waktu yang tepat untuk mulai belajar dan mempersiapkan diri dari nol.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Apakah ada batasan usia dan pendidikan?</summary>
+            <div class="faq-content">Setiap jalur memiliki persyaratan berbeda. Umumnya, jalur Magang dan Tokutei Ginou mensyaratkan minimal lulusan SMA/SMK dengan usia sekitar 18-30 tahun. Untuk jalur Gijinkoku biasanya membutuhkan gelar D3/S1. Pastikan untuk berkonsultasi agar sesuai dengan ketentuan terbaru.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Apakah disediakan asrama selama pelatihan?</summary>
+            <div class="faq-content">Ya, kami menyediakan fasilitas asrama terpadu bagi peserta pelatihan. Lingkungan asrama dirancang untuk mendukung kedisiplinan, pembelajaran bahasa, dan latihan fisik agar peserta siap secara mental dan keterampilan.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="quote-section" style="padding:0 0 100px;background:#f5f7fa;"><div class="container"><div class="quote-card reveal" style="display:grid;grid-template-columns:1fr 1fr;background:#fff;border-radius:26px;overflow:hidden;border:1px solid var(--line);"><div class="quote-image" style="min-height:310px;position:relative;"><img src="assets/perjalanan-jepang.webp" alt="Dokumentasi perjalanan bersama di stasiun Jepang" loading="lazy" style="position:absolute;width:100%;height:100%;object-fit:cover;"></div><div class="quote-copy" style="padding:clamp(28px,5vw,58px);display:flex;flex-direction:column;justify-content:center;"><span class="eyebrow" style="color:var(--red);">Masa depan dimulai sekarang</span><h2 style="font-size:clamp(1.9rem,3vw,2.8rem);line-height:1.1;margin:17px 0;">Jangan berhenti di angan-angan. Mulai dengan persiapan.</h2><p style="color:var(--muted);">Pelajari jalurnya, tingkatkan kemampuanmu, dan cari informasi yang tepat sebelum mengambil keputusan.</p><a class="btn btn-primary" href="#kuis" style="align-self:flex-start" onclick="trackEvent('Quote_CTA')">TEMUKAN JALURMU ↗</a></div></div></div></section>
+
+    <!-- KONTAK & MAPS (BARU) -->
+    <section class="section contact" id="kontak">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <span class="eyebrow">Hubungi Arima</span>
+          <h2>Punya pertanyaan? Mari bicarakan.</h2>
+          <p>Jika ingin mengetahui program, persiapan bahasa, atau langkah pendaftaran, hubungi tim kami untuk mendapatkan informasi lebih lanjut.</p>
+          
+          <div class="map-wrapper reveal" style="margin-top:30px;">
+            <!-- Google Maps Embed untuk area Natar, Lampung Selatan -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15884.246915818143!2d105.1909788!3d-5.2987172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40d9c2b3f8e6c5%3A0xe5c0a5b5f5e5c5e5!2sNatar%2C%20South%20Lampung%20Regency%2C%20Lampung!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Peta Lokasi Arima Persada"></iframe>
+          </div>
+        </div>
+        
+        <div class="contact-card reveal">
+          <div class="contact-row">
+            <span class="contact-icon">⌖</span>
+            <div>
+              <small>Lokasi</small>
+              <strong>Jl. Sidoharjo 1, Desa Negararatu, Kec. Natar, Lampung Selatan, Lampung</strong>
+              <button class="copy-btn" onclick="copyToClipboard('Jl. Sidoharjo 1, Desa Negararatu, Kec. Natar, Lampung Selatan')">Salin Alamat</button>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="contact-icon">☏</span>
+            <div>
+              <small>WhatsApp pendaftaran</small>
+              <strong>0823-7512-8230</strong>
+              <button class="copy-btn" onclick="copyToClipboard('082375128230')">Salin Nomor</button>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="contact-icon">↗</span>
+            <div>
+              <small>Portal informasi</small>
+              <strong>arima-lp.vercel.app</strong>
+            </div>
+          </div>
+          <a class="btn btn-primary" href="https://wa.me/6282375128230?text=Halo%20LPKS%20Arima%20Persada%2C%20saya%20ingin%20konsultasi." target="_blank" rel="noopener" onclick="trackEvent('WA_Contact_Section')">Mulai Percakapan <span class="arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer class="footer"><div class="container"><div class="footer-main"><a class="brand" href="#beranda"><span class="brand-mark">A.</span><span class="brand-copy"><strong>LPKS ARIMA PERSADA</strong><small>Japan Language Center</small></span></a><p>Membuka gerbang karier melalui persiapan bahasa, keterampilan, dan informasi yang terarah.</p></div><div class="footer-bottom"><span>© <span id="year"></span> LPKS Arima Persada. Hak cipta dilindungi.</span><div class="footer-links"><a href="#tentang">Tentang</a><a href="#program">Program</a><a href="#kuis">Kuis Karier</a><a href="#kontak">Kontak</a></div></div></div></footer>
-  <a class="wa-float" href="https://wa.me/6282375128230?text=Halo%20LPKS%20Arima%20Persada%2C%20saya%20ingin%20bertanya." target="_blank" rel="noopener" aria-label="Chat WhatsApp LPKS Arima Persada" title="Chat WhatsApp">✆</a>
+
+  <footer class="footer"><div class="container"><div class="footer-main"><a class="brand" href="#beranda"><span class="brand-logo"><img src="assets/arima-logo.webp" alt="Logo resmi LPKS Arima Persada"></span><span class="brand-copy"><strong>LPKS ARIMA PERSADA</strong><small>Japan Language Center</small></span></a><p>Membuka gerbang karier melalui persiapan bahasa, keterampilan, dan informasi yang terarah.</p></div><div class="footer-bottom"><span>© <span id="year"></span> LPKS Arima Persada. Hak cipta dilindungi.</span><div class="footer-links"><a href="#tentang">Tentang</a><a href="#program">Program</a><a href="#kuis">Kuis Karier</a><a href="#faq">FAQ</a><a href="#kontak">Kontak</a></div></div></div></footer>
+  
+  <div class="mobile-cta"><a class="btn btn-primary" href="#kuis" onclick="trackEvent('Mobile_Sticky_CTA')">TEMUKAN JALURMU <span class="arrow">↗</span></a></div>
+  
+  <a class="wa-float" href="https://wa.me/6282375128230?text=Halo%20LPKS%20Arima%20Persada%2C%20saya%20ingin%20bertanya." target="_blank" rel="noopener" aria-label="Chat WhatsApp LPKS Arima Persada" title="Chat WhatsApp" onclick="trackEvent('WA_Floating_Button')">✆</a>
+
+  <!-- Toast Notification -->
+  <div id="toast">Berhasil disalin!</div>
+
   <script>
+    // ==========================================
+    // 1. ANALYTICS EVENT TRACKER (Placeholder)
+    // ==========================================
+    function trackEvent(eventName) {
+      // Jika menggunakan Google Analytics 4, gunakan kode di bawah:
+      // if (typeof gtag !== 'undefined') { gtag('event', 'click', { 'event_category': 'CTA', 'event_label': eventName }); }
+      console.log('[Analytics Tracked]:', eventName);
+    }
+
+    // ==========================================
+    // 2. COPY TO CLIPBOARD & TOAST
+    // ==========================================
+    function copyToClipboard(text) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast("Berhasil disalin!");
+        });
+      } else {
+        // Fallback
+        const temp = document.createElement('textarea');
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        showToast("Berhasil disalin!");
+      }
+    }
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => { toast.classList.remove('show'); }, 2500);
+    }
+
+    // ==========================================
+    // 3. PARALLAX EFFECT (Hero)
+    // ==========================================
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const heroImg = document.getElementById('heroImg');
+      if (heroImg && scrolled < window.innerHeight) {
+        heroImg.style.transform = `translateY(${scrolled * 0.15}px)`;
+      }
+    });
+
+    // ==========================================
+    // 4. COUNT-UP STATS
+    // ==========================================
+    function animateValue(obj, start, end, duration, suffix) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start) + suffix;
+        if (progress < 1) { window.requestAnimationFrame(step); }
+      };
+      window.requestAnimationFrame(step);
+    }
+    
+    // Observer to trigger count-up only when scrolled into view
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.counter').forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const suffix = counter.getAttribute('data-suffix') || '';
+            animateValue(counter, 0, target, 1500, suffix);
+          });
+          statsObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    const statsSection = document.querySelector('.hero-stats');
+    if(statsSection) statsObserver.observe(statsSection);
+
+    // ==========================================
+    // 5. KUIS LOGIC (WITH LOCALSTORAGE & AUTO-ADVANCE)
+    // ==========================================
     const quizQuestions = [
       {title:'Apa pendidikan terakhir kamu?',help:'Pilih pendidikan yang sudah kamu selesaikan.',answers:[['sma','SMA / SMK atau sederajat'],['d3','Diploma 3 (D3)'],['s1','Sarjana (S1)'],['other','Masih sekolah atau lainnya']]},
       {title:'Apa tujuan utama kamu ke Jepang?',help:'Pilih tujuan yang paling mendekati rencanamu.',answers:[['skill','Belajar keterampilan dan pengalaman kerja'],['work','Bekerja di bidang yang membutuhkan keterampilan khusus'],['career','Mengembangkan karier profesional sesuai pendidikan'],['explore','Masih mencari tahu pilihan yang tersedia']]},
@@ -62,14 +453,221 @@
       {title:'Bagaimana kemampuan bahasa Jepang kamu saat ini?',help:'Jawab apa adanya. Tingkat bahasa yang dibutuhkan dapat berbeda menurut jalur dan posisi.',answers:[['none','Belum mulai belajar'],['basic','Dasar / sedang belajar'],['test','Sudah belajar dan menargetkan JFT atau JLPT'],['advanced','Sudah cukup lancar / memiliki sertifikat']]},
       {title:'Kapan kamu ingin mulai mempersiapkan diri?',help:'Pilih waktu yang paling realistis untuk kamu.',answers:[['soon','Ingin mulai secepatnya'],['months','Dalam 3–6 bulan ke depan'],['later','Masih menyusun rencana'],['info','Ingin konsultasi dulu sebelum memutuskan']]}
     ];
-    const state = {index:0,answers:Array(quizQuestions.length).fill(null)};
+    
+    const state = {index:0,answers:Array(quizQuestions.length).fill(null),programHint:null};
     const $ = id => document.getElementById(id);
-    function renderQuestion(){const q=quizQuestions[state.index];$('quizCount').textContent=`LANGKAH ${String(state.index+1).padStart(2,'0')} / ${String(quizQuestions.length).padStart(2,'0')}`;$('progressBar').style.width=`${((state.index+1)/quizQuestions.length)*100}%`;$('questionTitle').textContent=q.title;$('questionHelp').textContent=q.help;$('answerList').innerHTML='';$('quizError').style.display='none';q.answers.forEach((answer,i)=>{const b=document.createElement('button');b.type='button';b.className='answer-option'+(state.answers[state.index]===answer[0]?' selected':'');b.setAttribute('aria-pressed',state.answers[state.index]===answer[0]?'true':'false');const letter=String.fromCharCode(65+i);b.innerHTML=`<span class="option-letter">${letter}</span><span class="option-label"></span>`;b.querySelector('.option-label').textContent=answer[1];b.addEventListener('click',()=>{state.answers[state.index]=answer[0];renderQuestion()});$('answerList').appendChild(b)});$('prevBtn').disabled=state.index===0;$('nextBtn').innerHTML=state.index===quizQuestions.length-1?'Lihat Rekomendasi <span class="arrow">↗</span>':'Lanjut <span class="arrow">→</span>'}
-    function recommend(){const a=state.answers;let scores={magang:0,ssw:0,engineer:0};if(a[0]==='d3'||a[0]==='s1')scores.engineer+=3;if(a[0]==='sma')scores.magang+=1,scores.ssw+=1;if(a[1]==='skill')scores.magang+=3;if(a[1]==='work')scores.ssw+=3;if(a[1]==='career')scores.engineer+=3;if(a[2]==='manufacturing')scores.magang+=1,scores.ssw+=2;if(a[2]==='carefood')scores.ssw+=3;if(a[2]==='professional')scores.engineer+=4;if(a[3]==='qualified')scores.engineer+=2;if(a[3]==='beginner')scores.magang+=1,scores.ssw+=1;if(a[4]==='advanced'||a[4]==='test')scores.ssw+=1,scores.magang+=1,scores.engineer+=1;const sorted=Object.entries(scores).sort((x,y)=>y[1]-x[1]);if(a[1]==='explore'||a[2]==='unsure'||a[5]==='info')return 'konsultasi';if(sorted[0][1]===sorted[1][1])return 'konsultasi';return sorted[0][0]}
-    const resultData={magang:{title:'Eksplorasi jalur Magang Jepang',text:'Dari jawabanmu, jalur pemagangan bisa menjadi salah satu pilihan untuk kamu pelajari lebih lanjut.',reason:'Langkah berikutnya: tanyakan bidang pemagangan yang tersedia, batas usia dan pendidikan, persyaratan bahasa, biaya, durasi, serta proses resmi yang berlaku.'},ssw:{title:'Eksplorasi jalur Tokutei Ginou (SSW)',text:'Jawabanmu menunjukkan bahwa jalur kerja berketerampilan khusus layak kamu pelajari lebih lanjut.',reason:'Langkah berikutnya: periksa sektor yang sesuai, ujian keterampilan, persyaratan bahasa, dokumen, dan lowongan aktual yang tersedia.'},engineer:{title:'Eksplorasi jalur Engineer / Specialist',text:'Latar pendidikan atau minat profesionalmu mungkin relevan untuk jalur profesional, bergantung pada posisi dan kualifikasi yang diminta.',reason:'Langkah berikutnya: siapkan ijazah, bidang keahlian, pengalaman kerja, kemampuan bahasa, serta cek kesesuaian jurusan dengan pekerjaan yang ditawarkan.'},konsultasi:{title:'Mulai dengan konsultasi program',text:'Kamu masih memiliki beberapa hal yang perlu dipertimbangkan. Konsultasi awal dapat membantu memperjelas pilihan yang sesuai dengan profilmu.',reason:'Langkah berikutnya: ceritakan pendidikan, pengalaman, minat bidang, kemampuan bahasa, dan target waktumu kepada admin agar pilihan program bisa dibahas dengan lebih tepat.'}};
-    $('nextBtn').addEventListener('click',()=>{if(!state.answers[state.index]){$('quizError').style.display='block';return}if(state.index<quizQuestions.length-1){state.index++;renderQuestion()}else{showResult()}});$('prevBtn').addEventListener('click',()=>{if(state.index>0){state.index--;renderQuestion()}});function showResult(){const key=recommend(),r=resultData[key];$('quizFlow').style.display='none';$('resultPanel').style.display='block';$('resultTitle').textContent=r.title;$('resultText').textContent=r.text;$('resultReason').textContent=r.reason;const summary=quizQuestions.map((q,i)=>q.title+' '+q.answers.find(x=>x[0]===state.answers[i])?.[1]).join('\n');const msg=`Halo LPKS Arima Persada, saya baru menyelesaikan kuis karier.\nRekomendasi awal: ${r.title}.\n\nJawaban saya:\n${summary}\n\nSaya ingin konsultasi mengenai persyaratan dan program yang sesuai.`;$('waResult').href='https://wa.me/6282375128230?text='+encodeURIComponent(msg);$('progressBar').style.width='100%';$('quizCount').textContent='SELESAI';$('quizCard').scrollIntoView({behavior:'smooth',block:'center'})}function resetQuiz(){state.index=0;state.answers.fill(null);$('quizFlow').style.display='block';$('resultPanel').style.display='none';renderQuestion()}$('restartBtn').addEventListener('click',resetQuiz);renderQuestion();
-    const toggle=$('menuToggle'),nav=$('navLinks');toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'✕':'☰';document.body.classList.toggle('menu-open',open)});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰';document.body.classList.remove('menu-open')}));$('year').textContent=new Date().getFullYear();
-    if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+
+    // Simpan & Muat dari LocalStorage
+    function saveQuizState() {
+      localStorage.setItem('arimaQuizState', JSON.stringify(state));
+    }
+    function loadQuizState() {
+      const saved = localStorage.getItem('arimaQuizState');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed.answers && parsed.answers.length === quizQuestions.length && parsed.index < quizQuestions.length) {
+            state.index = parsed.index;
+            state.answers = parsed.answers;
+            state.programHint = parsed.programHint;
+          }
+        } catch(e){}
+      }
+    }
+
+    function renderQuestion(){
+      const q = quizQuestions[state.index];
+      $('quizCount').textContent = `LANGKAH ${String(state.index+1).padStart(2,'0')} / ${String(quizQuestions.length).padStart(2,'0')}`;
+      $('progressBar').style.width = `${((state.index+1)/quizQuestions.length)*100}%`;
+      $('questionTitle').textContent = q.title;
+      $('questionHelp').textContent = q.help;
+      $('answerList').innerHTML = '';
+      $('quizError').style.display = 'none';
+      
+      q.answers.forEach((answer,i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'answer-option' + (state.answers[state.index] === answer[0] ? ' selected' : '');
+        b.setAttribute('aria-pressed', state.answers[state.index] === answer[0] ? 'true' : 'false');
+        b.tabIndex = 0;
+        
+        const letter = String.fromCharCode(65+i);
+        b.innerHTML = `<span class="option-letter">${letter}</span><span class="option-label"></span>`;
+        b.querySelector('.option-label').textContent = answer[1];
+        
+        // Event Listener: Click
+        b.addEventListener('click', () => {
+          state.answers[state.index] = answer[0];
+          saveQuizState();
+          renderQuestion();
+          
+          // AUTO ADVANCE LOGIC
+          setTimeout(() => {
+            if (state.index < quizQuestions.length - 1) {
+              $('nextBtn').click();
+            } else {
+              $('nextBtn').click(); // Trigger result
+            }
+          }, 350); // Delay 350ms agar user melihat efek seleksi
+        });
+
+        // Event Listener: Keyboard Nav (A11y)
+        b.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+            e.preventDefault();
+            const nextSibling = b.nextElementSibling;
+            if (nextSibling) nextSibling.focus();
+          } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            const prevSibling = b.previousElementSibling;
+            if (prevSibling) prevSibling.focus();
+          } else if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            b.click();
+          }
+        });
+
+        $('answerList').appendChild(b);
+      });
+      
+      $('prevBtn').disabled = state.index === 0;
+      const nextBtn = $('nextBtn');
+      nextBtn.innerHTML = state.index === quizQuestions.length - 1 ? 'Lihat Rekomendasi <span class="arrow">↗</span>' : 'Lanjut <span class="arrow">→</span>';
+      
+      // Disable Next button if no answer selected
+      nextBtn.disabled = !state.answers[state.index];
+    }
+    
+    function recommend(){
+      const a = state.answers;
+      let scores = {magang:0, ssw:0, engineer:0};
+      if(state.programHint && scores[state.programHint] !== undefined) scores[state.programHint] += 2;
+      if(a[0]==='d3' || a[0]==='s1') scores.engineer += 3;
+      if(a[0]==='sma') scores.magang+=1, scores.ssw+=1;
+      if(a[1]==='skill') scores.magang+=3;
+      if(a[1]==='work') scores.ssw+=3;
+      if(a[1]==='career') scores.engineer+=3;
+      if(a[2]==='manufacturing') scores.magang+=1, scores.ssw+=2;
+      if(a[2]==='carefood') scores.ssw+=3;
+      if(a[2]==='professional') scores.engineer+=4;
+      if(a[3]==='qualified') scores.engineer+=2;
+      if(a[3]==='beginner') scores.magang+=1, scores.ssw+=1;
+      if(a[4]==='advanced' || a[4]==='test') scores.ssw+=1, scores.magang+=1, scores.engineer+=1;
+      const sorted = Object.entries(scores).sort((x,y)=>y[1]-x[1]);
+      if(a[1]==='explore' || a[2]==='unsure' || a[5]==='info') return 'konsultasi';
+      if(sorted[0][1] === sorted[1][1]) return 'konsultasi';
+      return sorted[0][0];
+    }
+
+    const resultData = {
+      magang:{title:'Eksplorasi jalur Magang Jepang',text:'Dari jawabanmu, jalur pemagangan bisa menjadi salah satu pilihan untuk kamu pelajari lebih lanjut.',reason:'Langkah berikutnya: tanyakan bidang pemagangan yang tersedia, batas usia dan pendidikan, persyaratan bahasa, biaya, durasi, serta proses resmi yang berlaku.'},
+      ssw:{title:'Eksplorasi jalur Tokutei Ginou (SSW)',text:'Jawabanmu menunjukkan bahwa jalur kerja berketerampilan khusus layak kamu pelajari lebih lanjut.',reason:'Langkah berikutnya: periksa sektor yang sesuai, ujian keterampilan, persyaratan bahasa, dokumen, dan lowongan aktual yang tersedia.'},
+      engineer:{title:'Eksplorasi jalur Engineer / Specialist',text:'Latar pendidikan atau minat profesionalmu mungkin relevan untuk jalur profesional, bergantung pada posisi dan kualifikasi yang diminta.',reason:'Langkah berikutnya: siapkan ijazah, bidang keahlian, pengalaman kerja, kemampuan bahasa, serta cek kesesuaian jurusan dengan pekerjaan yang ditawarkan.'},
+      konsultasi:{title:'Mulai dengan konsultasi program',text:'Kamu masih memiliki beberapa hal yang perlu dipertimbangkan. Konsultasi awal dapat membantu memperjelas pilihan yang sesuai dengan profilmu.',reason:'Langkah berikutnya: ceritakan pendidikan, pengalaman, minat bidang, kemampuan bahasa, dan target waktumu kepada admin agar pilihan program bisa dibahas dengan lebih tepat.'}
+    };
+
+    $('nextBtn').addEventListener('click', () => {
+      if(!state.answers[state.index]) { $('quizError').style.display = 'block'; return; }
+      if(state.index < quizQuestions.length - 1) {
+        state.index++;
+        saveQuizState();
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    $('prevBtn').addEventListener('click', () => {
+      if(state.index > 0) {
+        state.index--;
+        saveQuizState();
+        renderQuestion();
+      }
+    });
+
+    function showResult() {
+      // Tampilkan Loading
+      $('quizLoading').style.display = 'flex';
+      saveQuizState(); // Simpan state terakhir
+      
+      setTimeout(() => {
+        $('quizLoading').style.display = 'none';
+        
+        const key = recommend(), r = resultData[key];
+        $('quizFlow').style.display = 'none';
+        $('resultPanel').style.display = 'block';
+        $('resultTitle').textContent = r.title;
+        $('resultText').textContent = r.text;
+        $('resultReason').textContent = r.reason;
+        
+        const summary = quizQuestions.map((q,i) => q.title + ' ' + q.answers.find(x=>x[0]===state.answers[i])?.[1]).join('\n');
+        const msg = `Halo LPKS Arima Persada, saya baru menyelesaikan kuis karier.\nRekomendasi awal: ${r.title}.\n\nJawaban saya:\n${summary}\n\nSaya ingin konsultasi mengenai persyaratan dan program yang sesuai.`;
+        
+        $('waResult').href = 'https://wa.me/6282375128230?text=' + encodeURIComponent(msg);
+        $('progressBar').style.width = '100%';
+        $('quizCount').textContent = 'SELESAI';
+        $('quizCard').scrollIntoView({behavior:'smooth', block:'center'});
+      }, 1500); // Loading 1.5 detik
+    }
+
+    function resetQuiz() {
+      state.index = 0;
+      state.answers.fill(null);
+      state.programHint = null;
+      localStorage.removeItem('arimaQuizState');
+      $('quizFlow').style.display = 'block';
+      $('resultPanel').style.display = 'none';
+      renderQuestion();
+    }
+    $('restartBtn').addEventListener('click', resetQuiz);
+
+    // Program Hint Logic
+    document.querySelectorAll('[data-program]').forEach(link => {
+      link.addEventListener('click', () => {
+        state.programHint = link.dataset.program;
+        saveQuizState();
+        trackEvent('Program_Click_' + link.dataset.program);
+      });
+    });
+
+    // ==========================================
+    // 6. INIT & INTERSECTION OBSERVER
+    // ==========================================
+    // Load state & Render awal
+    loadQuizState();
+    renderQuestion();
+
+    // Reveal animations
+    if('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => entries.forEach(e => {
+        if(e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      }), {threshold:.12});
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+
+    // Mobile Menu Toggle
+    const toggle = $('menuToggle'), nav = $('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? '✕' : '☰';
+      document.body.classList.toggle('menu-open', open);
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = '☰';
+      document.body.classList.remove('menu-open');
+    }));
+
+    // Footer Year
+    $('year').textContent = new Date().getFullYear();
+
   </script>
 </body>
 </html>
