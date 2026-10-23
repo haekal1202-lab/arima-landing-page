@@ -2,8 +2,18 @@
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Konsultasi Karier Jepang - LPKS Arima Persada</title>
+
+    <!-- SEO & Social -->
+    <meta name="description" content="Konsultasi interaktif ±5 menit untuk menemukan program pelatihan bahasa & keterampilan Jepang yang tepat. Gratis, terdaftar resmi Kemnaker RI dan Mitra SO.">
+    <meta name="keywords" content="kerja Jepang, pelatihan bahasa Jepang, LPKS Arima Persada, magang Jepang, tokutei ginou, gijinkoku, kaigo">
+    <meta property="og:title" content="Konsultasi Karier Jepang - LPKS Arima Persada">
+    <meta property="og:description" content="Temukan program pelatihan Jepang yang tepat lewat konsultasi interaktif ±5 menit.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#080B14">
+    <link rel="canonical" href="https://arima-lp.vercel.app/">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -43,7 +53,7 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #080B14; }
         .font-serif { font-family: 'Fraunces', serif; }
-        
+
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
@@ -54,7 +64,7 @@
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
         .chat-bubble { animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        
+
         .typing-dots { display: inline-flex; gap: 5px; padding: 14px 18px; }
         .typing-dots span {
             width: 6px; height: 6px; background-color: #D4B678; border-radius: 50%;
@@ -75,170 +85,331 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
         .input-area { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+
+        /* Perbaikan kontras untuk pengguna low-vision */
+        .text-slate-400 { color: #94a3b8 !important; }
+        .text-slate-500 { color: #64748b !important; }
+
+        /* Fokus outline yang jelas untuk navigasi keyboard */
+        :focus-visible {
+            outline: 2px solid #D4B678 !important;
+            outline-offset: 2px !important;
+        }
+
+        /* Back button disabled state */
+        #backBtn:disabled { opacity: 0.4; cursor: not-allowed; }
     </style>
 </head>
 <body class="text-slate-200 antialiased overflow-hidden h-[100dvh] flex">
 
+    <!-- H1 untuk SEO & screen reader (visual heading ada di panel kiri) -->
+    <h1 class="sr-only">LPKS Arima Persada — Konsultasi Karier Kerja di Jepang</h1>
+
     <!-- BACKGROUND ANIMASI (ORBS) -->
-    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-vermilion-500 rounded-full mix-blend-screen filter blur-[120px] opacity-20 animate-blob"></div>
         <div class="absolute top-[20%] right-[-10%] w-[400px] h-[400px] bg-blue-900 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob" style="animation-delay: 2s;"></div>
         <div class="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-gold-400 rounded-full mix-blend-screen filter blur-[150px] opacity-10 animate-blob" style="animation-delay: 4s;"></div>
     </div>
 
     <!-- MAIN CONTAINER -->
-    <div class="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col lg:flex-row h-full p-0 lg:p-6 gap-6">
+    <main class="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col lg:flex-row h-full p-0 lg:p-6 gap-6">
 
-        <!-- KIRI: BRANDING & VISUAL -->
-        <div class="hidden lg:flex flex-col justify-between w-1/2 p-10 rounded-[2.5rem] bg-ink-950/40 border border-white/5 relative overflow-hidden">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[400px] font-serif text-white/[0.02] leading-none select-none pointer-events-none">夢</div>
+        <!-- KIRI: BRANDING & VISUAL (desktop) -->
+        <aside class="hidden lg:flex flex-col justify-between w-1/2 p-10 rounded-[2.5rem] bg-ink-950/40 border border-white/5 relative overflow-hidden" aria-label="Tentang LPKS Arima Persada">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[400px] font-serif text-white/[0.02] leading-none select-none pointer-events-none" aria-hidden="true">夢</div>
 
             <div class="relative z-10">
                 <div class="flex items-center gap-4 mb-12">
                     <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center overflow-hidden shadow-lg shadow-vermilion-500/20 relative">
-                        <img src="Logo polos.jpeg" alt="Logo" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
+                        <img src="Logo%20polos.jpeg" alt="Logo LPKS Arima Persada" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
                         <span class="text-ink-950 font-extrabold text-2xl font-serif relative z-0">A</span>
                     </div>
                     <div>
-                        <h1 class="font-serif text-2xl font-bold text-white tracking-tight">LPKS Arima Persada</h1>
+                        <h2 class="font-serif text-2xl font-bold text-white tracking-tight">LPKS Arima Persada</h2>
                         <p class="text-xs text-gold-400 uppercase tracking-widest font-semibold mt-1">Membuka Gerbang Karier</p>
                     </div>
                 </div>
 
-                <h2 class="font-serif text-5xl xl:text-6xl font-bold text-white leading-[1.1] mb-6">
+                <p class="font-serif text-5xl xl:text-6xl font-bold text-white leading-[1.1] mb-6">
                     Wujudkan Mimpi <br>
                     <span class="italic text-gold-400">Kerja di Jepang.</span>
-                </h2>
-                <p class="text-slate-400 text-lg leading-relaxed max-w-md">
-                    Konsultasi interaktif dengan sistem cerdas kami untuk menemukan program pelatihan yang paling tepat untuk masa depan Anda.
                 </p>
+
+                <!-- Sub-headline dengan value proposition -->
+                <p class="text-slate-400 text-lg leading-relaxed max-w-md">
+                    Konsultasi interaktif <strong class="text-white">±5 menit</strong> untuk menemukan program pelatihan yang paling tepat. <strong class="text-white">Gratis, tanpa komitmen.</strong>
+                </p>
+
+                <!-- Trust signals -->
+                <ul class="mt-6 space-y-2 text-sm text-slate-300" role="list">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-gold-400" aria-hidden="true"></i> Terdaftar resmi Kemnaker RI</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-gold-400" aria-hidden="true"></i> Mitra resmi Sending Organization (SO)</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-gold-400" aria-hidden="true"></i> Pendampingan konsultan berpengalaman</li>
+                </ul>
             </div>
 
             <div class="relative z-10 flex gap-4 mt-auto">
                 <div class="w-1/2 rounded-2xl overflow-hidden border border-white/10 animate-float" style="animation-delay: 0s;">
-                    <img src="foto bersama siswa hitam 2.jpeg" alt="Siswa" class="w-full h-48 object-cover opacity-80 hover:opacity-100 transition duration-500">
+                    <img src="foto%20bersama%20siswa%20hitam%202.jpeg" alt="Siswa LPKS Arima Persada" class="w-full h-48 object-cover opacity-80 hover:opacity-100 transition duration-500" loading="lazy">
                 </div>
                 <div class="w-1/2 bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center backdrop-blur-md animate-float" style="animation-delay: 1.5s;">
-                    <div class="w-10 h-10 bg-vermilion-500/20 text-vermilion-500 rounded-full flex items-center justify-center mb-4">
+                    <div class="w-10 h-10 bg-vermilion-500/20 text-vermilion-500 rounded-full flex items-center justify-center mb-4" aria-hidden="true">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
                     <p class="text-white font-bold text-lg">100% Legal</p>
                     <p class="text-xs text-slate-400 mt-1">Terdaftar resmi Kemnaker RI dan Mitra SO.</p>
                 </div>
             </div>
-        </div>
+        </aside>
 
         <!-- KANAN: AREA CHAT INTERAKTIF -->
-        <div class="w-full lg:w-1/2 h-full flex items-center justify-center p-0 sm:p-4 lg:p-0">
+        <section class="w-full lg:w-1/2 h-full flex items-center justify-center p-0 sm:p-4 lg:p-0" aria-label="Konsultasi interaktif">
             <div class="w-full max-w-lg h-full lg:h-[90vh] glass-panel sm:rounded-[2.5rem] overflow-hidden flex flex-col relative">
-                
+
                 <!-- HEADER CHAT -->
-                <div class="bg-white/5 p-4 sm:p-6 flex items-center justify-between shrink-0 border-b border-white/10 z-10">
+                <header class="bg-white/5 p-4 sm:p-6 flex items-center justify-between shrink-0 border-b border-white/10 z-10">
                     <div class="flex items-center gap-3 sm:gap-4">
                         <div class="relative">
                             <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-gold-400 shadow-lg shrink-0 relative">
-                                <img src="Logo polos.jpeg" alt="Logo" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
+                                <img src="Logo%20polos.jpeg" alt="" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
                                 <span class="text-ink-950 font-extrabold text-sm sm:text-lg relative z-0">A</span>
                             </div>
-                            <div class="absolute bottom-0 right-0 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-emerald-500 border-2 border-ink-900 rounded-full animate-pulse"></div>
+                            <div class="absolute bottom-0 right-0 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-emerald-500 border-2 border-ink-900 rounded-full animate-pulse" aria-hidden="true"></div>
                         </div>
                         <div>
                             <h3 class="font-bold text-white text-base sm:text-lg">Arima AI Assistant</h3>
-                            <p class="text-[10px] sm:text-xs text-emerald-400 font-medium">Online - Siap membantu</p>
+                            <p class="text-[10px] sm:text-xs text-emerald-400 font-medium">Online — Siap membantu</p>
                         </div>
                     </div>
-                    <div class="text-right hidden sm:block">
-                        <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Progress</p>
-                        <p id="progressText" class="text-sm font-bold text-gold-400">0%</p>
+
+                    <div class="flex items-center gap-2 sm:gap-3">
+                        <!-- BACK BUTTON -->
+                        <button id="backBtn" type="button"
+                                onclick="handleBack()"
+                                disabled
+                                aria-label="Kembali ke pertanyaan sebelumnya"
+                                class="text-xs text-slate-300 hover:text-gold-400 flex items-center gap-1.5 px-2 py-1.5 rounded-lg hover:bg-white/5 transition">
+                            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                            <span class="hidden sm:inline">Kembali</span>
+                        </button>
+                        <div class="text-right" aria-live="polite">
+                            <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold hidden sm:block">Progress</p>
+                            <p id="progressText" class="text-xs sm:text-sm font-bold text-gold-400">Mulai · 0%</p>
+                        </div>
                     </div>
-                </div>
+                </header>
 
                 <!-- PROGRESS BAR -->
-                <div class="w-full bg-white/5 h-1 shrink-0">
+                <div class="w-full bg-white/5 h-1 shrink-0"
+                     role="progressbar"
+                     aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+                     aria-label="Progres konsultasi"
+                     id="progressBarContainer">
                     <div id="progressBar" class="bg-gradient-to-r from-vermilion-500 to-gold-400 h-1 transition-all duration-700 ease-out" style="width: 0%;"></div>
                 </div>
 
                 <!-- AREA CHAT -->
-                <div id="chatArea" class="flex-1 p-4 sm:p-6 overflow-y-auto flex flex-col gap-4 sm:gap-6 relative"></div>
+                <div id="chatArea"
+                     class="flex-1 p-4 sm:p-6 overflow-y-auto flex flex-col gap-4 sm:gap-6 relative"
+                     role="log"
+                     aria-live="polite"
+                     aria-atomic="false"
+                     aria-relevant="additions"></div>
 
                 <!-- AREA INPUT -->
                 <div id="inputArea" class="input-area p-3 sm:p-4 bg-white/5 border-t border-white/10 shrink-0 hidden backdrop-blur-md">
-                    <div class="flex items-center gap-3 relative">
-                        <input type="text" id="userInput" placeholder="Ketik jawaban Anda..." class="w-full bg-ink-900/50 border border-white/10 rounded-full pl-5 pr-12 py-3.5 sm:py-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all">
-                        <button onclick="handleSendMessage()" class="absolute right-1.5 w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-r from-vermilion-500 to-red-600 text-white rounded-full flex items-center justify-center hover:scale-105 transition shadow-lg shadow-vermilion-500/30">
-                            <i class="fa-solid fa-paper-plane text-xs sm:text-sm"></i>
+                    <form onsubmit="event.preventDefault(); handleSendMessage();" class="flex items-center gap-3 relative">
+                        <label for="userInput" class="sr-only">Ketik jawaban Anda</label>
+                        <input type="text"
+                               id="userInput"
+                               placeholder="Ketik jawaban Anda..."
+                               autocomplete="off"
+                               class="w-full bg-ink-900/50 border border-white/10 rounded-full pl-5 pr-12 py-3.5 sm:py-4 text-base text-white placeholder-slate-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all">
+                        <button type="submit"
+                                aria-label="Kirim jawaban"
+                                class="absolute right-1.5 w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-r from-vermilion-500 to-red-600 text-white rounded-full flex items-center justify-center hover:scale-105 transition shadow-lg shadow-vermilion-500/30">
+                            <i class="fa-solid fa-paper-plane text-xs sm:text-sm" aria-hidden="true"></i>
                         </button>
-                    </div>
+                    </form>
                 </div>
 
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- ==========================================
+         JAVASCRIPT LOGIC
+         ========================================== -->
     <script>
-        const chatArea = document.getElementById('chatArea');
-        const inputArea = document.getElementById('inputArea');
-        const userInput = document.getElementById('userInput');
-        const progressBar = document.getElementById('progressBar');
-        const progressText = document.getElementById('progressText');
-        
+    (function () {
+        'use strict';
+
+        /* ---------- DOM ---------- */
+        const chatArea      = document.getElementById('chatArea');
+        const inputArea     = document.getElementById('inputArea');
+        const userInput     = document.getElementById('userInput');
+        const progressBar   = document.getElementById('progressBar');
+        const progressText  = document.getElementById('progressText');
+        const progressBox   = document.getElementById('progressBarContainer');
+        const backBtn       = document.getElementById('backBtn');
+
+        /* ---------- STATE ---------- */
+        const TOTAL_QUESTIONS = 6;
+        const STEP_ORDER = {
+            intro: 0, pendidikan: 1, bahasa: 2, sektor: 3,
+            motivasi: 4, nama: 5, whatsapp: 6, result: 7
+        };
+
+        let conversation = [];        // riwayat chat (untuk re-render)
+        let stateStack   = [];        // untuk tombol "Kembali"
+        let currentStep  = 'intro';
+        let userData     = { nama: '', whatsapp: '', pendidikan: '', bahasa: '', sektor: '', motivasi: '', program: '' };
         let isTypingLainnya = false;
-        let userData = { nama: '', whatsapp: '', pendidikan: '', bahasa: '', sektor: '', motivasi: '', program: '' };
+        let pendingTimeouts = [];     // untuk batalkan animasi saat back
 
-        function updateProgress(percent) {
-            progressBar.style.width = percent + '%';
-            progressText.innerText = percent + '%';
+        /* ---------- UTIL ---------- */
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
         }
-
+        function escapeAttr(str) {
+            return escapeHtml(str);
+        }
+        function scheduleTimeout(fn, delay) {
+            const id = setTimeout(fn, delay);
+            pendingTimeouts.push(id);
+            return id;
+        }
+        function clearPending() {
+            pendingTimeouts.forEach(clearTimeout);
+            pendingTimeouts = [];
+        }
         function scrollToBottom() {
             chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
+        }
+
+        /* ---------- PROGRESS ---------- */
+        function updateProgressUI() {
+            const num = STEP_ORDER[currentStep] || 0;
+            let percent, label;
+
+            if (currentStep === 'intro') {
+                percent = 0;
+                label = 'Mulai · 0%';
+            } else if (currentStep === 'result') {
+                percent = 100;
+                label = 'Selesai · 100%';
+            } else {
+                percent = Math.round(((num - 1) / TOTAL_QUESTIONS) * 100);
+                label = `Pertanyaan ${num}/${TOTAL_QUESTIONS} · ${percent}%`;
+            }
+
+            progressBar.style.width = percent + '%';
+            progressText.innerText = label;
+            progressBox.setAttribute('aria-valuenow', percent);
+            backBtn.disabled = stateStack.length === 0;
+        }
+
+        /* ---------- DOM RENDER (append) ---------- */
+        function appendUserToDOM(safeHtml) {
+            const html = `
+                <div class="flex items-start justify-end gap-3 chat-bubble">
+                    <div class="bg-gradient-to-r from-vermilion-500 to-red-600 text-white p-3 sm:p-4 rounded-2xl rounded-tr-none shadow-lg shadow-vermilion-500/20 text-sm max-w-[85%] leading-relaxed">
+                        ${safeHtml}
+                    </div>
+                </div>`;
+            chatArea.insertAdjacentHTML('beforeend', html);
+        }
+
+        function appendBotToDOM(msg) {
+            let optionsHTML = '';
+            if (msg.options && msg.options.length) {
+                optionsHTML = `<div class="flex flex-wrap gap-2 mt-4" role="group" aria-label="Pilihan jawaban">`;
+                msg.options.forEach(opt => {
+                    optionsHTML += `<button type="button"
+                        data-opt-value="${escapeAttr(opt.value)}"
+                        data-opt-label="${escapeAttr(opt.label)}"
+                        class="bg-ink-900/80 border border-gold-400/30 text-gold-400 font-semibold text-xs px-4 py-2.5 rounded-full hover:bg-gold-400 hover:text-ink-950 transition-all shadow-sm">
+                        ${escapeHtml(opt.label)}
+                    </button>`;
+                });
+                optionsHTML += `</div>`;
+            }
+
+            const html = `
+                <div class="flex items-start gap-3 chat-bubble">
+                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 overflow-hidden border border-gold-400 shadow-md relative" aria-hidden="true">
+                        <img src="Logo%20polos.jpeg" alt="" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
+                        <span class="text-ink-950 font-bold text-xs relative z-0">A</span>
+                    </div>
+                    <div class="max-w-[85%]">
+                        <div class="bg-white/10 border border-white/10 p-3 sm:p-4 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-200 leading-relaxed backdrop-blur-md">
+                            ${msg.html}
+                        </div>
+                        ${optionsHTML}
+                    </div>
+                </div>`;
+            chatArea.insertAdjacentHTML('beforeend', html);
+        }
+
+        /* ---------- RE-RENDER (untuk Back) ---------- */
+        function reRenderChat() {
+            // Matikan aria-live sementara agar screen reader tidak membacakan ulang
+            chatArea.setAttribute('aria-live', 'off');
+            chatArea.innerHTML = '';
+            conversation.forEach(msg => {
+                if (msg.type === 'user') appendUserToDOM(msg.html);
+                else                      appendBotToDOM(msg);
+            });
+
+            const lastMsg = conversation[conversation.length - 1];
+            if (lastMsg && lastMsg.isInput) {
+                inputArea.classList.remove('hidden');
+                userInput.focus();
+            } else {
+                inputArea.classList.add('hidden');
+                // Fokuskan opsi jawaban terakhir agar navigasi keyboard mudah
+                const opts = chatArea.querySelectorAll('button[data-opt-value]');
+                if (opts.length) opts[opts.length - 1].focus();
+            }
+
+            chatArea.setAttribute('aria-live', 'polite');
+            scrollToBottom();
+        }
+
+        /* ---------- ACTIONS ---------- */
+        function userReply(message) {
+            const safe = escapeHtml(message);
+            conversation.push({ type: 'user', html: safe });
+            appendUserToDOM(safe);
+            scrollToBottom();
+            inputArea.classList.add('hidden');
         }
 
         function botReply(message, options = null, delay = 1200, isInput = false) {
             const typingId = 'typing-' + Date.now();
             const typingHTML = `
-                <div id="${typingId}" class="flex items-start gap-3 chat-bubble">
+                <div id="${typingId}" class="flex items-start gap-3 chat-bubble" aria-hidden="true">
                     <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 overflow-hidden border border-gold-400 shadow-md relative">
-                        <img src="Logo polos.jpeg" alt="Logo" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
+                        <img src="Logo%20polos.jpeg" alt="" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
                         <span class="text-ink-950 font-bold text-xs relative z-0">A</span>
                     </div>
                     <div class="bg-white/10 rounded-2xl rounded-tl-none border border-white/5 typing-dots">
                         <span></span><span></span><span></span>
                     </div>
-                </div>
-            `;
+                </div>`;
             chatArea.insertAdjacentHTML('beforeend', typingHTML);
             scrollToBottom();
 
-            setTimeout(() => {
-                document.getElementById(typingId).remove();
+            scheduleTimeout(() => {
+                const el = document.getElementById(typingId);
+                if (el) el.remove();
 
-                let optionsHTML = '';
-                if (options) {
-                    optionsHTML = `<div class="flex flex-wrap gap-2 mt-4">`;
-                    options.forEach(opt => {
-                        optionsHTML += `<button onclick="handleOption('${opt.value}', '${opt.label}')" class="bg-ink-900/80 border border-gold-400/30 text-gold-400 font-semibold text-xs px-4 py-2.5 rounded-full hover:bg-gold-400 hover:text-ink-950 transition-all shadow-sm">${opt.label}</button>`;
-                    });
-                    optionsHTML += `</div>`;
-                }
-
-                const messageHTML = `
-                    <div class="flex items-start gap-3 chat-bubble">
-                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 overflow-hidden border border-gold-400 shadow-md relative">
-                            <img src="Logo polos.jpeg" alt="Logo" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
-                            <span class="text-ink-950 font-bold text-xs relative z-0">A</span>
-                        </div>
-                        <div class="max-w-[85%]">
-                            <div class="bg-white/10 border border-white/10 p-3 sm:p-4 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-200 leading-relaxed backdrop-blur-md">
-                                ${message}
-                            </div>
-                            ${optionsHTML}
-                        </div>
-                    </div>
-                `;
-                chatArea.insertAdjacentHTML('beforeend', messageHTML);
-                scrollToBottom();
+                const msg = { type: 'bot', html: message, options, isInput };
+                conversation.push(msg);
+                appendBotToDOM(msg);
 
                 if (isInput) {
                     inputArea.classList.remove('hidden');
@@ -246,214 +417,273 @@
                 } else {
                     inputArea.classList.add('hidden');
                 }
+                scrollToBottom();
+                updateProgressUI();
             }, delay);
         }
 
-        function userReply(message) {
-            const messageHTML = `
-                <div class="flex items-start justify-end gap-3 chat-bubble">
-                    <div class="bg-gradient-to-r from-vermilion-500 to-red-600 text-white p-3 sm:p-4 rounded-2xl rounded-tr-none shadow-lg shadow-vermilion-500/20 text-sm max-w-[85%] leading-relaxed">
-                        ${message}
-                    </div>
-                </div>
-            `;
-            chatArea.insertAdjacentHTML('beforeend', messageHTML);
-            scrollToBottom();
-            inputArea.classList.add('hidden');
-        }
-
+        /* ---------- FLOW: handle option click ---------- */
         function handleOption(value, label) {
-            userReply(label);
-            
-            if (value === 'mulai') updateProgress(10);
-            else if (value === 'sma' || value === 'd3s1') updateProgress(25);
-            else if (value === 'pemula' || value === 'n5n4' || value === 'n3n2') updateProgress(40);
-            else if (value === 'manufaktur' || value === 'kaigo' || value === 'food' || value === 'tani') updateProgress(55);
-            else if (value === 'pengalaman' || value === 'gaji' || value === 'karier') updateProgress(70);
+            // Simpan state sebelum menjawab
+            stateStack.push({
+                step: currentStep,
+                data: { ...userData },
+                convLength: conversation.length,
+                isTypingLainnya
+            });
 
-            if (value === 'sma' || value === 'd3s1') {
+            userReply(label);
+
+            if (value === 'mulai') {
+                currentStep = 'pendidikan';
+                askPendidikan();
+            } else if (value === 'sma' || value === 'd3s1') {
                 userData.pendidikan = label;
+                currentStep = 'bahasa';
                 askBahasa();
             } else if (value === 'pemula' || value === 'n5n4' || value === 'n3n2') {
                 userData.bahasa = label;
+                currentStep = 'sektor';
                 askSektor();
             } else if (value === 'manufaktur' || value === 'kaigo' || value === 'food' || value === 'tani') {
                 userData.sektor = label;
+                currentStep = 'motivasi';
                 askMotivasi();
             } else if (value === 'lainnya') {
                 isTypingLainnya = true;
-                botReply("Baik, silakan ketik bidang pekerjaan yang Anda minati di kolom bawah:", null, 1000, true);
+                botReply("Baik, silakan ketik bidang pekerjaan yang Anda minati di kolom bawah:", null, 900, true);
             } else if (value === 'pengalaman' || value === 'gaji' || value === 'karier') {
                 userData.motivasi = label;
+                currentStep = 'nama';
                 askNama();
-            } else if (value === 'mulai') {
-                askPendidikan();
             }
+
+            updateProgressUI();
+        }
+
+        /* ---------- FLOW: handle text input ---------- */
+        function validateWhatsApp(num) {
+            const cleaned = num.replace(/[\s\-\(\)\.\+]/g, '');
+            let normalized;
+            if (cleaned.startsWith('62'))      normalized = cleaned;
+            else if (cleaned.startsWith('0'))  normalized = '62' + cleaned.substring(1);
+            else if (cleaned.startsWith('8'))  normalized = '62' + cleaned;
+            else return null;
+
+            return /^628\d{7,11}$/.test(normalized) ? normalized : null;
         }
 
         function handleSendMessage() {
             const text = userInput.value.trim();
             if (!text) return;
 
-            userReply(text);
-            userInput.value = '';
-
+            // 1) Custom sektor (Lainnya)
             if (isTypingLainnya) {
+                stateStack.push({ step: currentStep, data: { ...userData }, convLength: conversation.length, isTypingLainnya });
+                userReply(text);
+                userInput.value = '';
                 userData.sektor = text;
                 isTypingLainnya = false;
-                updateProgress(55);
+                currentStep = 'motivasi';
                 askMotivasi();
+                updateProgressUI();
                 return;
             }
 
+            // 2) Nama
             if (!userData.nama) {
+                if (text.length < 2) {
+                    userInput.value = '';
+                    botReply("Nama terlalu pendek. Mohon masukkan <b>nama lengkap</b> (minimal 2 karakter):", null, 600, true);
+                    return;
+                }
+                stateStack.push({ step: currentStep, data: { ...userData }, convLength: conversation.length, isTypingLainnya });
+                userReply(text);
+                userInput.value = '';
                 userData.nama = text;
-                updateProgress(85);
+                currentStep = 'whatsapp';
                 askWhatsApp();
-            } else if (!userData.whatsapp) {
-                userData.whatsapp = text;
-                updateProgress(100);
+                updateProgressUI();
+                return;
+            }
+
+            // 3) WhatsApp
+            if (!userData.whatsapp) {
+                const normalized = validateWhatsApp(text);
+                if (!normalized) {
+                    userInput.value = '';
+                    botReply("Format nomor belum valid. Mohon masukkan nomor WhatsApp aktif, contoh: <b>081234567890</b>.", null, 600, true);
+                    return;
+                }
+                stateStack.push({ step: currentStep, data: { ...userData }, convLength: conversation.length, isTypingLainnya });
+                userReply(text);
+                userInput.value = '';
+                userData.whatsapp = normalized;
+                currentStep = 'result';
                 showResult();
+                updateProgressUI();
+                return;
             }
         }
 
-        userInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') handleSendMessage();
-        });
+        /* ---------- FLOW: Back ---------- */
+        function handleBack() {
+            if (stateStack.length === 0) return;
 
-        /* ==========================================
-           ALUR PERCAKAPAN (FLOW)
-           ========================================== */
+            clearPending();
+            document.querySelectorAll('[id^="typing-"]').forEach(el => el.remove());
 
-        window.onload = () => {
-            setTimeout(() => {
-                botReply(
-                    "Halo! 👋 Selamat datang di portal konsultasi cerdas <b>LPKS Arima Persada</b>.<br><br>Saya asisten virtual Anda. Mau tanya-tanya soal peluang kerja ke Jepang?",
-                    [{ label: "Ya, Mulai Konsultasi", value: "mulai" }]
-                );
-            }, 800);
-        };
+            const prev = stateStack.pop();
+            currentStep      = prev.step;
+            userData         = prev.data;
+            isTypingLainnya  = prev.isTypingLainnya;
+            conversation     = conversation.slice(0, prev.convLength);
 
+            reRenderChat();
+            updateProgressUI();
+        }
+
+        /* ---------- FLOW: Question steps ---------- */
         function askPendidikan() {
             botReply(
-                "Baik, senang bisa membantu! 😊<br><br>Langkah pertama, boleh tahu <b>pendidikan terakhir</b> Anda?",
+                "Baik, senang bisa membantu! 😊<br><br>Pertama, boleh tahu <b>pendidikan terakhir</b> Anda?",
                 [
                     { label: "SMA / SMK", value: "sma" },
-                    { label: "D3 / S1", value: "d3s1" }
+                    { label: "D3 / S1",   value: "d3s1" }
                 ]
             );
         }
-
         function askBahasa() {
             botReply(
-                "Oke, sip! Selanjutnya, untuk <b>kemampuan Bahasa Jepang</b>, saat ini sudah sampai level mana nih?",
+                "Tercatat! ✅ Sekarang, untuk <b>kemampuan Bahasa Jepang</b>, saat ini di level mana?",
                 [
                     { label: "Belum bisa sama sekali", value: "pemula" },
-                    { label: "Sudah dasar (N5/N4)", value: "n5n4" },
-                    { label: "Lancar (N3/N2)", value: "n3n2" }
+                    { label: "Sudah dasar (N5/N4)",    value: "n5n4" },
+                    { label: "Lancar (N3/N2)",         value: "n3n2" }
                 ]
             );
         }
-
         function askSektor() {
             botReply(
-                "Menarik! Terakhir, di <b>bidang pekerjaan</b> apa Anda paling tertarik untuk bekerja di Jepang nanti?",
+                "Siap! 🎯 Di <b>bidang pekerjaan</b> apa Anda paling tertarik untuk bekerja di Jepang nanti?",
                 [
-                    { label: "Manufaktur / Pabrik", value: "manufaktur" },
-                    { label: "Caregiver (Kaigo)", value: "kaigo" },
-                    { label: "Food Service / Restoran", value: "food" },
-                    { label: "Pertanian / Konstruksi", value: "tani" },
-                    { label: "Lainnya (Ketik Sendiri)", value: "lainnya" }
+                    { label: "Manufaktur / Pabrik",      value: "manufaktur" },
+                    { label: "Caregiver (Kaigo)",        value: "kaigo" },
+                    { label: "Food Service / Restoran",  value: "food" },
+                    { label: "Pertanian / Konstruksi",   value: "tani" },
+                    { label: "Lainnya (Ketik Sendiri)",  value: "lainnya" }
                 ]
             );
         }
-
         function askMotivasi() {
             botReply(
-                "Pilihan yang tepat! Satu lagi nih, apa <b>tujuan utama</b> Anda bekerja di Jepang?",
+                "Pilihan yang bagus! 🌟 Terakhir, apa <b>tujuan utama</b> Anda bekerja di Jepang?",
                 [
-                    { label: "Cari pengalaman & budaya", value: "pengalaman" },
-                    { label: "Gaji tinggi & tabungan", value: "gaji" },
+                    { label: "Cari pengalaman & budaya",     value: "pengalaman" },
+                    { label: "Gaji tinggi & tabungan",        value: "gaji" },
                     { label: "Karier profesional jangka panjang", value: "karier" }
                 ]
             );
         }
-
         function askNama() {
             botReply(
-                "Luar biasa! Profil Anda sangat cocok dengan kebutuhan industri di Jepang. 🎌<br><br>Boleh tahu <b>nama lengkap</b> Anda? (Ketik di kolom bawah)",
-                null,
-                1200,
-                true
+                "Profil Anda sangat cocok dengan kebutuhan industri di Jepang. 🎌<br><br>Boleh tahu <b>nama lengkap</b> Anda? (Ketik di kolom bawah)",
+                null, 1000, true
             );
         }
-
         function askWhatsApp() {
+            const safeNama = escapeHtml(userData.nama);
             botReply(
-                `Halo <b>${userData.nama}</b>! Senang berkenalan dengan Anda. 🙏<br><br>Terakhir, boleh minta <b>nomor WhatsApp</b> yang aktif? Agar tim konsultan kami bisa langsung menghubungi Anda.`,
-                null,
-                1000,
-                true
+                `Halo <b>${safeNama}</b>! Senang berkenalan. 🙏<br><br>Terakhir, boleh minta <b>nomor WhatsApp</b> yang aktif? Agar tim konsultan kami bisa menghubungi Anda.`,
+                null, 900, true
             );
         }
 
+        /* ---------- FLOW: Result ---------- */
         function showResult() {
-            if (userData.pendidikan === 'D3 / S1' || userData.bahasa.includes('N3/N2') || userData.motivasi.includes('karier')) {
+            // Rekomendasi program (perbaikan bug case-sensitivity)
+            if (
+                userData.pendidikan === 'D3 / S1' ||
+                userData.bahasa.includes('N3') ||
+                userData.motivasi.toLowerCase().includes('karier')
+            ) {
                 userData.program = "Gijinkoku (Engineer)";
-            } else if (userData.bahasa.includes('N5/N4') || userData.motivasi.includes('gaji') || userData.sektor.includes('Kaigo')) {
+            } else if (
+                userData.bahasa.includes('N5') ||
+                userData.motivasi.toLowerCase().includes('gaji') ||
+                userData.sektor.includes('Kaigo')
+            ) {
                 userData.program = "Tokutei Ginou (SSW)";
             } else {
                 userData.program = "Magang Jepang (Ikusei Shuro)";
             }
 
-            botReply(
-                `Luar biasa, <b>${userData.nama}</b>! Data dan minat Anda sudah kami rekam. ✅<br><br>Berdasarkan analisis profil Anda, program <b>${userData.program}</b> adalah jalur terbaik untuk mencapai tujuan Anda.<br><br>Klik tombol di bawah untuk terhubung langsung dengan Admin kami via WhatsApp:`,
-                null,
-                1500
-            );
+            const safeNama    = escapeHtml(userData.nama);
+            const safeProgram = escapeHtml(userData.program);
 
-            // ==========================================
-            // PERBAIKAN TOTAL FORMAT WHATSAPP
-            // ==========================================
-            // 1. Ganti & dengan "dan"
-            // 2. Ganti - dengan bullet point •
-            // 3. Gunakan %0A langsung agar tidak double-encode
-            // 4. Hanya encode variabel isinya saja
-            
-            const textNama = encodeURIComponent(userData.nama);
-            const textPend = encodeURIComponent(userData.pendidikan);
-            const textBhs = encodeURIComponent(userData.bahasa);
-            const textSektor = encodeURIComponent(userData.sektor);
-            const textMotivasi = encodeURIComponent(userData.motivasi);
-            const textProg = encodeURIComponent(userData.program);
-
-            const waText = "Halo Admin LPKS Arima Persada,%0A%0A" +
-                           "Saya *" + textNama + "* baru saja mengisi form konsultasi di website.%0A%0A" +
-                           "*Data Diri dan Minat:*%0A" +
-                           "• Pendidikan: " + textPend + "%0A" +
-                           "• Bahasa Jepang: " + textBhs + "%0A" +
-                           "• Sektor Minat: " + textSektor + "%0A" +
-                           "• Motivasi: " + textMotivasi + "%0A" +
-                           "• Rekomendasi Sistem: " + textProg + "%0A%0A" +
-                           "Saya ingin konsultasi lebih lanjut mengenai program ini. Terima kasih!";
-
+            // Bangun URL WhatsApp — encode hanya nilai variabel
+            const waText =
+                "Halo Admin LPKS Arima Persada,%0A%0A" +
+                "Saya *" + encodeURIComponent(userData.nama) + "* baru saja mengisi form konsultasi di website.%0A%0A" +
+                "*Data Diri dan Minat:*%0A" +
+                "• Pendidikan: " + encodeURIComponent(userData.pendidikan) + "%0A" +
+                "• Bahasa Jepang: " + encodeURIComponent(userData.bahasa) + "%0A" +
+                "• Sektor Minat: " + encodeURIComponent(userData.sektor) + "%0A" +
+                "• Motivasi: " + encodeURIComponent(userData.motivasi) + "%0A" +
+                "• Rekomendasi Sistem: " + encodeURIComponent(userData.program) + "%0A%0A" +
+                "Saya ingin konsultasi lebih lanjut mengenai program ini. Terima kasih!";
             const waLink = `https://wa.me/6282375128230?text=${waText}`;
 
-            setTimeout(() => {
-                const waButtonHTML = `
-                    <div class="flex items-start gap-3 chat-bubble mt-2">
-                        <div class="w-8 h-8 bg-transparent shrink-0"></div>
-                        <div class="max-w-[85%]">
-                            <a href="${waLink}" target="_blank" class="inline-flex items-center justify-center w-full gap-3 bg-[#25D366] hover:bg-green-500 text-white font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-[0_0_20px_rgba(37,211,102,0.3)] transition-transform hover:-translate-y-1 text-sm sm:text-base">
-                                <i class="fa-brands fa-whatsapp text-xl sm:text-2xl"></i> Lanjut ke WhatsApp Admin
-                            </a>
-                        </div>
-                    </div>
-                `;
-                chatArea.insertAdjacentHTML('beforeend', waButtonHTML);
-                scrollToBottom();
-            }, 2000);
+            const waButtonHtml = `
+                <div class="mt-4">
+                    <a href="${waLink}" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center justify-center w-full gap-3 bg-[#25D366] hover:bg-green-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-[0_0_20px_rgba(37,211,102,0.3)] transition-transform hover:-translate-y-0.5 text-sm sm:text-base">
+                        <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i>
+                        Lanjut ke WhatsApp Admin
+                    </a>
+                    <p class="text-[11px] text-slate-400 mt-2 text-center">
+                        Tim konsultan akan merespons dalam 1×24 jam kerja.
+                    </p>
+                </div>`;
+
+            botReply(
+                `Luar biasa, <b>${safeNama}</b>! Data Anda sudah kami rekam. ✅<br><br>` +
+                `Berdasarkan profil Anda, program yang direkomendasikan adalah:<br>` +
+                `<span class="inline-block mt-2 px-3 py-1.5 bg-gold-400/15 border border-gold-400/40 rounded-lg text-gold-400 font-bold">${safeProgram}</span>` +
+                waButtonHtml,
+                null, 1200
+            );
         }
+
+        /* ---------- EVENT BINDINGS ---------- */
+        // Delegasi klik opsi jawaban
+        chatArea.addEventListener('click', (e) => {
+            const btn = e.target.closest('button[data-opt-value]');
+            if (!btn) return;
+            handleOption(btn.dataset.optValue, btn.dataset.optLabel);
+        });
+
+        // Enter di input
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleSendMessage();
+            }
+        });
+
+        /* ---------- INIT ---------- */
+        window.addEventListener('load', () => {
+            updateProgressUI();
+            scheduleTimeout(() => {
+                botReply(
+                    "Halo! 👋 Selamat datang di portal konsultasi <b>LPKS Arima Persada</b>.<br><br>" +
+                    "Saya akan membantu menemukan program pelatihan Jepang yang tepat untuk Anda dalam <b>±5 menit</b>. " +
+                    "Gratis, tanpa komitmen.<br><br>Siap memulai?",
+                    [{ label: "Ya, Mulai Konsultasi", value: "mulai" }]
+                );
+            }, 600);
+        });
+    })();
     </script>
 </body>
 </html>
