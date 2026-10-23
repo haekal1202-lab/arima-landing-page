@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Konsultasi Karier Jepang — LPKS Arima Persada</title>
-
-    <meta name="description" content="Konsultasi interaktif ±5 menit untuk menemukan program pelatihan bahasa & keterampilan Jepang yang tepat. Gratis, terdaftar resmi Kemnaker RI dan Mitra SO.">
+    <title>LPKS Arima Persada — Wujudkan Karier di Jepang</title>
+    <meta name="description" content="LPKS Arima Persada: pelatihan bahasa & keterampilan Jepang, penyaluran legal Kemnaker RI & Mitra SO. Ikuti kuis interaktif untuk menemukan program yang tepat.">
     <meta name="theme-color" content="#1A1815">
     <link rel="canonical" href="https://arima-lp.vercel.app/">
 
@@ -15,14 +14,15 @@
             theme: {
                 extend: {
                     colors: {
-                        paper:          '#F2EDE3',
-                        'paper-light':  '#FAF6EE',
-                        ink:            '#1A1815',
-                        'ink-soft':     '#45413A',
-                        muted:          '#8B8478',
-                        hairline:       '#E2DBCC',
-                        accent:         '#A5583A',
-                        'accent-dark':  '#8A4228',
+                        paper:         '#F2EDE3',
+                        'paper-light': '#FAF6EE',
+                        ink:           '#1A1815',
+                        'ink-soft':    '#45413A',
+                        muted:         '#8B8478',
+                        hairline:      '#E2DBCC',
+                        accent:        '#A5583A',
+                        'accent-dark': '#8A4228',
+                        jade:          '#3F6B5A',
                     },
                     fontFamily: {
                         serif: ['"Fraunces"', 'serif'],
@@ -32,7 +32,7 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -45,7 +45,7 @@
             content: '';
             position: fixed; inset: 0;
             pointer-events: none; z-index: 9999;
-            opacity: 0.13;
+            opacity: 0.10;
             mix-blend-mode: multiply;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
@@ -55,11 +55,11 @@
         ::-webkit-scrollbar-thumb { background: rgba(26,24,21,0.14); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(26,24,21,0.28); }
 
-        /* Refined entrance */
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(6px); }
+            from { opacity: 0; transform: translateY(8px); }
             to   { opacity: 1; transform: translateY(0); }
         }
+        .reveal { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .chat-bubble { animation: fadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
         /* Typing indicator */
@@ -75,189 +75,573 @@
             40%           { transform: scale(1); opacity: 1; }
         }
 
-        .input-area { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
-
         :focus-visible { outline: 1.5px solid #A5583A !important; outline-offset: 2px !important; }
 
-        /* Ornamental asterisk divider */
         .ornament::before, .ornament::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: currentColor;
-            opacity: 0.18;
+            content: ''; flex: 1; height: 1px;
+            background: currentColor; opacity: 0.18;
         }
         .ornament { display: flex; align-items: center; gap: 12px; }
+
+        /* Marquee strip */
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            display: flex; width: max-content;
+            animation: marquee 32s linear infinite;
+        }
+        .marquee-track:hover { animation-play-state: paused; }
+
+        /* Hero split image with overlay */
+        .hero-photo {
+            background-image: url('foto%20bersama%20siswa%20hitam%202.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Scroll reveal observer target */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Underline input style for quiz */
+        .quiz-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #E2DBCC;
+            padding: 10px 0;
+            font-size: 16px;
+            width: 100%;
+            color: #1A1815;
+            transition: border-color 0.3s;
+        }
+        .quiz-input:focus { outline: none; border-bottom-color: #A5583A; }
+        .quiz-input::placeholder { color: #8B8478; }
     </style>
 </head>
-<body class="antialiased overflow-hidden h-[100dvh]">
+<body class="antialiased">
 
-    <h1 class="sr-only">LPKS Arima Persada — Konsultasi Karier Kerja di Jepang</h1>
+    <h1 class="sr-only">LPKS Arima Persada — Pelatihan & Penyaluran Karier Kerja di Jepang</h1>
 
     <!-- ==========================================
-         SPLIT LAYOUT
+         NAVBAR
          ========================================== -->
-    <main class="grid lg:grid-cols-2 h-full w-full max-w-[1800px] mx-auto">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-paper/90 backdrop-blur-md border-b border-hairline">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 shrink-0">
+                    <div class="w-9 h-9 lg:w-10 lg:h-10 rounded-full bg-ink text-paper flex items-center justify-center overflow-hidden relative shrink-0">
+                        <img src="Logo%20polos.jpeg" alt="Logo LPKS Arima Persada"
+                             class="w-full h-full object-cover absolute inset-0 z-10"
+                             onerror="this.style.display='none';">
+                        <span class="font-serif text-sm lg:text-base italic relative z-0">A</span>
+                    </div>
+                    <div class="leading-tight">
+                        <p class="text-[12px] lg:text-[13px] font-medium text-ink tracking-tight">LPKS Arima Persada</p>
+                        <p class="text-[9px] lg:text-[10px] text-muted uppercase tracking-[0.22em] mt-0.5">Membuka Gerbang Karier</p>
+                    </div>
+                </a>
 
-        <!-- ==========================================
-             LEFT — EDITORIAL DARK PANEL
-             ========================================== -->
-        <aside class="hidden lg:flex flex-col bg-ink text-[#E8E2D6] p-14 xl:p-20 relative overflow-hidden"
-               aria-label="Tentang LPKS Arima Persada">
-
-            <!-- Top corner labels -->
-            <div class="flex justify-between items-start text-[10px] uppercase tracking-[0.32em] text-muted">
-                <div>LPKS · Arima Persada</div>
-                <div>Est. MMXIX</div>
-            </div>
-
-            <!-- Main editorial block -->
-            <div class="flex-1 flex flex-col justify-center max-w-[480px]">
-
-                <div class="flex items-center gap-3 text-[10px] uppercase tracking-[0.32em] text-accent mb-8">
-                    <span class="w-8 h-px bg-accent"></span>
-                    Konsultasi Karier
+                <!-- Desktop menu -->
+                <div class="hidden lg:flex items-center gap-8 text-[12px] text-ink-soft tracking-wide">
+                    <a href="#tentang" class="hover:text-accent transition-colors">Tentang</a>
+                    <a href="#program" class="hover:text-accent transition-colors">Program</a>
+                    <a href="#stats" class="hover:text-accent transition-colors">Pencapaian</a>
+                    <a href="#kuis" class="hover:text-accent transition-colors">Kuis Karier</a>
                 </div>
 
-                <h2 class="font-serif text-[4.25rem] xl:text-[5rem] leading-[0.98] tracking-[-0.015em] mb-8">
-                    Wujudkan<br>
-                    mimpi kerja<br>
-                    <em class="text-accent italic font-normal">di Jepang.</em>
+                <!-- CTA buttons -->
+                <div class="flex items-center gap-2 lg:gap-3">
+                    <a href="https://arimapersada.vercel.app" target="_blank" rel="noopener noreferrer"
+                       class="hidden sm:inline-flex text-[11px] text-ink-soft hover:text-accent border border-hairline hover:border-accent/40 px-4 py-2 rounded-full transition-colors tracking-wide">
+                        Portal Informasi
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1.5 opacity-60" aria-hidden="true"></i>
+                    </a>
+                    <a href="#kuis" class="inline-flex text-[11px] bg-ink text-paper hover:bg-accent px-4 lg:px-5 py-2 lg:py-2.5 rounded-full transition-colors tracking-wide">
+                        Mulai Kuis
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Spacer untuk navbar -->
+    <div class="h-16 lg:h-20"></div>
+
+    <!-- ==========================================
+         HERO — SPLIT SCREEN (travel agency style)
+         ========================================== -->
+    <section class="relative overflow-hidden">
+        <div class="max-w-[1440px] mx-auto grid lg:grid-cols-2 min-h-[calc(100dvh-5rem)]">
+
+            <!-- LEFT: Editorial copy -->
+            <div class="flex flex-col justify-center px-6 sm:px-10 lg:px-16 xl:px-20 py-16 lg:py-24 order-2 lg:order-1">
+                <div class="flex items-center gap-3 text-[10px] uppercase tracking-[0.32em] text-accent mb-8 reveal" style="animation-delay:0.1s">
+                    <span class="w-8 h-px bg-accent"></span>
+                    Pelatihan & Penyaluran · Lampung
+                </div>
+
+                <h2 class="font-serif text-[2.75rem] sm:text-[3.5rem] lg:text-[4.25rem] xl:text-[5rem] leading-[0.98] tracking-[-0.02em] mb-8 reveal" style="animation-delay:0.15s">
+                    Dari Lampung<br>
+                    menuju<br>
+                    <em class="text-accent italic font-normal">Jepang.</em>
                 </h2>
 
-                <p class="text-[15px] leading-relaxed text-[#E8E2D6]/60 max-w-sm font-light">
-                    Konsultasi interaktif <span class="text-[#E8E2D6] not-italic font-normal">±5 menit</span> untuk menemukan program pelatihan yang tepat.
-                    <span class="text-[#E8E2D6] not-italic font-normal">Gratis, tanpa komitmen.</span>
+                <p class="text-[15px] lg:text-base leading-relaxed text-ink-soft/80 max-w-md font-light mb-10 reveal" style="animation-delay:0.2s">
+                    <strong class="text-ink font-medium">LPKS Arima Persada</strong> membekali generasi muda dengan bahasa, keterampilan, dan mental baja untuk bersaing di pasar kerja Jepang — melalui pelatihan intensif dan penyaluran legal.
                 </p>
 
-                <!-- Ornamental divider -->
-                <div class="ornament text-[#E8E2D6] my-10 text-[14px]">
-                    <span class="text-accent">✦</span>
+                <div class="flex flex-wrap items-center gap-3 mb-12 reveal" style="animation-delay:0.25s">
+                    <a href="#kuis" class="inline-flex items-center gap-2.5 bg-ink text-paper hover:bg-accent px-6 py-3.5 rounded-full text-[12.5px] tracking-wide transition-colors">
+                        <i class="fa-solid fa-compass text-[12px] opacity-70" aria-hidden="true"></i>
+                        Temukan Program Anda
+                    </a>
+                    <a href="https://arimapersada.vercel.app" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center gap-2.5 border border-hairline text-ink-soft hover:border-accent hover:text-accent px-6 py-3.5 rounded-full text-[12.5px] tracking-wide transition-colors">
+                        Jelajahi Portal Informasi
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-60" aria-hidden="true"></i>
+                    </a>
                 </div>
 
-                <!-- Trust list -->
-                <ul class="space-y-4 text-[13px] text-[#E8E2D6]/70 font-light" role="list">
-                    <li class="flex items-start gap-4">
-                        <span class="text-accent font-mono text-[10px] mt-1 tracking-widest">01</span>
-                        <span>Terdaftar resmi <span class="text-[#E8E2D6] not-italic font-normal">Kemnaker RI</span></span>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="text-accent font-mono text-[10px] mt-1 tracking-widest">02</span>
-                        <span>Mitra resmi <span class="text-[#E8E2D6] not-italic font-normal">Sending Organization</span></span>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="text-accent font-mono text-[10px] mt-1 tracking-widest">03</span>
-                        <span>Pendampingan <span class="text-[#E8E2D6] not-italic font-normal">konsultan berpengalaman</span></span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Bottom photo strip -->
-            <figure class="mt-10">
-                <div class="aspect-[16/7] overflow-hidden rounded-sm">
-                    <img src="foto%20bersama%20siswa%20hitam%202.jpeg"
-                         alt="Siswa LPKS Arima Persada"
-                         class="w-full h-full object-cover opacity-70 grayscale-[60%] hover:opacity-90 hover:grayscale-0 transition-all duration-700"
-                         loading="lazy">
+                <!-- Trust badges strip -->
+                <div class="flex items-center gap-6 pt-8 border-t border-hairline reveal" style="animation-delay:0.3s">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-shield-halved text-jade text-[14px]" aria-hidden="true"></i>
+                        <span class="text-[11px] text-ink-soft tracking-wide">Kemnaker RI</span>
+                    </div>
+                    <div class="w-px h-4 bg-hairline" aria-hidden="true"></div>
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-handshake text-jade text-[14px]" aria-hidden="true"></i>
+                        <span class="text-[11px] text-ink-soft tracking-wide">Mitra SO Resmi</span>
+                    </div>
+                    <div class="w-px h-4 bg-hairline" aria-hidden="true"></div>
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-certificate text-jade text-[14px]" aria-hidden="true"></i>
+                        <span class="text-[11px] text-ink-soft tracking-wide">Terakreditasi</span>
+                    </div>
                 </div>
-                <figcaption class="flex items-center justify-between mt-3 text-[10px] uppercase tracking-[0.24em] text-muted">
-                    <span>Angkatan 2024 · Osaka</span>
-                    <span>Fig. 01</span>
-                </figcaption>
-            </figure>
-
-            <!-- Ornamental kanji mark -->
-            <div class="absolute bottom-14 right-14 font-serif text-[180px] leading-none text-[#E8E2D6]/[0.025] select-none pointer-events-none" aria-hidden="true">
-                夢
             </div>
-        </aside>
 
-        <!-- ==========================================
-             RIGHT — LIGHT CHAT PANEL
-             ========================================== -->
-        <section class="flex items-center justify-center p-0 sm:p-6 lg:p-12 bg-paper"
-                 aria-label="Konsultasi interaktif">
-            <div class="w-full max-w-[520px] h-full lg:h-[86vh] bg-paper-light border border-hairline rounded-none sm:rounded-lg overflow-hidden flex flex-col shadow-[0_12px_40px_-16px_rgba(26,24,21,0.12)] relative">
+            <!-- RIGHT: Photo with overlapping card -->
+            <div class="relative order-1 lg:order-2 min-h-[50vh] lg:min-h-0 m-4 sm:m-6 lg:m-8 rounded-sm overflow-hidden reveal" style="animation-delay:0.1s">
+                <div class="absolute inset-0 hero-photo grayscale-[35%]"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent"></div>
 
-                <!-- HEADER -->
-                <header class="px-5 sm:px-7 py-5 border-b border-hairline flex items-center justify-between shrink-0 bg-paper-light">
+                <!-- Floating info card (ala boarding pass / trip card) -->
+                <div class="absolute bottom-6 left-6 right-6 sm:left-8 sm:right-8 lg:left-10 lg:right-10 bg-paper-light/95 backdrop-blur-sm border border-white/20 rounded-sm p-5 sm:p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <p class="text-[9px] uppercase tracking-[0.28em] text-muted mb-1">Angkatan 2024</p>
+                            <p class="font-serif text-lg text-ink leading-tight">Alumni Bekerja di Jepang</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[9px] uppercase tracking-[0.2em] text-muted">Destinasi</p>
+                            <p class="text-[13px] font-medium text-accent">Osaka · Tokyo · Nagoya</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 pt-3 border-t border-hairline/60 text-[10px] text-muted">
+                        <span><i class="fa-solid fa-plane-departure mr-1.5 text-accent/60" aria-hidden="true"></i>Terbang 2024</span>
+                        <span><i class="fa-solid fa-briefcase mr-1.5 text-accent/60" aria-hidden="true"></i>Manufaktur · Kaigo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         MARQUEE STRIP — program keywords
+         ========================================== -->
+    <div class="border-y border-hairline bg-paper-light/50 overflow-hidden py-4">
+        <div class="marquee-track">
+            <div class="flex items-center gap-10 pr-10">
+                <span class="text-[11px] uppercase tracking-[0.22em] text-ink-soft/70 whitespace-nowrap">Bahasa Jepang N5–N2</span>
+                <span class="text-accent text-[9px]">✦</span>
+                <span class="text-[11px] uppercase tracking-[0.22em] text-ink-soft/70 whitespace-nowrap">Kaigo · Caregiver</span>
+                <span class="text-accent text-[9px]">✦</span>
+                <span class="text-[11px] uppercase tracking-[0.22em] text-ink-soft/70 whitespace-nowrap">Manufaktur · Food Service</span>
+                <span class="text-accent text-[9px]">✦</span>
+                <span class="text-[11px] uppercase tracking-[0.22em] text-ink-soft/70 whitespace-nowrap">JLPT & JFT</span>
+                <span class="text-accent text-[9px]">✦</span>
+                <span class="text-[11px] uppercase tracking-[0.22em] text-ink-soft/70 whitespace-nowrap">Penyaluran Legal</span>
+                <span class="text-accent text-[9px]">✦</span>
+            </div>
+            <div class="flex items-center gap-10 pr-10" aria-hidden="true">
+                <span class="text-[11px] uppercase tracking-[0.22em] text-ink-soft/70 whitespace-nowrap">Bahasa Jepang N5–N2</span>
+                <span class="text-accent text-[9px]">✦</span>
+                <span class="text-[11px] uppercase tracking-[0.22em] text-ink-soft/70 whitespace-nowrap">Kaigo · Caregiver</span>
+                <span class="text-accent text-[9px]">✦</span>
+                <span class="text-[11px] uppercase tracking-[0.22em] text-ink-soft/70 whitespace-nowrap">Manufaktur · Food Service</span>
+                <span class="text-accent text-[9px]">✦</span>
+                <span class="text-[11px] uppercase tracking-[0.22em] text-ink-soft/70 whitespace-nowrap">JLPT & JFT</span>
+                <span class="text-accent text-[9px]">✦</span>
+                <span class="text-[11px] uppercase tracking-[0.22em] text-ink-soft/70 whitespace-nowrap">Penyaluran Legal</span>
+                <span class="text-accent text-[9px]">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         ABOUT SECTION (#tentang)
+         ========================================== -->
+    <section id="tentang" class="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-20 lg:py-28">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+            <!-- Left label -->
+            <div class="lg:col-span-4 fade-in-section">
+                <div class="flex items-center gap-3 text-[10px] uppercase tracking-[0.32em] text-accent mb-6">
+                    <span class="w-8 h-px bg-accent"></span>
+                    Tentang Kami
+                </div>
+                <p class="font-serif text-2xl lg:text-3xl text-ink leading-tight tracking-tight">
+                    Lembaga pelatihan yang hadir untuk membekali generasi muda.
+                </p>
+            </div>
+
+            <!-- Right copy -->
+            <div class="lg:col-span-8 fade-in-section">
+                <p class="text-[15px] lg:text-[16px] leading-[1.8] text-ink-soft font-light mb-8">
+                    <strong class="text-ink font-medium">LPKS Arima Persada</strong> berkomitmen mencetak tenaga kerja Indonesia yang kompeten, disiplin, dan siap bersaing di pasar kerja Jepang melalui pelatihan intensif dan penyaluran legal. Kami hadir untuk membekali generasi muda dengan keterampilan, bahasa, dan mental baja agar sukses berkarier di Jepang.[reference:0]
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-6 mb-10">
+                    <div class="border-l-2 border-accent/30 pl-5">
+                        <p class="text-[10px] uppercase tracking-[0.24em] text-muted mb-2">Visi</p>
+                        <p class="text-[13.5px] leading-relaxed text-ink-soft">Membangun masa depan bersama melalui pelatihan dan penyaluran tenaga kerja yang legal, terarah, dan berdaya saing.</p>
+                    </div>
+                    <div class="border-l-2 border-accent/30 pl-5">
+                        <p class="text-[10px] uppercase tracking-[0.24em] text-muted mb-2">Fasilitas</p>
+                        <p class="text-[13.5px] leading-relaxed text-ink-soft">Asrama terpadu, ruang kelas, latihan fisik, serta standar kelulusan JLPT & JFT.[reference:1]</p>
+                    </div>
+                </div>
+
+                <a href="https://arimapersada.vercel.app" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-[12px] text-accent hover:text-accent-dark tracking-wide border-b border-accent/30 pb-1 transition-colors">
+                    Lihat informasi lengkap di portal utama
+                    <i class="fa-solid fa-arrow-right text-[10px]" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PROGRAM SECTION (#program) — travel destination cards
+         ========================================== -->
+    <section id="program" class="bg-ink text-paper py-20 lg:py-28">
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6 fade-in-section">
+                <div>
+                    <div class="flex items-center gap-3 text-[10px] uppercase tracking-[0.32em] text-accent mb-5">
+                        <span class="w-8 h-px bg-accent"></span>
+                        Jalur Program
+                    </div>
+                    <h2 class="font-serif text-3xl lg:text-5xl leading-[1.05] tracking-[-0.02em]">
+                        Tiga jalur menuju<br>
+                        <em class="text-accent italic font-normal">karier di Jepang.</em>
+                    </h2>
+                </div>
+                <p class="text-[13px] text-paper/50 max-w-xs leading-relaxed font-light">
+                    Setiap jalur memiliki persyaratan dan prospek yang berbeda. Kuis kami membantu memetakan yang paling sesuai.
+                </p>
+            </div>
+
+            <!-- Cards grid -->
+            <div class="grid md:grid-cols-3 gap-5 lg:gap-6">
+                <!-- Card 1 -->
+                <a href="#kuis" class="group relative bg-paper/[0.03] border border-paper/10 rounded-sm overflow-hidden hover:border-accent/40 transition-colors fade-in-section">
+                    <div class="aspect-[16/10] relative overflow-hidden">
+                        <div class="absolute inset-0 hero-photo grayscale-[60%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                        <span class="absolute top-4 left-4 text-[9px] uppercase tracking-[0.24em] bg-paper/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-paper/80 border border-paper/10">01</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl lg:text-2xl mb-2 tracking-tight">Magang Jepang</h3>
+                        <p class="text-[10px] uppercase tracking-[0.24em] text-accent mb-4">Ikusei Shuro</p>
+                        <p class="text-[13px] text-paper/60 leading-relaxed font-light mb-6">Program pemagangan 3–5 tahun untuk memperoleh keterampilan teknis langsung di industri Jepang.</p>
+                        <span class="inline-flex items-center gap-2 text-[11px] text-paper/70 group-hover:text-accent transition-colors">
+                            Cek kecocokan <i class="fa-solid fa-arrow-right text-[9px]" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="#kuis" class="group relative bg-paper/[0.03] border border-paper/10 rounded-sm overflow-hidden hover:border-accent/40 transition-colors fade-in-section">
+                    <div class="aspect-[16/10] relative overflow-hidden">
+                        <div class="absolute inset-0 hero-photo grayscale-[60%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" style="background-position: 30% center;"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                        <span class="absolute top-4 left-4 text-[9px] uppercase tracking-[0.24em] bg-paper/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-paper/80 border border-paper/10">02</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl lg:text-2xl mb-2 tracking-tight">Tokutei Ginou</h3>
+                        <p class="text-[10px] uppercase tracking-[0.24em] text-accent mb-4">Specified Skilled Worker</p>
+                        <p class="text-[13px] text-paper/60 leading-relaxed font-light mb-6">Visa kerja terampil untuk sektor kaigo, food service, manufaktur, dan pertanian dengan durasi hingga 5 tahun.</p>
+                        <span class="inline-flex items-center gap-2 text-[11px] text-paper/70 group-hover:text-accent transition-colors">
+                            Cek kecocokan <i class="fa-solid fa-arrow-right text-[9px]" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="#kuis" class="group relative bg-paper/[0.03] border border-paper/10 rounded-sm overflow-hidden hover:border-accent/40 transition-colors fade-in-section">
+                    <div class="aspect-[16/10] relative overflow-hidden">
+                        <div class="absolute inset-0 hero-photo grayscale-[60%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" style="background-position: 70% center;"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                        <span class="absolute top-4 left-4 text-[9px] uppercase tracking-[0.24em] bg-paper/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-paper/80 border border-paper/10">03</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl lg:text-2xl mb-2 tracking-tight">Gijinkoku</h3>
+                        <p class="text-[10px] uppercase tracking-[0.24em] text-accent mb-4">Engineer / Specialist</p>
+                        <p class="text-[13px] text-paper/60 leading-relaxed font-light mb-6">Jalur profesional bagi lulusan D3/S1 dengan keahlian teknis dan bahasa Jepang level N3 ke atas.</p>
+                        <span class="inline-flex items-center gap-2 text-[11px] text-paper/70 group-hover:text-accent transition-colors">
+                            Cek kecocokan <i class="fa-solid fa-arrow-right text-[9px]" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="mt-12 text-center fade-in-section">
+                <a href="https://arimapersada.vercel.app" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-[11px] text-paper/60 hover:text-accent tracking-[0.18em] uppercase transition-colors">
+                    Detail lengkap setiap program di portal informasi
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px]" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         STATS STRIP (#stats)
+         ========================================== -->
+    <section id="stats" class="border-b border-hairline">
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-14 lg:py-20">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                <div class="text-center fade-in-section">
+                    <p class="font-serif text-4xl lg:text-5xl text-ink tracking-tight mb-2">3</p>
+                    <p class="text-[10px] uppercase tracking-[0.24em] text-muted">Jalur Program</p>
+                </div>
+                <div class="text-center fade-in-section">
+                    <p class="font-serif text-4xl lg:text-5xl text-ink tracking-tight mb-2">100<span class="text-accent">%</span></p>
+                    <p class="text-[10px] uppercase tracking-[0.24em] text-muted">Legal & Terdaftar</p>
+                </div>
+                <div class="text-center fade-in-section">
+                    <p class="font-serif text-4xl lg:text-5xl text-ink tracking-tight mb-2">N5<span class="text-muted/40">–</span>N2</p>
+                    <p class="text-[10px] uppercase tracking-[0.24em] text-muted">Standar Bahasa</p>
+                </div>
+                <div class="text-center fade-in-section">
+                    <p class="font-serif text-4xl lg:text-5xl text-ink tracking-tight mb-2">1<span class="text-muted/40">×</span>24</p>
+                    <p class="text-[10px] uppercase tracking-[0.24em] text-muted">Respons Konsultan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         KUIS SECTION (#kuis) — follow-up CTA
+         ========================================== -->
+    <section id="kuis" class="bg-paper-light py-20 lg:py-28">
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20">
+
+            <!-- Section header -->
+            <div class="max-w-2xl mx-auto text-center mb-12 lg:mb-16 fade-in-section">
+                <div class="inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.32em] text-accent mb-5">
+                    <span class="w-8 h-px bg-accent"></span>
+                    Kuis Karier · ±5 Menit
+                    <span class="w-8 h-px bg-accent"></span>
+                </div>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em] mb-5">
+                    Temukan jalur<br>
+                    <em class="text-accent italic font-normal">yang paling tepat.</em>
+                </h2>
+                <p class="text-[14px] text-ink-soft/70 leading-relaxed font-light max-w-md mx-auto">
+                    Jawab beberapa pertanyaan singkat. Sistem akan merekomendasikan program pelatihan yang sesuai dengan profil Anda. Gratis, tanpa komitmen.
+                </p>
+            </div>
+
+            <!-- Quiz card -->
+            <div class="max-w-[600px] mx-auto bg-paper border border-hairline rounded-sm overflow-hidden shadow-[0_12px_40px_-16px_rgba(26,24,21,0.12)] fade-in-section">
+
+                <!-- Quiz header -->
+                <div class="px-5 sm:px-7 py-5 border-b border-hairline flex items-center justify-between bg-paper">
                     <div class="flex items-center gap-3.5">
-                        <div class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center shrink-0 overflow-hidden relative">
+                        <div class="w-9 h-9 rounded-full bg-ink text-paper flex items-center justify-center shrink-0 overflow-hidden relative">
                             <img src="Logo%20polos.jpeg" alt=""
                                  class="w-full h-full object-cover absolute inset-0 z-10"
                                  onerror="this.style.display='none';">
-                            <span class="font-serif text-[15px] italic relative z-0">A</span>
+                            <span class="font-serif italic text-[13px] relative z-0">A</span>
                         </div>
                         <div>
-                            <h3 class="text-[13px] font-medium text-ink tracking-tight">Arima Assistant</h3>
-                            <p class="text-[11px] text-muted flex items-center gap-1.5 mt-0.5 font-light">
+                            <h3 class="text-[12.5px] font-medium text-ink tracking-tight">Arima Assistant</h3>
+                            <p class="text-[10.5px] text-muted flex items-center gap-1.5 mt-0.5 font-light">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-600/80" aria-hidden="true"></span>
                                 Online · siap membantu
                             </p>
                         </div>
                     </div>
-
                     <div class="flex items-center gap-3">
-                        <button id="backBtn" type="button"
-                                onclick="handleBack()"
-                                disabled
+                        <button id="backBtn" type="button" onclick="handleBack()" disabled
                                 aria-label="Kembali ke pertanyaan sebelumnya"
                                 class="w-8 h-8 rounded-full border border-hairline text-muted hover:text-ink hover:border-ink/30 flex items-center justify-center transition disabled:opacity-25 disabled:cursor-not-allowed">
                             <i class="fa-solid fa-arrow-left text-[10px]" aria-hidden="true"></i>
                         </button>
                         <div class="text-right" aria-live="polite">
                             <p class="text-[9px] text-muted uppercase tracking-[0.24em] font-medium">Langkah</p>
-                            <p class="font-serif text-[15px] text-ink tracking-tight mt-0.5">
+                            <p class="font-serif text-[14px] text-ink tracking-tight mt-0.5">
                                 <span id="progressText">00</span>
                                 <span class="text-muted/60 font-light">/ 06</span>
                             </p>
                         </div>
                     </div>
-                </header>
-
-                <!-- HAIRLINE PROGRESS -->
-                <div class="w-full bg-hairline/60 h-px shrink-0 relative"
-                     role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
-                     aria-label="Progres konsultasi"
-                     id="progressBarContainer">
-                    <div id="progressBar"
-                         class="absolute left-0 top-0 h-px bg-accent transition-all duration-700 ease-out"
-                         style="width: 0%;"></div>
                 </div>
 
-                <!-- CHAT AREA -->
-                <div id="chatArea"
-                     class="flex-1 px-5 sm:px-7 py-6 overflow-y-auto flex flex-col gap-5 relative"
+                <!-- Hairline progress -->
+                <div class="w-full bg-hairline/60 h-px shrink-0 relative"
+                     role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+                     aria-label="Progres konsultasi" id="progressBarContainer">
+                    <div id="progressBar" class="absolute left-0 top-0 h-px bg-accent transition-all duration-700 ease-out" style="width: 0%;"></div>
+                </div>
+
+                <!-- Chat area -->
+                <div id="chatArea" class="h-[380px] sm:h-[420px] px-5 sm:px-7 py-6 overflow-y-auto flex flex-col gap-5"
                      role="log" aria-live="polite" aria-atomic="false" aria-relevant="additions">
                 </div>
 
-                <!-- INPUT -->
-                <div id="inputArea"
-                     class="input-area px-5 sm:px-7 py-4 bg-paper-light border-t border-hairline shrink-0 hidden">
+                <!-- Input -->
+                <div id="inputArea" class="px-5 sm:px-7 py-4 bg-paper border-t border-hairline shrink-0 hidden">
                     <form onsubmit="event.preventDefault(); handleSendMessage();" class="flex items-center gap-3">
                         <label for="userInput" class="sr-only">Ketik jawaban Anda</label>
                         <input type="text" id="userInput"
                                placeholder="Ketik jawaban Anda…"
                                autocomplete="off"
-                               class="flex-1 bg-transparent border-0 border-b border-hairline pl-0 pr-2 py-2.5 text-base text-ink placeholder-muted/60 focus:outline-none focus:border-accent transition-colors">
+                               class="quiz-input flex-1">
                         <button type="submit" aria-label="Kirim jawaban"
-                                class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center hover:bg-accent transition-colors shrink-0">
-                            <i class="fa-solid fa-arrow-right text-[11px]" aria-hidden="true"></i>
+                                class="w-9 h-9 rounded-full bg-ink text-paper flex items-center justify-center hover:bg-accent transition-colors shrink-0">
+                            <i class="fa-solid fa-arrow-right text-[10px]" aria-hidden="true"></i>
                         </button>
                     </form>
                 </div>
-
             </div>
-        </section>
-    </main>
+
+            <!-- Secondary CTA to portal -->
+            <div class="text-center mt-10 fade-in-section">
+                <p class="text-[12px] text-muted mb-3 font-light">Ingin membaca detail program sebelum memulai kuis?</p>
+                <a href="https://arimapersada.vercel.app" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-[12px] text-accent hover:text-accent-dark tracking-wide border-b border-accent/30 pb-1 transition-colors">
+                    Buka Portal Informasi LPKS Arima Persada
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- ==========================================
-         SCRIPT (logika utuh)
+         CTA CLOSING
+         ========================================== -->
+    <section class="bg-ink text-paper">
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-20 lg:py-28">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-section">
+                    <div class="flex items-center gap-3 text-[10px] uppercase tracking-[0.32em] text-accent mb-6">
+                        <span class="w-8 h-px bg-accent"></span>
+                        Mulai Perjalanan
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em] mb-6">
+                        Satu langkah kecil<br>
+                        menuju <em class="text-accent italic font-normal">masa depan.</em>
+                    </h2>
+                    <p class="text-[14px] text-paper/50 leading-relaxed font-light max-w-md">
+                        Tim konsultan kami siap membantu. Mulai dari kuis singkat, lalu terhubung langsung dengan admin via WhatsApp.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 lg:justify-end fade-in-section">
+                    <a href="#kuis" class="inline-flex items-center justify-center gap-2.5 bg-paper text-ink hover:bg-accent hover:text-paper px-7 py-4 rounded-full text-[12.5px] tracking-wide transition-colors">
+                        <i class="fa-solid fa-compass text-[12px] opacity-70" aria-hidden="true"></i>
+                        Mulai Kuis Karier
+                    </a>
+                    <a href="https://wa.me/6282375128230" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center justify-center gap-2.5 border border-paper/20 text-paper/80 hover:border-accent hover:text-accent px-7 py-4 rounded-full text-[12.5px] tracking-wide transition-colors">
+                        <i class="fa-brands fa-whatsapp text-[14px]" aria-hidden="true"></i>
+                        Chat Admin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer class="bg-ink text-paper/60 border-t border-paper/10">
+        <div class="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-12">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-9 h-9 rounded-full bg-paper/5 border border-paper/10 flex items-center justify-center overflow-hidden relative shrink-0">
+                            <img src="Logo%20polos.jpeg" alt="Logo" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
+                            <span class="font-serif text-sm italic text-accent relative z-0">A</span>
+                        </div>
+                        <div>
+                            <p class="text-[12px] text-paper font-medium tracking-tight">LPKS Arima Persada</p>
+                            <p class="text-[9px] uppercase tracking-[0.22em] text-paper/40 mt-0.5">Membuka Gerbang Karier</p>
+                        </div>
+                    </div>
+                    <p class="text-[12px] leading-relaxed font-light max-w-xs">
+                        Pelatihan bahasa & keterampilan Jepang, penyaluran legal bekerja sama dengan Sending Organization berlisensi.
+                    </p>
+                </div>
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.24em] text-paper/40 mb-4">Navigasi</p>
+                    <ul class="space-y-2.5 text-[12px] font-light">
+                        <li><a href="#tentang" class="hover:text-accent transition-colors">Tentang</a></li>
+                        <li><a href="#program" class="hover:text-accent transition-colors">Program</a></li>
+                        <li><a href="#kuis" class="hover:text-accent transition-colors">Kuis Karier</a></li>
+                        <li><a href="https://arimapersada.vercel.app" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">Portal Informasi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.24em] text-paper/40 mb-4">Kontak</p>
+                    <ul class="space-y-2.5 text-[12px] font-light">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-location-dot text-accent/60 text-[11px] mt-0.5" aria-hidden="true"></i><span>Jl. Negararatu, Natar, Lampung Selatan</span></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-phone text-accent/60 text-[11px] mt-0.5" aria-hidden="true"></i><a href="tel:+6282375128230" class="hover:text-accent transition-colors">+62 823-7512-8230</a></li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-globe text-accent/60 text-[11px] mt-0.5" aria-hidden="true"></i><a href="https://arimapersada.vercel.app" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">arimapersada.vercel.app</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-paper/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10.5px] text-paper/35">
+                <p>© 2025 LPKS Arima Persada. Seluruh hak cipta dilindungi.</p>
+                <p class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-shield-halved text-jade/60" aria-hidden="true"></i>
+                    100% Legal & Terdaftar Kemnaker RI
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         SCRIPT
          ========================================== -->
     <script>
     (function () {
         'use strict';
 
+        /* ---------- Scroll reveal ---------- */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+
+        /* ---------- Quiz DOM ---------- */
         const chatArea     = document.getElementById('chatArea');
         const inputArea    = document.getElementById('inputArea');
         const userInput    = document.getElementById('userInput');
@@ -278,6 +662,7 @@
         let userData     = { nama: '', whatsapp: '', pendidikan: '', bahasa: '', sektor: '', motivasi: '', program: '' };
         let isTypingLainnya = false;
         let pendingTimeouts = [];
+        let quizStarted = false;
 
         const escapeHtml = s => String(s)
             .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -308,7 +693,7 @@
         function appendUserToDOM(safeHtml) {
             const html = `
                 <div class="flex justify-end chat-bubble">
-                    <div class="bg-ink text-paper px-4 py-3 rounded-xl rounded-tr-sm text-[13.5px] max-w-[82%] leading-relaxed">
+                    <div class="bg-ink text-paper px-4 py-3 rounded-xl rounded-tr-sm text-[13px] max-w-[82%] leading-relaxed">
                         ${safeHtml}
                     </div>
                 </div>`;
@@ -323,7 +708,7 @@
                     optionsHTML += `<button type="button"
                         data-opt-value="${escapeAttr(opt.value)}"
                         data-opt-label="${escapeAttr(opt.label)}"
-                        class="text-[11.5px] px-4 py-2 rounded-full border border-ink/15 text-ink-soft hover:bg-ink hover:text-paper hover:border-ink transition-colors tracking-wide">
+                        class="text-[11px] px-4 py-2 rounded-full border border-ink/15 text-ink-soft hover:bg-ink hover:text-paper hover:border-ink transition-colors tracking-wide">
                         ${escapeHtml(opt.label)}
                     </button>`;
                 });
@@ -337,7 +722,7 @@
                         <span class="font-serif italic text-[10px] relative z-0">A</span>
                     </div>
                     <div class="max-w-[82%]">
-                        <div class="bg-paper border border-hairline px-4 py-3 rounded-xl rounded-tl-sm text-[13.5px] text-ink leading-relaxed">
+                        <div class="bg-paper-light border border-hairline px-4 py-3 rounded-xl rounded-tl-sm text-[13px] text-ink leading-relaxed">
                             ${msg.html}
                         </div>
                         ${optionsHTML}
@@ -381,7 +766,7 @@
                         <img src="Logo%20polos.jpeg" alt="" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
                         <span class="font-serif italic text-[10px] relative z-0">A</span>
                     </div>
-                    <div class="bg-paper border border-hairline rounded-xl rounded-tl-sm typing-dots">
+                    <div class="bg-paper-light border border-hairline rounded-xl rounded-tl-sm typing-dots">
                         <span></span><span></span><span></span>
                     </div>
                 </div>`;
@@ -548,32 +933,26 @@
             const waButtonHtml = `
                 <div class="mt-4">
                     <a href="${waLink}" target="_blank" rel="noopener noreferrer"
-                       class="inline-flex items-center justify-center w-full gap-2.5 bg-[#25D366] hover:bg-[#20BD5A] text-white font-medium px-5 py-3 rounded-lg text-[12.5px] tracking-wide transition-colors">
+                       class="inline-flex items-center justify-center w-full gap-2.5 bg-[#25D366] hover:bg-[#20BD5A] text-white font-medium px-5 py-3 rounded-lg text-[12px] tracking-wide transition-colors">
                         <i class="fa-brands fa-whatsapp text-[15px]" aria-hidden="true"></i>
                         Lanjut ke WhatsApp Admin
                     </a>
-                    <p class="text-[10.5px] text-muted/80 mt-2 text-center tracking-wide">Tim konsultan merespons dalam 1×24 jam kerja.</p>
+                    <p class="text-[10px] text-muted/80 mt-2 text-center tracking-wide">Tim konsultan merespons dalam 1×24 jam kerja.</p>
                 </div>`;
 
             botReply(
                 `Terima kasih, <b>${escapeHtml(userData.nama)}</b>.<br><br>` +
                 `Berdasarkan profil Anda, program yang direkomendasikan:<br>` +
-                `<span class="inline-block mt-3 px-3 py-1.5 border border-accent/40 rounded-md text-accent text-[12.5px] tracking-wide">${escapeHtml(userData.program)}</span>` +
+                `<span class="inline-block mt-3 px-3 py-1.5 border border-accent/40 rounded-md text-accent text-[12px] tracking-wide">${escapeHtml(userData.program)}</span>` +
                 waButtonHtml,
                 null, 1050
             );
         }
 
-        chatArea.addEventListener('click', (e) => {
-            const btn = e.target.closest('button[data-opt-value]');
-            if (!btn) return;
-            handleOption(btn.dataset.optValue, btn.dataset.optLabel);
-        });
-        userInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') { e.preventDefault(); handleSendMessage(); }
-        });
-
-        window.addEventListener('load', () => {
+        /* ---------- Init quiz (lazy: hanya saat section terlihat) ---------- */
+        function initQuiz() {
+            if (quizStarted) return;
+            quizStarted = true;
             updateProgressUI();
             scheduleTimeout(() => {
                 botReply(
@@ -583,6 +962,27 @@
                     [{ label: "Ya, mulai konsultasi", value: "mulai" }]
                 );
             }, 450);
+        }
+
+        const quizSection = document.getElementById('kuis');
+        const quizObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    initQuiz();
+                    quizObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.15 });
+        quizObserver.observe(quizSection);
+
+        /* ---------- Event bindings ---------- */
+        chatArea.addEventListener('click', (e) => {
+            const btn = e.target.closest('button[data-opt-value]');
+            if (!btn) return;
+            handleOption(btn.dataset.optValue, btn.dataset.optLabel);
+        });
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') { e.preventDefault(); handleSendMessage(); }
         });
     })();
     </script>
