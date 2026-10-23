@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Konsultasi Karier Jepang - LPKS Arima Persada</title>
+    <title>Konsultasi Karier Jepang — LPKS Arima Persada</title>
 
-    <!-- SEO & Social -->
     <meta name="description" content="Konsultasi interaktif ±5 menit untuk menemukan program pelatihan bahasa & keterampilan Jepang yang tepat. Gratis, terdaftar resmi Kemnaker RI dan Mitra SO.">
-    <meta name="keywords" content="kerja Jepang, pelatihan bahasa Jepang, LPKS Arima Persada, magang Jepang, tokutei ginou, gijinkoku, kaigo">
-    <meta property="og:title" content="Konsultasi Karier Jepang - LPKS Arima Persada">
-    <meta property="og:description" content="Temukan program pelatihan Jepang yang tepat lewat konsultasi interaktif ±5 menit.">
-    <meta property="og:type" content="website">
-    <meta name="theme-color" content="#080B14">
+    <meta name="theme-color" content="#1A1815">
     <link rel="canonical" href="https://arima-lp.vercel.app/">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,216 +15,234 @@
             theme: {
                 extend: {
                     colors: {
-                        ink: { 950: '#080B14', 900: '#0F1420', 800: '#1A2130' },
-                        vermilion: { 500: '#D90429' },
-                        gold: { 400: '#D4B678' },
+                        paper:          '#F2EDE3',
+                        'paper-light':  '#FAF6EE',
+                        ink:            '#1A1815',
+                        'ink-soft':     '#45413A',
+                        muted:          '#8B8478',
+                        hairline:       '#E2DBCC',
+                        accent:         '#A5583A',
+                        'accent-dark':  '#8A4228',
                     },
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                         serif: ['"Fraunces"', 'serif'],
+                        sans:  ['"Inter"', 'sans-serif'],
                     },
-                    animation: {
-                        'blob': 'blob 7s infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-15px)' },
-                        }
-                    }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #080B14; }
-        .font-serif { font-family: 'Fraunces', serif; }
+        html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+        body { font-family: 'Inter', sans-serif; background: #F2EDE3; color: #1A1815; font-size: 15px; }
+        .font-serif { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
-
-        @keyframes popIn {
-            0% { opacity: 0; transform: scale(0.95) translateY(10px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
+        /* Paper grain overlay */
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            pointer-events: none; z-index: 9999;
+            opacity: 0.13;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
-        .chat-bubble { animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 
-        .typing-dots { display: inline-flex; gap: 5px; padding: 14px 18px; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(26,24,21,0.14); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(26,24,21,0.28); }
+
+        /* Refined entrance */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .chat-bubble { animation: fadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+        /* Typing indicator */
+        .typing-dots { display: inline-flex; gap: 5px; padding: 14px 16px; }
         .typing-dots span {
-            width: 6px; height: 6px; background-color: #D4B678; border-radius: 50%;
+            width: 5px; height: 5px; background: #A5583A; border-radius: 50%;
             animation: bounce 1.4s infinite ease-in-out both;
         }
         .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
         .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
         @keyframes bounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
+            0%, 80%, 100% { transform: scale(0); opacity: 0.35; }
+            40%           { transform: scale(1); opacity: 1; }
         }
 
-        .glass-panel {
-            background: rgba(15, 20, 32, 0.7);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
         .input-area { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
 
-        /* Perbaikan kontras untuk pengguna low-vision */
-        .text-slate-400 { color: #94a3b8 !important; }
-        .text-slate-500 { color: #64748b !important; }
+        :focus-visible { outline: 1.5px solid #A5583A !important; outline-offset: 2px !important; }
 
-        /* Fokus outline yang jelas untuk navigasi keyboard */
-        :focus-visible {
-            outline: 2px solid #D4B678 !important;
-            outline-offset: 2px !important;
+        /* Ornamental asterisk divider */
+        .ornament::before, .ornament::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.18;
         }
-
-        /* Back button disabled state */
-        #backBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .ornament { display: flex; align-items: center; gap: 12px; }
     </style>
 </head>
-<body class="text-slate-200 antialiased overflow-hidden h-[100dvh] flex">
+<body class="antialiased overflow-hidden h-[100dvh]">
 
-    <!-- H1 untuk SEO & screen reader (visual heading ada di panel kiri) -->
     <h1 class="sr-only">LPKS Arima Persada — Konsultasi Karier Kerja di Jepang</h1>
 
-    <!-- BACKGROUND ANIMASI (ORBS) -->
-    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-vermilion-500 rounded-full mix-blend-screen filter blur-[120px] opacity-20 animate-blob"></div>
-        <div class="absolute top-[20%] right-[-10%] w-[400px] h-[400px] bg-blue-900 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob" style="animation-delay: 2s;"></div>
-        <div class="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-gold-400 rounded-full mix-blend-screen filter blur-[150px] opacity-10 animate-blob" style="animation-delay: 4s;"></div>
-    </div>
+    <!-- ==========================================
+         SPLIT LAYOUT
+         ========================================== -->
+    <main class="grid lg:grid-cols-2 h-full w-full max-w-[1800px] mx-auto">
 
-    <!-- MAIN CONTAINER -->
-    <main class="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col lg:flex-row h-full p-0 lg:p-6 gap-6">
+        <!-- ==========================================
+             LEFT — EDITORIAL DARK PANEL
+             ========================================== -->
+        <aside class="hidden lg:flex flex-col bg-ink text-[#E8E2D6] p-14 xl:p-20 relative overflow-hidden"
+               aria-label="Tentang LPKS Arima Persada">
 
-        <!-- KIRI: BRANDING & VISUAL (desktop) -->
-        <aside class="hidden lg:flex flex-col justify-between w-1/2 p-10 rounded-[2.5rem] bg-ink-950/40 border border-white/5 relative overflow-hidden" aria-label="Tentang LPKS Arima Persada">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[400px] font-serif text-white/[0.02] leading-none select-none pointer-events-none" aria-hidden="true">夢</div>
+            <!-- Top corner labels -->
+            <div class="flex justify-between items-start text-[10px] uppercase tracking-[0.32em] text-muted">
+                <div>LPKS · Arima Persada</div>
+                <div>Est. MMXIX</div>
+            </div>
 
-            <div class="relative z-10">
-                <div class="flex items-center gap-4 mb-12">
-                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center overflow-hidden shadow-lg shadow-vermilion-500/20 relative">
-                        <img src="Logo%20polos.jpeg" alt="Logo LPKS Arima Persada" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
-                        <span class="text-ink-950 font-extrabold text-2xl font-serif relative z-0">A</span>
-                    </div>
-                    <div>
-                        <h2 class="font-serif text-2xl font-bold text-white tracking-tight">LPKS Arima Persada</h2>
-                        <p class="text-xs text-gold-400 uppercase tracking-widest font-semibold mt-1">Membuka Gerbang Karier</p>
-                    </div>
+            <!-- Main editorial block -->
+            <div class="flex-1 flex flex-col justify-center max-w-[480px]">
+
+                <div class="flex items-center gap-3 text-[10px] uppercase tracking-[0.32em] text-accent mb-8">
+                    <span class="w-8 h-px bg-accent"></span>
+                    Konsultasi Karier
                 </div>
 
-                <p class="font-serif text-5xl xl:text-6xl font-bold text-white leading-[1.1] mb-6">
-                    Wujudkan Mimpi <br>
-                    <span class="italic text-gold-400">Kerja di Jepang.</span>
+                <h2 class="font-serif text-[4.25rem] xl:text-[5rem] leading-[0.98] tracking-[-0.015em] mb-8">
+                    Wujudkan<br>
+                    mimpi kerja<br>
+                    <em class="text-accent italic font-normal">di Jepang.</em>
+                </h2>
+
+                <p class="text-[15px] leading-relaxed text-[#E8E2D6]/60 max-w-sm font-light">
+                    Konsultasi interaktif <span class="text-[#E8E2D6] not-italic font-normal">±5 menit</span> untuk menemukan program pelatihan yang tepat.
+                    <span class="text-[#E8E2D6] not-italic font-normal">Gratis, tanpa komitmen.</span>
                 </p>
 
-                <!-- Sub-headline dengan value proposition -->
-                <p class="text-slate-400 text-lg leading-relaxed max-w-md">
-                    Konsultasi interaktif <strong class="text-white">±5 menit</strong> untuk menemukan program pelatihan yang paling tepat. <strong class="text-white">Gratis, tanpa komitmen.</strong>
-                </p>
+                <!-- Ornamental divider -->
+                <div class="ornament text-[#E8E2D6] my-10 text-[14px]">
+                    <span class="text-accent">✦</span>
+                </div>
 
-                <!-- Trust signals -->
-                <ul class="mt-6 space-y-2 text-sm text-slate-300" role="list">
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-gold-400" aria-hidden="true"></i> Terdaftar resmi Kemnaker RI</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-gold-400" aria-hidden="true"></i> Mitra resmi Sending Organization (SO)</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-gold-400" aria-hidden="true"></i> Pendampingan konsultan berpengalaman</li>
+                <!-- Trust list -->
+                <ul class="space-y-4 text-[13px] text-[#E8E2D6]/70 font-light" role="list">
+                    <li class="flex items-start gap-4">
+                        <span class="text-accent font-mono text-[10px] mt-1 tracking-widest">01</span>
+                        <span>Terdaftar resmi <span class="text-[#E8E2D6] not-italic font-normal">Kemnaker RI</span></span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-accent font-mono text-[10px] mt-1 tracking-widest">02</span>
+                        <span>Mitra resmi <span class="text-[#E8E2D6] not-italic font-normal">Sending Organization</span></span>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-accent font-mono text-[10px] mt-1 tracking-widest">03</span>
+                        <span>Pendampingan <span class="text-[#E8E2D6] not-italic font-normal">konsultan berpengalaman</span></span>
+                    </li>
                 </ul>
             </div>
 
-            <div class="relative z-10 flex gap-4 mt-auto">
-                <div class="w-1/2 rounded-2xl overflow-hidden border border-white/10 animate-float" style="animation-delay: 0s;">
-                    <img src="foto%20bersama%20siswa%20hitam%202.jpeg" alt="Siswa LPKS Arima Persada" class="w-full h-48 object-cover opacity-80 hover:opacity-100 transition duration-500" loading="lazy">
+            <!-- Bottom photo strip -->
+            <figure class="mt-10">
+                <div class="aspect-[16/7] overflow-hidden rounded-sm">
+                    <img src="foto%20bersama%20siswa%20hitam%202.jpeg"
+                         alt="Siswa LPKS Arima Persada"
+                         class="w-full h-full object-cover opacity-70 grayscale-[60%] hover:opacity-90 hover:grayscale-0 transition-all duration-700"
+                         loading="lazy">
                 </div>
-                <div class="w-1/2 bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center backdrop-blur-md animate-float" style="animation-delay: 1.5s;">
-                    <div class="w-10 h-10 bg-vermilion-500/20 text-vermilion-500 rounded-full flex items-center justify-center mb-4" aria-hidden="true">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <p class="text-white font-bold text-lg">100% Legal</p>
-                    <p class="text-xs text-slate-400 mt-1">Terdaftar resmi Kemnaker RI dan Mitra SO.</p>
-                </div>
+                <figcaption class="flex items-center justify-between mt-3 text-[10px] uppercase tracking-[0.24em] text-muted">
+                    <span>Angkatan 2024 · Osaka</span>
+                    <span>Fig. 01</span>
+                </figcaption>
+            </figure>
+
+            <!-- Ornamental kanji mark -->
+            <div class="absolute bottom-14 right-14 font-serif text-[180px] leading-none text-[#E8E2D6]/[0.025] select-none pointer-events-none" aria-hidden="true">
+                夢
             </div>
         </aside>
 
-        <!-- KANAN: AREA CHAT INTERAKTIF -->
-        <section class="w-full lg:w-1/2 h-full flex items-center justify-center p-0 sm:p-4 lg:p-0" aria-label="Konsultasi interaktif">
-            <div class="w-full max-w-lg h-full lg:h-[90vh] glass-panel sm:rounded-[2.5rem] overflow-hidden flex flex-col relative">
+        <!-- ==========================================
+             RIGHT — LIGHT CHAT PANEL
+             ========================================== -->
+        <section class="flex items-center justify-center p-0 sm:p-6 lg:p-12 bg-paper"
+                 aria-label="Konsultasi interaktif">
+            <div class="w-full max-w-[520px] h-full lg:h-[86vh] bg-paper-light border border-hairline rounded-none sm:rounded-lg overflow-hidden flex flex-col shadow-[0_12px_40px_-16px_rgba(26,24,21,0.12)] relative">
 
-                <!-- HEADER CHAT -->
-                <header class="bg-white/5 p-4 sm:p-6 flex items-center justify-between shrink-0 border-b border-white/10 z-10">
-                    <div class="flex items-center gap-3 sm:gap-4">
-                        <div class="relative">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-gold-400 shadow-lg shrink-0 relative">
-                                <img src="Logo%20polos.jpeg" alt="" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
-                                <span class="text-ink-950 font-extrabold text-sm sm:text-lg relative z-0">A</span>
-                            </div>
-                            <div class="absolute bottom-0 right-0 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-emerald-500 border-2 border-ink-900 rounded-full animate-pulse" aria-hidden="true"></div>
+                <!-- HEADER -->
+                <header class="px-5 sm:px-7 py-5 border-b border-hairline flex items-center justify-between shrink-0 bg-paper-light">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center shrink-0 overflow-hidden relative">
+                            <img src="Logo%20polos.jpeg" alt=""
+                                 class="w-full h-full object-cover absolute inset-0 z-10"
+                                 onerror="this.style.display='none';">
+                            <span class="font-serif text-[15px] italic relative z-0">A</span>
                         </div>
                         <div>
-                            <h3 class="font-bold text-white text-base sm:text-lg">Arima AI Assistant</h3>
-                            <p class="text-[10px] sm:text-xs text-emerald-400 font-medium">Online — Siap membantu</p>
+                            <h3 class="text-[13px] font-medium text-ink tracking-tight">Arima Assistant</h3>
+                            <p class="text-[11px] text-muted flex items-center gap-1.5 mt-0.5 font-light">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600/80" aria-hidden="true"></span>
+                                Online · siap membantu
+                            </p>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-2 sm:gap-3">
-                        <!-- BACK BUTTON -->
+                    <div class="flex items-center gap-3">
                         <button id="backBtn" type="button"
                                 onclick="handleBack()"
                                 disabled
                                 aria-label="Kembali ke pertanyaan sebelumnya"
-                                class="text-xs text-slate-300 hover:text-gold-400 flex items-center gap-1.5 px-2 py-1.5 rounded-lg hover:bg-white/5 transition">
-                            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                            <span class="hidden sm:inline">Kembali</span>
+                                class="w-8 h-8 rounded-full border border-hairline text-muted hover:text-ink hover:border-ink/30 flex items-center justify-center transition disabled:opacity-25 disabled:cursor-not-allowed">
+                            <i class="fa-solid fa-arrow-left text-[10px]" aria-hidden="true"></i>
                         </button>
                         <div class="text-right" aria-live="polite">
-                            <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold hidden sm:block">Progress</p>
-                            <p id="progressText" class="text-xs sm:text-sm font-bold text-gold-400">Mulai · 0%</p>
+                            <p class="text-[9px] text-muted uppercase tracking-[0.24em] font-medium">Langkah</p>
+                            <p class="font-serif text-[15px] text-ink tracking-tight mt-0.5">
+                                <span id="progressText">00</span>
+                                <span class="text-muted/60 font-light">/ 06</span>
+                            </p>
                         </div>
                     </div>
                 </header>
 
-                <!-- PROGRESS BAR -->
-                <div class="w-full bg-white/5 h-1 shrink-0"
-                     role="progressbar"
-                     aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+                <!-- HAIRLINE PROGRESS -->
+                <div class="w-full bg-hairline/60 h-px shrink-0 relative"
+                     role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
                      aria-label="Progres konsultasi"
                      id="progressBarContainer">
-                    <div id="progressBar" class="bg-gradient-to-r from-vermilion-500 to-gold-400 h-1 transition-all duration-700 ease-out" style="width: 0%;"></div>
+                    <div id="progressBar"
+                         class="absolute left-0 top-0 h-px bg-accent transition-all duration-700 ease-out"
+                         style="width: 0%;"></div>
                 </div>
 
-                <!-- AREA CHAT -->
+                <!-- CHAT AREA -->
                 <div id="chatArea"
-                     class="flex-1 p-4 sm:p-6 overflow-y-auto flex flex-col gap-4 sm:gap-6 relative"
-                     role="log"
-                     aria-live="polite"
-                     aria-atomic="false"
-                     aria-relevant="additions"></div>
+                     class="flex-1 px-5 sm:px-7 py-6 overflow-y-auto flex flex-col gap-5 relative"
+                     role="log" aria-live="polite" aria-atomic="false" aria-relevant="additions">
+                </div>
 
-                <!-- AREA INPUT -->
-                <div id="inputArea" class="input-area p-3 sm:p-4 bg-white/5 border-t border-white/10 shrink-0 hidden backdrop-blur-md">
-                    <form onsubmit="event.preventDefault(); handleSendMessage();" class="flex items-center gap-3 relative">
+                <!-- INPUT -->
+                <div id="inputArea"
+                     class="input-area px-5 sm:px-7 py-4 bg-paper-light border-t border-hairline shrink-0 hidden">
+                    <form onsubmit="event.preventDefault(); handleSendMessage();" class="flex items-center gap-3">
                         <label for="userInput" class="sr-only">Ketik jawaban Anda</label>
-                        <input type="text"
-                               id="userInput"
-                               placeholder="Ketik jawaban Anda..."
+                        <input type="text" id="userInput"
+                               placeholder="Ketik jawaban Anda…"
                                autocomplete="off"
-                               class="w-full bg-ink-900/50 border border-white/10 rounded-full pl-5 pr-12 py-3.5 sm:py-4 text-base text-white placeholder-slate-500 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all">
-                        <button type="submit"
-                                aria-label="Kirim jawaban"
-                                class="absolute right-1.5 w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-r from-vermilion-500 to-red-600 text-white rounded-full flex items-center justify-center hover:scale-105 transition shadow-lg shadow-vermilion-500/30">
-                            <i class="fa-solid fa-paper-plane text-xs sm:text-sm" aria-hidden="true"></i>
+                               class="flex-1 bg-transparent border-0 border-b border-hairline pl-0 pr-2 py-2.5 text-base text-ink placeholder-muted/60 focus:outline-none focus:border-accent transition-colors">
+                        <button type="submit" aria-label="Kirim jawaban"
+                                class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center hover:bg-accent transition-colors shrink-0">
+                            <i class="fa-solid fa-arrow-right text-[11px]" aria-hidden="true"></i>
                         </button>
                     </form>
                 </div>
@@ -239,84 +252,63 @@
     </main>
 
     <!-- ==========================================
-         JAVASCRIPT LOGIC
+         SCRIPT (logika utuh)
          ========================================== -->
     <script>
     (function () {
         'use strict';
 
-        /* ---------- DOM ---------- */
-        const chatArea      = document.getElementById('chatArea');
-        const inputArea     = document.getElementById('inputArea');
-        const userInput     = document.getElementById('userInput');
-        const progressBar   = document.getElementById('progressBar');
-        const progressText  = document.getElementById('progressText');
-        const progressBox   = document.getElementById('progressBarContainer');
-        const backBtn       = document.getElementById('backBtn');
+        const chatArea     = document.getElementById('chatArea');
+        const inputArea    = document.getElementById('inputArea');
+        const userInput    = document.getElementById('userInput');
+        const progressBar  = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const progressBox  = document.getElementById('progressBarContainer');
+        const backBtn      = document.getElementById('backBtn');
 
-        /* ---------- STATE ---------- */
         const TOTAL_QUESTIONS = 6;
         const STEP_ORDER = {
             intro: 0, pendidikan: 1, bahasa: 2, sektor: 3,
             motivasi: 4, nama: 5, whatsapp: 6, result: 7
         };
 
-        let conversation = [];        // riwayat chat (untuk re-render)
-        let stateStack   = [];        // untuk tombol "Kembali"
+        let conversation = [];
+        let stateStack   = [];
         let currentStep  = 'intro';
         let userData     = { nama: '', whatsapp: '', pendidikan: '', bahasa: '', sektor: '', motivasi: '', program: '' };
         let isTypingLainnya = false;
-        let pendingTimeouts = [];     // untuk batalkan animasi saat back
+        let pendingTimeouts = [];
 
-        /* ---------- UTIL ---------- */
-        function escapeHtml(str) {
-            return String(str)
-                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-        }
-        function escapeAttr(str) {
-            return escapeHtml(str);
-        }
-        function scheduleTimeout(fn, delay) {
-            const id = setTimeout(fn, delay);
-            pendingTimeouts.push(id);
-            return id;
-        }
-        function clearPending() {
-            pendingTimeouts.forEach(clearTimeout);
-            pendingTimeouts = [];
-        }
-        function scrollToBottom() {
-            chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
-        }
+        const escapeHtml = s => String(s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        const escapeAttr = escapeHtml;
 
-        /* ---------- PROGRESS ---------- */
+        const scheduleTimeout = (fn, d) => { const id = setTimeout(fn, d); pendingTimeouts.push(id); return id; };
+        const clearPending    = () => { pendingTimeouts.forEach(clearTimeout); pendingTimeouts = []; };
+        const scrollToBottom  = () => chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
+
         function updateProgressUI() {
             const num = STEP_ORDER[currentStep] || 0;
             let percent, label;
 
-            if (currentStep === 'intro') {
-                percent = 0;
-                label = 'Mulai · 0%';
-            } else if (currentStep === 'result') {
-                percent = 100;
-                label = 'Selesai · 100%';
-            } else {
-                percent = Math.round(((num - 1) / TOTAL_QUESTIONS) * 100);
-                label = `Pertanyaan ${num}/${TOTAL_QUESTIONS} · ${percent}%`;
+            if (currentStep === 'intro')       { percent = 0;   label = '00'; }
+            else if (currentStep === 'result') { percent = 100; label = '06'; }
+            else {
+                percent = Math.round((num / TOTAL_QUESTIONS) * 100);
+                label   = String(num).padStart(2, '0');
             }
 
             progressBar.style.width = percent + '%';
-            progressText.innerText = label;
+            progressText.textContent = label;
             progressBox.setAttribute('aria-valuenow', percent);
             backBtn.disabled = stateStack.length === 0;
         }
 
-        /* ---------- DOM RENDER (append) ---------- */
         function appendUserToDOM(safeHtml) {
             const html = `
-                <div class="flex items-start justify-end gap-3 chat-bubble">
-                    <div class="bg-gradient-to-r from-vermilion-500 to-red-600 text-white p-3 sm:p-4 rounded-2xl rounded-tr-none shadow-lg shadow-vermilion-500/20 text-sm max-w-[85%] leading-relaxed">
+                <div class="flex justify-end chat-bubble">
+                    <div class="bg-ink text-paper px-4 py-3 rounded-xl rounded-tr-sm text-[13.5px] max-w-[82%] leading-relaxed">
                         ${safeHtml}
                     </div>
                 </div>`;
@@ -331,7 +323,7 @@
                     optionsHTML += `<button type="button"
                         data-opt-value="${escapeAttr(opt.value)}"
                         data-opt-label="${escapeAttr(opt.label)}"
-                        class="bg-ink-900/80 border border-gold-400/30 text-gold-400 font-semibold text-xs px-4 py-2.5 rounded-full hover:bg-gold-400 hover:text-ink-950 transition-all shadow-sm">
+                        class="text-[11.5px] px-4 py-2 rounded-full border border-ink/15 text-ink-soft hover:bg-ink hover:text-paper hover:border-ink transition-colors tracking-wide">
                         ${escapeHtml(opt.label)}
                     </button>`;
                 });
@@ -340,12 +332,12 @@
 
             const html = `
                 <div class="flex items-start gap-3 chat-bubble">
-                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 overflow-hidden border border-gold-400 shadow-md relative" aria-hidden="true">
+                    <div class="w-7 h-7 rounded-full bg-ink text-paper flex items-center justify-center shrink-0 overflow-hidden relative mt-0.5" aria-hidden="true">
                         <img src="Logo%20polos.jpeg" alt="" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
-                        <span class="text-ink-950 font-bold text-xs relative z-0">A</span>
+                        <span class="font-serif italic text-[10px] relative z-0">A</span>
                     </div>
-                    <div class="max-w-[85%]">
-                        <div class="bg-white/10 border border-white/10 p-3 sm:p-4 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-200 leading-relaxed backdrop-blur-md">
+                    <div class="max-w-[82%]">
+                        <div class="bg-paper border border-hairline px-4 py-3 rounded-xl rounded-tl-sm text-[13.5px] text-ink leading-relaxed">
                             ${msg.html}
                         </div>
                         ${optionsHTML}
@@ -354,23 +346,17 @@
             chatArea.insertAdjacentHTML('beforeend', html);
         }
 
-        /* ---------- RE-RENDER (untuk Back) ---------- */
         function reRenderChat() {
-            // Matikan aria-live sementara agar screen reader tidak membacakan ulang
             chatArea.setAttribute('aria-live', 'off');
             chatArea.innerHTML = '';
-            conversation.forEach(msg => {
-                if (msg.type === 'user') appendUserToDOM(msg.html);
-                else                      appendBotToDOM(msg);
-            });
+            conversation.forEach(m => m.type === 'user' ? appendUserToDOM(m.html) : appendBotToDOM(m));
 
-            const lastMsg = conversation[conversation.length - 1];
-            if (lastMsg && lastMsg.isInput) {
+            const last = conversation[conversation.length - 1];
+            if (last && last.isInput) {
                 inputArea.classList.remove('hidden');
                 userInput.focus();
             } else {
                 inputArea.classList.add('hidden');
-                // Fokuskan opsi jawaban terakhir agar navigasi keyboard mudah
                 const opts = chatArea.querySelectorAll('button[data-opt-value]');
                 if (opts.length) opts[opts.length - 1].focus();
             }
@@ -379,7 +365,6 @@
             scrollToBottom();
         }
 
-        /* ---------- ACTIONS ---------- */
         function userReply(message) {
             const safe = escapeHtml(message);
             conversation.push({ type: 'user', html: safe });
@@ -388,15 +373,15 @@
             inputArea.classList.add('hidden');
         }
 
-        function botReply(message, options = null, delay = 1200, isInput = false) {
+        function botReply(message, options = null, delay = 1000, isInput = false) {
             const typingId = 'typing-' + Date.now();
             const typingHTML = `
                 <div id="${typingId}" class="flex items-start gap-3 chat-bubble" aria-hidden="true">
-                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 overflow-hidden border border-gold-400 shadow-md relative">
+                    <div class="w-7 h-7 rounded-full bg-ink text-paper flex items-center justify-center shrink-0 overflow-hidden relative mt-0.5">
                         <img src="Logo%20polos.jpeg" alt="" class="w-full h-full object-cover absolute inset-0 z-10" onerror="this.style.display='none';">
-                        <span class="text-ink-950 font-bold text-xs relative z-0">A</span>
+                        <span class="font-serif italic text-[10px] relative z-0">A</span>
                     </div>
-                    <div class="bg-white/10 rounded-2xl rounded-tl-none border border-white/5 typing-dots">
+                    <div class="bg-paper border border-hairline rounded-xl rounded-tl-sm typing-dots">
                         <span></span><span></span><span></span>
                     </div>
                 </div>`;
@@ -422,266 +407,182 @@
             }, delay);
         }
 
-        /* ---------- FLOW: handle option click ---------- */
         function handleOption(value, label) {
-            // Simpan state sebelum menjawab
-            stateStack.push({
-                step: currentStep,
-                data: { ...userData },
-                convLength: conversation.length,
-                isTypingLainnya
-            });
-
+            stateStack.push({ step: currentStep, data: { ...userData }, convLength: conversation.length, isTypingLainnya });
             userReply(label);
 
-            if (value === 'mulai') {
-                currentStep = 'pendidikan';
-                askPendidikan();
-            } else if (value === 'sma' || value === 'd3s1') {
-                userData.pendidikan = label;
-                currentStep = 'bahasa';
-                askBahasa();
-            } else if (value === 'pemula' || value === 'n5n4' || value === 'n3n2') {
-                userData.bahasa = label;
-                currentStep = 'sektor';
-                askSektor();
-            } else if (value === 'manufaktur' || value === 'kaigo' || value === 'food' || value === 'tani') {
-                userData.sektor = label;
-                currentStep = 'motivasi';
-                askMotivasi();
-            } else if (value === 'lainnya') {
-                isTypingLainnya = true;
-                botReply("Baik, silakan ketik bidang pekerjaan yang Anda minati di kolom bawah:", null, 900, true);
-            } else if (value === 'pengalaman' || value === 'gaji' || value === 'karier') {
-                userData.motivasi = label;
-                currentStep = 'nama';
-                askNama();
-            }
+            if (value === 'mulai')               { currentStep = 'pendidikan'; askPendidikan(); }
+            else if (value === 'sma' || value === 'd3s1') { userData.pendidikan = label; currentStep = 'bahasa'; askBahasa(); }
+            else if (value === 'pemula' || value === 'n5n4' || value === 'n3n2') { userData.bahasa = label; currentStep = 'sektor'; askSektor(); }
+            else if (value === 'manufaktur' || value === 'kaigo' || value === 'food' || value === 'tani') { userData.sektor = label; currentStep = 'motivasi'; askMotivasi(); }
+            else if (value === 'lainnya')        { isTypingLainnya = true; botReply("Baik, silakan ketik bidang pekerjaan yang Anda minati:", null, 850, true); }
+            else if (value === 'pengalaman' || value === 'gaji' || value === 'karier') { userData.motivasi = label; currentStep = 'nama'; askNama(); }
 
             updateProgressUI();
         }
 
-        /* ---------- FLOW: handle text input ---------- */
         function validateWhatsApp(num) {
             const cleaned = num.replace(/[\s\-\(\)\.\+]/g, '');
-            let normalized;
-            if (cleaned.startsWith('62'))      normalized = cleaned;
-            else if (cleaned.startsWith('0'))  normalized = '62' + cleaned.substring(1);
-            else if (cleaned.startsWith('8'))  normalized = '62' + cleaned;
+            let n;
+            if (cleaned.startsWith('62'))      n = cleaned;
+            else if (cleaned.startsWith('0'))  n = '62' + cleaned.substring(1);
+            else if (cleaned.startsWith('8'))  n = '62' + cleaned;
             else return null;
-
-            return /^628\d{7,11}$/.test(normalized) ? normalized : null;
+            return /^628\d{7,11}$/.test(n) ? n : null;
         }
 
         function handleSendMessage() {
             const text = userInput.value.trim();
             if (!text) return;
 
-            // 1) Custom sektor (Lainnya)
             if (isTypingLainnya) {
                 stateStack.push({ step: currentStep, data: { ...userData }, convLength: conversation.length, isTypingLainnya });
-                userReply(text);
-                userInput.value = '';
-                userData.sektor = text;
-                isTypingLainnya = false;
-                currentStep = 'motivasi';
-                askMotivasi();
-                updateProgressUI();
+                userReply(text); userInput.value = '';
+                userData.sektor = text; isTypingLainnya = false;
+                currentStep = 'motivasi'; askMotivasi(); updateProgressUI();
                 return;
             }
 
-            // 2) Nama
             if (!userData.nama) {
                 if (text.length < 2) {
                     userInput.value = '';
-                    botReply("Nama terlalu pendek. Mohon masukkan <b>nama lengkap</b> (minimal 2 karakter):", null, 600, true);
+                    botReply("Nama terlalu pendek. Mohon masukkan <b>nama lengkap</b>:", null, 500, true);
                     return;
                 }
                 stateStack.push({ step: currentStep, data: { ...userData }, convLength: conversation.length, isTypingLainnya });
-                userReply(text);
-                userInput.value = '';
-                userData.nama = text;
-                currentStep = 'whatsapp';
-                askWhatsApp();
-                updateProgressUI();
+                userReply(text); userInput.value = '';
+                userData.nama = text; currentStep = 'whatsapp'; askWhatsApp(); updateProgressUI();
                 return;
             }
 
-            // 3) WhatsApp
             if (!userData.whatsapp) {
-                const normalized = validateWhatsApp(text);
-                if (!normalized) {
+                const n = validateWhatsApp(text);
+                if (!n) {
                     userInput.value = '';
-                    botReply("Format nomor belum valid. Mohon masukkan nomor WhatsApp aktif, contoh: <b>081234567890</b>.", null, 600, true);
+                    botReply("Format nomor belum valid. Contoh: <b>081234567890</b>.", null, 500, true);
                     return;
                 }
                 stateStack.push({ step: currentStep, data: { ...userData }, convLength: conversation.length, isTypingLainnya });
-                userReply(text);
-                userInput.value = '';
-                userData.whatsapp = normalized;
-                currentStep = 'result';
-                showResult();
-                updateProgressUI();
-                return;
+                userReply(text); userInput.value = '';
+                userData.whatsapp = n; currentStep = 'result'; showResult(); updateProgressUI();
             }
         }
 
-        /* ---------- FLOW: Back ---------- */
         function handleBack() {
             if (stateStack.length === 0) return;
-
             clearPending();
             document.querySelectorAll('[id^="typing-"]').forEach(el => el.remove());
-
             const prev = stateStack.pop();
-            currentStep      = prev.step;
-            userData         = prev.data;
-            isTypingLainnya  = prev.isTypingLainnya;
-            conversation     = conversation.slice(0, prev.convLength);
-
+            currentStep     = prev.step;
+            userData        = prev.data;
+            isTypingLainnya = prev.isTypingLainnya;
+            conversation    = conversation.slice(0, prev.convLength);
             reRenderChat();
             updateProgressUI();
         }
 
-        /* ---------- FLOW: Question steps ---------- */
-        function askPendidikan() {
-            botReply(
-                "Baik, senang bisa membantu! 😊<br><br>Pertama, boleh tahu <b>pendidikan terakhir</b> Anda?",
-                [
-                    { label: "SMA / SMK", value: "sma" },
-                    { label: "D3 / S1",   value: "d3s1" }
-                ]
-            );
-        }
-        function askBahasa() {
-            botReply(
-                "Tercatat! ✅ Sekarang, untuk <b>kemampuan Bahasa Jepang</b>, saat ini di level mana?",
-                [
-                    { label: "Belum bisa sama sekali", value: "pemula" },
-                    { label: "Sudah dasar (N5/N4)",    value: "n5n4" },
-                    { label: "Lancar (N3/N2)",         value: "n3n2" }
-                ]
-            );
-        }
-        function askSektor() {
-            botReply(
-                "Siap! 🎯 Di <b>bidang pekerjaan</b> apa Anda paling tertarik untuk bekerja di Jepang nanti?",
-                [
-                    { label: "Manufaktur / Pabrik",      value: "manufaktur" },
-                    { label: "Caregiver (Kaigo)",        value: "kaigo" },
-                    { label: "Food Service / Restoran",  value: "food" },
-                    { label: "Pertanian / Konstruksi",   value: "tani" },
-                    { label: "Lainnya (Ketik Sendiri)",  value: "lainnya" }
-                ]
-            );
-        }
-        function askMotivasi() {
-            botReply(
-                "Pilihan yang bagus! 🌟 Terakhir, apa <b>tujuan utama</b> Anda bekerja di Jepang?",
-                [
-                    { label: "Cari pengalaman & budaya",     value: "pengalaman" },
-                    { label: "Gaji tinggi & tabungan",        value: "gaji" },
-                    { label: "Karier profesional jangka panjang", value: "karier" }
-                ]
-            );
-        }
-        function askNama() {
-            botReply(
-                "Profil Anda sangat cocok dengan kebutuhan industri di Jepang. 🎌<br><br>Boleh tahu <b>nama lengkap</b> Anda? (Ketik di kolom bawah)",
-                null, 1000, true
-            );
-        }
-        function askWhatsApp() {
-            const safeNama = escapeHtml(userData.nama);
-            botReply(
-                `Halo <b>${safeNama}</b>! Senang berkenalan. 🙏<br><br>Terakhir, boleh minta <b>nomor WhatsApp</b> yang aktif? Agar tim konsultan kami bisa menghubungi Anda.`,
-                null, 900, true
-            );
-        }
+        const askPendidikan = () => botReply(
+            "Senang bisa membantu.<br><br>Pertama, boleh tahu <b>pendidikan terakhir</b> Anda?",
+            [{ label: "SMA / SMK", value: "sma" }, { label: "D3 / S1", value: "d3s1" }]
+        );
+        const askBahasa = () => botReply(
+            "Tercatat. ✓<br><br>Sekarang, untuk <b>kemampuan Bahasa Jepang</b>, Anda ada di level mana?",
+            [
+                { label: "Belum bisa sama sekali", value: "pemula" },
+                { label: "Sudah dasar (N5/N4)",    value: "n5n4" },
+                { label: "Lancar (N3/N2)",         value: "n3n2" }
+            ]
+        );
+        const askSektor = () => botReply(
+            "Baik. Di <b>bidang pekerjaan</b> apa Anda paling tertarik?",
+            [
+                { label: "Manufaktur / Pabrik",     value: "manufaktur" },
+                { label: "Caregiver (Kaigo)",       value: "kaigo" },
+                { label: "Food Service / Restoran", value: "food" },
+                { label: "Pertanian / Konstruksi",  value: "tani" },
+                { label: "Lainnya (ketik sendiri)", value: "lainnya" }
+            ]
+        );
+        const askMotivasi = () => botReply(
+            "Pilihan yang bagus. Terakhir, apa <b>tujuan utama</b> Anda bekerja di Jepang?",
+            [
+                { label: "Cari pengalaman & budaya",         value: "pengalaman" },
+                { label: "Gaji tinggi & tabungan",            value: "gaji" },
+                { label: "Karier profesional jangka panjang", value: "karier" }
+            ]
+        );
+        const askNama = () => botReply(
+            "Profil Anda cocok dengan kebutuhan industri Jepang.<br><br>Boleh tahu <b>nama lengkap</b> Anda?",
+            null, 850, true
+        );
+        const askWhatsApp = () => botReply(
+            `Halo <b>${escapeHtml(userData.nama)}</b>.<br><br>Terakhir, boleh minta <b>nomor WhatsApp</b> yang aktif?`,
+            null, 800, true
+        );
 
-        /* ---------- FLOW: Result ---------- */
         function showResult() {
-            // Rekomendasi program (perbaikan bug case-sensitivity)
-            if (
-                userData.pendidikan === 'D3 / S1' ||
+            if (userData.pendidikan === 'D3 / S1' ||
                 userData.bahasa.includes('N3') ||
-                userData.motivasi.toLowerCase().includes('karier')
-            ) {
+                userData.motivasi.toLowerCase().includes('karier')) {
                 userData.program = "Gijinkoku (Engineer)";
-            } else if (
-                userData.bahasa.includes('N5') ||
-                userData.motivasi.toLowerCase().includes('gaji') ||
-                userData.sektor.includes('Kaigo')
-            ) {
+            } else if (userData.bahasa.includes('N5') ||
+                       userData.motivasi.toLowerCase().includes('gaji') ||
+                       userData.sektor.includes('Kaigo')) {
                 userData.program = "Tokutei Ginou (SSW)";
             } else {
                 userData.program = "Magang Jepang (Ikusei Shuro)";
             }
 
-            const safeNama    = escapeHtml(userData.nama);
-            const safeProgram = escapeHtml(userData.program);
-
-            // Bangun URL WhatsApp — encode hanya nilai variabel
             const waText =
                 "Halo Admin LPKS Arima Persada,%0A%0A" +
                 "Saya *" + encodeURIComponent(userData.nama) + "* baru saja mengisi form konsultasi di website.%0A%0A" +
-                "*Data Diri dan Minat:*%0A" +
+                "*Data Diri:*%0A" +
                 "• Pendidikan: " + encodeURIComponent(userData.pendidikan) + "%0A" +
                 "• Bahasa Jepang: " + encodeURIComponent(userData.bahasa) + "%0A" +
-                "• Sektor Minat: " + encodeURIComponent(userData.sektor) + "%0A" +
+                "• Sektor: " + encodeURIComponent(userData.sektor) + "%0A" +
                 "• Motivasi: " + encodeURIComponent(userData.motivasi) + "%0A" +
-                "• Rekomendasi Sistem: " + encodeURIComponent(userData.program) + "%0A%0A" +
-                "Saya ingin konsultasi lebih lanjut mengenai program ini. Terima kasih!";
+                "• Rekomendasi: " + encodeURIComponent(userData.program) + "%0A%0A" +
+                "Saya ingin konsultasi lebih lanjut. Terima kasih!";
             const waLink = `https://wa.me/6282375128230?text=${waText}`;
 
             const waButtonHtml = `
                 <div class="mt-4">
                     <a href="${waLink}" target="_blank" rel="noopener noreferrer"
-                       class="inline-flex items-center justify-center w-full gap-3 bg-[#25D366] hover:bg-green-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-[0_0_20px_rgba(37,211,102,0.3)] transition-transform hover:-translate-y-0.5 text-sm sm:text-base">
-                        <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i>
+                       class="inline-flex items-center justify-center w-full gap-2.5 bg-[#25D366] hover:bg-[#20BD5A] text-white font-medium px-5 py-3 rounded-lg text-[12.5px] tracking-wide transition-colors">
+                        <i class="fa-brands fa-whatsapp text-[15px]" aria-hidden="true"></i>
                         Lanjut ke WhatsApp Admin
                     </a>
-                    <p class="text-[11px] text-slate-400 mt-2 text-center">
-                        Tim konsultan akan merespons dalam 1×24 jam kerja.
-                    </p>
+                    <p class="text-[10.5px] text-muted/80 mt-2 text-center tracking-wide">Tim konsultan merespons dalam 1×24 jam kerja.</p>
                 </div>`;
 
             botReply(
-                `Luar biasa, <b>${safeNama}</b>! Data Anda sudah kami rekam. ✅<br><br>` +
-                `Berdasarkan profil Anda, program yang direkomendasikan adalah:<br>` +
-                `<span class="inline-block mt-2 px-3 py-1.5 bg-gold-400/15 border border-gold-400/40 rounded-lg text-gold-400 font-bold">${safeProgram}</span>` +
+                `Terima kasih, <b>${escapeHtml(userData.nama)}</b>.<br><br>` +
+                `Berdasarkan profil Anda, program yang direkomendasikan:<br>` +
+                `<span class="inline-block mt-3 px-3 py-1.5 border border-accent/40 rounded-md text-accent text-[12.5px] tracking-wide">${escapeHtml(userData.program)}</span>` +
                 waButtonHtml,
-                null, 1200
+                null, 1050
             );
         }
 
-        /* ---------- EVENT BINDINGS ---------- */
-        // Delegasi klik opsi jawaban
         chatArea.addEventListener('click', (e) => {
             const btn = e.target.closest('button[data-opt-value]');
             if (!btn) return;
             handleOption(btn.dataset.optValue, btn.dataset.optLabel);
         });
-
-        // Enter di input
         userInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                handleSendMessage();
-            }
+            if (e.key === 'Enter') { e.preventDefault(); handleSendMessage(); }
         });
 
-        /* ---------- INIT ---------- */
         window.addEventListener('load', () => {
             updateProgressUI();
             scheduleTimeout(() => {
                 botReply(
-                    "Halo! 👋 Selamat datang di portal konsultasi <b>LPKS Arima Persada</b>.<br><br>" +
+                    "Halo. Selamat datang di <b>LPKS Arima Persada</b>.<br><br>" +
                     "Saya akan membantu menemukan program pelatihan Jepang yang tepat untuk Anda dalam <b>±5 menit</b>. " +
                     "Gratis, tanpa komitmen.<br><br>Siap memulai?",
-                    [{ label: "Ya, Mulai Konsultasi", value: "mulai" }]
+                    [{ label: "Ya, mulai konsultasi", value: "mulai" }]
                 );
-            }, 600);
+            }, 450);
         });
     })();
     </script>
