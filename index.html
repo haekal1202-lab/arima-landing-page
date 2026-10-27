@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="LPKS Arima Persada — Temukan jalur karier Jepangmu. Pelatihan bahasa dan keahlian untuk masa depan global." />
-<title>LPKS Arima Persada — Kuis Karier</title>
+<title>LPKS Arima Persada — Temukan Jalur Karier Jepangmu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
@@ -55,29 +55,30 @@
   }
   .nav-cta:hover { background: var(--gold); color: var(--navy); }
 
-  /* === HERO (FOKUS CTA) === */
+  /* === HERO === */
   .hero {
     position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
     padding: 120px 32px 80px; text-align: center; overflow: hidden;
   }
   .hero-bg {
     position: absolute; inset: 0; z-index: 0;
-    background: linear-gradient(to bottom, rgba(5,11,20,0.7), rgba(5,11,20,0.95)),
-                url('keberangkatan-siswa.jpeg') center/cover no-repeat;
+    background: linear-gradient(to bottom, rgba(5,11,20,0.6), rgba(5,11,20,0.95)),
+                url('assets/foto-berangkat.jpg') center/cover no-repeat;
   }
   .hero-content { max-width: 800px; position: relative; z-index: 2; }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px;
-    background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.4);
     border-radius: 99px; font-size: 0.75rem; font-weight: 600; color: var(--gold);
     letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 32px;
+    backdrop-filter: blur(10px);
   }
   .hero h1 {
     font-family: var(--font-serif); font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; color: #fff; margin-bottom: 24px;
   }
   .hero h1 span { color: var(--gold); font-style: italic; }
-  .hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 540px; margin: 0 auto 48px; line-height: 1.7; }
+  .hero p { font-size: 1.15rem; color: var(--text-main); max-width: 540px; margin: 0 auto 48px; line-height: 1.7; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
   
   /* TOMBOL CTA UTAMA */
   .btn-cta {
@@ -85,10 +86,10 @@
     padding: 20px 48px; background: var(--gold); color: var(--navy);
     font-size: 1.1rem; font-weight: 700; border-radius: 6px;
     transition: all 0.3s var(--ease); border: none; cursor: pointer;
-    box-shadow: 0 10px 30px rgba(212,175,55,0.2);
+    box-shadow: 0 10px 30px rgba(212,175,55,0.3);
   }
-  .btn-cta:hover { background: var(--gold-hover); transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212,175,55,0.3); }
-  .micro-copy { margin-top: 20px; font-size: 0.85rem; color: var(--text-muted); }
+  .btn-cta:hover { background: var(--gold-hover); transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212,175,55,0.4); }
+  .micro-copy { margin-top: 24px; font-size: 0.85rem; color: var(--text-muted); }
   .micro-copy a { color: var(--text-main); text-decoration: underline; transition: color 0.3s; }
   .micro-copy a:hover { color: var(--gold); }
 
@@ -97,7 +98,7 @@
   .stats-container {
     max-width: 1000px; margin: 0 auto; background: var(--navy-light);
     border: 1px solid var(--border); border-radius: 8px; display: flex;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
   }
   .stat-item { flex: 1; padding: 40px 24px; text-align: center; border-right: 1px solid var(--border); }
   .stat-item:last-child { border-right: none; }
@@ -112,13 +113,25 @@
   .section-h2 { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.15; color: #fff; margin-bottom: 16px; }
   .section-sub { font-size: 1.05rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
 
+  /* === GALERI (BUKTI NYATA) === */
+  .galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .galeri-item { border-radius: 8px; overflow: hidden; aspect-ratio: 4/3; position: relative; border: 1px solid var(--border); }
+  .galeri-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+  .galeri-item:hover img { transform: scale(1.05); }
+  .galeri-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 24px 16px 16px; background: linear-gradient(to top, rgba(5,11,20,0.9), transparent);
+    color: #fff; font-size: 0.85rem; font-weight: 600; opacity: 0; transition: opacity 0.3s;
+  }
+  .galeri-item:hover .galeri-caption { opacity: 1; }
+
   /* === PROGRAM === */
   .program-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .program-card {
     background: var(--navy-light); border: 1px solid var(--border); border-radius: 8px;
     padding: 40px; transition: all 0.4s var(--ease); position: relative;
   }
-  .program-card:hover { transform: translateY(-6px); border-color: rgba(212,175,55,0.3); }
+  .program-card:hover { transform: translateY(-6px); border-color: rgba(212,175,55,0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
   .program-icon { color: var(--gold); margin-bottom: 24px; }
   .program-card h3 { font-family: var(--font-serif); font-size: 1.4rem; color: #fff; margin-bottom: 12px; }
   .program-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; }
@@ -129,11 +142,11 @@
   .testi-card { background: var(--navy-light); padding: 40px; border-radius: 8px; border: 1px solid var(--border); }
   .testi-text { font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: #fff; line-height: 1.6; margin-bottom: 24px; }
   .testi-author { display: flex; align-items: center; gap: 16px; }
-  .testi-avatar { width: 48px; height: 48px; border-radius: 50%; background: rgba(212,175,55,0.1); color: var(--gold); display: grid; place-items: center; font-weight: 700; font-size: 1.1rem; }
+  .testi-avatar { width: 48px; height: 48px; border-radius: 50%; background: rgba(212,175,55,0.15); color: var(--gold); display: grid; place-items: center; font-weight: 700; font-size: 1.1rem; border: 1px solid rgba(212,175,55,0.3); }
   .testi-info strong { display: block; color: #fff; font-size: 0.95rem; }
   .testi-info span { color: var(--text-muted); font-size: 0.85rem; }
 
-  /* === CTA BOTTOM (PENGULANGAN) === */
+  /* === CTA BOTTOM === */
   .cta-bottom { background: linear-gradient(to right, #0E1A2B, #050B14); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); text-align: center; }
   .cta-bottom h2 { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); color: #fff; margin-bottom: 24px; }
   .cta-bottom p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
@@ -160,7 +173,7 @@
     .stats-container { flex-direction: column; }
     .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 24px; }
     .stat-item:last-child { border-bottom: none; }
-    .program-grid, .testi-grid { grid-template-columns: 1fr; }
+    .program-grid, .testi-grid, .galeri-grid { grid-template-columns: 1fr; }
     .hero { padding: 140px 24px 100px; }
     .hero h1 { font-size: 2.8rem; }
     .btn-cta { width: 100%; padding: 18px 24px; }
@@ -177,7 +190,8 @@
   <div class="nav-inner">
     <a href="#" class="brand">
       <div class="logo-box">
-        <img src="logo.png" alt="Logo" style="width:100%; height:100%; object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <!-- Pastikan file logo.png ada di folder assets -->
+        <img src="assets/logo.png" alt="Logo Arima Persada" style="width:100%; height:100%; object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
           <rect width="100" height="100" rx="20" fill="#050B14"/>
           <path d="M 22 30 L 78 30 M 28 40 L 72 40 M 34 40 L 34 80 M 66 40 L 66 80" stroke="#D4AF37" stroke-width="6" stroke-linecap="round"/>
@@ -189,6 +203,7 @@
     </a>
     <div class="nav-links">
       <a href="#program">Program</a>
+      <a href="#galeri">Fasilitas</a>
       <a href="#testimoni">Testimoni</a>
     </div>
     <a href="https://arima-lp.vercel.app" class="nav-cta" target="_blank" rel="noopener">Mulai Kuis Karier</a>
@@ -209,7 +224,7 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
     
-    <!-- CTA SEKUNDER: HANYA LINK KECIL -->
+    <!-- CTA SEKUNDER -->
     <div class="micro-copy">
       Sudah yakin dengan pilihanmu? <a href="https://wa.me/6282375128230" target="_blank" rel="noopener">Konsultasi via WhatsApp</a>
     </div>
@@ -234,8 +249,33 @@
   </div>
 </div>
 
-<!-- PROGRAM (INFO SINGKAT) -->
-<section id="program">
+<!-- GALERI (FASILITAS NYATA) -->
+<section id="galeri">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="kicker">Fasilitas & Kegiatan</div>
+      <h2 class="section-h2">Lingkungan Belajar Terintegrasi.</h2>
+      <p class="section-sub">Bukan sekadar teori. Kami menyiapkan lingkungan dan fisik Anda sebelum terbang ke Jepang.</p>
+    </div>
+    <div class="galeri-grid reveal">
+      <div class="galeri-item">
+        <img src="assets/foto-kelas.jpg" alt="Kelas Bahasa Jepang" onerror="this.src='https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=800&auto=format&fit=crop'">
+        <div class="galeri-caption">Kelas Bahasa Jepang Intensif</div>
+      </div>
+      <div class="galeri-item">
+        <img src="assets/foto-fisik.jpg" alt="Latihan Fisik" onerror="this.src='https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=800&auto=format&fit=crop'">
+        <div class="galeri-caption">Pembentukan Fisik & Mental (FMD)</div>
+      </div>
+      <div class="galeri-item">
+        <img src="assets/foto-grup.jpg" alt="Kebersamaan Siswa" onerror="this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop'">
+        <div class="galeri-caption">Kekeluargaan & Budaya Kerja</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program" style="background: var(--navy-light);">
   <div class="container">
     <div class="section-header reveal">
       <div class="kicker">Jalur Karier</div>
@@ -271,8 +311,8 @@
   </div>
 </section>
 
-<!-- TESTIMONI (SINGKAT) -->
-<section id="testimoni" style="background: var(--navy-light);">
+<!-- TESTIMONI -->
+<section id="testimoni">
   <div class="container">
     <div class="section-header reveal">
       <div class="kicker">Testimoni</div>
@@ -297,7 +337,7 @@
   </div>
 </section>
 
-<!-- CTA BOTTOM (PENGULANGAN) -->
+<!-- CTA BOTTOM -->
 <section class="cta-bottom">
   <div class="container reveal">
     <h2>Siap Menemukan Jalurmu?</h2>
