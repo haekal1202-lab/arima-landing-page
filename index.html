@@ -45,7 +45,7 @@
   .logo-box { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
   .brand-text { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
   .brand-text span { color: var(--gold); font-style: italic; }
-  .nav-links { display: flex; gap: 32px; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
   .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); transition: color 0.3s; text-transform: uppercase; letter-spacing: 0.05em; }
   .nav-links a:hover { color: var(--gold); }
   .nav-cta {
@@ -63,7 +63,7 @@
   .hero-bg {
     position: absolute; inset: 0; z-index: 0;
     background: linear-gradient(to bottom, rgba(5,11,20,0.6), rgba(5,11,20,0.95)),
-                url('assets/foto-berangkat.jpg') center/cover no-repeat;
+                url('assets/keberangkatan-siswa.jpeg') center/cover no-repeat;
   }
   .hero-content { max-width: 800px; position: relative; z-index: 2; }
   .hero-badge {
@@ -93,7 +93,7 @@
   .micro-copy a { color: var(--text-main); text-decoration: underline; transition: color 0.3s; }
   .micro-copy a:hover { color: var(--gold); }
 
-  /* === STATS (FLOATING) === */
+  /* === STATS === */
   .stats-wrapper { position: relative; margin-top: -60px; z-index: 10; padding: 0 32px; }
   .stats-container {
     max-width: 1000px; margin: 0 auto; background: var(--navy-light);
@@ -113,7 +113,7 @@
   .section-h2 { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.15; color: #fff; margin-bottom: 16px; }
   .section-sub { font-size: 1.05rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
 
-  /* === GALERI (BUKTI NYATA) === */
+  /* === GALERI === */
   .galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .galeri-item { border-radius: 8px; overflow: hidden; aspect-ratio: 4/3; position: relative; border: 1px solid var(--border); }
   .galeri-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
@@ -190,7 +190,7 @@
   <div class="nav-inner">
     <a href="#" class="brand">
       <div class="logo-box">
-        <!-- Pastikan file logo.png ada di folder assets -->
+        <!-- Pastikan file logo.png atau logo.jpg ada di folder assets -->
         <img src="assets/logo.png" alt="Logo Arima Persada" style="width:100%; height:100%; object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
           <rect width="100" height="100" rx="20" fill="#050B14"/>
@@ -205,12 +205,13 @@
       <a href="#program">Program</a>
       <a href="#galeri">Fasilitas</a>
       <a href="#testimoni">Testimoni</a>
+      <a href="https://arimapersada.vercel.app" target="_blank" rel="noopener" style="color: var(--gold);">Info Lengkap ↗</a>
     </div>
-    <a href="https://arima-lp.vercel.app" class="nav-cta" target="_blank" rel="noopener">Mulai Kuis Karier</a>
+    <a href="chatbox.html" class="nav-cta">Mulai Kuis Karier</a>
   </div>
 </nav>
 
-<!-- HERO: FOKUS CTA -->
+<!-- HERO -->
 <header class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content reveal">
@@ -219,7 +220,7 @@
     <p>Jawab beberapa pertanyaan singkat untuk melihat rekomendasi awal program yang paling sesuai dengan minat dan kesiapanmu.</p>
     
     <!-- TOMBOL CTA UTAMA -->
-    <a href="https://arima-lp.vercel.app" class="btn-cta" target="_blank" rel="noopener">
+    <a href="chatbox.html" class="btn-cta">
       Mulai Kuis Karier
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
@@ -231,7 +232,7 @@
   </div>
 </header>
 
-<!-- STATS (BUKTI SOSIAL) -->
+<!-- STATS -->
 <div class="stats-wrapper reveal">
   <div class="stats-container">
     <div class="stat-item">
@@ -259,15 +260,15 @@
     </div>
     <div class="galeri-grid reveal">
       <div class="galeri-item">
-        <img src="assets/foto-kelas.jpg" alt="Kelas Bahasa Jepang" onerror="this.src='https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=800&auto=format&fit=crop'">
+        <img src="assets/Kegiatan-belajar.jpeg" alt="Kelas Bahasa Jepang">
         <div class="galeri-caption">Kelas Bahasa Jepang Intensif</div>
       </div>
       <div class="galeri-item">
-        <img src="assets/foto-fisik.jpg" alt="Latihan Fisik" onerror="this.src='https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=800&auto=format&fit=crop'">
+        <img src="assets/Foto-latihan-fisik.jpeg" alt="Latihan Fisik">
         <div class="galeri-caption">Pembentukan Fisik & Mental (FMD)</div>
       </div>
       <div class="galeri-item">
-        <img src="assets/foto-grup.jpg" alt="Kebersamaan Siswa" onerror="this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop'">
+        <img src="assets/Foto-keberangkatan-siswa-2.jpeg" alt="Kebersamaan Siswa">
         <div class="galeri-caption">Kekeluargaan & Budaya Kerja</div>
       </div>
     </div>
@@ -342,7 +343,7 @@
   <div class="container reveal">
     <h2>Siap Menemukan Jalurmu?</h2>
     <p>Jangan biarkan kebingungan menunda kariermu. Mulai kuisnya sekarang, gratis dan hanya butuh 5 menit.</p>
-    <a href="https://arima-lp.vercel.app" class="btn-cta" target="_blank" rel="noopener">
+    <a href="chatbox.html" class="btn-cta">
       Mulai Kuis Karier
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
@@ -355,6 +356,7 @@
     <div class="footer-brand">
       <h3>Arima Persada.</h3>
       <p>Lembaga Pelatihan Kerja Swasta resmi yang mempersiapkan tenaga kerja Indonesia berdaya saing global sejak 2006.</p>
+      <p style="margin-top: 16px;"><a href="https://arimapersada.vercel.app" target="_blank" style="color: var(--gold); text-decoration: underline;">Kunjungi Website Informasi Lengkap ↗</a></p>
     </div>
     <div class="footer-contact">
       <h4>Kontak</h4>
