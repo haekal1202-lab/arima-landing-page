@@ -62,9 +62,9 @@
   }
   .hero-bg {
     position: absolute; inset: 0; z-index: 0;
-    /* MENGGUNAKAN FOTO ASLI */
+    /* PATH SUDAH DISESUAIKAN DENGAN FOLDER ASSETS */
     background: linear-gradient(to bottom, rgba(5,11,20,0.6), rgba(5,11,20,0.95)),
-                url('keberangkatan-siswa.jpeg') center/cover no-repeat;
+                url('assets/keberangkatan-siswa.jpeg') center/cover no-repeat;
   }
   .hero-content { max-width: 800px; position: relative; z-index: 2; }
   .hero-badge {
@@ -191,9 +191,8 @@
   <div class="nav-inner">
     <a href="#" class="brand">
       <div class="logo-box">
-        <!-- MEMANGGIL LOGO DENGAN NAMA FILE YANG BERSIH -->
-        <img src="logo.jpeg" alt="Logo Arima Persada" style="width:100%; height:100%; object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-        <!-- LOGO CADANGAN (SVG) JIKA GAMBAR GAGAL DIMUAT -->
+        <!-- PATH LOGO DIPERBAIKI -->
+        <img src="assets/logo.jpeg" alt="Logo Arima Persada" style="width:100%; height:100%; object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
           <rect width="100" height="100" rx="20" fill="#050B14"/>
           <path d="M 22 30 L 78 30 M 28 40 L 72 40 M 34 40 L 34 80 M 66 40 L 66 80" stroke="#D4AF37" stroke-width="6" stroke-linecap="round"/>
@@ -221,13 +220,11 @@
     <h1>Temukan Jalur<br><span>Karier Jepangmu.</span></h1>
     <p>Jawab beberapa pertanyaan singkat untuk melihat rekomendasi awal program yang paling sesuai dengan minat dan kesiapanmu.</p>
     
-    <!-- TOMBOL CTA UTAMA -->
     <a href="chatbox.html" class="btn-cta">
       Mulai Kuis Karier
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
     
-    <!-- CTA SEKUNDER -->
     <div class="micro-copy">
       Sudah yakin dengan pilihanmu? <a href="https://wa.me/6282375128230" target="_blank" rel="noopener">Konsultasi via WhatsApp</a>
     </div>
@@ -252,7 +249,7 @@
   </div>
 </div>
 
-<!-- GALERI (FASILITAS NYATA) -->
+<!-- GALERI -->
 <section id="galeri">
   <div class="container">
     <div class="section-header reveal">
@@ -262,15 +259,16 @@
     </div>
     <div class="galeri-grid reveal">
       <div class="galeri-item">
-        <img src="kegiatan-belajar.jpeg" alt="Kelas Bahasa Jepang">
+        <!-- PATH GAMBAR DIPERBAIKI -->
+        <img src="assets/kegiatan-belajar.jpeg" alt="Kelas Bahasa Jepang">
         <div class="galeri-caption">Kelas Bahasa Jepang Intensif</div>
       </div>
       <div class="galeri-item">
-        <img src="latihan-fisik.jpeg" alt="Latihan Fisik">
+        <img src="assets/latihan-fisik.jpeg" alt="Latihan Fisik">
         <div class="galeri-caption">Pembentukan Fisik & Mental (FMD)</div>
       </div>
       <div class="galeri-item">
-        <img src="keberangkatan-siswa-2.jpeg" alt="Kebersamaan Siswa">
+        <img src="assets/keberangkatan-siswa-2.jpeg" alt="Kebersamaan Siswa">
         <div class="galeri-caption">Kekeluargaan & Budaya Kerja</div>
       </div>
     </div>
