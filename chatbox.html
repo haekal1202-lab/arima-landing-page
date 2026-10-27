@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuis Karier — LPKS Arima Persada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #050B14; --navy-light: #0E1A2B; --gold: #D4AF37;
+    --text-main: #E2E8F0; --text-muted: #94A3B8; --border: rgba(255,255,255,0.1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif; background: var(--navy); color: var(--text-main);
+    height: 100vh; display: flex; flex-direction: column;
+  }
+  .header {
+    background: var(--navy-light); padding: 16px 24px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .header img { width: 32px; height: 32px; object-fit: contain; }
+  .header-info h1 { font-size: 1rem; color: #fff; font-weight: 600; }
+  .header-info p { font-size: 0.75rem; color: #10B981; } /* Online status green */
+  
+  .chat-container {
+    flex: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px;
+    max-width: 800px; margin: 0 auto; width: 100%;
+  }
+  .message { display: flex; max-width: 80%; }
+  .message.bot { align-self: flex-start; }
+  .message.user { align-self: flex-end; }
+  .bubble {
+    padding: 12px 16px; border-radius: 16px; font-size: 0.95rem; line-height: 1.5;
+  }
+  .bot .bubble { background: var(--navy-light); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+  .user .bubble { background: var(--gold); color: var(--navy); border-bottom-right-radius: 4px; }
+  
+  .options { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+  .options button {
+    background: transparent; border: 1px solid var(--gold); color: var(--gold);
+    padding: 10px 16px; border-radius: 8px; cursor: pointer; font-family: inherit;
+    text-align: left; transition: all 0.2s;
+  }
+  .options button:hover { background: rgba(212,175,55,0.1); }
+
+  .input-area {
+    background: var(--navy-light); padding: 16px 24px; border-top: 1px solid var(--border);
+  }
+  .input-box {
+    max-width: 800px; margin: 0 auto; display: flex; gap: 12px;
+  }
+  .input-box input {
+    flex: 1; background: var(--navy); border: 1px solid var(--border);
+    padding: 14px 20px; border-radius: 99px; color: #fff; font-family: inherit;
+    outline: none;
+  }
+  .input-box input:focus { border-color: var(--gold); }
+  .input-box button {
+    background: var(--gold); color: var(--navy); border: none; padding: 0 24px;
+    border-radius: 99px; font-weight: 600; cursor: pointer; transition: 0.2s;
+  }
+  .input-box button:hover { background: #F3E5AB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="assets/logo.png" alt="Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' rx=\'20\' fill=\'%23D4AF37\'/><text x=\'50\' y=\'68\' font-family=\'Arial\' font-weight=\'900\' font-size=\'46\' fill=\'%23050B14\' text-anchor=\'middle\'>AP</text></svg>'">
+  <div class="header-info">
+    <h1>Admin Arima Persada</h1>
+    <p>● Online</p>
+  </div>
+</div>
+
+<div class="chat-container" id="chat">
+  <div class="message bot">
+    <div class="bubble">
+      Halo! Selamat datang di Kuis Karier LPKS Arima Persada. 👋<br><br>
+      Saya akan membantu menemukan jalur yang paling cocok untukmu. Boleh tahu, saat ini kamu berada di tahap mana?
+      <div class="options">
+        <button onclick="pilih('Lulusan SMA/SMK')">Lulusan SMA/SMK</button>
+        <button onclick="pilih('Lulusan D3/S1')">Lulusan D3/S1</button>
+        <button onclick="pilih('Sudah Bekerja')">Sudah Bekerja</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="input-area">
+  <div class="input-box">
+    <input type="text" placeholder="Ketik pesan..." id="chatInput" onkeypress="handleKeyPress(event)">
+    <button onclick="kirimPesan()">Kirim</button>
+  </div>
+</div>
+
+<script>
+  const chat = document.getElementById('chat');
+  const input = document.getElementById('chatInput');
+
+  function pilih(opsi) {
+    tambahPesan(opsi, 'user');
+    setTimeout(() => {
+      tambahPesan("Pilihan yang bagus! Untuk saat ini, jalur <b>Tokutei Ginou (SSW)</b> atau <b>Magang (Ikusei Shuro)</b> mungkin paling relevan. Apakah kamu lebih tertarik bekerja di bidang Perawatan (Kaigo), Manufaktur, atau Makanan?", 'bot');
+    }, 1000);
+  }
+
+  function kirimPesan() {
+    const text = input.value.trim();
+    if (text) {
+      tambahPesan(text, 'user');
+      input.value = '';
+      setTimeout(() => {
+        tambahPesan("Terima kasih atas informasinya. Admin kami akan segera menghubungi Anda via WhatsApp untuk melanjutkan konsultasi gratis ini.", 'bot');
+      }, 1000);
+    }
+  }
+
+  function handleKeyPress(e) {
+    if (e.key === 'Enter') kirimPesan();
+  }
+
+  function tambahPesan(teks, tipe) {
+    const div = document.createElement('div');
+    div.className = `message ${tipe}`;
+    div.innerHTML = `<div class="bubble">${teks}</div>`;
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+  }
+</script>
+
+</body>
+</html>
