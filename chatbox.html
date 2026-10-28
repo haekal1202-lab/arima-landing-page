@@ -292,7 +292,6 @@
         <div class="chat-header">
             <img src="assets/logo.jpeg" alt="Arima Logo" onerror="this.src='https://via.placeholder.com/40/d4af37/000000?text=A'">
             <div class="chat-header-info">
-                <!-- PERUBAHAN NAMA DI HEADER -->
                 <h3>Tim Support Arima</h3>
                 <p>Online</p>
             </div>
@@ -302,12 +301,21 @@
     </div>
 
     <script>
-        // NOMOR WA ADMIN
         const WA_NUMBER = "6282375128230"; 
 
         const chatBody = document.getElementById('chatBody');
-        let step = 0;
-        let userData = { status: '', bidang: '', levelBahasa: '', sswStatus: '', metode: '', jam: '', nama: '', wa: '' };
+        
+        // State Management (Tanpa variabel step, murni berdasarkan isi data)
+        let userData = { 
+            status: '', 
+            bidang: '', 
+            levelBahasa: '', 
+            sswStatus: '', 
+            metode: '', 
+            jam: '', 
+            nama: '', 
+            wa: '' 
+        };
 
         // --- FUNGSI UTAMA CHAT ---
         function addMessage(text, sender, isHTML = false) {
@@ -392,7 +400,6 @@
 
         function initChat() {
             showTyping(() => {
-                // PERUBAHAN SAPAAN AWAL
                 addMessage("Halo! Selamat datang di LPKS Arima Persada 👋. Kami dari Tim Support Arima. Biar kami bantu carikan program yang paling pas buat karier kamu di Jepang, boleh ikuti sesi konsultasi singkat ini?", 'bot');
                 setTimeout(askQ1, 600);
             });
@@ -493,27 +500,39 @@
             });
         }
 
+        // --- PERBAIKAN LOGIKA: MENGGUNAKAN STATE CHECK (BUKAN STEP) ---
         function handleOptionClick(value, label, container) {
             container.remove();
             addMessage(label, 'user');
             
-            if (step === 0) { 
-                userData.status = value; step++; setTimeout(askQ2, 600); 
-            } else if (step === 1) { 
-                userData.bidang = value; step++; setTimeout(askQ3, 600); 
-            } else if (step === 2) { 
-                userData.levelBahasa = value; step++; 
+            // Cek data mana yang masih kosong, lalu panggil pertanyaan berikutnya
+            if (!userData.status) { 
+                userData.status = value; 
+                setTimeout(askQ2, 600); 
+            } 
+            else if (!userData.bidang) { 
+                userData.bidang = value; 
+                setTimeout(askQ3, 600); 
+            } 
+            else if (!userData.levelBahasa) { 
+                userData.levelBahasa = value; 
                 if (value === "Dasar (N4/A2.2)") {
                     setTimeout(askQ3b, 600);
                 } else {
                     setTimeout(askQ4, 600);
                 }
-            } else if (step === 3) {
-                userData.sswStatus = value; step++; setTimeout(askQ4, 600);
-            } else if (step === 4) { 
-                userData.metode = value; step++; setTimeout(askQ5, 600); 
-            } else if (step === 5) { 
-                userData.jam = value; step++; setTimeout(askName, 600); 
+            } 
+            else if (userData.levelBahasa === "Dasar (N4/A2.2)" && !userData.sswStatus) {
+                userData.sswStatus = value; 
+                setTimeout(askQ4, 600);
+            } 
+            else if (!userData.metode) { 
+                userData.metode = value; 
+                setTimeout(askQ5, 600); 
+            } 
+            else if (!userData.jam) { 
+                userData.jam = value; 
+                setTimeout(askName, 600); 
             }
         }
 
