@@ -3,273 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LPKS Arima Persada - Temukan jalur karier terbaikmu di Jepang. Ikuti kuis interaktif 1 menit untuk mendapatkan rekomendasi program.">
+    <meta name="description" content="LPKS Arima Persada - Temukan jalur karier terbaikmu di Jepang.">
     <title>LPKS Arima Persada — Wujudkan Karier Impian di Jepang</title>
     
-    <!-- Google Fonts: Poppins -->
+    <!-- Google Fonts: Playfair Display (Elegan) & Inter (Bersih) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #0a0a0a;
-            --surface-color: #1a1a1a;
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-            --accent-color: #d4af37; /* Emas */
-            --accent-hover: #b5952f;
+            --bg-color: #050505;
+            --text-main: #f5f5f5;
+            --text-muted: #888888;
+            --gold: #d4af37;
+            --gold-light: #e8c86a;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- NAVBAR --- */
+        /* --- TIPOGRAFI ELEGAN --- */
+        h1, h2, h3, .brand-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        /* --- NAVBAR MINIMALIS --- */
         nav {
-            padding: 20px;
+            padding: 30px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 10;
         }
         nav img {
-            height: 50px;
-            border-radius: 8px;
+            height: 45px;
+            border-radius: 4px;
+            opacity: 0.9;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (Ilustrasi Tegas & Elegan) --- */
         .hero {
-            padding: 60px 20px;
+            position: relative;
+            padding: 120px 20px 100px;
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            animation: fadeIn 1s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
         }
-        
+
+        /* Ilustrasi Abstrak Jepang (Garis Emas & Lingkaran) */
+        .hero-illustration {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 255, 255, 0.03) 40px);
+        }
+
         .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
         }
-        
+
         .hero h1 span {
-            color: var(--accent-color);
+            color: var(--gold);
+            font-style: italic;
         }
 
         .hero p {
             font-size: 1.1rem;
             color: var(--text-muted);
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 50px;
+            max-width: 550px;
+            font-weight: 300;
         }
 
-        /* --- PRIMARY CTA BUTTON --- */
-        .cta-primary {
+        /* --- TOMBOL OUTLINE PREMIUM --- */
+        .cta-outline {
             display: inline-block;
-            background-color: var(--accent-color);
-            color: #000;
-            padding: 18px 40px;
-            font-size: 1.2rem;
-            font-weight: 700;
+            background-color: transparent;
+            color: var(--gold);
+            padding: 18px 45px;
+            font-size: 0.95rem;
+            font-weight: 500;
             text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
-            transition: all 0.3s ease;
-            border: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--gold);
+            transition: all 0.4s ease;
             cursor: pointer;
         }
 
-        .cta-primary:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.6);
+        .cta-outline:hover {
+            background-color: var(--gold);
+            color: #000;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
 
         .subtext {
             display: block;
-            margin-top: 15px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #555;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        /* --- SOCIAL PROOF (STATS) --- */
-        .stats-container {
+        /* --- STATISTIK MINIMALIS (Tanpa Kotak) --- */
+        .stats-section {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            padding: 40px 20px;
-            background-color: var(--surface-color);
-            margin: 40px 0;
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #222;
+            gap: 80px;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
         }
 
         .stat-item h3 {
-            color: var(--accent-color);
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 5px;
         }
 
         .stat-item p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        /* --- VISUAL PROOF --- */
-        .visual-proof {
-            max-width: 900px;
+        /* --- FOTO REALISTIS (The Star of the Page) --- */
+        .visual-showcase {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 20px 60px;
+            padding: 80px 20px;
             text-align: center;
+            position: relative;
         }
 
-        .visual-proof img {
+        /* Gradasi hitam agar gambar menyatu dengan background */
+        .visual-showcase::after {
+            content: '';
+            position: absolute;
+            bottom: 80px;
+            left: 0;
             width: 100%;
-            max-width: 700px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            border: 1px solid #333;
+            height: 50%;
+            background: linear-gradient(to top, var(--bg-color) 0%, transparent 100%);
+            pointer-events: none;
         }
 
-        /* --- BOTTOM SECTION & SOFT CTA --- */
+        .visual-showcase img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 4px;
+            filter: grayscale(20%) contrast(1.1); /* Efek sinematik */
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+            position: relative;
+            z-index: 1;
+        }
+
+        .visual-caption {
+            position: relative;
+            z-index: 2;
+            margin-top: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* --- FOOTER & SOFT CTA --- */
         .bottom-section {
-            background: linear-gradient(to bottom, var(--surface-color), var(--bg-color));
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
-            border-top: 1px solid #222;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .bottom-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
         }
 
         .soft-cta {
             display: block;
-            margin-top: 30px;
-            font-size: 0.95rem;
+            margin-top: 40px;
+            font-size: 0.85rem;
             color: var(--text-muted);
             text-decoration: none;
             transition: color 0.3s;
+            letter-spacing: 1px;
         }
 
         .soft-cta span {
-            color: var(--accent-color);
-            font-weight: 600;
-            text-decoration: underline;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 2px;
+            transition: all 0.3s;
         }
 
-        .soft-cta:hover {
-            color: #fff;
+        .soft-cta:hover span {
+            color: var(--gold);
         }
 
-        /* --- FOOTER --- */
         footer {
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
-            font-size: 0.8rem;
-            color: #666;
-            border-top: 1px solid #222;
+            font-size: 0.75rem;
+            color: #444;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            letter-spacing: 1px;
         }
 
         footer a {
-            color: #888;
+            color: #555;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 15px;
+            transition: color 0.3s;
         }
         
         footer a:hover {
-            color: var(--accent-color);
+            color: var(--gold);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- RESPONSIVE DESIGN --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
-            .cta-primary { padding: 15px 30px; font-size: 1.1rem; width: 100%; }
-            .stats-container { flex-direction: column; gap: 20px; padding: 30px 20px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 0.95rem; }
+            .cta-outline { width: 100%; padding: 16px 20px; }
+            .stats-section { flex-direction: column; gap: 40px; }
+            .visual-showcase { padding: 40px 10px; }
+            .visual-caption { font-size: 1rem; padding: 0 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Logo di Bagian Atas -->
+    <!-- Logo Minimalis -->
     <nav>
-        <img src="assets/logo.jpeg" alt="Logo LPKS Arima Persada" onerror="this.src='https://via.placeholder.com/150x50/d4af37/000000?text=ARIMA'">
+        <img src="assets/logo.jpeg" alt="LPKS Arima Persada" onerror="this.src='https://via.placeholder.com/150x50/d4af37/000000?text=ARIMA'">
     </nav>
 
-    <!-- Hero Section (Fokus Utama) -->
+    <!-- Hero Section -->
     <section class="hero">
-        <h1>Wujudkan Karier Impianmu di <span>Jepang</span></h1>
-        <p>Dari nol hingga terbang ke Jepang. Temukan jalur pelatihan, fasilitas, dan program penempatan yang paling cocok untukmu dalam waktu 1 menit.</p>
+        <!-- Ilustrasi Latar Belakang Abstrak -->
+        <div class="hero-illustration"></div>
         
-        <!-- Tombol Utama (Direct ke Chatbox) -->
-        <a href="chatbox.html" class="cta-primary">
-            🚀 Mulai Kuis Karier (1 Menit)
+        <h1>Langkah Pasti Menuju <br><span>Karier di Jepang.</span></h1>
+        <p>Kami memandu Anda dari nol hingga sukses bersertifikasi dan bekerja di perusahaan terbaik Jepang.</p>
+        
+        <a href="chatbox.html" class="cta-outline">
+            Mulai Konsultasi
         </a>
-        <span class="subtext">100% Gratis • Tanpa Biaya Pendaftaran Awal</span>
+        <span class="subtext">Gratis • Tanpa Biaya Awal</span>
     </section>
 
-    <!-- Bukti Sosial (Statistik) -->
-    <section class="stats-container">
+    <!-- Statistik Minimalis -->
+    <section class="stats-section">
         <div class="stat-item">
             <h3>500+</h3>
-            <p>Alumni di Jepang</p>
+            <p>Alumni</p>
         </div>
         <div class="stat-item">
             <h3>60+</h3>
-            <p>Angkatan Terkirim</p>
+            <p>Angkatan</p>
         </div>
         <div class="stat-item">
             <h3>100%</h3>
-            <p>Pendampingan Belajar</p>
+            <p>Pendampingan</p>
         </div>
     </section>
 
-    <!-- Visual Bukti (Foto Keberangkatan) -->
-    <section class="visual-proof">
-        <img src="assets/keberangkatan-siswa.jpeg" alt="Keberangkatan Siswa Arima" onerror="this.style.display='none'">
+    <!-- Foto Realistis (Bintang Halaman) -->
+    <section class="visual-showcase">
+        <img src="assets/keberangkatan-siswa.jpeg" alt="Keberangkatan Siswa" onerror="this.style.display='none'">
+        <p class="visual-caption">"Momen keberangkatan bukanlah akhir, melainkan awal dari masa depan yang gemilang."</p>
     </section>
 
-    <!-- Bottom CTA & Soft CTA -->
+    <!-- Bottom CTA -->
     <section class="bottom-section">
-        <h2>Siap Memulai Langkah Pertamamu?</h2>
-        <p style="color: var(--text-muted); margin-bottom: 30px;">Jangan biarkan keraguan menunda impianmu. Biar tim kami yang membantumu.</p>
+        <h2>Mulai Perjalanan Anda Hari Ini.</h2>
+        <p style="color: var(--text-muted); margin-bottom: 40px; font-weight: 300;">
+            Tim Support kami siap membantu Anda merancang jalur karier yang paling tepat.
+        </p>
         
-        <a href="chatbox.html" class="cta-primary">
-            🎯 Cari Tahu Programmu Sekarang
+        <a href="chatbox.html" class="cta-outline">
+            Temukan Program Anda
         </a>
 
-        <!-- Soft CTA ke Web Pusat Informasi -->
         <a href="https://arimapersada.vercel.app" class="soft-cta" target="_blank">
-            Masih ingin membaca detail? <span>Kunjungi Pusat Informasi Lengkap</span>
+            Ingin membaca detail? <br> <span>Kunjungi Pusat Informasi</span>
         </a>
     </section>
 
-    <!-- Footer dengan Link ke Web Pusat Informasi -->
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 LPKS Arima Persada. All rights reserved.</p>
-        <div style="margin-top: 10px;">
-            <a href="https://arimapersada.vercel.app/kebijakan-privasi.html" target="_blank">Kebijakan Privasi</a> | 
+        <p>&copy; 2026 LPKS Arima Persada.</p>
+        <div style="margin-top: 15px;">
+            <a href="https://arimapersada.vercel.app/kebijakan-privasi.html" target="_blank">Kebijakan Privasi</a>
             <a href="https://arimapersada.vercel.app/syarat-ketentuan.html" target="_blank">Syarat & Ketentuan</a>
         </div>
     </footer>
