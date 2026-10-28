@@ -11,7 +11,7 @@
             --bg-color: #121212;
             --chat-bg: #1e1e1e;
             --bot-bubble: #2a2a2a;
-            --user-bubble: #d4af37; /* Aksen Emas */
+            --user-bubble: #d4af37;
             --text-main: #ffffff;
             --text-muted: #a0a0a0;
             --accent-color: #d4af37;
@@ -45,7 +45,6 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            position: relative;
         }
 
         .chat-header {
@@ -62,7 +61,7 @@
             height: 40px;
             border-radius: 50%;
             object-fit: cover;
-            background-color: #fff; /* Placeholder logo */
+            background-color: #fff;
         }
 
         .chat-header-info h3 {
@@ -72,7 +71,7 @@
 
         .chat-header-info p {
             font-size: 12px;
-            color: #4caf50; /* Online indicator */
+            color: #4caf50;
         }
 
         .chat-body {
@@ -85,7 +84,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Custom Scrollbar */
         .chat-body::-webkit-scrollbar { width: 6px; }
         .chat-body::-webkit-scrollbar-track { background: transparent; }
         .chat-body::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
@@ -176,7 +174,6 @@
             cursor: pointer;
         }
 
-        /* Typing Indicator */
         .typing {
             display: flex;
             gap: 4px;
@@ -197,7 +194,6 @@
             40% { transform: scale(1); }
         }
 
-        /* Result Card */
         .result-card {
             background-color: #2a2a2a;
             border: 1px solid var(--accent-color);
@@ -222,7 +218,7 @@
         .result-card ul li span {
             color: var(--text-muted);
             display: inline-block;
-            width: 130px;
+            width: 120px;
         }
 
         .urgency-text {
@@ -261,18 +257,11 @@
             background-color: var(--accent-hover);
             transform: translateY(-2px);
         }
-
-        .wa-icon {
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-
     </style>
 </head>
 <body>
 
     <div class="chat-container">
-        <!-- Header -->
         <div class="chat-header">
             <img src="assets/logo.jpeg" alt="Arima Logo" onerror="this.src='https://via.placeholder.com/40/d4af37/000000?text=A'">
             <div class="chat-header-info">
@@ -281,38 +270,23 @@
             </div>
         </div>
 
-        <!-- Chat Body -->
-        <div class="chat-body" id="chatBody">
-            <!-- Pesan akan di-generate via JS -->
-        </div>
+        <div class="chat-body" id="chatBody"></div>
     </div>
 
     <script>
-        // PENTING: Ganti nomor di bawah ini dengan nomor WhatsApp Admin LPKS Arima (Format: 62xxx)
+        // GANTI NOMOR WA ADMIN DI SINI
         const WA_NUMBER = "6281234567890"; 
 
         const chatBody = document.getElementById('chatBody');
-        
-        // State Management
         let step = 0;
-        let userData = {
-            status: '',
-            bidang: '',
-            metode: '',
-            jam: '',
-            nama: '',
-            wa: ''
-        };
+        let userData = { status: '', bidang: '', metode: '', jam: '', nama: '', wa: '' };
 
         // --- FUNGSI UTAMA CHAT ---
         function addMessage(text, sender, isHTML = false) {
             const msgDiv = document.createElement('div');
             msgDiv.className = `message ${sender === 'bot' ? 'msg-bot' : 'msg-user'}`;
-            if (isHTML) {
-                msgDiv.innerHTML = text;
-            } else {
-                msgDiv.innerText = text;
-            }
+            if (isHTML) msgDiv.innerHTML = text;
+            else msgDiv.innerText = text;
             chatBody.appendChild(msgDiv);
             scrollToBottom();
         }
@@ -320,18 +294,14 @@
         function showTyping(callback) {
             const typingDiv = document.createElement('div');
             typingDiv.className = `message msg-bot typing-container`;
-            typingDiv.innerHTML = `
-                <div class="typing">
-                    <span></span><span></span><span></span>
-                </div>
-            `;
+            typingDiv.innerHTML = `<div class="typing"><span></span><span></span><span></span></div>`;
             chatBody.appendChild(typingDiv);
             scrollToBottom();
 
             setTimeout(() => {
                 chatBody.removeChild(typingDiv);
                 callback();
-            }, 1200); // Jeda 1.2 detik
+            }, 1000);
         }
 
         function scrollToBottom() {
@@ -352,14 +322,13 @@
             scrollToBottom();
         }
 
-        function renderInput(placeholder, type, btnText, onSave, containerToRemove) {
+        function renderInput(placeholder, type, btnText, onSave) {
             const group = document.createElement('div');
             group.className = 'input-group';
             
             const input = document.createElement('input');
             input.type = type;
             input.placeholder = placeholder;
-            input.id = 'userInput';
             
             const btn = document.createElement('button');
             btn.innerText = btnText;
@@ -368,7 +337,6 @@
                 const val = input.value.trim();
                 if(val === '') return;
                 onSave(val);
-                if(containerToRemove) containerToRemove.remove();
                 group.remove();
             };
 
@@ -387,7 +355,7 @@
         function initChat() {
             showTyping(() => {
                 addMessage("Halo! Selamat datang di LPKS Arima Persada 👋. Saya Arima-bot. Biar saya bisa bantu carikan program yang paling pas buat karier kamu di Jepang, boleh ikuti sesi konsultasi singkat ini?", 'bot');
-                setTimeout(askQ1, 800);
+                setTimeout(askQ1, 600);
             });
         }
 
@@ -407,14 +375,14 @@
             showTyping(() => {
                 addMessage("Menarik! Lalu, bidang pekerjaan apa yang paling kamu minati di Jepang nanti?", 'bot');
                 renderOptions([
-                    { label: "🧑‍🦳 Perawatan Lansia (Kaigo)", value: "Perawatan Lansia (Kaigo)" },
-                    { label: "🏭 Manufaktur / Pabrik", value: "Manufaktur / Pabrik" },
+                    { label: "🧑‍🦳 Perawatan Lansia (Kaigo)", value: "Perawatan Lansia" },
+                    { label: "🏭 Manufaktur / Pabrik", value: "Manufaktur" },
                     { label: "🍽️ Makanan & Minuman (Food Service)", value: "Food Service" },
                     { label: "🏨 Perhotelan (Hospitality)", value: "Hospitality" },
                     { label: "🚜 Pertanian & Perkebunan", value: "Pertanian" },
                     { label: "🏗️ Konstruksi (Kensetsu)", value: "Konstruksi" },
                     { label: "🚗 Otomotif", value: "Otomotif" },
-                    { label: "👨‍💻 IT / Teknik (Engineering)", value: "IT / Teknik (Engineering)" }
+                    { label: "👨‍💻 IT / Teknik (Engineering)", value: "IT / Teknik" }
                 ]);
             });
         }
@@ -429,35 +397,55 @@
             });
         }
 
+        // LOGIKA DINAMIS UNTUK PERTANYAAN 4
         function askQ4() {
             showTyping(() => {
-                addMessage("Terakhir, kira-kira kapan waktu yang paling pas buat kamu belajar?", 'bot');
-                renderOptions([
-                    { label: "☀️ Pagi / Siang (08.00 - 15.00)", value: "Pagi / Siang" },
-                    { label: "🌙 Malam (Mulai jam 20.00)", value: "Malam" },
-                    { label: "📅 Akhir Pekan (Sabtu / Minggu)", value: "Akhir Pekan" }
-                ]);
+                addMessage("Baik. Kira-kira jadwal mana yang paling pas buat kamu?", 'bot');
+                
+                let options = [];
+
+                if (userData.metode === "Online") {
+                    // Jika Online, hanya ada pilihan malam (sesuai tabel)
+                    options = [
+                        { label: "Senin, Rabu, Jumat (Mulai 20.00)", value: "Senin, Rabu, Jumat (Mulai 20.00)" },
+                        { label: "Selasa, Kamis, Sabtu (Mulai 20.00)", value: "Selasa, Kamis, Sabtu (Mulai 20.00)" }
+                    ];
+                } else {
+                    // Jika Offline, sortir berdasarkan status (Pelajar vs Pekerja)
+                    if (userData.status === "Pelajar / Mahasiswa") {
+                        options = [
+                            { label: "Senin, Rabu, Jumat (Mulai 20.00)", value: "Senin, Rabu, Jumat (Mulai 20.00)" },
+                            { label: "Selasa, Kamis, Sabtu (Mulai 20.00)", value: "Selasa, Kamis, Sabtu (Mulai 20.00)" }
+                        ];
+                    } else if (userData.status === "Sudah Bekerja (Karyawan)") {
+                        options = [
+                            { label: "Sabtu & Minggu (08.00 - 15.00)", value: "Sabtu & Minggu (08.00 - 15.00)" },
+                            { label: "Senin, Rabu, Jumat (Mulai 20.00)", value: "Senin, Rabu, Jumat (Mulai 20.00)" },
+                            { label: "Selasa, Kamis, Sabtu (Mulai 20.00)", value: "Selasa, Kamis, Sabtu (Mulai 20.00)" }
+                        ];
+                    } else {
+                        // Umum / D3/S1 (Bisa pagi, atau malam)
+                        options = [
+                            { label: "Senin - Jumat (08.00 - 15.00)", value: "Senin - Jumat (08.00 - 15.00)" },
+                            { label: "Senin, Rabu, Jumat (Mulai 20.00)", value: "Senin, Rabu, Jumat (Mulai 20.00)" },
+                            { label: "Selasa, Kamis, Sabtu (Mulai 20.00)", value: "Selasa, Kamis, Sabtu (Mulai 20.00)" }
+                        ];
+                    }
+                }
+                renderOptions(options);
             });
         }
 
-        // Handling Clicks
         function handleOptionClick(value, label, container) {
-            // Hapus tombol opsi
             container.remove();
-            // Tampilkan pilihan user
             addMessage(label, 'user');
             
-            // Simpan data berdasarkan step
             if (step === 0) { userData.status = value; step++; setTimeout(askQ2, 600); }
             else if (step === 1) { userData.bidang = value; step++; setTimeout(askQ3, 600); }
             else if (step === 2) { userData.metode = value; step++; setTimeout(askQ4, 600); }
-            else if (step === 3) { 
-                userData.jam = value; step++; 
-                setTimeout(askName, 600); 
-            }
+            else if (step === 3) { userData.jam = value; step++; setTimeout(askName, 600); }
         }
 
-        // Micro-Commitment: Nama
         function askName() {
             showTyping(() => {
                 addMessage("Sebentar, rekomendasi programmu sedang disiapkan... 🤔", 'bot');
@@ -470,11 +458,10 @@
                             askWA();
                         });
                     });
-                }, 1000);
+                }, 800);
             });
         }
 
-        // Micro-Commitment: WA
         function askWA() {
             showTyping(() => {
                 addMessage(`Halo ${userData.nama}! Ketik nomor WhatsApp yang aktif ya (contoh: 08123456789).`, 'bot');
@@ -486,43 +473,38 @@
             });
         }
 
-        // Logika Pemetaan ke Tabel (Decision Tree)
+        // --- LOGIKA FINAL (PEMETAAN KE TABEL) ---
         function getRecommendation() {
             let program = "";
             let details = {};
 
-            // 1. Jalur Engineer
-            if (userData.status === 'Lulusan D3 / S1' && userData.bidang === 'IT / Teknik (Engineering)') {
-                program = "PROGRAM ENGINEER (OFFLINE + ONLINE)";
-                details = { target: "Lulus N3", materi: "50 + Materi N3", durasi: "6 - 8 Bulan", jadwal: "Senin - Jumat | 08.00 - 15.00" };
-            } 
-            // 2. Jalur Basic (Pelajar)
-            else if (userData.status === 'Pelajar / Mahasiswa') {
-                if (userData.metode === 'Online') {
+            if (userData.metode === "Online") {
+                if (userData.status === "Pelajar / Mahasiswa") {
                     program = "PROGRAM MAGANG - BASIC (ONLINE)";
-                    details = { pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: "1 minggu 3x pertemuan @90 menit (Malam)" };
+                    details = { pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: userData.jam + " | @90 menit" };
                 } else {
-                    program = "PROGRAM MAGANG - BASIC (OFFLINE)";
-                    details = { pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: "1 minggu 3x pertemuan @120 menit (Malam)" };
-                }
-            } 
-            // 3. Jalur Corporate
-            else if (userData.status === 'Sudah Bekerja (Karyawan)' && userData.jam === 'Akhir Pekan') {
-                program = "PROGRAM TOKUTEI GINOU - CORPORATE (OFFLINE)";
-                details = { pertemuan: "30 Kali", bab: "50 BAB", durasi: "3.75 Bulan", jadwal: "Sabtu - Minggu | 08.00 - 15.00" };
-            } 
-            // 4. Jalur Reguler
-            else {
-                if (userData.metode === 'Online') {
                     program = "PROGRAM MAGANG - REGULER (ONLINE)";
-                    details = { pertemuan: "45 Kali", bab: "35 BAB", durasi: "3.75 Bulan", jadwal: "1 minggu 3x pertemuan @90 menit (Malam)" };
-                } else {
-                    if (userData.jam === 'Pagi / Siang') {
+                    details = { pertemuan: "45 Kali", bab: "35 BAB", durasi: "3.75 Bulan", jadwal: userData.jam + " | @90 menit" };
+                }
+            } else { // Offline
+                if (userData.jam.includes("Sabtu & Minggu")) {
+                    program = "PROGRAM TOKUTEI GINOU - CORPORATE (OFFLINE)";
+                    details = { peserta: "Karyawan / Pekerja", pertemuan: "30 Kali", bab: "50 BAB", durasi: "3.75 Bulan", jadwal: userData.jam };
+                } else if (userData.jam.includes("Senin - Jumat")) {
+                    if (userData.bidang === "IT / Teknik" && userData.status === "Lulusan D3 / S1") {
+                        program = "PROGRAM ENGINEER (OFFLINE + ONLINE)";
+                        details = { target: "Lulus N3", materi: "50 + Materi N3", durasi: "6 - 8 Bulan", jadwal: userData.jam };
+                    } else {
                         program = "PROGRAM MAGANG - REGULER (OFFLINE)";
-                        details = { target: "Lulus A1", pertemuan: "35 Kali", bab: "50 BAB", durasi: "-", jadwal: "Senin - Jumat | 08.00 - 15.00" };
+                        details = { target: "Lulus A1", pertemuan: "35 Kali", bab: "50 BAB", jadwal: userData.jam };
+                    }
+                } else { // Jadwal Malam
+                    if (userData.status === "Pelajar / Mahasiswa") {
+                        program = "PROGRAM MAGANG - BASIC (OFFLINE)";
+                        details = { pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: userData.jam + " | @120 menit" };
                     } else {
                         program = "PROGRAM TOKUTEI GINOU - REGULER (MALAM)";
-                        details = { pertemuan: "60 Kali", bab: "50 BAB", durasi: "5 Bulan", jadwal: "1 minggu 3x pertemuan @90 menit (Malam)" };
+                        details = { pertemuan: "60 Kali", bab: "50 BAB", durasi: "5 Bulan", jadwal: userData.jam + " | @90 menit" };
                     }
                 }
             }
@@ -540,7 +522,6 @@
                     detailHTML += `<li><span>${key.charAt(0).toUpperCase() + key.slice(1)}</span>: ${value}</li>`;
                 }
 
-                // Generate WA Link
                 const textPesan = `Halo Admin LPKS Arima, saya *${userData.nama}*. Saya baru selesai ikut kuis di web. Saya tertarik dengan *${program}* untuk bidang *${userData.bidang}*. Mohon info biaya dan pendaftarannya. Saya ingin klaim voucher pendaftaran.`;
                 const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(textPesan)}`;
 
@@ -568,9 +549,7 @@
             });
         }
 
-        // Jalankan Chat
         window.onload = initChat;
-
     </script>
 </body>
 </html>
