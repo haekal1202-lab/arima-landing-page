@@ -194,6 +194,7 @@
             40% { transform: scale(1); }
         }
 
+        /* Result Card Styles */
         .result-card {
             background-color: #2a2a2a;
             border: 1px solid var(--accent-color);
@@ -220,20 +221,33 @@
             display: inline-block;
             width: 120px;
         }
+        .proof-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #444;
+            object-fit: cover;
+            max-height: 150px;
+        }
 
         .urgency-text {
             color: #ff9800;
             font-size: 12px;
-            font-weight: 500;
-            margin-bottom: 10px;
+            font-weight: 600;
+            margin-bottom: 5px;
             display: block;
+            background: rgba(255, 152, 0, 0.1);
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
         }
 
-        .social-proof {
-            font-size: 11px;
-            color: var(--text-muted);
-            font-style: italic;
+        .risk-reversal {
+            color: #4caf50;
+            font-size: 12px;
+            text-align: center;
             margin-bottom: 15px;
+            font-weight: 500;
         }
 
         .cta-btn {
@@ -251,11 +265,25 @@
             transition: transform 0.2s, background-color 0.2s;
             border: none;
             cursor: pointer;
+            margin-bottom: 10px;
         }
 
         .cta-btn:hover {
             background-color: var(--accent-hover);
             transform: translateY(-2px);
+        }
+
+        .soft-cta {
+            display: block;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        
+        .soft-cta:hover {
+            color: #fff;
         }
     </style>
 </head>
@@ -274,12 +302,12 @@
     </div>
 
     <script>
-        // GANTI NOMOR WA ADMIN DI SINI
+        // GANTI NOMOR WA ADMIN DI SINI (Gunakan format 62)
         const WA_NUMBER = "6281234567890"; 
 
         const chatBody = document.getElementById('chatBody');
         let step = 0;
-        let userData = { status: '', bidang: '', metode: '', jam: '', nama: '', wa: '' };
+        let userData = { status: '', bidang: '', levelBahasa: '', sswStatus: '', metode: '', jam: '', nama: '', wa: '' };
 
         // --- FUNGSI UTAMA CHAT ---
         function addMessage(text, sender, isHTML = false) {
@@ -336,6 +364,17 @@
             const submitAction = () => {
                 const val = input.value.trim();
                 if(val === '') return;
+                
+                // Validasi khusus untuk Nomor WhatsApp
+                if (type === 'tel') {
+                    const waRegex = /^(08|628)[0-9]{8,12}$/;
+                    if (!waRegex.test(val)) {
+                        addMessage("Format nomor WA tidak valid. Gunakan format 08... atau 628...", 'bot');
+                        input.value = ''; // Reset input
+                        return;
+                    }
+                }
+
                 onSave(val);
                 group.remove();
             };
@@ -382,12 +421,34 @@
                     { label: "🚜 Pertanian & Perkebunan", value: "Pertanian" },
                     { label: "🏗️ Konstruksi (Kensetsu)", value: "Konstruksi" },
                     { label: "🚗 Otomotif", value: "Otomotif" },
-                    { label: "👨‍💻 IT / Teknik (Engineering)", value: "IT / Teknik" }
+                    { label: "👨‍💻 IT / Teknik (Engineering)", value: "IT / Teknik" },
+                    { label: "🤷‍♂️ Lainnya / Belum Tahu", value: "Lainnya" }
                 ]);
             });
         }
 
         function askQ3() {
+            showTyping(() => {
+                addMessage("Biar saya tahu harus mulai dari mana, bagaimana kemampuan bahasa Jepang kamu saat ini?", 'bot');
+                renderOptions([
+                    { label: "📖 Pemula (Nol / Belum tahu / N5)", value: "Pemula" },
+                    { label: "📗 Dasar (N4 / JFT-Basic A2.2)", value: "Dasar (N4/A2.2)" },
+                    { label: "🏆 Menengah / Mahir (N3 ke atas)", value: "Menengah (N3+)" }
+                ]);
+            });
+        }
+
+        function askQ3b() {
+            showTyping(() => {
+                addMessage("Keren! Level N4/A2.2 adalah modal bagus untuk bekerja di Jepang. Apakah saat ini kamu sudah memiliki sertifikat keahlian (SSW) untuk bidang pekerjaan yang kamu minati?", 'bot');
+                renderOptions([
+                    { label: "✅ Sudah punya sertifikat SSW", value: "Sudah punya SSW" },
+                    { label: "❌ Belum punya (Baru menguasai bahasanya saja)", value: "Belum punya SSW" }
+                ]);
+            });
+        }
+
+        function askQ4() {
             showTyping(() => {
                 addMessage("Kalau untuk belajarnya sendiri, kamu lebih nyaman tatap muka langsung (offline) atau fleksibel dari rumah (online)?", 'bot');
                 renderOptions([
@@ -397,37 +458,30 @@
             });
         }
 
-        // --- PERBAIKAN LOGIKA JADWAL (Q4) ---
-        function askQ4() {
+        function askQ5() {
             showTyping(() => {
                 addMessage("Baik. Kira-kira jadwal mana yang paling pas buat kamu?", 'bot');
                 
                 let options = [];
 
                 if (userData.metode === "Online") {
-                    // Sesuai Tabel: Semua kelas Online (Basic & Reguler) hanya tersedia jadwal malam
                     options = [
                         { label: "Senin, Rabu, Jumat (Mulai 20.00)", value: "Senin, Rabu, Jumat (Mulai 20.00)" },
                         { label: "Selasa, Kamis, Sabtu (Mulai 20.00)", value: "Selasa, Kamis, Sabtu (Mulai 20.00)" }
                     ];
                 } else {
-                    // Offline: Sortir berdasarkan status
                     if (userData.status === "Pelajar / Mahasiswa") {
-                        // Basic Offline (malam)
                         options = [
                             { label: "Senin, Rabu, Jumat (Mulai 20.00)", value: "Senin, Rabu, Jumat (Mulai 20.00)" },
                             { label: "Selasa, Kamis, Sabtu (Mulai 20.00)", value: "Selasa, Kamis, Sabtu (Mulai 20.00)" }
                         ];
                     } else if (userData.status === "Sudah Bekerja (Karyawan)") {
-                        // Corporate (Weekend) atau Reguler Malam TG
                         options = [
                             { label: "Sabtu & Minggu (08.00 - 15.00)", value: "Sabtu & Minggu (08.00 - 15.00)" },
                             { label: "Senin, Rabu, Jumat (Mulai 20.00)", value: "Senin, Rabu, Jumat (Mulai 20.00)" },
                             { label: "Selasa, Kamis, Sabtu (Mulai 20.00)", value: "Selasa, Kamis, Sabtu (Mulai 20.00)" }
                         ];
                     } else {
-                        // Lulusan SMA/SMK atau D3/S1 (Umum)
-                        // Reguler Pagi / Professional ATAU Reguler Malam TG
                         options = [
                             { label: "Senin - Jumat (08.00 - 15.00)", value: "Senin - Jumat (08.00 - 15.00)" },
                             { label: "Senin, Rabu, Jumat (Mulai 20.00)", value: "Senin, Rabu, Jumat (Mulai 20.00)" },
@@ -443,10 +497,24 @@
             container.remove();
             addMessage(label, 'user');
             
-            if (step === 0) { userData.status = value; step++; setTimeout(askQ2, 600); }
-            else if (step === 1) { userData.bidang = value; step++; setTimeout(askQ3, 600); }
-            else if (step === 2) { userData.metode = value; step++; setTimeout(askQ4, 600); }
-            else if (step === 3) { userData.jam = value; step++; setTimeout(askName, 600); }
+            if (step === 0) { 
+                userData.status = value; step++; setTimeout(askQ2, 600); 
+            } else if (step === 1) { 
+                userData.bidang = value; step++; setTimeout(askQ3, 600); 
+            } else if (step === 2) { 
+                userData.levelBahasa = value; step++; 
+                if (value === "Dasar (N4/A2.2)") {
+                    setTimeout(askQ3b, 600);
+                } else {
+                    setTimeout(askQ4, 600);
+                }
+            } else if (step === 3) {
+                userData.sswStatus = value; step++; setTimeout(askQ4, 600);
+            } else if (step === 4) { 
+                userData.metode = value; step++; setTimeout(askQ5, 600); 
+            } else if (step === 5) { 
+                userData.jam = value; step++; setTimeout(askName, 600); 
+            }
         }
 
         function askName() {
@@ -476,79 +544,105 @@
             });
         }
 
-        // --- PERBAIKAN LOGIKA MAPPING TABEL (FINAL RESULT) ---
+        // --- LOGIKA FINAL (PEMETAAN KE TABEL) ---
         function getRecommendation() {
             let program = "";
             let details = {};
+            let infoTambahan = "";
 
-            // 1. Jalur Jadwal Pagi (Senin - Jumat)
-            if (userData.jam.includes("Senin - Jumat")) {
-                if (userData.status === "Lulusan D3 / S1" && userData.bidang === "IT / Teknik") {
-                    program = "PROGRAM ENGINEER (OFFLINE + ONLINE)";
-                    details = { target: "Lulus N3", materi: "50 + Materi N3", durasi: "6 - 8 Bulan", jadwal: "Senin - Jumat | 08.00 - 15.00" };
+            // 1. Prioritas: Level Menengah (N3+)
+            if (userData.levelBahasa === "Menengah (N3+)") {
+                program = "PROGRAM PROFESSIONAL (ENGINEER)";
+                details = { target: "Penempatan Kerja Profesional", durasi: "6 - 8 Bulan", jadwal: "Senin - Jumat | 08.00 - 15.00" };
+                infoTambahan = "Karena kemampuan bahasa Jepangmu sudah sangat baik (N3+), admin kami akan langsung membantumu fokus pada persiapan wawancara dan penempatan kerja sebagai tenaga profesional.";
+            } 
+            // 2. Prioritas: Level Dasar (N4/A2.2)
+            else if (userData.levelBahasa === "Dasar (N4/A2.2)") {
+                if (userData.sswStatus === "Sudah punya SSW") {
+                    program = "PROGRAM TOKUTEI GINOU - JOB MATCHING";
+                    details = { status: "Siap Kerja", target: "Penempatan Perusahaan Jepang", jadwal: "Menyesuaikan" };
+                    infoTambahan = "Luar biasa! Kamu sudah memenuhi syarat bahasa dan keahlian (SSW). Admin kami akan langsung mencarikan perusahaan Jepang yang cocok dengan bidangmu.";
                 } else {
-                    program = "PROGRAM MAGANG - REGULER (OFFLINE)";
-                    details = { target: "Lulus A1", pertemuan: "35 Kali", bab: "50 BAB", jadwal: "Senin - Jumat | 08.00 - 15.00" };
+                    program = "PROGRAM TOKUTEI GINOU (PERSIAPAN SKILL TEST)";
+                    details = { peserta: "Umum / Pekerja", fokus: "Latihan Soal & Ujian Keahlian", target: "Lulus Sertifikasi SSW", jadwal: "Menyesuaikan Jadwal" };
+                    infoTambahan = "Karena bahasa Jepangmu sudah di level N4/A2.2, admin kami akan membantumu menyiapkan ujian keahlian (Skill Test) agar bisa segera ditempatkan kerja.";
                 }
             } 
-            // 2. Jalur Jadwal Akhir Pekan (Corporate)
-            else if (userData.jam.includes("Sabtu & Minggu")) {
-                program = "PROGRAM TOKUTEI GINOU - CORPORATE (OFFLINE)";
-                details = { peserta: "Karyawan / Pekerja", pertemuan: "30 Kali", bab: "50 BAB", durasi: "3.75 Bulan", jadwal: "Sabtu - Minggu | 08.00 - 15.00" };
-            } 
-            // 3. Jalur Jadwal Malam (Mulai 20.00)
+            // 3. Pemula (Nol / N5)
             else {
-                if (userData.status === "Pelajar / Mahasiswa") {
-                    if (userData.metode === "Online") {
+                if (userData.metode === "Online") {
+                    if (userData.status === "Pelajar / Mahasiswa") {
                         program = "PROGRAM MAGANG - BASIC (ONLINE)";
                         details = { peserta: "Pelajar / Mahasiswa", pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: userData.jam + " | @90 menit" };
                     } else {
-                        program = "PROGRAM MAGANG - BASIC (OFFLINE)";
-                        details = { peserta: "Pelajar / Mahasiswa", pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: userData.jam + " | @120 menit" };
-                    }
-                } else {
-                    if (userData.metode === "Online") {
                         program = "PROGRAM MAGANG - REGULER (ONLINE)";
                         details = { peserta: "Umum", pertemuan: "45 Kali", bab: "35 BAB", durasi: "3.75 Bulan", jadwal: userData.jam + " | @90 menit" };
-                    } else {
-                        program = "PROGRAM TOKUTEI GINOU - REGULER (MALAM)";
-                        details = { peserta: "Umum / Pekerja", pertemuan: "60 Kali", bab: "50 BAB", durasi: "5 Bulan", jadwal: userData.jam + " | @90 menit" };
+                    }
+                } else { // Offline
+                    if (userData.jam.includes("Sabtu & Minggu")) {
+                        program = "PROGRAM TOKUTEI GINOU - CORPORATE (OFFLINE)";
+                        details = { peserta: "Karyawan / Pekerja", pertemuan: "30 Kali", bab: "50 BAB", durasi: "3.75 Bulan", jadwal: userData.jam };
+                    } else if (userData.jam.includes("Senin - Jumat")) {
+                        program = "PROGRAM MAGANG - REGULER (OFFLINE)";
+                        details = { target: "Lulus A1", pertemuan: "35 Kali", bab: "50 BAB", jadwal: userData.jam };
+                    } else { // Jadwal Malam
+                        if (userData.status === "Pelajar / Mahasiswa") {
+                            program = "PROGRAM MAGANG - BASIC (OFFLINE)";
+                            details = { peserta: "Pelajar / Mahasiswa", pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: userData.jam + " | @120 menit" };
+                        } else {
+                            program = "PROGRAM TOKUTEI GINOU - REGULER (MALAM)";
+                            details = { peserta: "Umum / Pekerja", pertemuan: "60 Kali", bab: "50 BAB", durasi: "5 Bulan", jadwal: userData.jam + " | @90 menit" };
+                        }
                     }
                 }
             }
 
-            return { program, details };
+            return { program, details, infoTambahan };
         }
 
         function showResult() {
             showTyping(() => {
                 const result = getRecommendation();
-                const { program, details } = result;
+                const { program, details, infoTambahan } = result;
 
                 let detailHTML = "";
                 for (const [key, value] of Object.entries(details)) {
                     detailHTML += `<li><span>${key.charAt(0).toUpperCase() + key.slice(1)}</span>: ${value}</li>`;
                 }
 
-                const textPesan = `Halo Admin LPKS Arima, saya *${userData.nama}*. Saya baru selesai ikut kuis di web. Saya tertarik dengan *${program}* untuk bidang *${userData.bidang}*. Mohon info biaya dan pendaftarannya. Saya ingin klaim voucher pendaftaran.`;
-                const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(textPesan)}`;
+                // Pesan WA 1 (Langsung Daftar)
+                const textPesanUtama = `Halo Admin LPKS Arima, saya *${userData.nama}*. Saya baru selesai kuis di web. Saya tertarik dengan *${program}* untuk bidang *${userData.bidang}*. Mohon info biaya dan pendaftarannya. Saya ingin klaim voucher pendaftaran.`;
+                const waLinkUtama = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(textPesanUtama)}`;
+
+                // Pesan WA 2 (Soft CTA / Tanya-tanya)
+                const textPesanRagu = `Halo Admin LPKS Arima, saya *${userData.nama}*. Saya sudah ikut kuis dan mendapat rekomendasi *${program}*. Saya masih ragu dan ingin bertanya-tanya dulu mengenai program ini.`;
+                const waLinkRagu = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(textPesanRagu)}`;
 
                 const resultHTML = `
                     <div class="result-card">
                         <h4>🎯 Rekomendasi Program Kamu</h4>
+                        
+                        <!-- Foto Keberangkatan Siswa -->
+                        <img src="assets/keberangkatan-siswa.jpeg" alt="Alumni Arima" class="proof-image" onerror="this.style.display='none'">
+                        
                         <p style="font-weight: 600; font-size: 15px; margin-bottom: 10px; color: #fff;">${program}</p>
                         <ul>
                             ${detailHTML}
                         </ul>
                         
-                        <span class="urgency-text">⚠️ Kuota untuk batch pendaftaran bulan ini tersisa 5 kursi.</span>
-                        
-                        <div class="social-proof">
-                            "Kamu satu langkah lebih dekat dengan Jepang! Bergabunglah dengan 500+ alumni Arima Persada yang sudah sukses bekerja di sana."
-                        </div>
+                        <p style="font-size: 12px; margin-bottom: 15px; color: #ccc; font-style: italic;">
+                            "${infoTambahan}"
+                        </p>
 
-                        <a href="${waLink}" target="_blank" class="cta-btn">
-                            🎁 Klaim Voucher & Kunci Kursi Saya
+                        <span class="urgency-text">⚠️ Kelas batch terdekat dibuka tanggal 2 November 2026. Sisa 3 kursi!</span>
+                        
+                        <p class="risk-reversal">✅ Konsultasi 100% Gratis & Tanpa Paksaan</p>
+
+                        <a href="${waLinkUtama}" target="_blank" class="cta-btn">
+                            🎁 Klaim Voucher & Kunci Kursi
+                        </a>
+                        <a href="${waLinkRagu}" target="_blank" class="soft-cta">
+                            Masih ragu? Tanya-tanya dulu ke Admin via WA
                         </a>
                     </div>
                 `;
