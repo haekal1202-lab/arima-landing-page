@@ -194,7 +194,6 @@
             40% { transform: scale(1); }
         }
 
-        /* Result Card Styles */
         .result-card {
             background-color: #2a2a2a;
             border: 1px solid var(--accent-color);
@@ -293,7 +292,8 @@
         <div class="chat-header">
             <img src="assets/logo.jpeg" alt="Arima Logo" onerror="this.src='https://via.placeholder.com/40/d4af37/000000?text=A'">
             <div class="chat-header-info">
-                <h3>Arima-bot</h3>
+                <!-- PERUBAHAN NAMA DI HEADER -->
+                <h3>Tim Support Arima</h3>
                 <p>Online</p>
             </div>
         </div>
@@ -302,8 +302,8 @@
     </div>
 
     <script>
-        // GANTI NOMOR WA ADMIN DI SINI (Gunakan format 62)
-        const WA_NUMBER = "6281234567890"; 
+        // NOMOR WA ADMIN
+        const WA_NUMBER = "6282375128230"; 
 
         const chatBody = document.getElementById('chatBody');
         let step = 0;
@@ -365,12 +365,11 @@
                 const val = input.value.trim();
                 if(val === '') return;
                 
-                // Validasi khusus untuk Nomor WhatsApp
                 if (type === 'tel') {
                     const waRegex = /^(08|628)[0-9]{8,12}$/;
                     if (!waRegex.test(val)) {
                         addMessage("Format nomor WA tidak valid. Gunakan format 08... atau 628...", 'bot');
-                        input.value = ''; // Reset input
+                        input.value = ''; 
                         return;
                     }
                 }
@@ -393,7 +392,8 @@
 
         function initChat() {
             showTyping(() => {
-                addMessage("Halo! Selamat datang di LPKS Arima Persada 👋. Saya Arima-bot. Biar saya bisa bantu carikan program yang paling pas buat karier kamu di Jepang, boleh ikuti sesi konsultasi singkat ini?", 'bot');
+                // PERUBAHAN SAPAAN AWAL
+                addMessage("Halo! Selamat datang di LPKS Arima Persada 👋. Kami dari Tim Support Arima. Biar kami bantu carikan program yang paling pas buat karier kamu di Jepang, boleh ikuti sesi konsultasi singkat ini?", 'bot');
                 setTimeout(askQ1, 600);
             });
         }
@@ -429,7 +429,7 @@
 
         function askQ3() {
             showTyping(() => {
-                addMessage("Biar saya tahu harus mulai dari mana, bagaimana kemampuan bahasa Jepang kamu saat ini?", 'bot');
+                addMessage("Biar kami tahu harus mulai dari mana, bagaimana kemampuan bahasa Jepang kamu saat ini?", 'bot');
                 renderOptions([
                     { label: "📖 Pemula (Nol / Belum tahu / N5)", value: "Pemula" },
                     { label: "📗 Dasar (N4 / JFT-Basic A2.2)", value: "Dasar (N4/A2.2)" },
@@ -544,19 +544,16 @@
             });
         }
 
-        // --- LOGIKA FINAL (PEMETAAN KE TABEL) ---
         function getRecommendation() {
             let program = "";
             let details = {};
             let infoTambahan = "";
 
-            // 1. Prioritas: Level Menengah (N3+)
             if (userData.levelBahasa === "Menengah (N3+)") {
                 program = "PROGRAM PROFESSIONAL (ENGINEER)";
                 details = { target: "Penempatan Kerja Profesional", durasi: "6 - 8 Bulan", jadwal: "Senin - Jumat | 08.00 - 15.00" };
                 infoTambahan = "Karena kemampuan bahasa Jepangmu sudah sangat baik (N3+), admin kami akan langsung membantumu fokus pada persiapan wawancara dan penempatan kerja sebagai tenaga profesional.";
             } 
-            // 2. Prioritas: Level Dasar (N4/A2.2)
             else if (userData.levelBahasa === "Dasar (N4/A2.2)") {
                 if (userData.sswStatus === "Sudah punya SSW") {
                     program = "PROGRAM TOKUTEI GINOU - JOB MATCHING";
@@ -568,7 +565,6 @@
                     infoTambahan = "Karena bahasa Jepangmu sudah di level N4/A2.2, admin kami akan membantumu menyiapkan ujian keahlian (Skill Test) agar bisa segera ditempatkan kerja.";
                 }
             } 
-            // 3. Pemula (Nol / N5)
             else {
                 if (userData.metode === "Online") {
                     if (userData.status === "Pelajar / Mahasiswa") {
@@ -578,14 +574,14 @@
                         program = "PROGRAM MAGANG - REGULER (ONLINE)";
                         details = { peserta: "Umum", pertemuan: "45 Kali", bab: "35 BAB", durasi: "3.75 Bulan", jadwal: userData.jam + " | @90 menit" };
                     }
-                } else { // Offline
+                } else { 
                     if (userData.jam.includes("Sabtu & Minggu")) {
                         program = "PROGRAM TOKUTEI GINOU - CORPORATE (OFFLINE)";
                         details = { peserta: "Karyawan / Pekerja", pertemuan: "30 Kali", bab: "50 BAB", durasi: "3.75 Bulan", jadwal: userData.jam };
                     } else if (userData.jam.includes("Senin - Jumat")) {
                         program = "PROGRAM MAGANG - REGULER (OFFLINE)";
                         details = { target: "Lulus A1", pertemuan: "35 Kali", bab: "50 BAB", jadwal: userData.jam };
-                    } else { // Jadwal Malam
+                    } else { 
                         if (userData.status === "Pelajar / Mahasiswa") {
                             program = "PROGRAM MAGANG - BASIC (OFFLINE)";
                             details = { peserta: "Pelajar / Mahasiswa", pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: userData.jam + " | @120 menit" };
@@ -610,11 +606,9 @@
                     detailHTML += `<li><span>${key.charAt(0).toUpperCase() + key.slice(1)}</span>: ${value}</li>`;
                 }
 
-                // Pesan WA 1 (Langsung Daftar)
                 const textPesanUtama = `Halo Admin LPKS Arima, saya *${userData.nama}*. Saya baru selesai kuis di web. Saya tertarik dengan *${program}* untuk bidang *${userData.bidang}*. Mohon info biaya dan pendaftarannya. Saya ingin klaim voucher pendaftaran.`;
                 const waLinkUtama = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(textPesanUtama)}`;
 
-                // Pesan WA 2 (Soft CTA / Tanya-tanya)
                 const textPesanRagu = `Halo Admin LPKS Arima, saya *${userData.nama}*. Saya sudah ikut kuis dan mendapat rekomendasi *${program}*. Saya masih ragu dan ingin bertanya-tanya dulu mengenai program ini.`;
                 const waLinkRagu = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(textPesanRagu)}`;
 
@@ -622,7 +616,6 @@
                     <div class="result-card">
                         <h4>🎯 Rekomendasi Program Kamu</h4>
                         
-                        <!-- Foto Keberangkatan Siswa -->
                         <img src="assets/keberangkatan-siswa.jpeg" alt="Alumni Arima" class="proof-image" onerror="this.style.display='none'">
                         
                         <p style="font-weight: 600; font-size: 15px; margin-bottom: 10px; color: #fff;">${program}</p>
