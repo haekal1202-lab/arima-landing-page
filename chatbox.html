@@ -397,7 +397,7 @@
             });
         }
 
-        // LOGIKA DINAMIS UNTUK PERTANYAAN 4
+        // --- PERBAIKAN LOGIKA JADWAL (Q4) ---
         function askQ4() {
             showTyping(() => {
                 addMessage("Baik. Kira-kira jadwal mana yang paling pas buat kamu?", 'bot');
@@ -405,26 +405,29 @@
                 let options = [];
 
                 if (userData.metode === "Online") {
-                    // Jika Online, hanya ada pilihan malam (sesuai tabel)
+                    // Sesuai Tabel: Semua kelas Online (Basic & Reguler) hanya tersedia jadwal malam
                     options = [
                         { label: "Senin, Rabu, Jumat (Mulai 20.00)", value: "Senin, Rabu, Jumat (Mulai 20.00)" },
                         { label: "Selasa, Kamis, Sabtu (Mulai 20.00)", value: "Selasa, Kamis, Sabtu (Mulai 20.00)" }
                     ];
                 } else {
-                    // Jika Offline, sortir berdasarkan status (Pelajar vs Pekerja)
+                    // Offline: Sortir berdasarkan status
                     if (userData.status === "Pelajar / Mahasiswa") {
+                        // Basic Offline (malam)
                         options = [
                             { label: "Senin, Rabu, Jumat (Mulai 20.00)", value: "Senin, Rabu, Jumat (Mulai 20.00)" },
                             { label: "Selasa, Kamis, Sabtu (Mulai 20.00)", value: "Selasa, Kamis, Sabtu (Mulai 20.00)" }
                         ];
                     } else if (userData.status === "Sudah Bekerja (Karyawan)") {
+                        // Corporate (Weekend) atau Reguler Malam TG
                         options = [
                             { label: "Sabtu & Minggu (08.00 - 15.00)", value: "Sabtu & Minggu (08.00 - 15.00)" },
                             { label: "Senin, Rabu, Jumat (Mulai 20.00)", value: "Senin, Rabu, Jumat (Mulai 20.00)" },
                             { label: "Selasa, Kamis, Sabtu (Mulai 20.00)", value: "Selasa, Kamis, Sabtu (Mulai 20.00)" }
                         ];
                     } else {
-                        // Umum / D3/S1 (Bisa pagi, atau malam)
+                        // Lulusan SMA/SMK atau D3/S1 (Umum)
+                        // Reguler Pagi / Professional ATAU Reguler Malam TG
                         options = [
                             { label: "Senin - Jumat (08.00 - 15.00)", value: "Senin - Jumat (08.00 - 15.00)" },
                             { label: "Senin, Rabu, Jumat (Mulai 20.00)", value: "Senin, Rabu, Jumat (Mulai 20.00)" },
@@ -473,38 +476,43 @@
             });
         }
 
-        // --- LOGIKA FINAL (PEMETAAN KE TABEL) ---
+        // --- PERBAIKAN LOGIKA MAPPING TABEL (FINAL RESULT) ---
         function getRecommendation() {
             let program = "";
             let details = {};
 
-            if (userData.metode === "Online") {
-                if (userData.status === "Pelajar / Mahasiswa") {
-                    program = "PROGRAM MAGANG - BASIC (ONLINE)";
-                    details = { pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: userData.jam + " | @90 menit" };
+            // 1. Jalur Jadwal Pagi (Senin - Jumat)
+            if (userData.jam.includes("Senin - Jumat")) {
+                if (userData.status === "Lulusan D3 / S1" && userData.bidang === "IT / Teknik") {
+                    program = "PROGRAM ENGINEER (OFFLINE + ONLINE)";
+                    details = { target: "Lulus N3", materi: "50 + Materi N3", durasi: "6 - 8 Bulan", jadwal: "Senin - Jumat | 08.00 - 15.00" };
                 } else {
-                    program = "PROGRAM MAGANG - REGULER (ONLINE)";
-                    details = { pertemuan: "45 Kali", bab: "35 BAB", durasi: "3.75 Bulan", jadwal: userData.jam + " | @90 menit" };
+                    program = "PROGRAM MAGANG - REGULER (OFFLINE)";
+                    details = { target: "Lulus A1", pertemuan: "35 Kali", bab: "50 BAB", jadwal: "Senin - Jumat | 08.00 - 15.00" };
                 }
-            } else { // Offline
-                if (userData.jam.includes("Sabtu & Minggu")) {
-                    program = "PROGRAM TOKUTEI GINOU - CORPORATE (OFFLINE)";
-                    details = { peserta: "Karyawan / Pekerja", pertemuan: "30 Kali", bab: "50 BAB", durasi: "3.75 Bulan", jadwal: userData.jam };
-                } else if (userData.jam.includes("Senin - Jumat")) {
-                    if (userData.bidang === "IT / Teknik" && userData.status === "Lulusan D3 / S1") {
-                        program = "PROGRAM ENGINEER (OFFLINE + ONLINE)";
-                        details = { target: "Lulus N3", materi: "50 + Materi N3", durasi: "6 - 8 Bulan", jadwal: userData.jam };
+            } 
+            // 2. Jalur Jadwal Akhir Pekan (Corporate)
+            else if (userData.jam.includes("Sabtu & Minggu")) {
+                program = "PROGRAM TOKUTEI GINOU - CORPORATE (OFFLINE)";
+                details = { peserta: "Karyawan / Pekerja", pertemuan: "30 Kali", bab: "50 BAB", durasi: "3.75 Bulan", jadwal: "Sabtu - Minggu | 08.00 - 15.00" };
+            } 
+            // 3. Jalur Jadwal Malam (Mulai 20.00)
+            else {
+                if (userData.status === "Pelajar / Mahasiswa") {
+                    if (userData.metode === "Online") {
+                        program = "PROGRAM MAGANG - BASIC (ONLINE)";
+                        details = { peserta: "Pelajar / Mahasiswa", pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: userData.jam + " | @90 menit" };
                     } else {
-                        program = "PROGRAM MAGANG - REGULER (OFFLINE)";
-                        details = { target: "Lulus A1", pertemuan: "35 Kali", bab: "50 BAB", jadwal: userData.jam };
-                    }
-                } else { // Jadwal Malam
-                    if (userData.status === "Pelajar / Mahasiswa") {
                         program = "PROGRAM MAGANG - BASIC (OFFLINE)";
-                        details = { pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: userData.jam + " | @120 menit" };
+                        details = { peserta: "Pelajar / Mahasiswa", pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: userData.jam + " | @120 menit" };
+                    }
+                } else {
+                    if (userData.metode === "Online") {
+                        program = "PROGRAM MAGANG - REGULER (ONLINE)";
+                        details = { peserta: "Umum", pertemuan: "45 Kali", bab: "35 BAB", durasi: "3.75 Bulan", jadwal: userData.jam + " | @90 menit" };
                     } else {
                         program = "PROGRAM TOKUTEI GINOU - REGULER (MALAM)";
-                        details = { pertemuan: "60 Kali", bab: "50 BAB", durasi: "5 Bulan", jadwal: userData.jam + " | @90 menit" };
+                        details = { peserta: "Umum / Pekerja", pertemuan: "60 Kali", bab: "50 BAB", durasi: "5 Bulan", jadwal: userData.jam + " | @90 menit" };
                     }
                 }
             }
