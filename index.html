@@ -50,13 +50,12 @@
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            /* Tekstur Film Grain */
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
             pointer-events: none;
             z-index: 9998;
         }
 
-        /* --- TYPOGRAPHIC LOGO (Premium) --- */
+        /* --- HEADER & LOGO --- */
         nav {
             padding: 40px 20px 20px;
             display: flex;
@@ -67,6 +66,23 @@
             animation: fadeIn 2s ease;
         }
 
+        .brand-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Gambar Logo */
+        .brand-image {
+            height: 70px; /* Ukuran logo */
+            width: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3)); /* Efek pendar emas */
+        }
+
+        /* Teks Logo */
         .logo-text {
             display: flex;
             flex-direction: column;
@@ -78,23 +94,23 @@
         }
 
         .logo-text .small {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
         }
 
         .logo-text .large {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--gold);
             font-weight: 700;
             letter-spacing: 8px;
             margin: 4px 0;
-            text-shadow: 0 0 15px var(--gold-glow);
+            text-shadow: 0 0 10px var(--gold-glow);
         }
 
         /* --- HERO SECTION (Cinematic Text) --- */
         .hero {
             position: relative;
-            padding: 100px 20px 80px;
+            padding: 60px 20px 80px;
             text-align: center;
             max-width: 900px;
             margin: 0 auto;
@@ -104,7 +120,6 @@
             z-index: 2;
         }
 
-        /* Ilustrasi Abstrak Jepang */
         .hero-illustration {
             position: absolute;
             top: 30%;
@@ -159,7 +174,6 @@
             animation: fadeUp 2s forwards;
         }
 
-        /* Animasi Staggered (Muncul Bergantian) */
         .cinematic-quote span:nth-child(1) { animation-delay: 1s; }
         .cinematic-quote span:nth-child(2) { animation-delay: 2.5s; }
         .cinematic-quote span:nth-child(3) { animation-delay: 4s; }
@@ -216,16 +230,15 @@
             animation: fadeIn 3s ease;
         }
 
-        /* --- FOTO SINEMATIK (The Star) --- */
+        /* --- FOTO SINEMATIK --- */
         .visual-showcase {
             max-width: 1000px;
-            margin: 60px auto 0;
+            margin: 40px auto 0;
             padding: 0 20px 80px;
             text-align: center;
             position: relative;
         }
 
-        /* Gradasi hitam agar gambar menyatu */
         .visual-showcase::after {
             content: '';
             position: absolute;
@@ -242,7 +255,6 @@
             width: 100%;
             max-width: 850px;
             border-radius: 2px;
-            /* Efek Sinematik: Awalnya sedikit gelap & desaturasi */
             filter: sepia(30%) contrast(1.1) brightness(0.8);
             transition: filter 1.5s ease, transform 1.5s ease;
             box-shadow: 0 30px 60px rgba(0,0,0,0.9);
@@ -251,7 +263,6 @@
         }
 
         .visual-showcase img:hover {
-            /* Saat disentuh, warna asli muncul */
             filter: sepia(0%) contrast(1.05) brightness(1);
             transform: scale(1.02);
         }
@@ -259,7 +270,7 @@
         .visual-caption {
             position: relative;
             z-index: 3;
-            margin-top: -20px; /* Menarik teks ke atas agar menyatu dengan gradasi */
+            margin-top: -20px; 
             font-family: 'Playfair Display', serif;
             font-size: 1.1rem;
             color: var(--text-muted);
@@ -372,18 +383,24 @@
             .cta-outline { width: 100%; padding: 16px 20px; }
             .stats-section { flex-direction: column; gap: 40px; }
             .visual-caption { margin-top: 10px; }
-            body::before { background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.9) 100%); }
+            .brand-image { height: 60px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- TYPOGRAPHIC LOGO -->
+    <!-- HEADER: LOGO GAMBAR + TEKS -->
     <nav>
-        <div class="logo-text">
-            <span class="small">LPKS</span>
-            <span class="large">ARIMA</span>
-            <span class="small">PERSADA</span>
+        <div class="brand-container">
+            <!-- Gambar Logo dari folder assets -->
+            <img src="assets/logo.jpeg" alt="Logo LPKS Arima Persada" class="brand-image" onerror="this.style.display='none'">
+            
+            <!-- Teks Logo Elegan -->
+            <div class="logo-text">
+                <span class="small">LPKS</span>
+                <span class="large">ARIMA</span>
+                <span class="small">PERSADA</span>
+            </div>
         </div>
     </nav>
 
@@ -393,7 +410,6 @@
         
         <h1>Langkah Pasti Menuju <br><span>Karier di Jepang.</span></h1>
         
-        <!-- KUTIPAN SINEMATIK (Muncul Bergantian) -->
         <div class="cinematic-quote">
             <span>Masa depan gemilangmu tidak dibangun dalam sehari,</span>
             <span>melainkan dimulai dari satu langkah berani hari ini.</span>
