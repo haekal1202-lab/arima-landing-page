@@ -229,20 +229,21 @@
             max-height: 150px;
         }
 
-        .urgency-text {
-            color: #ff9800;
+        .tag-highlight {
+            color: #4caf50;
             font-size: 12px;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             display: block;
-            background: rgba(255, 152, 0, 0.1);
+            background: rgba(76, 175, 80, 0.1);
             padding: 8px;
             border-radius: 8px;
             text-align: center;
+            border: 1px solid #4caf50;
         }
 
         .risk-reversal {
-            color: #4caf50;
+            color: var(--text-muted);
             font-size: 12px;
             text-align: center;
             margin-bottom: 15px;
@@ -292,7 +293,7 @@
         <div class="chat-header">
             <img src="assets/logo.jpeg" alt="Arima Logo" onerror="this.src='https://via.placeholder.com/40/d4af37/000000?text=A'">
             <div class="chat-header-info">
-                <h3>Tim Support Arima</h3>
+                <h3>Tim Edukasi Arima</h3>
                 <p>Online</p>
             </div>
         </div>
@@ -305,7 +306,7 @@
 
         const chatBody = document.getElementById('chatBody');
         
-        // State Management (Tanpa variabel step, murni berdasarkan isi data)
+        // State Management
         let userData = { 
             status: '', 
             bidang: '', 
@@ -327,7 +328,7 @@
             scrollToBottom();
         }
 
-        function showTyping(callback) {
+        function showTyping(callback, delay = 1000) {
             const typingDiv = document.createElement('div');
             typingDiv.className = `message msg-bot typing-container`;
             typingDiv.innerHTML = `<div class="typing"><span></span><span></span><span></span></div>`;
@@ -337,7 +338,7 @@
             setTimeout(() => {
                 chatBody.removeChild(typingDiv);
                 callback();
-            }, 1000);
+            }, delay);
         }
 
         function scrollToBottom() {
@@ -400,7 +401,7 @@
 
         function initChat() {
             showTyping(() => {
-                addMessage("Halo! Selamat datang di LPKS Arima Persada 👋. Kami dari Tim Support Arima. Biar kami bantu carikan program yang paling pas buat karier kamu di Jepang, boleh ikuti sesi konsultasi singkat ini?", 'bot');
+                addMessage("Halo! Selamat datang di LPKS Arima Persada 👋. Kami dari Tim Edukasi Arima. Biar kami bantu petakan jalur karier & pendidikanmu di Jepang, yuk ikuti sesi konsultasi singkat ini!", 'bot');
                 setTimeout(askQ1, 600);
             });
         }
@@ -417,18 +418,16 @@
             });
         }
 
+        // --- REVISI: JURUSAN / MINAT ---
         function askQ2() {
             showTyping(() => {
-                addMessage("Menarik! Lalu, bidang pekerjaan apa yang paling kamu minati di Jepang nanti?", 'bot');
+                addMessage("Wah, calon pekerja Jepang nih! Pilih jurusan atau bidang yang paling kamu minati:", 'bot');
                 renderOptions([
-                    { label: "🧑‍🦳 Perawatan Lansia (Kaigo)", value: "Perawatan Lansia" },
+                    { label: "📊 Akuntansi / Administrasi", value: "Akuntansi / Administrasi" },
+                    { label: "🎨 Desain Komunikasi Visual (DKV)", value: "DKV" },
+                    { label: "👗 Desain Produksi Busana / Garmen", value: "Busana / Garmen" },
                     { label: "🏭 Manufaktur / Pabrik", value: "Manufaktur" },
-                    { label: "🍽️ Makanan & Minuman (Food Service)", value: "Food Service" },
-                    { label: "🏨 Perhotelan (Hospitality)", value: "Hospitality" },
-                    { label: "🚜 Pertanian & Perkebunan", value: "Pertanian" },
-                    { label: "🏗️ Konstruksi (Kensetsu)", value: "Konstruksi" },
-                    { label: "🚗 Otomotif", value: "Otomotif" },
-                    { label: "👨‍💻 IT / Teknik (Engineering)", value: "IT / Teknik" },
+                    { label: "🧑‍🦳 Perawatan Lansia (Kaigo)", value: "Kaigo" },
                     { label: "🤷‍♂️ Lainnya / Belum Tahu", value: "Lainnya" }
                 ]);
             });
@@ -500,12 +499,10 @@
             });
         }
 
-        // --- PERBAIKAN LOGIKA: MENGGUNAKAN STATE CHECK (BUKAN STEP) ---
         function handleOptionClick(value, label, container) {
             container.remove();
             addMessage(label, 'user');
             
-            // Cek data mana yang masih kosong, lalu panggil pertanyaan berikutnya
             if (!userData.status) { 
                 userData.status = value; 
                 setTimeout(askQ2, 600); 
@@ -516,7 +513,14 @@
             } 
             else if (!userData.levelBahasa) { 
                 userData.levelBahasa = value; 
-                if (value === "Dasar (N4/A2.2)") {
+                
+                // REVISI: Edukasi Khusus Pelajar + Pemula
+                if (value === "Pemula" && userData.status === "Pelajar / Mahasiswa") {
+                    showTyping(() => {
+                        addMessage("Tenang, semua dimulai dari nol kok! Untuk kamu yang masih sekolah dan baru mulai, program yang paling pas adalah **Kelas BASIC**. Kita atur jadwal belajarnya yang nyaman buat pelajar, ya.", 'bot');
+                        setTimeout(askQ4, 800);
+                    }, 1200);
+                } else if (value === "Dasar (N4/A2.2)") {
                     setTimeout(askQ3b, 600);
                 } else {
                     setTimeout(askQ4, 600);
@@ -538,10 +542,10 @@
 
         function askName() {
             showTyping(() => {
-                addMessage("Sebentar, rekomendasi programmu sedang disiapkan... 🤔", 'bot');
+                addMessage("Sebentar, rekomendasi program edukasimu sedang disiapkan... 🤔", 'bot');
                 setTimeout(() => {
                     showTyping(() => {
-                        addMessage("Biar hasilnya bisa langsung disimpan dan dikirim ke WhatsApp, boleh tahu nama panggilanmu?", 'bot');
+                        addMessage("Biar hasil pemetaannya bisa langsung dikirim ke WhatsApp, boleh tahu nama panggilanmu?", 'bot');
                         renderInput("Ketik nama kamu...", "text", "Lanjut", (val) => {
                             userData.nama = val;
                             addMessage(val, 'user');
@@ -589,6 +593,7 @@
                     if (userData.status === "Pelajar / Mahasiswa") {
                         program = "PROGRAM MAGANG - BASIC (ONLINE)";
                         details = { peserta: "Pelajar / Mahasiswa", pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: userData.jam + " | @90 menit" };
+                        infoTambahan = "Kelas BASIC dirancang khusus untuk pelajar. Fondasi bahasa Jepangmu akan dibangun dari nol dengan jadwal malam yang tidak bentrok dengan jam sekolah.";
                     } else {
                         program = "PROGRAM MAGANG - REGULER (ONLINE)";
                         details = { peserta: "Umum", pertemuan: "45 Kali", bab: "35 BAB", durasi: "3.75 Bulan", jadwal: userData.jam + " | @90 menit" };
@@ -604,6 +609,7 @@
                         if (userData.status === "Pelajar / Mahasiswa") {
                             program = "PROGRAM MAGANG - BASIC (OFFLINE)";
                             details = { peserta: "Pelajar / Mahasiswa", pertemuan: "30 Kali", bab: "25 BAB", durasi: "2.5 Bulan", jadwal: userData.jam + " | @120 menit" };
+                            infoTambahan = "Kelas BASIC dirancang khusus untuk pelajar. Fondasi bahasa Jepangmu akan dibangun dari nol dengan jadwal malam yang tidak bentrok dengan jam sekolah.";
                         } else {
                             program = "PROGRAM TOKUTEI GINOU - REGULER (MALAM)";
                             details = { peserta: "Umum / Pekerja", pertemuan: "60 Kali", bab: "50 BAB", durasi: "5 Bulan", jadwal: userData.jam + " | @90 menit" };
@@ -625,15 +631,17 @@
                     detailHTML += `<li><span>${key.charAt(0).toUpperCase() + key.slice(1)}</span>: ${value}</li>`;
                 }
 
-                const textPesanUtama = `Halo Admin LPKS Arima, saya *${userData.nama}*. Saya baru selesai kuis di web. Saya tertarik dengan *${program}* untuk bidang *${userData.bidang}*. Mohon info biaya dan pendaftarannya. Saya ingin klaim voucher pendaftaran.`;
+                // REVISI: Pesan WA lebih edukatif
+                const textPesanUtama = `Halo Tim Edukasi LPKS Arima, saya *${userData.nama}*. Saya baru selesai mengikuti pemetaan karier di web. Saya tertarik dengan *${program}* untuk jurusan/bidang *${userData.bidang}*. Mohon informasi lebih lanjut mengenai jadwal dan pendaftarannya.`;
                 const waLinkUtama = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(textPesanUtama)}`;
 
-                const textPesanRagu = `Halo Admin LPKS Arima, saya *${userData.nama}*. Saya sudah ikut kuis dan mendapat rekomendasi *${program}*. Saya masih ragu dan ingin bertanya-tanya dulu mengenai program ini.`;
+                const textPesanRagu = `Halo Admin LPKS Arima, saya *${userData.nama}*. Saya sudah ikut pemetaan karier dan mendapat rekomendasi *${program}*. Saya ingin berkonsultasi lebih lanjut sebelum memutuskan.`;
                 const waLinkRagu = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(textPesanRagu)}`;
 
+                // REVISI: Tampilan kartu hasil lebih soft-selling
                 const resultHTML = `
                     <div class="result-card">
-                        <h4>🎯 Rekomendasi Program Kamu</h4>
+                        <h4>🎯 Rekomendasi Belajar Kamu</h4>
                         
                         <img src="assets/keberangkatan-siswa.jpeg" alt="Alumni Arima" class="proof-image" onerror="this.style.display='none'">
                         
@@ -646,15 +654,15 @@
                             "${infoTambahan}"
                         </p>
 
-                        <span class="urgency-text">⚠️ Kelas batch terdekat dibuka tanggal 2 November 2026. Sisa 3 kursi!</span>
+                        <span class="tag-highlight">✨ Rekomendasi Khusus Pelajar</span>
                         
                         <p class="risk-reversal">✅ Konsultasi 100% Gratis & Tanpa Paksaan</p>
 
                         <a href="${waLinkUtama}" target="_blank" class="cta-btn">
-                            🎁 Klaim Voucher & Kunci Kursi
+                            💬 Tanya Info Kelas BASIC ke Admin
                         </a>
                         <a href="${waLinkRagu}" target="_blank" class="soft-cta">
-                            Masih ragu? Tanya-tanya dulu ke Admin via WA
+                            Masih ragu? Diskusi dulu via WhatsApp
                         </a>
                     </div>
                 `;
