@@ -631,14 +631,13 @@
                     detailHTML += `<li><span>${key.charAt(0).toUpperCase() + key.slice(1)}</span>: ${value}</li>`;
                 }
 
-                // REVISI: Pesan WA lebih edukatif
-                const textPesanUtama = `Halo Tim Edukasi LPKS Arima, saya *${userData.nama}*. Saya baru selesai mengikuti pemetaan karier di web. Saya tertarik dengan *${program}* untuk jurusan/bidang *${userData.bidang}*. Mohon informasi lebih lanjut mengenai jadwal dan pendaftarannya.`;
+                // REVISI: Pesan WA disesuaikan untuk klaim promo
+                const textPesanUtama = `Halo Tim Edukasi LPKS Arima, saya *${userData.nama}*. Saya baru selesai mengikuti pemetaan karier di web dan direkomendasikan program *${program}*. Saya ingin mengambil *Promo Khusus Pelajar* untuk program ini. Mohon info biaya dan cara pendaftarannya.`;
                 const waLinkUtama = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(textPesanUtama)}`;
 
-                const textPesanRagu = `Halo Admin LPKS Arima, saya *${userData.nama}*. Saya sudah ikut pemetaan karier dan mendapat rekomendasi *${program}*. Saya ingin berkonsultasi lebih lanjut sebelum memutuskan.`;
+                const textPesanRagu = `Halo Admin LPKS Arima, saya *${userData.nama}*. Saya sudah ikut pemetaan karier dan mendapat rekomendasi *${program}*. Saya masih ragu dan ingin bertanya-tanya dulu mengenai program ini.`;
                 const waLinkRagu = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(textPesanRagu)}`;
 
-                // REVISI: Tampilan kartu hasil lebih soft-selling
                 const resultHTML = `
                     <div class="result-card">
                         <h4>🎯 Rekomendasi Belajar Kamu</h4>
@@ -658,8 +657,9 @@
                         
                         <p class="risk-reversal">✅ Konsultasi 100% Gratis & Tanpa Paksaan</p>
 
+                        <!-- CTA Diubah ke Ambil Promo -->
                         <a href="${waLinkUtama}" target="_blank" class="cta-btn">
-                            💬 Tanya Info Kelas BASIC ke Admin
+                            🎁 Ambil Promo Khusus Pelajar
                         </a>
                         <a href="${waLinkRagu}" target="_blank" class="soft-cta">
                             Masih ragu? Diskusi dulu via WhatsApp
